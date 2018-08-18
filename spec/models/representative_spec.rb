@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: representatives
+#
+#  id          :integer          not null, primary key
+#  description :string
+#  contact     :string
+#  address     :string
+#  phone       :string
+#  email       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require 'rails_helper'
 require 'csv'
 
@@ -5,14 +19,12 @@ RSpec.describe "Representative" do
 
   it "import representative csv" do
 
-    CSV.foreach("sped/files/representantes.csv", header: :true) do |row|
-      Representative.create(row)
-
+    CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
+      Representative.create(row.to_hash)
     end
 
-    # comment1 = post.comments.create!(:body => "first comment")
-    # comment2 = post.comments.create!(:body => "second comment")
-    # expect(post.reload.comments).to eq([comment2, comment1])
+
+    expect(Representative.count).to eq(4)
   end
 
 end
