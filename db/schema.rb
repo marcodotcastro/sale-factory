@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_18_191052) do
+ActiveRecord::Schema.define(version: 2018_08_19_132730) do
 
   create_table "representatives", force: :cascade do |t|
     t.string "description"
     t.string "contact"
     t.string "address"
+    t.string "cep"
     t.string "phone"
     t.string "email"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
