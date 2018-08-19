@@ -28,7 +28,6 @@ class Geolocation
 
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=AIzaSyCYXKThnJTkgWDCRY_8iio0A-yvM0xStgY"
     response = HTTParty.get(URI.escape(url))
-    response.parsed_response
     @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
     @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]
   end

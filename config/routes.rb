@@ -17,6 +17,7 @@
 #         rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  resources :shopkeepers
   resources :representatives
   get "service_account/representatives", to: "representatives#service_account"
   get "service_area/representatives", to: "representatives#service_area"
