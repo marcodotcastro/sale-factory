@@ -36,8 +36,4 @@ RSpec.describe "Geolocation" do
 
   end
 
-  it "map marker clustering" do
-    #https://developers.google.com/maps/documentation/javascript/marker-clustering
-  end
-
 end

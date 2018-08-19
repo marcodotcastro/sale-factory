@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  address    :string
+#  state      :string
 #  city       :string
 #  phone      :string
 #  cep        :string
@@ -20,9 +21,14 @@ require 'via_cep'
 RSpec.describe "Shopkeeper" do
 
   it "via cep search" do
-    # search = ViaCep::SearchByAddress.new(state: 'SP', city: 'São Paulo', street: 'Praça da Sé')
-    #
-    # search.zipcode
+    shopkeeper = Shopkeeper.create({"name" => "OutLat Lynd", "address" => "Rua Padre Libério ", "state" => "MG ", "city" => "Nova Serrana", "phone" => nil})
+
+    address = "#{shopkeeper.state.strip}/#{shopkeeper.city.strip}"
+
+    url = "https://viacep.com.br/ws/#{address}/json/"
+    response = HTTParty.get(URI.escape(url))
+
+    expect(response.parsed_response.first["cep"]).to eq("35519-000")
   end
 
 
