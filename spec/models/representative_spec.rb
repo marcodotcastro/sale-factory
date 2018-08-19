@@ -15,47 +15,22 @@
 #
 require 'rails_helper'
 
-require 'csv'
-require 'httparty'
-require 'via_cep'
-
-
 RSpec.describe "Representative" do
 
-  it "import" do
-
-    CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
-      Representative.create(row.to_hash)
-    end
-
-    expect(Representative.count).to eq(4)
+  before(:all) do
+    @representative = Representative.create({"description" => "CLAUDIO COUTO", "contact" => " CLAUDIO", "address" => " GRANDE BH", "cep" => " 30110-000", "phone" => " 31-98485-9555", "email" => " CLAUDIOPCOUTO@HOTMAIL.COM"})
   end
 
-  it "geolocation" do
-    # Ao cadastrar o representative é preciso informar o cep da area que será responsável
-    # Depois deve buscar o endereço pelo cep
-    #    https://viacep.com.br/
-    #    https://github.com/marcelobarreto/via_cep
-    # https://cep.guiamais.com.br/
-
-    address = ViaCep::Address.new('30110-000')
-
-    address = "#{address.street},#{address.neighborhood},#{address.city},#{address.state}".gsub!(" ", "+")
-
-    # Depois deve buscar a longitude e latitude pelo endereço ou cep
-    #    https://developers.google.com/maps/documentation/geocoding/intro
-
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{address}&key=AIzaSyCYXKThnJTkgWDCRY_8iio0A-yvM0xStgY"
-    response = HTTParty.get(URI.escape(url))
-    response.parsed_response
-
-    expect(response.parsed_response["results"].first["geometry"]["location"]["lat"]).to eq(-19.9215507)
-    expect(response.parsed_response["results"].first["geometry"]["location"]["lng"]).to eq(-43.9402886)
-
+  it "create" do
+    expect(@representative.latitude).to eq(-19.9215507)
+    expect(@representative.longitude).to eq(-43.9402886)
   end
 
-  it "map marker clustering" do
-    #https://developers.google.com/maps/documentation/javascript/marker-clustering
+  it "update" do
+    @representative.update({"description" => "WDF REPRESENTAÇÕES", "contact" => " WENDEL", "address" => " Triângulo Pte. Nova MG", "cep" => " 35430-577", "phone" => " (34) 9 9298-0505", "email" => " WENDELDANIEL2102@GMAIL.COM"})
+    expect(@representative.latitude).to eq(-20.40527)
+    expect(@representative.longitude).to eq(-42.9107433)
   end
+
 
 end

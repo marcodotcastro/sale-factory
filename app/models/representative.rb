@@ -15,4 +15,14 @@
 #
 
 class Representative < ApplicationRecord
+
+
+  before_save :generate_geolocation
+
+  def generate_geolocation
+    geolocation = Geolocation.new(self.cep)
+    self.latitude = geolocation.latitude
+    self.longitude = geolocation.longitude
+  end
+
 end
