@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @representative.description %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @representative.contact %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @representative.address %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @representative.cep %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @representative.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representative.email %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @representative.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @representative.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_representative_path(@representative) %> |
+<%= link_to 'Back', representatives_path %>

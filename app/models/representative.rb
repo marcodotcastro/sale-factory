@@ -6,6 +6,7 @@
 #  description :string
 #  contact     :string
 #  address     :string
+#  cep         :string
 #  phone       :string
 #  email       :string
 #  latitude    :float
