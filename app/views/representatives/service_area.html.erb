@@ -26,35 +26,24 @@
     // America.
 
     // First, create an object containing LatLng and population for each city.
-    var representatives = {
-        representative1: {
-            center: {lat: -19.9215507, lng: -43.9402886}
-        },
-        representative2: {
-            center: {lat: -20.40527, lng: -43.8195645}
-        },
-        representative3: {
-            center: {lat: -16.7208576, lng: -43.8195645}
-        },
-        representative4: {
-            center: {lat: -21.7882576, lng: -43.3652338}
-        }
-    };
 
-    var lojistas = {
-        lojista1: {
-            center: {lat: -19.9214507, lng: -43.9403886}
-        },
-        lojista2: {
-            center: {lat: -20.40327, lng: -43.8194645}
-        },
-        lojista3: {
-            center: {lat: -16.7258576, lng: -43.8194645}
-        },
-        lojista4: {
-            center: {lat: -21.7832576, lng: -43.3612338}
-        }
-    };
+    var representatives = {};
+
+    <% @representatives.each_with_index do |representative,index| %>
+      representatives['<%= "representative#{index}" %>'] = <%= "{center: {lat: #{representative.latitude}, lng: #{representative.longitude} }}" %>;
+    <% end %>
+
+    console.log(representatives)
+
+    var shopkeepers = {};
+
+    <% @shopkeepers.each_with_index do |shopkeeper,index| %>
+      <% unless shopkeeper.longitude.nil? and shopkeeper.latitude.nil? %>
+        shopkeepers['<%= "shopkeeper#{index}" %>'] = <%= "{center: {lat: #{shopkeeper.latitude}, lng: #{shopkeeper.longitude} }}" %>;
+      <% end %>
+    <% end %>
+
+    console.log(shopkeepers)
 
     function initMap() {
         // Create the map.
@@ -80,7 +69,7 @@
             });
         }
 
-        for (var lojista in lojistas) {
+        for (var shopkeeper in shopkeepers) {
             // Add the circle for this city to the map.
             var cityCircle = new google.maps.Circle({
                 strokeColor: '#7bff3e',
@@ -89,7 +78,7 @@
                 fillColor: '#44ff37',
                 fillOpacity: 0.35,
                 map: map,
-                center: lojistas[lojista].center,
+                center: shopkeepers[shopkeeper].center,
                 radius: 10000 * 2
             });
         }
