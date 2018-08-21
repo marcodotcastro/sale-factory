@@ -28,11 +28,11 @@ class ShopkeepersController < ApplicationController
 
     respond_to do |format|
       if @shopkeeper.save
-        format.html { redirect_to @shopkeeper, notice: 'Shopkeeper was successfully created.' }
-        format.json { render :show, status: :created, location: @shopkeeper }
+        format.html {redirect_to @shopkeeper, notice: 'Shopkeeper was successfully created.'}
+        format.json {render :show, status: :created, location: @shopkeeper}
       else
-        format.html { render :new }
-        format.json { render json: @shopkeeper.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @shopkeeper.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -42,11 +42,11 @@ class ShopkeepersController < ApplicationController
   def update
     respond_to do |format|
       if @shopkeeper.update(shopkeeper_params)
-        format.html { redirect_to @shopkeeper, notice: 'Shopkeeper was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shopkeeper }
+        format.html {redirect_to @shopkeeper, notice: 'Shopkeeper was successfully updated.'}
+        format.json {render :show, status: :ok, location: @shopkeeper}
       else
-        format.html { render :edit }
-        format.json { render json: @shopkeeper.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @shopkeeper.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -56,19 +56,25 @@ class ShopkeepersController < ApplicationController
   def destroy
     @shopkeeper.destroy
     respond_to do |format|
-      format.html { redirect_to shopkeepers_url, notice: 'Shopkeeper was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to shopkeepers_url, notice: 'Shopkeeper was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shopkeeper
-      @shopkeeper = Shopkeeper.find(params[:id])
-    end
+  def service_area
+    @representatives = Representative.all
+    @shopkeepers = Shopkeeper.all
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shopkeeper_params
-      params.require(:shopkeeper).permit(:name, :address, :state, :city, :phone, :cep, :latitude, :longitude)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_shopkeeper
+    @shopkeeper = Shopkeeper.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def shopkeeper_params
+    params.require(:shopkeeper).permit(:name, :address, :state, :city, :phone, :cep, :latitude, :longitude)
+  end
 end
