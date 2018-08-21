@@ -34,9 +34,15 @@ class Geolocation
     # https://github.com/marcelobarreto/via_cep
     # https://cep.guiamais.com.br/
 
-    viacep = ViaCep::Address.new(cep)
+    url = "https://viacep.com.br/ws/#{cep}/json/"
+    viacep = HTTParty.get(URI.escape(url))
 
-    @address = "#{viacep.street},#{viacep.neighborhood},#{viacep.city},#{viacep.state}".gsub!(" ", "+")
+    unless viacep["erro"]
+      @address = ""
+      @address.concat("#{viacep["bairro"]},".gsub(" ", "+")) unless viacep["bairro"].empty?
+      @address.concat("#{viacep["localidade"]},".gsub(" ", "+")) unless viacep["localidade"].empty?
+      @address.concat("#{viacep["uf"]}".gsub(" ", "+")) unless viacep["uf"].empty?
+    end
   end
 
   def get_cep_by_address(address)
@@ -47,15 +53,15 @@ class Geolocation
     # https://cep.guiamais.com.br/
 
     url = "https://viacep.com.br/ws/#{address}/json/"
-    response = HTTParty.get(URI.escape(url))
-    @cep = response.parsed_response.first["cep"] unless response.parsed_response.empty?
+    viacep = HTTParty.get(URI.escape(url))
+    @cep = viacep.parsed_response.first["cep"] unless viacep.parsed_response.empty?
   end
 
   def get_geocode
     # Depois deve buscar a longitude e latitude pelo endereço ou cep
     # https://developers.google.com/maps/documentation/geocoding/intro
     if @address
-      url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=AIzaSyCYXKThnJTkgWDCRY_8iio0A-yvM0xStgY"
+      url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=AIzaSyCa4Lbfk7nSV-HXuB2xHZ_nq-7QxZZmwFQ"
       response = HTTParty.get(URI.escape(url))
       @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
       @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]

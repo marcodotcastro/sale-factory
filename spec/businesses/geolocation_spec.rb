@@ -23,17 +23,39 @@ RSpec.describe "Geolocation" do
       Representative.create(row.to_hash)
     end
 
-    expect(Representative.last.latitude).to eq(-21.7882576)
-    expect(Representative.last.longitude).to eq(-43.3652338)
+    expect(Representative.last.latitude).to eq(-21.7923558)
+    expect(Representative.last.longitude).to eq(-43.3622146)
   end
 
-  it "geolocation" do
-    cep = '30110-000'
-    geolocation = Geolocation.new(cep)
+  context "geolocation" do
 
-    expect(geolocation.latitude).to eq(-19.9215507)
-    expect(geolocation.longitude).to eq(-43.9402886)
+    it "38740-076" do
+      cep = '38740-076'
+      geolocation = Geolocation.new(cep: cep)
+
+      expect(geolocation.latitude).to eq(-18.9443834)
+      expect(geolocation.longitude).to eq(-46.9926574)
+
+    end
+
+    it "37757-000" do
+      cep = '37757-000'
+      geolocation = Geolocation.new(cep: cep)
+
+      expect(geolocation.latitude).to eq(-21.777416)
+      expect(geolocation.longitude).to eq(-45.9677701)
+
+    end
+
+    it "37130-000" do
+      cep = '37130-000'
+      geolocation = Geolocation.new(cep: cep)
+
+      expect(geolocation.latitude).to eq(nil)
+      expect(geolocation.longitude).to eq(nil)
+    end
 
   end
+
 
 end

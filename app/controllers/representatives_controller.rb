@@ -62,7 +62,7 @@ class RepresentativesController < ApplicationController
   end
 
   def service_account
-    @representatives = Representative.all
+    @shopkeepers = Shopkeeper.all
   end
 
   def service_area
