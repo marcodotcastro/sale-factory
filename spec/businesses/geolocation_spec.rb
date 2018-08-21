@@ -27,7 +27,7 @@ RSpec.describe "Geolocation" do
     expect(Representative.last.longitude).to eq(-43.3622146)
   end
 
-  context "geolocation" do
+  context "geolocation cep" do
 
     it "38740-076" do
       cep = '38740-076'
@@ -53,6 +53,18 @@ RSpec.describe "Geolocation" do
 
       expect(geolocation.latitude).to eq(nil)
       expect(geolocation.longitude).to eq(nil)
+    end
+
+  end
+
+  context "geolocation address" do
+
+    it "MG,Abadia dos Dourados" do
+      address = 'Abadia dos Dourados,MG'
+      geolocation = Geolocation.new(address: address)
+
+      expect(geolocation.latitude).to eq(-18.4871142)
+      expect(geolocation.longitude).to eq(-47.402741)
     end
 
   end

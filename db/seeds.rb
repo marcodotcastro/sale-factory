@@ -1,14 +1,20 @@
 require 'csv'
 
+puts "Importing City"
+CSV.foreach("spec/files/cidades.csv", headers: :true) do |row, index|
+  city = City.where(description: row.to_hash["description"]).first_or_create(row.to_hash.each_value(&:strip!))
+  puts "#{$.} - latitude:#{city.latitude}, longitude:#{city.longitude}, description:#{city.description}"
+  puts row.to_hash.each_value(&:strip!)
+end
 
-puts "IMPORTING REPRESENTATIVE"
+puts "Importing Representative"
 CSV.foreach("spec/files/representantes.csv", headers: :true) do |row, index|
   representative = Representative.where(cep: row.to_hash["cep"]).first_or_create(row.to_hash.each_value(&:strip!))
   puts "#{$.} - latitude:#{representative.latitude}, longitude:#{representative.longitude}, cep:#{representative.cep}"
   puts row.to_hash.each_value(&:strip!)
 end
 
-puts "IMPORTING SHOPKEEPER"
+puts "Importing Shopkeeper"
 CSV.foreach("spec/files/lojistas.csv", headers: :true) do |row, index|
   shopkeeper = Shopkeeper.where(cep: row.to_hash["cep"]).first_or_create(row.to_hash.each_value(&:strip!))
   puts "#{$.} - latitude:#{shopkeeper.latitude}, longitude:#{shopkeeper.longitude}, cep:#{shopkeeper.cep}"

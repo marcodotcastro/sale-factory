@@ -7,10 +7,10 @@ class Geolocation
   def initialize(cep: nil, address: nil)
     if cep
       get_address_by_cep(cep.strip)
-      get_geocode
     else
       get_cep_by_address(address.strip)
     end
+    get_geocode
   end
 
   def longitude
@@ -46,15 +46,7 @@ class Geolocation
   end
 
   def get_cep_by_address(address)
-    # Ao cadastrar o representative é preciso informar o cep da area que será responsável
-    # Depois deve buscar o endereço pelo cep
-    # https://viacep.com.br/
-    # https://github.com/marcelobarreto/via_cep
-    # https://cep.guiamais.com.br/
-
-    url = "https://viacep.com.br/ws/#{address}/json/"
-    viacep = HTTParty.get(URI.escape(url))
-    @cep = viacep.parsed_response.first["cep"] unless viacep.parsed_response.empty?
+    @address = address
   end
 
   def get_geocode

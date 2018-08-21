@@ -65,6 +65,7 @@ class RepresentativesController < ApplicationController
   def service_area
     @representatives = Representative.all
     @shopkeepers = Shopkeeper.all
+    @cities = City.where("population > ?", 50000)
   end
 
   private
