@@ -61,74 +61,88 @@
             mapTypeId: 'terrain'
         });
 
-        for (var representative in representatives) {
-            var representativeCircle = new google.maps.Circle({
+        const infoArr = [];
+
+        Object.keys(representatives).forEach(key => {
+            const item = representatives[key];
+            let representativeCircle = new google.maps.Circle({
                 strokeColor: '#FF0000',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
                 fillColor: '#FF0000',
                 fillOpacity: 0.35,
                 map: map,
-                center: representatives[representative].center,
+                center: item.center,
                 radius: 10000 * 20,
-
             });
-
-            var infoWindow = new google.maps.InfoWindow({
+            const valor = item.description;
+            const infoWindow = new google.maps.InfoWindow({
                 // TODO: Adicionar nome ao circulo
-                content: representatives[representative].description
+                content: valor
             });
+            infoArr.push(infoWindow);
+
             google.maps.event.addListener(representativeCircle, 'click', function (ev) {
                 infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
                 infoWindow.open(map);
             });
 
-        }
+        });
 
-        for (var shopkeeper in shopkeepers) {
-            // console.log(cities[city].description)
-            var shopkeeperCircle = new google.maps.Circle({
-                strokeColor: '#000000',
-                strokeOpacity: 0.8,
-                strokeWeight: 2,
-                fillColor: '#000000',
-                fillOpacity: 0.35,
-                map: map,
-                center: shopkeepers[shopkeeper].center,
-                radius: 10000
-            });
 
-            var infoWindow = new google.maps.InfoWindow({
-                // TODO: Adicionar nome ao circulo
-                content: shopkeepers[shopkeeper].name
-            });
-            google.maps.event.addListener(shopkeeperCircle, 'click', function (ev) {
-                infoWindow.setPosition(ev.latLng);
-                infoWindow.open(map);
-            });
-        }
-
-        for (var city in cities) {
-            var cityCircle = new google.maps.Circle({
+        Object.keys(shopkeepers).forEach(key => {
+            const item = shopkeepers[key];
+            let shopkeeperCircle = new google.maps.Circle({
                 strokeColor: '#000cff',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
                 fillColor: '#000cff',
                 fillOpacity: 0.35,
                 map: map,
-                center: cities[city].center,
-                radius: 10000 * 2
+                center: item.center,
+                radius: 5000,
             });
+            const valor = item.name;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
 
-            var infoWindow = new google.maps.InfoWindow({
-                // TODO: Adicionar nome ao circulo
-                content: cities[city].description
-            });
-            google.maps.event.addListener(cityCircle, 'click', function (ev) {
+            google.maps.event.addListener(shopkeeperCircle, 'click', function (ev) {
                 infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
                 infoWindow.open(map);
             });
-        }
+
+        });
+
+        Object.keys(cities).forEach(key => {
+            const item = cities[key];
+            let cityCircle = new google.maps.Circle({
+                strokeColor: '#000000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#000000',
+                fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: Math.sqrt(item.population) * 100
+            });
+            const valor = item.description;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(cityCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
     }
 </script>
 <script async defer
