@@ -19,6 +19,8 @@ class Representative < ApplicationRecord
 
   before_save :generate_geolocation
 
+  validates :cep, presence: true
+
   def generate_geolocation
     geolocation = Geolocation.new(cep: self.cep)
     self.latitude = geolocation.latitude

@@ -7,11 +7,6 @@ class RepresentativesController < ApplicationController
     @representatives = Representative.all
   end
 
-  # GET /representatives/1
-  # GET /representatives/1.json
-  def show;
-  end
-
   # GET /representatives/new
   def new
     @representative = Representative.new
@@ -28,11 +23,9 @@ class RepresentativesController < ApplicationController
 
     respond_to do |format|
       if @representative.save
-        format.html {redirect_to @representative, notice: 'Representative was successfully created.'}
-        format.json {render :show, status: :created, location: @representative}
+        format.html {redirect_to representatives_url, notice: 'Representative was successfully created.'}
       else
         format.html {render :new}
-        format.json {render json: @representative.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -42,11 +35,9 @@ class RepresentativesController < ApplicationController
   def update
     respond_to do |format|
       if @representative.update(representative_params)
-        format.html {redirect_to @representative, notice: 'Representative was successfully updated.'}
-        format.json {render :show, status: :ok, location: @representative}
+        format.html {redirect_to representatives_url, notice: 'Representative was successfully updated.'}
       else
         format.html {render :edit}
-        format.json {render json: @representative.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -57,7 +48,6 @@ class RepresentativesController < ApplicationController
     @representative.destroy
     respond_to do |format|
       format.html {redirect_to representatives_url, notice: 'Representative was successfully destroyed.'}
-      format.json {head :no_content}
     end
   end
 

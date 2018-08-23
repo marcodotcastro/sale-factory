@@ -18,6 +18,8 @@ gem 'geocoder'
 gem 'httparty'
 gem 'via_cep'
 gem 'materialize-sass'
+gem 'simple_form'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

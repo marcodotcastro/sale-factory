@@ -4,12 +4,7 @@ class ShopkeepersController < ApplicationController
   # GET /shopkeepers
   # GET /shopkeepers.json
   def index
-    @shopkeepers = Shopkeeper.all
-  end
-
-  # GET /shopkeepers/1
-  # GET /shopkeepers/1.json
-  def show
+    @shopkeepers = Shopkeeper.all.page(params[:page])
   end
 
   # GET /shopkeepers/new
@@ -28,11 +23,9 @@ class ShopkeepersController < ApplicationController
 
     respond_to do |format|
       if @shopkeeper.save
-        format.html {redirect_to @shopkeeper, notice: 'Shopkeeper was successfully created.'}
-        format.json {render :show, status: :created, location: @shopkeeper}
+        format.html {redirect_to shopkeepers_url, notice: 'Shopkeeper was successfully created.'}
       else
         format.html {render :new}
-        format.json {render json: @shopkeeper.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -42,11 +35,9 @@ class ShopkeepersController < ApplicationController
   def update
     respond_to do |format|
       if @shopkeeper.update(shopkeeper_params)
-        format.html {redirect_to @shopkeeper, notice: 'Shopkeeper was successfully updated.'}
-        format.json {render :show, status: :ok, location: @shopkeeper}
+        format.html {redirect_to shopkeepers_url, notice: 'Shopkeeper was successfully updated.'}
       else
         format.html {render :edit}
-        format.json {render json: @shopkeeper.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -57,7 +48,6 @@ class ShopkeepersController < ApplicationController
     @shopkeeper.destroy
     respond_to do |format|
       format.html {redirect_to shopkeepers_url, notice: 'Shopkeeper was successfully destroyed.'}
-      format.json {head :no_content}
     end
   end
 
