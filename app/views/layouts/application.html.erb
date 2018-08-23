@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SaleFactory</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>SaleFactory</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<nav>
+  <div class="nav-wrapper red darken-3">
+    <div class="container">
+      <a href="/" class="brand-logo"><%= image_tag "logo.png" %></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "Representantes", representatives_path %></li>
+        <li><%= link_to "Lojistas", shopkeepers_path %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
 </html>

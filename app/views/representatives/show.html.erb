@@ -30,15 +30,6 @@
   <%= @representative.email %>
 </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @representative.latitude %>
-</p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @representative.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_representative_path(@representative) %> |
-<%= link_to 'Back', representatives_path %>
+<%= link_to 'Edit', edit_representative_path(@representative), class: "btn yellow waves-effect waves-light" %>
+<%= link_to 'Back', representatives_path, class: "btn waves-effect waves-light" %>

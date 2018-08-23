@@ -1,41 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Representatives</h1>
+<h4>Representantes</h4>
 
-<table>
+<%= link_to service_area_representatives_path do %>
+  <i class="large material-icons">insert_chart</i>
+<% end %>
+
+<table class="striped">
   <thead>
-    <tr>
-      <th>Description</th>
-      <th>Contact</th>
-      <th>Address</th>
-      <th>Cep</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Description</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Cep</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @representatives.each do |representative| %>
-      <tr>
-        <td><%= representative.description %></td>
-        <td><%= representative.contact %></td>
-        <td><%= representative.address %></td>
-        <td><%= representative.cep %></td>
-        <td><%= representative.phone %></td>
-        <td><%= representative.email %></td>
-        <td><%= representative.latitude %></td>
-        <td><%= representative.longitude %></td>
-        <td><%= link_to 'Show', representative %></td>
-        <td><%= link_to 'Edit', edit_representative_path(representative) %></td>
-        <td><%= link_to 'Destroy', representative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @representatives.each do |representative| %>
+    <tr>
+      <td><%= representative.description %></td>
+      <td><%= representative.phone %></td>
+      <td><%= representative.email %></td>
+      <td><%= representative.address %></td>
+      <td><%= representative.cep %></td>
+      <td><%= link_to 'Show', representative, class: "btn blue waves-effect waves-light" %></td>
+      <td><%= link_to 'Edit', edit_representative_path(representative), class: "btn yellow waves-effect waves-light" %></td>
+      <td><%= link_to 'Destroy', representative, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn red waves-effect waves-light" %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Representative', new_representative_path %>
+<%= link_to 'New Representative', new_representative_path, class: "btn green waves-effect waves-light" %>

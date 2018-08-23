@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta charset="utf-8">
-
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-    #map {
-      height: 100%;
-    }
-
-    /* Optional: Makes the sample page fill the window. */
-    html, body {
-      height: 100%;
-      margin: 10px;
-      padding: 0;
-    }
-  </style>
-</head>
-<body>
-<h1>Lojistas</h1>
+<h4>Área de Atendimento dos Lojistas</h4>
 <div id="map"></div>
 <script>
     function initMap() {
+
+        console.log("OK")
 
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 4,
@@ -47,18 +27,17 @@
         });
 
 
-        var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+        console.log("OK")
     }
 
     var shopkeepers = new Array();
-    var shopkeeper_names = new Array();
 
     <% @shopkeepers.each do |shopkeeper| %>
     <% unless shopkeeper.longitude.nil? and shopkeeper.latitude.nil? %>
     shopkeepers.push(<%= raw "{lat: #{shopkeeper.latitude}, lng: #{shopkeeper.longitude}}" %>);
     <% end %>
     <% end %>
+    console.log("OK")
 
 </script>
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
@@ -66,5 +45,3 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa4Lbfk7nSV-HXuB2xHZ_nq-7QxZZmwFQ&callback=initMap">
 </script>
-</body>
-</html>

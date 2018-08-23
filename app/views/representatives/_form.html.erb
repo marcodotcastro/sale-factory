@@ -4,9 +4,9 @@
       <h2><%= pluralize(representative.errors.count, "error") %> prohibited this representative from being saved:</h2>
 
       <ul>
-      <% representative.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% representative.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -20,15 +20,15 @@
     <%= form.label :contact %>
     <%= form.text_field :contact %>
   </div>
+  
+  <div class="field">
+    <%= form.label :cep %>
+    <%= form.text_field :cep %>
+  </div>
 
   <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cep %>
-    <%= form.text_field :cep %>
   </div>
 
   <div class="field">
@@ -41,17 +41,8 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
-  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salvar", class: "btn green waves-effect waves-light" %>
   </div>
 <% end %>
