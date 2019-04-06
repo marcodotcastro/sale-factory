@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @representante_comercial.descricao %>
+</p>
+
+<p>
+  <strong>Contato:</strong>
+  <%= @representante_comercial.contato %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @representante_comercial.endereco %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @representante_comercial.cep %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @representante_comercial.telefone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representante_comercial.email %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @representante_comercial.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @representante_comercial.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_representante_comercial_path(@representante_comercial) %> |
+<%= link_to 'Back', representante_comerciais_path %>

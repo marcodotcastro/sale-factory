@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @lojista.nome %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @lojista.endereco %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @lojista.telefone %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @lojista.cep %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @lojista.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @lojista.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_lojista_path(@lojista) %> |
+<%= link_to 'Back', lojistas_path %>
