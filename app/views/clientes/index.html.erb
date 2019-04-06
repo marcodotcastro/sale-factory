@@ -1,36 +1,34 @@
+<% model = Cliente %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Clientes</h1>
 
 <table>
   <thead>
-    <tr>
-      <th>Descricao</th>
-      <th>Contato</th>
-      <th>Endereco</th>
-      <th>Cep</th>
-      <th>Telefone</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th><%= model.human_attribute_name(:descricao) %></th>
+    <th><%= model.human_attribute_name(:contato) %></th>
+    <th><%= model.human_attribute_name(:endereco) %></th>
+    <th><%= model.human_attribute_name(:cep) %></th>
+    <th><%= model.human_attribute_name(:telefone) %></th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @clientes.each do |cliente| %>
-      <tr>
-        <td><%= cliente.descricao %></td>
-        <td><%= cliente.contato %></td>
-        <td><%= cliente.endereco %></td>
-        <td><%= cliente.cep %></td>
-        <td><%= cliente.telefone %></td>
-        <td><%= cliente.latitude %></td>
-        <td><%= cliente.longitude %></td>
-        <td><%= link_to 'Show', cliente %></td>
-        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @clientes.each do |cliente| %>
+    <tr>
+      <td><%= cliente.descricao %></td>
+      <td><%= cliente.contato %></td>
+      <td><%= cliente.endereco %></td>
+      <td><%= cliente.cep %></td>
+      <td><%= cliente.telefone %></td>
+      <td><%= link_to 'Show', cliente %></td>
+      <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
+      <td><%= link_to 'Destroy', cliente, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
