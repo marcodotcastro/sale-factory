@@ -1,25 +1,20 @@
-# README
+#QUALIDADE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Qualidade de Código
+```
+shell> rubycritic app
+```
+Acesse 
 
-Things you may want to cover:
+http://localhost:63342/sale-factory/tmp/rubycritic/overview.html
 
-* Ruby version
 
-* System dependencies
+## Cobertura de Código
 
-* Configuration
+```
+shell> rspec spec
+```
 
-* Database creation
+Acesse
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# sale-factory
+http://localhost:63342/sale-factory/coverage/index.html

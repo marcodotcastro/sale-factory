@@ -29,6 +29,8 @@ group :development, :test do
   gem 'annotate'
   gem 'pry-byebug'
   gem "ffaker"
+  gem "rubycritic"
+  gem "simplecov"
 end
 
 group :development do

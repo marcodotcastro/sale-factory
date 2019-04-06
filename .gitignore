@@ -21,6 +21,7 @@
 /storage/*
 
 .idea
+coverage
 
 /node_modules
 /yarn-error.log
