@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: shopkeepers
+# Table nome: lojistas
 #
 #  id         :integer          not null, primary key
 #  name       :string
@@ -18,14 +18,14 @@
 require 'rails_helper'
 require 'via_cep'
 
-RSpec.describe "Shopkeeper" do
+RSpec.describe "Via Cep" do
 
-  it "via cep search" do
-    shopkeeper = Shopkeeper.create({"name" => "OutLat Lynd", "address" => "Rua Padre Libério ", "state" => "MG ", "city" => "Nova Serrana", "phone" => nil})
+  it "search" do
+    lojista = Lojista.create({"nome" => "OutLat Lynd", "endereco" => "Rua Padre Libério ", "estado" => "MG ", "cidade" => "Nova Serrana", "telefone" => nil})
 
-    address = "#{shopkeeper.state.strip}/#{shopkeeper.city.strip}"
+    endereco = "#{lojista.estado.strip}/#{lojista.city.strip}"
 
-    url = "https://viacep.com.br/ws/#{address}/json/"
+    url = "https://viacep.com.br/ws/#{endereco}/json/"
     response = HTTParty.get(URI.escape(url))
 
     expect(response.parsed_response.first["cep"]).to eq("35519-000")
