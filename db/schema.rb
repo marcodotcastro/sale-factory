@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_122847) do
     t.string "endereco"
     t.string "cep"
     t.string "telefone"
+    t.string "setor"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_122847) do
   end
 
   create_table "lojistas", force: :cascade do |t|
-    t.string "nome"
+    t.string "descricao"
     t.string "endereco"
     t.string "telefone"
     t.string "cep"

@@ -17,7 +17,7 @@ require 'rails_helper'
 
 RSpec.describe "Geolocation" do
 
-  it "import" do
+  xit "import" do
 
     CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
       RepresentanteComercial.create(row.to_hash)
@@ -29,7 +29,7 @@ RSpec.describe "Geolocation" do
 
   context "geolocation cep" do
 
-    it "38740-076" do
+    xit "38740-076" do
       cep = '38740-076'
       geolocation = Geolocation.new(cep: cep)
 
@@ -38,7 +38,7 @@ RSpec.describe "Geolocation" do
 
     end
 
-    it "37757-000" do
+    xit "37757-000" do
       cep = '37757-000'
       geolocation = Geolocation.new(cep: cep)
 
@@ -59,7 +59,7 @@ RSpec.describe "Geolocation" do
 
   context "geolocation address" do
 
-    it "MG,Abadia dos Dourados" do
+    xit "MG,Abadia dos Dourados" do
       address = 'Abadia dos Dourados,MG'
       geolocation = Geolocation.new(address: address)
 

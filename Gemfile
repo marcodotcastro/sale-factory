@@ -22,9 +22,13 @@ gem 'simple_form'
 gem 'kaminari'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.6.0'
-  gem "factory_bot_rails"
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem "binding_of_caller"
+  gem 'annotate'
+  gem 'pry-byebug'
+  gem "ffaker"
 end
 
 group :development do
@@ -32,11 +36,12 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'annotate' # Simplica desenvolvimento
+  gem 'rack-mini-profiler', require: false
+  gem 'better_errors'
+  gem 'rails_layout'
 end
 
 group :test do
-  gem 'sqlite3', '~> 1.3.6'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'

@@ -75,5 +75,4 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
-  config.include FactoryBot::Syntax::Methods
 end

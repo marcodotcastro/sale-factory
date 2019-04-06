@@ -20,7 +20,7 @@ require 'via_cep'
 
 RSpec.describe "Via Cep" do
 
-  it "search" do
+  xit "search" do
     lojista = Lojista.create({"nome" => "OutLat Lynd", "endereco" => "Rua Padre Libério ", "estado" => "MG ", "cidade" => "Nova Serrana", "telefone" => nil})
 
     endereco = "#{lojista.estado.strip}/#{lojista.city.strip}"

@@ -1,0 +1,186 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      models:
+        servico:
+          attributes:
+            capa:
+              attached: "não pode ficar em branco"
+            fotos:
+              attached: "não pode ficar em branco"
+        produto:
+          attributes:
+            capa:
+              attached: "não pode ficar em branco"
+            fotos:
+              attached: "não pode ficar em branco"
+        produtor:
+          attributes:
+            perfil:
+              attached: "não pode ficar em branco"
+            fotos:
+              attached: "não pode ficar em branco"
+    models:
+      produto:
+        one: "Produto"
+        other: "Produtos"
+      servico:
+        one: "Serviço"
+        other: "Serviços"
+      produtor:
+        one: "Produtor"
+        other: "Produtores"
+      categoria:
+        one: "Categoria"
+        other: "Categorias"
+      video:
+        one: "Vídeo"
+        other: "Vídeos"
+      producao:
+        one: "Produção"
+        other: "Produções"
+      criacao:
+        one: "Criação"
+        other: "Criações"
+      historia:
+        one: "História"
+        other: "Histórias"
+      estado:
+        one: "Estado"
+        other: "Estados"
+      cidade:
+        one: "Cidade"
+        other: "Cidades"
+      admin_user:
+        one: "Administrador"
+        other: "Administradores"
+      contato:
+        one: "Contato"
+        other: "Contatos"
+    attributes:
+      produto:
+        nome: "Nome"
+        descricao: "Descrição"
+        producao: "Produção"
+        preco: "Preço"
+        video: "Vídeo"
+        foto: "Foto"
+        selo_inspecao: "Selo de Inspeção"
+        selo_inspecoes:
+          sim: "Serviço de Inspeção Municipal (SIM)"
+          sie: "Serviço de Inspeção Estadual (SIE)"
+          sif: "Serviço de Inspeção Federal (SIF)"
+        published_at: "Publicado Em"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      servico:
+        nome: "Nome"
+        descricao: "Descrição"
+        medida: "Medida"
+        preco: "Preço"
+        medidas:
+          hora: "hora"
+          dia: "dia"
+          mes: "mês"
+          fixo: "fixo"
+          cabeca: "cabeça"
+        foto: "Foto"
+        published_at: "Publicado Em"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      produtor:
+        nome: "Nome"
+        telefone: "Telefone"
+        email: "Email"
+        endereco: "Endereço"
+        video: "Vídeo"
+        foto: "Foto"
+        dap: "DAP"
+        pessoa_juridica: "Pessoa Jurídica"
+        whatsapp: "Whatsapp"
+        cartao: "Cartão"
+        licenciamento_ambiental: "Licenciamento Ambiental"
+        licenciamento_ambientais:
+          lp: "Licença Prévia (LP)"
+          li: "  Licença de Instalação (LI)"
+          lo: "  Licença de Operação (LO)"
+        published_at: "Publicado Em"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      categoria:
+        nome: "Nome"
+        descricao: "Descrição"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      qualidade:
+        nome: "Nome"
+        descricao: "Descrição"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      video:
+        nome: "Nome"
+        descricao: "Descrição"
+        codigo: "Código"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      producao:
+        numero: "Número"
+        medida: "Medida"
+        periodo: "Período"
+        medidas:
+          unidade: "unidade"
+          litro: "litro"
+          quilo: "quilo"
+          saco: "saco"
+          arroba: "arroba"
+        periodos:
+          dia: "dia"
+          semana: "semana"
+          mes: "mês"
+          ano: "ano"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      historia:
+        data: "Data"
+        titulo: "Título"
+        descricao: "Descrição"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      estado:
+        nome: "Nome"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      cidade:
+        nome: "Nome"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      criacao:
+        data: "Data"
+        titulo: "Título"
+        descricao: "Descrição"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      contato:
+        nome: "Nome"
+        telefone: "Telefone"
+        email: "Email"
+        descricao: "Descrição"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"
+      admin_user:
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmação da Senha"
+        current_sign_in_at: "Último Acesso"
+        sign_in_count: "Total de Acesso"
+        encrypted_password: "Senha Criptografada"
+        reset_password_token: "Token para Resetar a Senha"
+        reset_password_sent_at: "Resetar a Senha Enviado Em"
+        remember_created_at: "Lembrança da Senha Criada Em"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"

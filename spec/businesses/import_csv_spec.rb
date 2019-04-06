@@ -4,7 +4,7 @@ require 'csv'
 
 RSpec.describe "ImportCsv" do
 
-  it "representantes" do
+  xit "representantes" do
 
     CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
       RepresentanteComercial.create(row.to_hash.each_value(&:strip))
@@ -14,7 +14,7 @@ RSpec.describe "ImportCsv" do
     # expect(RepresentanteComercial.last.longitude).to eq(-43.3652338)
   end
 
-  it "lojistas" do
+  xit "lojistas" do
 
     CSV.foreach("spec/files/lojistas.csv", headers: :true) do |row|
       Lojista.create(row.to_hash.each_value(&:strip))
@@ -24,7 +24,7 @@ RSpec.describe "ImportCsv" do
     # expect(Lojista.last.longitude).to eq(-43.3652338)
   end
 
-  it "import" do
+  xit "import" do
 
     CSV.foreach("spec/files/cidades.csv", headers: :true) do |row|
       Cidade.create(row.to_hash.each_value(&:strip))
