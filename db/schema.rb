@@ -10,45 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_21_115541) do
+ActiveRecord::Schema.define(version: 2019_04_06_122847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cities", force: :cascade do |t|
-    t.string "description"
-    t.string "uf"
-    t.integer "population"
+  create_table "cidades", force: :cascade do |t|
+    t.string "descricao"
+    t.string "estado"
+    t.integer "populacao"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "representatives", force: :cascade do |t|
-    t.string "description"
-    t.string "contact"
-    t.string "address"
+  create_table "clientes", force: :cascade do |t|
+    t.string "descricao"
+    t.string "contato"
+    t.string "endereco"
     t.string "cep"
-    t.string "phone"
+    t.string "telefone"
+    t.string "setor"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cidade_id"
+    t.index ["cidade_id"], name: "index_clientes_on_cidade_id"
+  end
+
+  create_table "lojistas", force: :cascade do |t|
+    t.string "descricao"
+    t.string "endereco"
+    t.string "telefone"
+    t.string "cep"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cidade_id"
+    t.bigint "representante_comercial_id"
+    t.index ["cidade_id"], name: "index_lojistas_on_cidade_id"
+    t.index ["representante_comercial_id"], name: "index_lojistas_on_representante_comercial_id"
+  end
+
+  create_table "representante_comerciais", force: :cascade do |t|
+    t.string "descricao"
+    t.string "contato"
+    t.string "endereco"
+    t.string "cep"
+    t.string "telefone"
     t.string "email"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "cidade_id"
+    t.bigint "cliente_id"
+    t.index ["cidade_id"], name: "index_representante_comerciais_on_cidade_id"
+    t.index ["cliente_id"], name: "index_representante_comerciais_on_cliente_id"
   end
 
-  create_table "shopkeepers", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "state"
-    t.string "city"
-    t.string "phone"
-    t.string "cep"
-    t.string "latitude"
-    t.string "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "clientes", "cidades"
+  add_foreign_key "lojistas", "cidades"
+  add_foreign_key "lojistas", "representante_comerciais"
+  add_foreign_key "representante_comerciais", "cidades"
+  add_foreign_key "representante_comerciais", "clientes"
 end

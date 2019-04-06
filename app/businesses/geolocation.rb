@@ -52,12 +52,13 @@ class Geolocation
   def get_geocode
     # Depois deve buscar a longitude e latitude pelo endereço ou cep
     # https://developers.google.com/maps/documentation/geocoding/intro
-    if @address
-      url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=AIzaSyCa4Lbfk7nSV-HXuB2xHZ_nq-7QxZZmwFQ"
-      response = HTTParty.get(URI.escape(url))
-      @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
-      @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]
-    end
+    #FIXME: Google Apis Geocode não está funcionando
+    # if @address
+    #   url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=AIzaSyCa4Lbfk7nSV-HXuB2xHZ_nq-7QxZZmwFQ"
+    #   response = HTTParty.get(URI.escape(url))
+    #   @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
+    #   @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]
+    # end
   end
 
 end

@@ -11,9 +11,20 @@ module SaleFactory
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # Permite que seja criada arquivos durante os generates
+    config.generators do |g|
+      g.test_framework :rspec,
+                       fixtures: true,
+                       view_specs: true,
+                       helper_specs: true,
+                       routing_specs: false,
+                       controller_specs: false,
+                       request_specs: false
+      g.factory_bot dir: "spec/factories"
+    end
+
+    config.enforce_available_locales = true
+    config.i18n.default_locale = "pt-BR"
+    config.autoload_paths << "#{Rails.root}/lib"
   end
 end

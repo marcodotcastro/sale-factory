@@ -1,0 +1,34 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
+          has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
+    models:
+      cliente:
+        one: "Cliente"
+        other: "Clientes"
+    attributes:
+      cliente:
+        descricao: "Descrição"
+        endereco: "Endereço"
+      representante_comercial:
+        descricao: "Descrição"
+        endereco: "Endereço"
+      lojista:
+        descricao: "Descrição"
+        endereco: "Endereço"
+      admin_user:
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmação da Senha"
+        current_sign_in_at: "Último Acesso"
+        sign_in_count: "Total de Acesso"
+        encrypted_password: "Senha Criptografada"
+        reset_password_token: "Token para Resetar a Senha"
+        reset_password_sent_at: "Resetar a Senha Enviado Em"
+        remember_created_at: "Lembrança da Senha Criada Em"
+        created_at: "Criado Em"
+        updated_at: "Atualizado Em"

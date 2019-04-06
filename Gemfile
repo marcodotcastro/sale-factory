@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) {|repo| "https://github.com/#{repo}.git"}
 
-ruby '2.6.1'
+ruby '2.6.2'
 
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.3'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -22,8 +22,15 @@ gem 'simple_form'
 gem 'kaminari'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem "binding_of_caller"
+  gem 'annotate'
+  gem 'pry-byebug'
+  gem "ffaker"
+  gem "rubycritic"
+  gem "simplecov"
 end
 
 group :development do
@@ -31,11 +38,12 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'annotate' # Simplica desenvolvimento
+  gem 'rack-mini-profiler', require: false
+  gem 'better_errors'
+  gem 'rails_layout'
 end
 
 group :test do
-  gem 'sqlite3', '~> 1.3.6'
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'

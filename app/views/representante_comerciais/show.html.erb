@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @representante_comercial.descricao %>
+</p>
+
+<p>
+  <strong>Contato:</strong>
+  <%= @representante_comercial.contato %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @representante_comercial.endereco %>
+</p>
+
+<p>
+  <strong>Cep:</strong>
+  <%= @representante_comercial.cep %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @representante_comercial.telefone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @representante_comercial.email %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @representante_comercial.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @representante_comercial.longitude %>
+</p>
+
+
+<% model = Lojista %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Lojistas</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th><%= model.human_attribute_name(:descricao) %></th>
+    <th><%= model.human_attribute_name(:endereco) %></th>
+    <th><%= model.human_attribute_name(:cep) %></th>
+    <th><%= model.human_attribute_name(:telefone) %></th>
+    <th><%= model.human_attribute_name(:email) %></th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @lojistas.each do |lojista| %>
+    <tr>
+      <td><%= lojista.descricao %></td>
+      <td><%= lojista.endereco %></td>
+      <td><%= lojista.cep %></td>
+      <td><%= lojista.telefone %></td>
+      <td><%= link_to 'Show', cliente_representante_comercial_lojista_path(@representante_comercial, lojista) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

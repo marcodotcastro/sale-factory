@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Representante Comerciais</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Descricao</th>
+      <th>Contato</th>
+      <th>Endereco</th>
+      <th>Cep</th>
+      <th>Telefone</th>
+      <th>Email</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @representante_comerciais.each do |representante_comercial| %>
+      <tr>
+        <td><%= representante_comercial.descricao %></td>
+        <td><%= representante_comercial.contato %></td>
+        <td><%= representante_comercial.endereco %></td>
+        <td><%= representante_comercial.cep %></td>
+        <td><%= representante_comercial.telefone %></td>
+        <td><%= representante_comercial.email %></td>
+        <td><%= representante_comercial.latitude %></td>
+        <td><%= representante_comercial.longitude %></td>
+        <td><%= link_to 'Show', representante_comercial %></td>
+        <td><%= link_to 'Edit', edit_representante_comercial_path(representante_comercial) %></td>
+        <td><%= link_to 'Destroy', representante_comercial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Representante Comercial', new_representante_comercial_path %>
