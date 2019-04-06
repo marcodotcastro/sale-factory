@@ -1,10 +1,10 @@
-class City < ApplicationRecord
-  before_save :generate_geolocation
+class Cliente < ApplicationRecord
 
   def generate_geolocation
-    address = "#{self.description},#{self.uf}".gsub(" ", "+")
+    address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
     geolocation = Geolocation.new(address: address)
     self.latitude = geolocation.latitude
     self.longitude = geolocation.longitude
   end
+
 end
