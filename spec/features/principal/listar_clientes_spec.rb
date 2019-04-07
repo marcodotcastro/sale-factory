@@ -19,7 +19,7 @@ RSpec.feature "Listar Clientes", :type => :feature do
     visit principais_index_path
 
     click_link "Clientes"
-    click_link "Show"
+    click_link "Show", match: :first
 
     expect(page).to have_text("Representantes Comerciais")
     expect(page).to have_text("Indústria Farmacêutica Melcon do Brasil S.A.")
@@ -30,8 +30,8 @@ RSpec.feature "Listar Clientes", :type => :feature do
     visit principais_index_path
 
     click_link "Clientes"
-    click_link "Show"
-    click_link "Show"
+    click_link "Show", match: :first
+    click_link "Show", match: :first
 
     expect(page).to_not have_text("Indústria Farmacêutica Melcon do Brasil S.A.")
     expect(page).to have_text("Lojistas")
@@ -43,9 +43,9 @@ RSpec.feature "Listar Clientes", :type => :feature do
     visit principais_index_path
 
     click_link "Clientes"
-    click_link "Show"
-    click_link "Show"
-    click_link "Show"
+    click_link "Show", match: :first
+    click_link "Show", match: :first
+    click_link "Show", match: :first
 
     expect(page).to_not have_text("A R Olivo Representações Ltda ME 1")
     expect(page).to have_text("Drogarias Bifarma 1")
