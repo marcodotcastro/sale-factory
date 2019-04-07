@@ -25,7 +25,7 @@
 #
 
 class Cliente < ApplicationRecord
-  has_many :representante_comercials
+  has_many :representante_comerciais
   belongs_to :cidade
 
   def generate_geolocation

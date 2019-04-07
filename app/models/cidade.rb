@@ -14,7 +14,7 @@
 
 class Cidade < ApplicationRecord
   has_many :clientes
-  has_many :representante_comercials
+  has_many :representante_comerciais
   has_many :lojistas
 
   before_save :generate_geolocation
