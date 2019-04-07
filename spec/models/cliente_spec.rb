@@ -31,21 +31,22 @@ RSpec.describe Cliente, type: :model do
   it "uma cliente" do
     @cliente = create(:cliente)
 
-    expect(@cliente.descricao).to eq("Indústria Farmacêutica Melcon do Brasil S.A.")
-    expect(@cliente.cidade.descricao).to eq("Anápolis")
+
+    expect(@cliente.descricao).to eq(Cliente.last.descricao)
+    expect(@cliente.cidade.descricao).to eq(Cidade.last.descricao)
   end
 
   it "uma cliente com representante comercial" do
     @cliente = create(:cliente, :com_representante_comercial)
 
-    expect(@cliente.representante_comercials.first.descricao).to eq("A R Olivo Representações Ltda ME 1")
+    expect(@cliente.representante_comerciais.last.descricao).to eq(RepresentanteComercial.last.descricao)
   end
 
   it "uma cliente com representantes comerciais" do
     @cliente = create(:cliente, :com_representante_comerciais)
 
-    expect(@cliente.representante_comercials.first.descricao).to eq("A R Olivo Representações Ltda ME 2")
-    expect(@cliente.representante_comercials.last.descricao).to eq("A R Olivo Representações Ltda ME 3")
+    expect(@cliente.representante_comerciais.first).to eq(RepresentanteComercial.last(2).first)
+    expect(@cliente.representante_comerciais.last).to eq(RepresentanteComercial.last(2).last)
   end
 
 end

@@ -65,7 +65,7 @@
       <td><%= representante_comerciais.endereco %></td>
       <td><%= representante_comerciais.cep %></td>
       <td><%= representante_comerciais.telefone %></td>
-      <td><%= link_to 'Show', cliente_representante_comercial_path(representante_comerciais) %></td>
+      <td><%= link_to 'Show', cliente_representante_comercial_path(@cliente, representante_comerciais) %></td>
     </tr>
   <% end %>
   </tbody>

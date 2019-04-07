@@ -32,8 +32,8 @@ RSpec.describe Lojista, type: :model do
   it "uma lojista" do
     @lojista = create(:lojista)
 
-    expect(@lojista.descricao).to eq("Drogarias Bifarma 1")
-    expect(@lojista.cidade.descricao).to eq("Anápolis")
+    expect(@lojista.descricao).to eq(Lojista.last.descricao)
+    expect(@lojista.cidade.descricao).to eq(Cidade.last.descricao)
   end
 
 end

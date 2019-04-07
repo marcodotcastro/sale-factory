@@ -17,6 +17,8 @@ class Cidade < ApplicationRecord
   has_many :representante_comerciais
   has_many :lojistas
 
+  validates :estado, presence: true
+
   before_save :generate_geolocation
 
   def generate_geolocation
