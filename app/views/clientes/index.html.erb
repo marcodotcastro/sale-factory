@@ -12,6 +12,7 @@
     <th><%= model.human_attribute_name(:endereco) %></th>
     <th><%= model.human_attribute_name(:cep) %></th>
     <th><%= model.human_attribute_name(:telefone) %></th>
+    <th><%= model.human_attribute_name(:setor) %></th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -24,6 +25,7 @@
       <td><%= cliente.endereco %></td>
       <td><%= cliente.cep %></td>
       <td><%= cliente.telefone %></td>
+      <td><%= cliente.setor %></td>
       <td><%= link_to 'Show', cliente %></td>
       <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
       <td><%= link_to 'Destroy', cliente, method: :delete, data: {confirm: 'Are you sure?'} %></td>

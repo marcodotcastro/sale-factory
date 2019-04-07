@@ -4,34 +4,34 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Nome</th>
-      <th>Endereco</th>
-      <th>Telefone</th>
-      <th>Cep</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Descricao</th>
+    <th>Endereco</th>
+    <th>Telefone</th>
+    <th>Cep</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @lojistas.each do |lojista| %>
-      <tr>
-        <td><%= lojista.nome %></td>
-        <td><%= lojista.endereco %></td>
-        <td><%= lojista.telefone %></td>
-        <td><%= lojista.cep %></td>
-        <td><%= lojista.latitude %></td>
-        <td><%= lojista.longitude %></td>
-        <td><%= link_to 'Show', lojista %></td>
-        <td><%= link_to 'Edit', edit_lojista_path(lojista) %></td>
-        <td><%= link_to 'Destroy', lojista, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <% @lojistas.each do |lojista| %>
+    <tr>
+      <td><%= lojista.descricao %></td>
+      <td><%= lojista.endereco %></td>
+      <td><%= lojista.telefone %></td>
+      <td><%= lojista.cep %></td>
+      <td><%= lojista.latitude %></td>
+      <td><%= lojista.longitude %></td>
+      <td><%= link_to 'Show', cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, lojista) %></td>
+      <td><%= link_to 'Edit', edit_cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, lojista) %></td>
+      <td><%= link_to 'Destroy', cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, lojista), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Lojista', new_lojista_path %>
+<%= link_to 'New Lojista', new_cliente_representante_comercial_lojista_path(@cliente, @representante_comercial) %>

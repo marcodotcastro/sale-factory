@@ -1,6 +1,13 @@
 require 'simplecov'
+
 SimpleCov.start 'rails' do
-  # add_filter "application_cable"
-  # add_filter "jobs"
-  # add_filter "mailers"
+
+  add_filter do |source_file|
+    source_file.lines.count < 20
+  end
+
+  add_group "Businesses", "app/businesses"
+
 end
+
+

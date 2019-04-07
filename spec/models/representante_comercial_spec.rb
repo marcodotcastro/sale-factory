@@ -34,21 +34,21 @@ RSpec.describe RepresentanteComercial, type: :model do
   it "uma representante_comercial" do
     @representante_comercial = create(:representante_comercial)
 
-    expect(@representante_comercial.descricao).to eq("A R Olivo Representações Ltda ME 5")
-    expect(@representante_comercial.cidade.descricao).to eq("Anápolis")
+    expect(@representante_comercial.descricao).to eq(RepresentanteComercial.last.descricao)
+    expect(@representante_comercial.cidade.descricao).to eq(Cidade.last.descricao)
   end
 
   it "uma representante_comercial com representante comercial" do
     @representante_comercial = create(:representante_comercial, :com_lojista)
 
-    expect(@representante_comercial.lojistas.first.descricao).to eq("Drogarias Bifarma 2")
+    expect(@representante_comercial.lojistas.first.descricao).to eq(Lojista.last.descricao)
   end
 
   it "uma representante_comercial com representantes comerciais" do
     @representante_comercial = create(:representante_comercial, :com_lojistas)
 
-    expect(@representante_comercial.lojistas.first.descricao).to eq("Drogarias Bifarma 3")
-    expect(@representante_comercial.lojistas.last.descricao).to eq("Drogarias Bifarma 4")
+    expect(@representante_comercial.lojistas.first.descricao).to eq(Lojista.last(2).first.descricao)
+    expect(@representante_comercial.lojistas.last.descricao).to eq(Lojista.last(2).last.descricao)
   end
 
 end
