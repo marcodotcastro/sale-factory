@@ -11,6 +11,7 @@
 #  latitude                   :float
 #  longitude                  :float
 #  telefone                   :string
+#  telefone_whatsapp          :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  cidade_id                  :bigint(8)

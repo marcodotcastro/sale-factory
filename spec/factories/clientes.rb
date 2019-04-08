@@ -2,20 +2,21 @@
 #
 # Table name: clientes
 #
-#  id         :bigint(8)        not null, primary key
-#  cep        :string
-#  contato    :string
-#  descricao  :string
-#  email      :string
-#  endereco   :string
-#  latitude   :float
-#  longitude  :float
-#  setor      :string
-#  telefone   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  cidade_id  :bigint(8)
-#  usuario_id :bigint(8)
+#  id                :bigint(8)        not null, primary key
+#  cep               :string
+#  contato           :string
+#  descricao         :string
+#  email             :string
+#  endereco          :string
+#  latitude          :float
+#  longitude         :float
+#  setor             :string
+#  telefone          :string
+#  telefone_whatsapp :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  cidade_id         :bigint(8)
+#  usuario_id        :bigint(8)
 #
 # Indexes
 #
@@ -37,6 +38,7 @@ FactoryBot.define do
     contato {"João Paulo"}
     email {"joao.paulo@melcon.com.br"}
     telefone {"(62) 3902-3200"}
+    telefone_whatsapp {"(62) 99902-3200"}
     latitude {-16.4064447}
     longitude {-48.9497198}
 
