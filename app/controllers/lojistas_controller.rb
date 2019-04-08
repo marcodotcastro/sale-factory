@@ -27,8 +27,8 @@
 
 class LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
-  before_action :set_representante_comercial, only: [:show, :create, :edit, :update, :destroy]
-  before_action :set_cliente, only: [:show, :edit, :create, :update, :destroy]
+  before_action :set_representante_comercial, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_cliente, only: [:index, :show, :edit, :create, :update, :destroy]
 
   def index
     @lojistas = Lojista.all
@@ -88,6 +88,6 @@ class LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :representante_comercial_id, :cidade_id)
+    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_comercial_id, :cidade_id)
   end
 end

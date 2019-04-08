@@ -45,6 +45,10 @@
 
 Rails.application.routes.draw do
 
+  get 'dashboard/index'
+  get 'dashboard/index2'
+  get 'dashboard/index3'
+
   get 'principais/index'
   root to: 'principais#index'
 
@@ -56,6 +60,6 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+
   resources :cidades
 end

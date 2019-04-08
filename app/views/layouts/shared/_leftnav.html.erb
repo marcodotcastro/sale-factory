@@ -1,0 +1,53 @@
+<div class="navbar nav_title" style="border: 0;">
+  <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Clientes</span></a>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- menu profile quick info -->
+<div class="profile clearfix">
+  <div class="profile_pic">
+    <%= image_tag "img.jpg", class: "img-circle profile_img" %>
+  </div>
+  <div class="profile_info">
+    <span>Welcome,</span>
+    <h2>John Doe</h2>
+  </div>
+</div>
+<!-- /menu profile quick info -->
+
+<br/>
+
+<!-- sidebar menu -->
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+      <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><%= link_to "Dashboard", dashboard_index_path %></li>
+          <li><%= link_to "Dashboard2", dashboard_index2_path %></li>
+          <li><%= link_to "Dashboard3", dashboard_index3_path %></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li>
+            <%= link_to "Representantes", cliente_representante_comerciais_path(Cliente.last) %>
+          </li>
+          <li>
+            <%= link_to "Lojistas", cliente_representante_comercial_lojistas_path(Cliente.last, Cliente.last.representante_comerciais.last) %>
+          </li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="general_elements.html">Representante</a></li>
+          <li><a href="media_gallery.html">Lojista</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</div>
+<!-- /sidebar menu -->

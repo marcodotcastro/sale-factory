@@ -1,30 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SaleFactory</title>
   <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title><%= yield :title %></title>
+
 </head>
 
-<body>
-<nav>
-  <div class="nav-wrapper red darken-3">
-    <div class="container">
-      <a href="/" class="brand-logo"><%# image_tag "logo.png" %></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%# link_to "Representantes", representante_comerciais_path %></li>
-        <li><%# link_to "Lojistas", lojistas_path %></li>
-        <li><%= link_to "Clientes", clientes_path %></li>
-      </ul>
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <div class="col-md-3 left_col">
+      <div class="left_col scroll-view">
+        <%= render partial: 'layouts/shared/leftnav' %>
+      </div>
     </div>
+
+    <!-- top navigation -->
+    <div class="top_nav">
+      <div class="nav_menu">
+        <nav>
+          <%= render partial: 'layouts/shared/topnav' %>
+        </nav>
+      </div>
+    </div>
+    <!-- /top navigation -->
+
+    <!-- page content -->
+    <div class="right_col" role="main">
+      <%= yield %>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+      <%= render partial: 'layouts/shared/footer' %>
+    </footer>
+    <!-- /footer content -->
   </div>
-</nav>
-<div class="container">
-  <%= yield %>
 </div>
+<%= javascript_include_tag 'application' %>
 </body>
 </html>

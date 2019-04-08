@@ -17,7 +17,7 @@ gem 'rake', '< 11.0'
 gem 'geocoder'
 gem 'httparty'
 gem 'via_cep'
-gem 'materialize-sass'
+gem 'gentelella-rails'
 gem 'simple_form'
 gem 'kaminari'
 
