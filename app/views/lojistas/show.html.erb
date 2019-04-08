@@ -1,31 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Lojista
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li><a class="close-link"><i class="fa fa-close"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @lojista.descricao %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição
 
-<p>
-  <strong>Endereco:</strong>
-  <%= @lojista.endereco %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @lojista.descricao %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Telefone:</strong>
-  <%= @lojista.telefone %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Endereço
 
-<p>
-  <strong>Cep:</strong>
-  <%= @lojista.cep %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @lojista.endereco %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @lojista.latitude %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @lojista.cep %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @lojista.longitude %>
-</p>
+          <div class="ln_solid"></div>
+
+        </form>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @lojista.contato %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Telefone
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @lojista.telefone %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @lojista.email %>">
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
