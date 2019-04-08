@@ -11,6 +11,7 @@
 #  latitude                   :float
 #  longitude                  :float
 #  telefone                   :string
+#  telefone_whatsapp          :string
 #  created_at                 :datetime         not null
 #  updated_at                 :datetime         not null
 #  cidade_id                  :bigint(8)
@@ -34,6 +35,7 @@ FactoryBot.define do
     cep {"16200-001"}
     contato {"Marcelo Sousa"}
     telefone {"(21) 99254-4332"}
+    telefone_whatsapp {"(21) 99254-4332"}
     email {"marcelos@gmail.com"}
     latitude {-22.6195575}
     longitude {-49.3215312}

@@ -2,19 +2,20 @@
 #
 # Table name: representante_comerciais
 #
-#  id         :bigint(8)        not null, primary key
-#  cep        :string
-#  contato    :string
-#  descricao  :string
-#  email      :string
-#  endereco   :string
-#  latitude   :float
-#  longitude  :float
-#  telefone   :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  cidade_id  :bigint(8)
-#  cliente_id :bigint(8)
+#  id                :bigint(8)        not null, primary key
+#  cep               :string
+#  contato           :string
+#  descricao         :string
+#  email             :string
+#  endereco          :string
+#  latitude          :float
+#  longitude         :float
+#  telefone          :string
+#  telefone_whatsapp :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  cidade_id         :bigint(8)
+#  cliente_id        :bigint(8)
 #
 # Indexes
 #
@@ -34,6 +35,7 @@ FactoryBot.define do
     cep {"14140-000"}
     contato {"Ronaldo Henrique Olivo"}
     telefone {"(16) 99254-5151 / 3637-4299"}
+    telefone_whatsapp {"(16) 99254-5151"}
     email {"rholivo@yahoo.com.br"}
     latitude {-21.348714}
     longitude {-47.7651449}

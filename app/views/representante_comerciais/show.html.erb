@@ -1,73 +1,146 @@
-<p id="notice"><%= notice %></p>
+<div class="text-right">
+  <button class="btn btn-primary" type="reset">Editar</button>
+</div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Representante Comercial
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li><a class="close-link"><i class="fa fa-close"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @representante_comercial.descricao %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição
 
-<p>
-  <strong>Contato:</strong>
-  <%= @representante_comercial.contato %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante_comercial.descricao %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Endereco:</strong>
-  <%= @representante_comercial.endereco %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Endereço
 
-<p>
-  <strong>Cep:</strong>
-  <%= @representante_comercial.cep %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.endereco %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Telefone:</strong>
-  <%= @representante_comercial.telefone %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.cep %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @representante_comercial.email %>
-</p>
+          <div class="ln_solid"></div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @representante_comercial.latitude %>
-</p>
+        </form>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @representante_comercial.longitude %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato
 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante_comercial.contato %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Telefone
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.telefone %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Whatsapp
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.telefone_whatsapp %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.email %>">
+            </div>
+          </div>
+
+          <div class="ln_solid"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% model = Lojista %>
 
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Lojistas
+        <small>...</small>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
 
-<h1>Lojistas</h1>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th><%= model.human_attribute_name(:descricao) %></th>
+          <th><%= model.human_attribute_name(:contato) %></th>
+          <th><%= model.human_attribute_name(:telefone) %></th>
+          <th><%= model.human_attribute_name(:email) %></th>
+          <th></th>
+        </tr>
+        </thead>
 
-<table>
-  <thead>
-  <tr>
-    <th><%= model.human_attribute_name(:descricao) %></th>
-    <th><%= model.human_attribute_name(:endereco) %></th>
-    <th><%= model.human_attribute_name(:cep) %></th>
-    <th><%= model.human_attribute_name(:telefone) %></th>
-    <th><%= model.human_attribute_name(:email) %></th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+        <tbody>
+        <% @lojistas.each do |lojista| %>
+          <tr>
+            <th scope="row"><%= lojista.id.to_s %></th>
+            <td><%= lojista.descricao %></td>
+            <td><%= lojista.contato %></td>
+            <td><%= lojista.telefone %></td>
+            <td><%= lojista.email %></td>
+            <td>
+              <%= link_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, lojista) do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-  <tbody>
-  <% @lojistas.each do |lojista| %>
-    <tr>
-      <td><%= lojista.descricao %></td>
-      <td><%= lojista.endereco %></td>
-      <td><%= lojista.cep %></td>
-      <td><%= lojista.telefone %></td>
-      <td><%= link_to 'Show', cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, lojista) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
+

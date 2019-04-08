@@ -6,6 +6,7 @@ class CreateRepresentanteComerciais < ActiveRecord::Migration[5.2]
       t.string :cep
       t.string :contato
       t.string :telefone
+      t.string :telefone_whatsapp
       t.string :email
       t.float :latitude
       t.float :longitude

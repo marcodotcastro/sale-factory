@@ -53,25 +53,33 @@ Rails.application.routes.draw do
 
   devise_for :usuarios
 
+  resources :cidades
+
   #CLIENTES
   get 'principais/index'
   root to: 'principais#index'
+
+  ##DASHBOARDS
   get 'dashboard/index'
   get 'dashboard/index2'
   get 'dashboard/index3'
 
-
   resources :clientes do
     resources :representante_comerciais do
       get "service_area/representante_comerciais", to: "representante_comerciais#service_area"
-      resources :lojistas do
-        get "service_area/lojistas", to: "lojistas#service_area"
+
+      scope module: 'representante_comerciais' do
+        resources :lojistas do
+          get "service_area/lojistas", to: "lojistas#service_area"
+        end
       end
     end
   end
 
+  resources :lojistas
+
   #REPRESENTANTES
 
 
-  resources :cidades
+
 end
