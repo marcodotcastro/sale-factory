@@ -1,0 +1,28 @@
+<div class="login_wrapper">
+  <div class="animate form login_form">
+    <section class="login_content">
+      <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post}) do |f| %>
+
+        <h2>Reenvie as instruções de desbloqueio</h2>
+
+        <%= f.error_notification %>
+        <%= f.full_error :unlock_token %>
+
+        <div>
+          <%= f.input_field :email,
+                            required: false,
+                            autofocus: true,
+                            placeholder: "Email",
+                            class: "form-control"
+          %>
+        </div>
+
+        <%= f.button :submit, "Reenvie as instruções de desbloqueio" %>
+
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+
+    </section>
+  </div>
+</div>

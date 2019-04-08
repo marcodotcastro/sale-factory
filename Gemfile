@@ -20,6 +20,7 @@ gem 'via_cep'
 gem 'gentelella-rails'
 gem 'simple_form'
 gem 'kaminari'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
@@ -41,6 +42,7 @@ group :development do
   gem 'rack-mini-profiler', require: false
   gem 'better_errors'
   gem 'rails_layout'
+  gem 'letter_opener_web'
 end
 
 group :test do

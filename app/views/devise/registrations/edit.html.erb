@@ -1,0 +1,59 @@
+<div class="login_wrapper">
+  <div class="animate form login_form">
+    <section class="login_content">
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
+
+        <h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+        <%= f.error_notification %>
+
+        <div>
+          <%= f.input_field :email,
+                            required: false,
+                            autofocus: true,
+                            placeholder: "Email",
+                            class: "form-control"
+          %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Atualmente aguardando confirmação para
+            : <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <div>
+          <%= f.input_field :password,
+                            required: false,
+                            placeholder: "Nova Senha",
+                            class: "form-control"
+          %>
+        </div>
+
+        <div>
+          <%= f.input_field :password_confirmation,
+                            required: false,
+                            placeholder: "Confirmação da Senha",
+                            class: "form-control"
+          %>
+        </div>
+
+        <div>
+          <%= f.input_field :current_password,
+                            required: false,
+                            placeholder: "Senha Atual",
+                            class: "form-control"
+          %>
+        </div>
+
+        <%= f.button :submit, "Alterar" %>
+
+      <% end %>
+
+      <h3>Cancelar minha conta</h3>
+
+      <p>Infeliz? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: {confirm: "Você tem certeza?"}, method: :delete %></p>
+
+    </section>
+  </div>
+</div>

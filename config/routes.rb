@@ -44,13 +44,21 @@
 #                                                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                                                  active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  #DESENVOLVIVMENTO
+  default_url_options :host => "localhost:3000"
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener/inbox" if Rails.env.development?
+
+  #ADMINISTRAÇÃO
+
+  #CLIENTES
+  devise_for :clientes
+  get 'principais/index'
+  root to: 'principais#index'
   get 'dashboard/index'
   get 'dashboard/index2'
   get 'dashboard/index3'
 
-  get 'principais/index'
-  root to: 'principais#index'
 
   resources :clientes do
     resources :representante_comerciais do
@@ -60,6 +68,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  #REPRESENTANTES
+
 
   resources :cidades
 end
