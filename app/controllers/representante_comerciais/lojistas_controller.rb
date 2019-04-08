@@ -28,8 +28,10 @@
 #  fk_rails_...  (representante_comercial_id => representante_comerciais.id)
 #
 
-class LojistasController < ApplicationController
+class RepresentanteComerciais::LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
+  before_action :set_representante_comercial, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_cliente, only: [:index, :show, :edit, :create, :update, :destroy]
 
   def index
     @lojistas = Lojista.all
@@ -78,6 +80,14 @@ class LojistasController < ApplicationController
 
   def set_lojista
     @lojista = Lojista.find(params[:id])
+  end
+
+  def set_representante_comercial
+    @representante_comercial = RepresentanteComercial.find(params[:representante_comercial_id])
+  end
+
+  def set_cliente
+    @cliente = Cliente.find(params[:cliente_id])
   end
 
   def lojista_params

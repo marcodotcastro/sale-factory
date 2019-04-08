@@ -4,7 +4,7 @@ RSpec.describe "representante_comerciais/show", type: :view do
 
   before(:each) do
     @representante_comercial = assign(:representante_comercial, create(:representante_comercial, :com_lojistas))
-    @lojistas = assign(:lojistas, @representante_comercial.lojistas)
+    @lojistas = assign(:representante_comerciais, @representante_comercial.lojistas)
     @cliente = @representante_comercial.cliente
   end
 
