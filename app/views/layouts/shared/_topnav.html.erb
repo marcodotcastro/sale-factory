@@ -5,12 +5,12 @@
 <ul class="nav navbar-nav navbar-right">
   <li class="">
     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      <%= image_tag "img.jpg" %><%= current_cliente.contato %>
+      <%= image_tag "img.jpg" %><%= current_usuario.cliente.contato %>
       <span class=" fa fa-angle-down"></span>
     </a>
     <ul class="dropdown-menu dropdown-usermenu pull-right">
-      <% if cliente_signed_in? %>
-        <li><%= link_to "Perfil", edit_cliente_registration_path %></li>
+      <% if usuario_signed_in? %>
+        <li><%= link_to "Perfil", edit_usuario_registration_path %></li>
       <% end %>
       <li>
         <a href="javascript:;">
@@ -19,12 +19,12 @@
         </a>
       </li>
       <li>
-        <% if cliente_signed_in? %>
-          <%= link_to destroy_cliente_session_path, :method => :delete do %>
+        <% if usuario_signed_in? %>
+          <%= link_to destroy_usuario_session_path, :method => :delete do %>
             <i class="fa fa-sign-out"></i> Sair
           <% end %>
         <% else %>
-          <%= link_to new_cliente_session_path do %>
+          <%= link_to new_usuario_session_path do %>
             <i class="fa fa-sign-in"></i> Entrar
           <% end %>
         <% end %>

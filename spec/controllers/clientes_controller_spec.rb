@@ -5,7 +5,8 @@ RSpec.describe ClientesController, type: :controller do
   let(:valid_attributes) {
     attributes_for(
         :cliente,
-        cidade_id: create(:cidade).id
+        cidade_id: create(:cidade).id,
+        usuario_id: create(:usuario).id
     )
   }
 

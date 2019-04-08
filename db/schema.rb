@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_161926) do
+ActiveRecord::Schema.define(version: 2019_04_08_183727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,31 +27,29 @@ ActiveRecord::Schema.define(version: 2019_04_08_161926) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "descricao"
-    t.string "contato"
+    t.string "setor"
     t.string "endereco"
     t.string "cep"
+    t.string "contato"
     t.string "telefone"
-    t.string "setor"
+    t.string "email"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.bigint "usuario_id"
     t.index ["cidade_id"], name: "index_clientes_on_cidade_id"
-    t.index ["email"], name: "index_clientes_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_clientes_on_reset_password_token", unique: true
+    t.index ["usuario_id"], name: "index_clientes_on_usuario_id"
   end
 
   create_table "lojistas", force: :cascade do |t|
     t.string "descricao"
     t.string "endereco"
-    t.string "telefone"
     t.string "cep"
+    t.string "contato"
+    t.string "telefone"
+    t.string "email"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
@@ -64,9 +62,9 @@ ActiveRecord::Schema.define(version: 2019_04_08_161926) do
 
   create_table "representante_comerciais", force: :cascade do |t|
     t.string "descricao"
-    t.string "contato"
     t.string "endereco"
     t.string "cep"
+    t.string "contato"
     t.string "telefone"
     t.string "email"
     t.float "latitude"
@@ -79,7 +77,20 @@ ActiveRecord::Schema.define(version: 2019_04_08_161926) do
     t.index ["cliente_id"], name: "index_representante_comerciais_on_cliente_id"
   end
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "clientes", "cidades"
+  add_foreign_key "clientes", "usuarios"
   add_foreign_key "lojistas", "cidades"
   add_foreign_key "lojistas", "representante_comerciais"
   add_foreign_key "representante_comerciais", "cidades"

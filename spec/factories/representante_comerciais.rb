@@ -30,9 +30,9 @@
 FactoryBot.define do
   factory :representante_comercial do
     sequence(:descricao) {|n| "A R Olivo Representações Ltda ME #{n}"}
-    contato {"Ronaldo Henrique Olivo"}
     endereco {"R Primeiro de Maio, 77 - Stª Cecilia - Cravinhos, SP"}
     cep {"14140-000"}
+    contato {"Ronaldo Henrique Olivo"}
     telefone {"(16) 99254-5151 / 3637-4299"}
     email {"rholivo@yahoo.com.br"}
     latitude {-21.348714}

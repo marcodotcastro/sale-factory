@@ -11,7 +11,7 @@
   </div>
   <div class="profile_info">
     <span>Bem Vindo,</span>
-    <h2><%= current_cliente.contato %></h2>
+    <h2><%= current_usuario.cliente.contato %></h2>
   </div>
 </div>
 <!-- /menu profile quick info -->
@@ -33,17 +33,15 @@
       <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li>
-            <%= link_to "Representantes", cliente_representante_comerciais_path(Cliente.last) %>
-          </li>
-          <li>
-            <%= link_to "Lojistas", cliente_representante_comercial_lojistas_path(Cliente.last, Cliente.last.representante_comerciais.last) %>
+            <%= link_to "Representantes", cliente_representante_comerciais_path(current_usuario.cliente) %>
           </li>
         </ul>
       </li>
       <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="general_elements.html">Representante</a></li>
-          <li><a href="media_gallery.html">Lojista</a></li>
+          <li>
+            <%= link_to "Representante", new_cliente_representante_comercial_path(current_usuario.cliente) %>
+          </li>
         </ul>
       </li>
     </ul>

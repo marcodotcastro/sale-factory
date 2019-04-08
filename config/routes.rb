@@ -51,8 +51,9 @@ Rails.application.routes.draw do
 
   #ADMINISTRAÇÃO
 
+  devise_for :usuarios
+
   #CLIENTES
-  devise_for :clientes
   get 'principais/index'
   root to: 'principais#index'
   get 'dashboard/index'

@@ -4,7 +4,9 @@
 #
 #  id                         :bigint(8)        not null, primary key
 #  cep                        :string
+#  contato                    :string
 #  descricao                  :string
+#  email                      :string
 #  endereco                   :string
 #  latitude                   :float
 #  longitude                  :float

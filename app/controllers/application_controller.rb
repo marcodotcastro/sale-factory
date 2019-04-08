@@ -1,14 +1,18 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_cliente!
+  before_action :authenticate_usuario!
 
   layout :layout_by_resource
 
   def layout_by_resource
     if devise_controller?
-      "devise"
+      unless "#{controller_name}##{action_name}".eql? ("registrations#edit")
+        "devise"
+      else
+        "application"
+      end
     else
       "application"
     end
   end
-  
+
 end

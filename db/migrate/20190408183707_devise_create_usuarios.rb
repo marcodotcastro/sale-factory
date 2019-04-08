@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToClientes < ActiveRecord::Migration[5.2]
-  def self.up
-    change_table :clientes do |t|
+class DeviseCreateUsuarios < ActiveRecord::Migration[5.2]
+  def change
+    create_table :usuarios do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -33,19 +33,12 @@ class AddDeviseToClientes < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.timestamps null: false
     end
 
-    add_index :clientes, :email,                unique: true
-    add_index :clientes, :reset_password_token, unique: true
-    # add_index :clientes, :confirmation_token,   unique: true
-    # add_index :clientes, :unlock_token,         unique: true
-  end
-
-  def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    add_index :usuarios, :email,                unique: true
+    add_index :usuarios, :reset_password_token, unique: true
+    # add_index :usuarios, :confirmation_token,   unique: true
+    # add_index :usuarios, :unlock_token,         unique: true
   end
 end
