@@ -7,7 +7,7 @@
     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <%#TODO: Adicionar os helpers %>
       <% if current_usuario.cliente %>
-        <%= image_tag "img.jpg" %><%= current_usuario.cliente.contato %>
+        <%= image_tag foto_avatar_url(current_usuario), size: "50x50" %><%= current_usuario.nome %>
       <% else %>
         <%= image_tag "user.png" %>
       <% end %>

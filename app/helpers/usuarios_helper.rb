@@ -31,33 +31,12 @@
 #  fk_rails_...  (usuario_id => usuarios.id)
 #
 
-FactoryBot.define do
-  factory :cliente do
-    descricao {"Indústria Farmacêutica Melcon do Brasil S.A."}
-    endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
-    cep {"75132-055"}
-    contato {"Sr João Paulo"}
-    email {"joao.paulo@melcon.com.br"}
-    telefone {"(62) 3902-3200"}
-    telefone_whatsapp {"(62) 99902-3200"}
-    latitude {-16.4064447}
-    longitude {-48.9497198}
+module UsuariosHelper
 
-    association :setor, :factory => :setor
-    association :cidade, :factory => :cidade
-    association :usuario, :factory => :usuario
+  def foto_avatar_url(usuario)
+    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
 
-    trait :com_representante_comercial do
-      after(:create) do |cliente|
-        create(:representante_comercial, cliente: cliente)
-      end
-    end
-
-    trait :com_representante_comerciais do
-      after(:create) do |cliente|
-        create_list(:representante_comercial, 2, cliente: cliente)
-      end
-    end
-
+    usuario.avatar.attached? ? usuario.avatar : foto_vazia
   end
+
 end

@@ -5,6 +5,20 @@
         <h1>Criar Conta</h1>
 
         <div>
+          <%= f.input_field :logo, :as => :file, class: "form-control" %>
+        </div>
+
+
+        <div>
+          <%= f.input_field :nome,
+                            required: false,
+                            autofocus: true,
+                            placeholder: "Email",
+                            class: "form-control"
+          %>
+        </div>
+
+        <div>
           <%= f.input_field :email,
                             required: false,
                             autofocus: true,

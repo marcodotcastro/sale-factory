@@ -14,13 +14,13 @@
 <!-- menu profile quick info -->
 <%#TODO: Adicionar os helpers %>
 <div class="profile clearfix">
-  <% if current_usuario.cliente %>
+  <% if current_usuario %>
     <div class="profile_pic">
-      <%= image_tag "img.jpg", class: "img-circle profile_img" %>
+      <%= image_tag foto_avatar_url(current_usuario), class: "img-circle profile_img", size: "50x60" %>
     </div>
     <div class="profile_info">
       <span>Bem Vindo,</span>
-      <h2><%= current_usuario.cliente.contato %></h2>
+      <h2><%= current_usuario.nome %></h2>
     </div>
   <% else %>
     <div class="profile_pic">
