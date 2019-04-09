@@ -32,4 +32,11 @@
 #
 
 module ClientesHelper
+
+  def foto_logo_url(cliente)
+    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
+
+    cliente.logo.attached? ? cliente.logo : foto_vazia
+  end
+
 end

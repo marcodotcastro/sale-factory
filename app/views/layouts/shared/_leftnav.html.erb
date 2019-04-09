@@ -1,5 +1,12 @@
 <div class="navbar nav_title" style="border: 0;">
-  <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Clientes</span></a>
+  <%#FIXME: Melhorar logo do cliente %>
+
+  <% if current_usuario.cliente %>
+    <%= image_tag(foto_logo_url(current_usuario.cliente), class: "img-rectangle", size: "100x50") %>
+    <p><%= current_usuario.cliente.descricao %></p>
+  <% else %>
+    <%= image_tag "user.png", class: "img-rectangle", size: "100x50" %>
+  <% end %>
 </div>
 
 <div class="clearfix"></div>
