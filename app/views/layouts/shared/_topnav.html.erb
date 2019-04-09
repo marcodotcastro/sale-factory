@@ -1,43 +1,45 @@
-<div class="nav toggle">
-  <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-</div>
-
-<ul class="nav navbar-nav navbar-right">
-  <li class="">
-    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-      <%#TODO: Adicionar os helpers %>
-      <% if current_usuario.cliente %>
-        <%= image_tag foto_avatar_url(current_usuario), size: "50x50" %><%= current_usuario.nome %>
-      <% else %>
-        <%= image_tag "user.png" %>
-      <% end %>
-      <span class=" fa fa-angle-down"></span>
-    </a>
-    <ul class="dropdown-menu dropdown-usermenu pull-right">
-      <% if usuario_signed_in? %>
+<div class="nav">
+  <div class="toggle">
+    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+  </div>
+  <ul class="nav navbar-nav navbar-right">
+    <div class="navbar-text">
+      <h2><%= current_usuario.cliente.descricao.upcase %></h2>
+    </div>
+    <li class="">
+      <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <%#TODO: Adicionar os helpers %>
         <% if current_usuario.cliente %>
-          <li><%= link_to "Perfil", cliente_path(current_usuario.cliente) %></li>
+          <%= image_tag foto_avatar_url(current_usuario), size: "50x50" %><%= current_usuario.nome %>
         <% else %>
-          <li><%= link_to "Perfil", new_cliente_path %></li>
+          <%= image_tag "user.png" %>
         <% end %>
-
-      <% end %>
-      <% if usuario_signed_in? %>
-        <li><%= link_to "Acesso", edit_usuario_registration_path %></li>
-      <% end %>
-      <li>
+        <span class=" fa fa-angle-down"></span>
+      </a>
+      <ul class="dropdown-menu dropdown-usermenu pull-right">
         <% if usuario_signed_in? %>
-          <%= link_to destroy_usuario_session_path, :method => :delete do %>
-            <i class="fa fa-sign-out"></i> Sair
+          <% if current_usuario.cliente %>
+            <li><%= link_to "Perfil", cliente_path(current_usuario.cliente) %></li>
+          <% else %>
+            <li><%= link_to "Perfil", new_cliente_path %></li>
           <% end %>
-        <% else %>
-          <%= link_to new_usuario_session_path do %>
-            <i class="fa fa-sign-in"></i> Entrar
-          <% end %>
+
         <% end %>
-      </li>
-    </ul>
-  </li>
-
-</ul>
-
+        <% if usuario_signed_in? %>
+          <li><%= link_to "Acesso", edit_usuario_registration_path %></li>
+        <% end %>
+        <li>
+          <% if usuario_signed_in? %>
+            <%= link_to destroy_usuario_session_path, :method => :delete do %>
+              <i class="fa fa-sign-out"></i> Sair
+            <% end %>
+          <% else %>
+            <%= link_to new_usuario_session_path do %>
+              <i class="fa fa-sign-in"></i> Entrar
+            <% end %>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
