@@ -10,29 +10,30 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
-#  setor             :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  cidade_id         :bigint(8)
+#  setor_id          :bigint(8)
 #  usuario_id        :bigint(8)
 #
 # Indexes
 #
 #  index_clientes_on_cidade_id   (cidade_id)
+#  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (cidade_id => cidades.id)
+#  fk_rails_...  (setor_id => setores.id)
 #  fk_rails_...  (usuario_id => usuarios.id)
 #
 
 FactoryBot.define do
   factory :cliente do
     descricao {"Indústria Farmacêutica Melcon do Brasil S.A."}
-    setor {"Farmacêutica"}
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
     contato {"João Paulo"}
@@ -42,6 +43,7 @@ FactoryBot.define do
     latitude {-16.4064447}
     longitude {-48.9497198}
 
+    association :setor, :factory => :setor
     association :cidade, :factory => :cidade
     association :usuario, :factory => :usuario
 

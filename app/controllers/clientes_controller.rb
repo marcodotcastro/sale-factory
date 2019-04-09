@@ -10,31 +10,29 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
-#  setor             :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  cidade_id         :bigint(8)
+#  setor_id          :bigint(8)
 #  usuario_id        :bigint(8)
 #
 # Indexes
 #
 #  index_clientes_on_cidade_id   (cidade_id)
+#  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (cidade_id => cidades.id)
+#  fk_rails_...  (setor_id => setores.id)
 #  fk_rails_...  (usuario_id => usuarios.id)
 #
 
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @clientes = Cliente.all
-  end
 
   def show
     @representante_comerciais = @cliente.representante_comerciais
@@ -83,6 +81,6 @@ class ClientesController < ApplicationController
   end
 
   def cliente_params
-    params.require(:cliente).permit(:descricao, :contato, :endereco, :cep, :telefone, :latitude, :longitude, :cidade_id)
+    params.require(:cliente).permit(:descricao, :contato, :endereco, :cep, :telefone, :setor_id, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id)
   end
 end

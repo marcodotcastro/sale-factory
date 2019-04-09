@@ -5,50 +5,62 @@
 <div class="clearfix"></div>
 
 <!-- menu profile quick info -->
+<%#TODO: Adicionar os helpers %>
 <div class="profile clearfix">
-  <div class="profile_pic">
-    <%= image_tag "img.jpg", class: "img-circle profile_img" %>
-  </div>
-  <div class="profile_info">
-    <span>Bem Vindo,</span>
-    <h2><%= current_usuario.cliente.contato %></h2>
-  </div>
+  <% if current_usuario.cliente %>
+    <div class="profile_pic">
+      <%= image_tag "img.jpg", class: "img-circle profile_img" %>
+    </div>
+    <div class="profile_info">
+      <span>Bem Vindo,</span>
+      <h2><%= current_usuario.cliente.contato %></h2>
+    </div>
+  <% else %>
+    <div class="profile_pic">
+      <%= image_tag "user.png", class: "img-circle profile_img" %>
+    </div>
+    <div class="profile_info">
+      <span>Bem Vindo</span>
+    </div>
+  <% end %>
+
 </div>
 <!-- /menu profile quick info -->
 
 <br/>
 
-<!-- sidebar menu -->
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-  <div class="menu_section">
-    <h3>General</h3>
-    <ul class="nav side-menu">
-      <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><%= link_to "Dashboard", dashboard_index_path %></li>
-          <li><%= link_to "Dashboard2", dashboard_index2_path %></li>
-          <li><%= link_to "Dashboard3", dashboard_index3_path %></li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li>
-            <%= link_to "Representantes", cliente_representante_comerciais_path(current_usuario.cliente) %>
-          </li>
-          <li>
-            <%= link_to "Lojistas", lojistas_path %>
-          </li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li>
-            <%= link_to "Representante", new_cliente_representante_comercial_path(current_usuario.cliente) %>
-          </li>
-        </ul>
-      </li>
-    </ul>
+<% if current_usuario.cliente %>
+  <!-- sidebar menu -->
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <h3>General</h3>
+      <ul class="nav side-menu">
+        <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li><%= link_to "Dashboard", dashboard_index_path %></li>
+            <li><%= link_to "Dashboard2", dashboard_index2_path %></li>
+            <li><%= link_to "Dashboard3", dashboard_index3_path %></li>
+          </ul>
+        </li>
+        <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li>
+              <%= link_to "Representantes", cliente_representante_comerciais_path(current_usuario.cliente) %>
+            </li>
+            <li>
+              <%= link_to "Lojistas", lojistas_path %>
+            </li>
+          </ul>
+        </li>
+        <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li>
+              <%= link_to "Representante", new_cliente_representante_comercial_path(current_usuario.cliente) %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-
-</div>
+<% end %>
 <!-- /sidebar menu -->
