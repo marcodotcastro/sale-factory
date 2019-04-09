@@ -1,72 +1,114 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Meu Perfil
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li><a class="close-link"><i class="fa fa-close"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @cliente.descricao %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição
 
-<p>
-  <strong>Contato:</strong>
-  <%= @cliente.contato %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @cliente.descricao %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Endereco:</strong>
-  <%= @cliente.endereco %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Cidade
 
-<p>
-  <strong>Cep:</strong>
-  <%= @cliente.cep %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.cidade.descricao %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Telefone:</strong>
-  <%= @cliente.telefone %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Endereço
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @cliente.latitude %>
-</p>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.endereco %>">
+            </div>
+          </div>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @cliente.longitude %>
-</p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Setor
 
-<%= link_to 'Edit', edit_cliente_path(@cliente) %> |
-<%= link_to 'Back', clientes_path %>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.setor.descricao %>">
+            </div>
+          </div>
 
-<% model = RepresentanteComercial %>
 
-<p id="notice"><%= notice %></p>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.cep %>">
+            </div>
+          </div>
 
-<h1>Representantes Comerciais</h1>
+          <div class="divider-dashed"></div>
 
-<table>
-  <thead>
-  <tr>
-    <th><%= model.human_attribute_name(:descricao) %></th>
-    <th><%= model.human_attribute_name(:contato) %></th>
-    <th><%= model.human_attribute_name(:endereco) %></th>
-    <th><%= model.human_attribute_name(:cep) %></th>
-    <th><%= model.human_attribute_name(:telefone) %></th>
-    <th><%= model.human_attribute_name(:email) %></th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato
 
-  <tbody>
-  <% @representante_comerciais.each do |representante_comerciais| %>
-    <tr>
-      <td><%= representante_comerciais.descricao %></td>
-      <td><%= representante_comerciais.contato %></td>
-      <td><%= representante_comerciais.endereco %></td>
-      <td><%= representante_comerciais.cep %></td>
-      <td><%= representante_comerciais.telefone %></td>
-      <td><%= link_to 'Show', cliente_representante_comercial_path(@cliente, representante_comerciais) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @cliente.contato %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Telefone
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.telefone %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Whatsapp
+
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.telefone_whatsapp %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @cliente.email %>">
+            </div>
+          </div>
+
+          <div class="ln_solid"></div>
+
+          <div class="form-group">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+              <%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn btn-primary" %>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

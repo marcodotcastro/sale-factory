@@ -4,9 +4,26 @@
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
 
-        <h2>Editar <%= resource_name.to_s.humanize %></h2>
+        <h2>Alterar Acesso</h2>
 
         <%= f.error_notification %>
+
+        <div>
+          <%= f.input_field :avatar,
+                            :as => :file,
+                            required: false,
+                            autofocus: true,
+                            class: "form-control" %>
+        </div>
+
+        <div>
+          <%= f.input_field :nome,
+                            required: false,
+                            autofocus: true,
+                            placeholder: "Nome",
+                            class: "form-control"
+          %>
+        </div>
 
         <div>
           <%= f.input_field :email,

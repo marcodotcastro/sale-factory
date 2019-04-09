@@ -31,19 +31,12 @@
 #  fk_rails_...  (usuario_id => usuarios.id)
 #
 
-class Cliente < ApplicationRecord
-  has_many :representante_comerciais
-  belongs_to :cidade
-  belongs_to :usuario
-  belongs_to :setor
+module UsuariosHelper
 
-  has_one_attached :logo
+  def foto_avatar_url(usuario)
+    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
 
-  def generate_geolocation
-    address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
-    geolocation = Geolocation.new(address: address)
-    self.latitude = geolocation.latitude
-    self.longitude = geolocation.longitude
+    usuario.avatar.attached? ? usuario.avatar : foto_vazia
   end
 
 end
