@@ -10,13 +10,19 @@
 #                                                      usuario_password PATCH  /usuarios/password(.:format)                                                                                                    devise/passwords#update
 #                                                                       PUT    /usuarios/password(.:format)                                                                                                    devise/passwords#update
 #                                                                       POST   /usuarios/password(.:format)                                                                                                    devise/passwords#create
-#                                           cancel_usuario_registration GET    /usuarios/cancel(.:format)                                                                                                      devise/registrations#cancel
-#                                              new_usuario_registration GET    /usuarios/sign_up(.:format)                                                                                                     devise/registrations#new
-#                                             edit_usuario_registration GET    /usuarios/edit(.:format)                                                                                                        devise/registrations#edit
-#                                                  usuario_registration PATCH  /usuarios(.:format)                                                                                                             devise/registrations#update
-#                                                                       PUT    /usuarios(.:format)                                                                                                             devise/registrations#update
-#                                                                       DELETE /usuarios(.:format)                                                                                                             devise/registrations#destroy
-#                                                                       POST   /usuarios(.:format)                                                                                                             devise/registrations#create
+#                                           cancel_usuario_registration GET    /usuarios/cancel(.:format)                                                                                                      usuarios/registrations#cancel
+#                                              new_usuario_registration GET    /usuarios/sign_up(.:format)                                                                                                     usuarios/registrations#new
+#                                             edit_usuario_registration GET    /usuarios/edit(.:format)                                                                                                        usuarios/registrations#edit
+#                                                  usuario_registration PATCH  /usuarios(.:format)                                                                                                             usuarios/registrations#update
+#                                                                       PUT    /usuarios(.:format)                                                                                                             usuarios/registrations#update
+#                                                                       DELETE /usuarios(.:format)                                                                                                             usuarios/registrations#destroy
+#                                                                       POST   /usuarios(.:format)                                                                                                             usuarios/registrations#create
+#                                             accept_usuario_invitation GET    /usuarios/invitation/accept(.:format)                                                                                           usuarios/invitations#edit
+#                                             remove_usuario_invitation GET    /usuarios/invitation/remove(.:format)                                                                                           usuarios/invitations#destroy
+#                                                new_usuario_invitation GET    /usuarios/invitation/new(.:format)                                                                                              usuarios/invitations#new
+#                                                    usuario_invitation PATCH  /usuarios/invitation(.:format)                                                                                                  usuarios/invitations#update
+#                                                                       PUT    /usuarios/invitation(.:format)                                                                                                  usuarios/invitations#update
+#                                                                       POST   /usuarios/invitation(.:format)                                                                                                  usuarios/invitations#create
 #                                                               cidades GET    /cidades(.:format)                                                                                                              cidades#index
 #                                                                       POST   /cidades(.:format)                                                                                                              cidades#create
 #                                                            new_cidade GET    /cidades/new(.:format)                                                                                                          cidades#new
@@ -85,7 +91,7 @@ Rails.application.routes.draw do
 
   #ADMINISTRAÇÃO
 
-  devise_for :usuarios, :controllers => { registrations: 'registrations' }
+  devise_for :usuarios, :controllers => {registrations: 'usuarios/registrations', invitations: 'usuarios/invitations'}
 
   resources :cidades
 
@@ -113,7 +119,6 @@ Rails.application.routes.draw do
   resources :lojistas
 
   #REPRESENTANTES
-
 
 
 end

@@ -35,8 +35,7 @@
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Atualmente aguardando confirmação para
-            : <%= resource.unconfirmed_email %></p>
+          <p>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></p>
         <% end %>
 
         <div>

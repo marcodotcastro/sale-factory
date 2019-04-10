@@ -16,6 +16,7 @@ pt-BR:
       timeout: "Sua sessão expirou, por favor, efetue login novamente para continuar."
       unauthenticated: "Para continuar, efetue login ou registre-se."
       unconfirmed: "Antes de continuar, confirme a sua conta."
+      invited: 'Você tem um convite pendente, aceite para finalizar sua conta.'
     mailer:
       confirmation_instructions:
         subject: "Instruções de confirmação"
@@ -23,6 +24,12 @@ pt-BR:
         subject: "Instruções de troca de senha"
       unlock_instructions:
         subject: "Instruções de desbloqueio"
+      invitation_instructions:
+        subject: 'Instruções do convite'
+        hello: 'Olá %{email}'
+        someone_invited_you: 'Alguém convidou você para acessar %{url}, você pode aceitar o convite através do link abaixo.'
+        accept: 'Aceitar convite'
+        ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e escolher sua senha."
     omniauth_callbacks:
       failure: "Não foi possível autenticá-lo como %{kind} porque %{reason}."
       success: "Autenticado com sucesso com uma conta de %{kind}."
@@ -48,7 +55,18 @@ pt-BR:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Efetue login para continuar."
-
+    invitations:
+      send_instructions: 'Um email de convite foi enviado para %{email}.'
+      invitation_token_invalid: 'O código do convite não é válido!'
+      updated: 'Sua senha foi atualizada com sucesso. Você está autenticado agora.'
+      no_invitations_remaining: "Sem convites pendentes"
+      invitation_removed: 'Seu convite foi removido.'
+      new:
+        header: "Enviar convite"
+        submit_button: "Enviar um convite"
+      edit:
+        header: "Escolha sua senha"
+        submit_button: "Atualizar minha senha"
   errors:
     messages:
       already_confirmed: "já foi confirmado"

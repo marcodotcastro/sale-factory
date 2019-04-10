@@ -13,7 +13,7 @@
           <%= f.input_field :nome,
                             required: false,
                             autofocus: true,
-                            placeholder: "Email",
+                            placeholder: "Nome",
                             class: "form-control"
           %>
         </div>
@@ -39,7 +39,7 @@
           <%= f.input_field :password_confirmation,
                             required: true,
                             hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                            placeholder: "Senha",
+                            placeholder: "Confirmação Senha",
                             class: "form-control"
           %>
         </div>
