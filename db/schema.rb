@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_185011) do
+ActiveRecord::Schema.define(version: 2019_04_11_183727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,8 +98,10 @@ ActiveRecord::Schema.define(version: 2019_04_10_185011) do
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
     t.bigint "cliente_id"
+    t.bigint "usuario_id"
     t.index ["cidade_id"], name: "index_representante_comerciais_on_cidade_id"
     t.index ["cliente_id"], name: "index_representante_comerciais_on_cliente_id"
+    t.index ["usuario_id"], name: "index_representante_comerciais_on_usuario_id"
   end
 
   create_table "setores", force: :cascade do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_185011) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.integer "convite_cliente"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["invitation_token"], name: "index_usuarios_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_usuarios_on_invitations_count"
@@ -142,4 +145,5 @@ ActiveRecord::Schema.define(version: 2019_04_10_185011) do
   add_foreign_key "lojistas", "representante_comerciais"
   add_foreign_key "representante_comerciais", "cidades"
   add_foreign_key "representante_comerciais", "clientes"
+  add_foreign_key "representante_comerciais", "usuarios"
 end

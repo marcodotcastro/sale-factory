@@ -3,27 +3,47 @@
     <a id="menu_toggle"><i class="fa fa-bars"></i></a>
   </div>
   <ul class="nav navbar-nav navbar-right">
-    <div class="navbar-text">
-      <h2><%= current_usuario.cliente.descricao.upcase %></h2>
-    </div>
+    <%#TODO: Mover código para o helpers %>
+    <% if current_usuario.cliente? %>
+      <% if current_usuario.cliente %>
+        <div class="navbar-text">
+          <h2><%= current_usuario.cliente.descricao.upcase %></h2>
+        </div>
+      <% end %>
+    <% elsif current_usuario.representante_comercial? %>
+      <% if current_usuario.representante_comercial %>
+        <div class="navbar-text">
+          <h2><%= current_usuario.representante_comercial.descricao.upcase %></h2>
+        </div>
+      <% end %>
+    <% end %>
     <li class="">
       <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        <%#TODO: Adicionar os helpers %>
-        <% if current_usuario.cliente %>
+        <%#TODO: Mover código para o helpers %>
+        <% if current_usuario %>
           <%= image_tag foto_avatar_url(current_usuario), size: "50x50" %><%= current_usuario.nome %>
         <% else %>
           <%= image_tag "user.png" %>
         <% end %>
         <span class=" fa fa-angle-down"></span>
       </a>
+
       <ul class="dropdown-menu dropdown-usermenu pull-right">
         <% if usuario_signed_in? %>
-          <% if current_usuario.cliente %>
-            <li><%= link_to "Perfil", cliente_path(current_usuario.cliente) %></li>
-          <% else %>
-            <li><%= link_to "Perfil", new_cliente_path %></li>
+          <%#TODO: Mover código para o helpers %>
+          <% if current_usuario.cliente? %>
+            <% if current_usuario.cliente %>
+              <li><%= link_to "Perfil", cliente_path(current_usuario.cliente) %></li>
+            <% else %>
+              <li><%= link_to "Perfil", new_cliente_path %></li>
+            <% end %>
+          <% elsif current_usuario.representante_comercial? %>
+            <% if current_usuario.representante_comercial %>
+              <li><%= link_to("Perfil", cliente_representante_comercial_path(current_usuario.convite_cliente, current_usuario.representante_comercial)) %></li>
+            <% else %>
+              <li><%= link_to "Perfil", new_cliente_representante_comercial_path(current_usuario.convite_cliente) %></li>
+            <% end %>
           <% end %>
-
         <% end %>
         <% if usuario_signed_in? %>
           <li><%= link_to "Acesso", edit_usuario_registration_path %></li>

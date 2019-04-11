@@ -16,21 +16,24 @@
 #  updated_at        :datetime         not null
 #  cidade_id         :bigint(8)
 #  cliente_id        :bigint(8)
+#  usuario_id        :bigint(8)
 #
 # Indexes
 #
 #  index_representante_comerciais_on_cidade_id   (cidade_id)
 #  index_representante_comerciais_on_cliente_id  (cliente_id)
+#  index_representante_comerciais_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (cidade_id => cidades.id)
 #  fk_rails_...  (cliente_id => clientes.id)
+#  fk_rails_...  (usuario_id => usuarios.id)
 #
 
 class RepresentanteComerciaisController < ApplicationController
   before_action :set_representante_comercial, only: [:show, :edit, :update, :destroy]
-  before_action :set_cliente, only: [:index, :show, :edit, :create, :update, :destroy]
+  before_action :set_cliente, only: [:index, :new, :show, :edit, :create, :update, :destroy]
 
   def index
     @representante_comerciais = @cliente.representante_comerciais
@@ -51,7 +54,7 @@ class RepresentanteComerciaisController < ApplicationController
     @representante_comercial = RepresentanteComercial.new(representante_comercial_params)
 
     respond_to do |format|
-      if @representante_comercial.save
+      if @representante_comercial.save!
         format.html {redirect_to cliente_representante_comercial_path(@cliente, @representante_comercial), notice: 'Representante comercial was successfully created.'}
       else
         format.html {render :new}
@@ -87,6 +90,6 @@ class RepresentanteComerciaisController < ApplicationController
   end
 
   def representante_comercial_params
-    params.require(:representante_comercial).permit(:descricao, :contato, :endereco, :cep, :telefone, :email, :latitude, :longitude, :cliente_id, :cidade_id)
+    params.require(:representante_comercial).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :latitude, :longitude, :cliente_id, :cidade_id, :usuario_id)
   end
 end

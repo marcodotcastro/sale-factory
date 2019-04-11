@@ -19,7 +19,7 @@ class Usuarios::InvitationsController < Devise::InvitationsController
   private
 
   def usuario_params
-    params.require(:usuario).permit(:email, :tipo)
+    params.require(:usuario).permit(:email, :tipo, :convite_cliente)
   end
 
 end

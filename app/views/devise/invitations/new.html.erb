@@ -18,6 +18,7 @@
         <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
 
           <%= f.hidden_field :tipo, value: "representante" %>
+          <%= f.hidden_field :tipo, value: "convite_cliente" %>
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nome</label>

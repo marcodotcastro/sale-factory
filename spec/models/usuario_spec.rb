@@ -3,6 +3,7 @@
 # Table name: usuarios
 #
 #  id                     :bigint(8)        not null, primary key
+#  convite_cliente        :integer
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  invitation_accepted_at :datetime
