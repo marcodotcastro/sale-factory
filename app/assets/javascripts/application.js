@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery
@@ -20,4 +19,7 @@
 //= require jqvmap/maps/jquery.vmap.usa
 //= require jquery.vmap.sampledata
 //= require gentelella-custom
+//= require toastr.min
 //= require_tree .
+
+

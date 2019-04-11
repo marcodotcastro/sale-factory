@@ -4,14 +4,12 @@ class Usuarios::InvitationsController < Devise::InvitationsController
     @usuario = Usuario.find_by(email: usuario_params[:email])
 
     respond_to do |format|
-      format.html {redirect_to new_usuario_invitation_path, :flash => {:error => "Invite já enviado"}} unless @usuario
+      format.html {redirect_to new_usuario_invitation_path, flash: {error: "Invite já enviado"}} unless @usuario
 
-      @usuario = Usuario.invite!(usuario_params)
-
-      if @usuario.update(tipo: usuario_params[:tipo])
-        format.html {redirect_to root_path, notice: 'Invite was successfully created.'}
+      if Usuario.invite!(usuario_params)
+        format.html {redirect_to root_path, flash: {success: 'Invite was successfully created.'}}
       else
-        format.html {redirect_to new_usuario_invitation_path, :flash => {:error => "Convite não enviado"}}
+        format.html {redirect_to new_usuario_invitation_path, flash: {error: "Convite não enviado"}}
       end
     end
   end

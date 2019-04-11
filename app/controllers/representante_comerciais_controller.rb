@@ -55,7 +55,7 @@ class RepresentanteComerciaisController < ApplicationController
 
     respond_to do |format|
       if @representante_comercial.save!
-        format.html {redirect_to cliente_representante_comercial_path(@cliente, @representante_comercial), notice: 'Representante comercial was successfully created.'}
+        format.html {redirect_to cliente_representante_comercial_path(@cliente, @representante_comercial), flash: {success: 'Representante comercial was successfully created.'}}
       else
         format.html {render :new}
       end
@@ -65,7 +65,7 @@ class RepresentanteComerciaisController < ApplicationController
   def update
     respond_to do |format|
       if @representante_comercial.update(representante_comercial_params)
-        format.html {redirect_to cliente_representante_comercial_path(@cliente, @representante_comercial), notice: 'Representante comercial was successfully updated.'}
+        format.html {redirect_to cliente_representante_comercial_path(@cliente, @representante_comercial), flash: {success: 'Representante comercial was successfully updated.'}}
       else
         format.html {render :edit}
       end
@@ -75,7 +75,7 @@ class RepresentanteComerciaisController < ApplicationController
   def destroy
     @representante_comercial.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_representante_comerciais_path(@cliente), notice: 'Representante comercial was successfully destroyed.'}
+      format.html {redirect_to cliente_representante_comerciais_path(@cliente), flash: {success: 'Representante comercial was successfully destroyed.'}}
     end
   end
 

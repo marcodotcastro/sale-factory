@@ -36,6 +36,8 @@
     <div class="right_col" role="main">
       <%= yield %>
     </div>
+
+
     <!-- /page content -->
 
     <!-- footer content -->
@@ -46,5 +48,37 @@
   </div>
 </div>
 <%= javascript_include_tag 'application' %>
+
+<% unless flash.empty? %>
+  <script type="text/javascript">
+      //NOTE: Configuração toastr https://codeseven.github.io/toastr/demo.html
+      <% flash.each do |f| %>
+
+
+      toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": true,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": true,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+      }
+
+      <% type = f[0].to_s %>
+      toastr["<%= type %>"]("<%= f[1] %>")
+      <% end %>
+
+  </script>
+<% end %>
+
 </body>
 </html>

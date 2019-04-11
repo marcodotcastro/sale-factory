@@ -50,7 +50,7 @@ class LojistasController < ApplicationController
 
     respond_to do |format|
       if @lojista.save
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), notice: 'Lojista was successfully created.'}
+        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully created.'}}
       else
         format.html {render :new}
       end
@@ -60,7 +60,7 @@ class LojistasController < ApplicationController
   def update
     respond_to do |format|
       if @lojista.update(lojista_params)
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), notice: 'Lojista was successfully updated.'}
+        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully updated.'}}
       else
         format.html {render :edit}
       end
@@ -70,7 +70,7 @@ class LojistasController < ApplicationController
   def destroy
     @lojista.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_representante_comercial_lojistas_path(@cliente, @representante_comercial), notice: 'Lojista was successfully destroyed.'}
+      format.html {redirect_to cliente_representante_comercial_lojistas_path(@cliente, @representante_comercial), flash: {success: 'Lojista was successfully destroyed.'}}
     end
   end
 
