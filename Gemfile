@@ -21,6 +21,7 @@ gem 'gentelella-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'devise_invitable', '~> 1.7.5'
+gem "paranoia", "~> 2.2"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'

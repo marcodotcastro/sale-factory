@@ -5,6 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
 #  contato           :string
+#  deleted_at        :datetime
 #  descricao         :string
 #  email             :string
 #  endereco          :string
@@ -22,6 +23,7 @@
 #
 #  index_representante_comerciais_on_cidade_id   (cidade_id)
 #  index_representante_comerciais_on_cliente_id  (cliente_id)
+#  index_representante_comerciais_on_deleted_at  (deleted_at)
 #  index_representante_comerciais_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
@@ -43,6 +45,7 @@ FactoryBot.define do
     latitude {-21.348714}
     longitude {-47.7651449}
 
+    association :usuario, :factory => :usuario
     association :cidade, :factory => :cidade
     association :cliente, :factory => :cliente
 

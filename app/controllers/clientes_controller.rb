@@ -5,6 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
 #  contato           :string
+#  deleted_at        :datetime
 #  descricao         :string
 #  email             :string
 #  endereco          :string
@@ -21,6 +22,7 @@
 # Indexes
 #
 #  index_clientes_on_cidade_id   (cidade_id)
+#  index_clientes_on_deleted_at  (deleted_at)
 #  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
@@ -70,7 +72,7 @@ class ClientesController < ApplicationController
   def destroy
     @cliente.destroy
     respond_to do |format|
-      format.html {redirect_to clientes_url, flash: {success: 'Cliente was successfully destroyed.'}}
+      format.html {redirect_to root_path, flash: {success: 'Cliente was successfully destroyed.'}}
     end
   end
 

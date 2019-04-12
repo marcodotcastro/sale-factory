@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_183727) do
+ActiveRecord::Schema.define(version: 2019_04_12_210724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,9 @@ ActiveRecord::Schema.define(version: 2019_04_11_183727) do
     t.bigint "cidade_id"
     t.bigint "usuario_id"
     t.bigint "setor_id"
+    t.datetime "deleted_at"
     t.index ["cidade_id"], name: "index_clientes_on_cidade_id"
+    t.index ["deleted_at"], name: "index_clientes_on_deleted_at"
     t.index ["setor_id"], name: "index_clientes_on_setor_id"
     t.index ["usuario_id"], name: "index_clientes_on_usuario_id"
   end
@@ -80,7 +82,9 @@ ActiveRecord::Schema.define(version: 2019_04_11_183727) do
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
     t.bigint "representante_comercial_id"
+    t.datetime "deleted_at"
     t.index ["cidade_id"], name: "index_lojistas_on_cidade_id"
+    t.index ["deleted_at"], name: "index_lojistas_on_deleted_at"
     t.index ["representante_comercial_id"], name: "index_lojistas_on_representante_comercial_id"
   end
 
@@ -99,8 +103,10 @@ ActiveRecord::Schema.define(version: 2019_04_11_183727) do
     t.bigint "cidade_id"
     t.bigint "cliente_id"
     t.bigint "usuario_id"
+    t.datetime "deleted_at"
     t.index ["cidade_id"], name: "index_representante_comerciais_on_cidade_id"
     t.index ["cliente_id"], name: "index_representante_comerciais_on_cliente_id"
+    t.index ["deleted_at"], name: "index_representante_comerciais_on_deleted_at"
     t.index ["usuario_id"], name: "index_representante_comerciais_on_usuario_id"
   end
 
@@ -117,23 +123,15 @@ ActiveRecord::Schema.define(version: 2019_04_11_183727) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "invitation_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tipo"
-    t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer "invitation_limit"
-    t.string "invited_by_type"
-    t.bigint "invited_by_id"
-    t.integer "invitations_count", default: 0
     t.integer "convite_cliente"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_usuarios_on_deleted_at"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["invitation_token"], name: "index_usuarios_on_invitation_token", unique: true
-    t.index ["invitations_count"], name: "index_usuarios_on_invitations_count"
-    t.index ["invited_by_id"], name: "index_usuarios_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_usuarios_on_invited_by_type_and_invited_by_id"
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 

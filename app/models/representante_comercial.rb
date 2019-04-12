@@ -5,6 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
 #  contato           :string
+#  deleted_at        :datetime
 #  descricao         :string
 #  email             :string
 #  endereco          :string
@@ -22,6 +23,7 @@
 #
 #  index_representante_comerciais_on_cidade_id   (cidade_id)
 #  index_representante_comerciais_on_cliente_id  (cliente_id)
+#  index_representante_comerciais_on_deleted_at  (deleted_at)
 #  index_representante_comerciais_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
@@ -32,8 +34,9 @@
 #
 
 class RepresentanteComercial < ApplicationRecord
+  acts_as_paranoid
+  has_many :lojistas, dependent: :destroy
   belongs_to :cliente
-  has_many :lojistas
   belongs_to :cidade
   belongs_to :usuario
 
