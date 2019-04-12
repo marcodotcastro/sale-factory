@@ -1,14 +1,6 @@
-<div class="form-group">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :usuario_id, as: :hidden, value: current_usuario.id %>
-  </div>
-</div>
+<%= f.input_field :usuario_id, as: :hidden, value: current_usuario.id %>
 
-<div class="form-group">
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :cliente_id, as: :hidden, value: current_usuario.convite_cliente %>
-  </div>
-</div>
+<%= f.input_field :cliente_id, as: :hidden, value: current_usuario.convite_cliente %>
 
 <div class="form-group">
   <label class="control-label col-md-3 col-sm-3 col-xs-12">Logo</label>
@@ -17,66 +9,17 @@
   </div>
 </div>
 
-
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :descricao, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12">Cidade</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Endereço</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :endereco, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">CEP</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :cep, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
+<%= f.input :descricao %>
+<%= f.input :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
+<%= f.input :endereco %>
+<%= f.input :cep %>
 
 <div class="divider-dashed"></div>
 
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :contato, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Telefone</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :telefone, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Whatsapp</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :telefone_whatsapp, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email</label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <%= f.input_field :email, label: nil, class: "form-control col-md-7 col-xs-12" %>
-  </div>
-</div>
+<%= f.input :contato %>
+<%= f.input :telefone %>
+<%= f.input :telefone_whatsapp %>
+<%= f.input :email %>
 
 <div class="ln_solid"></div>
 

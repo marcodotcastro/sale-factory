@@ -39,6 +39,9 @@ class Cliente < ApplicationRecord
 
   has_one_attached :logo
 
+  validates :descricao, :setor_id, :cidade_id, presence: true
+
+
   def generate_geolocation
     address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
     geolocation = Geolocation.new(address: address)
