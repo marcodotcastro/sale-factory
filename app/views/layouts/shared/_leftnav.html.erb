@@ -41,7 +41,7 @@
           <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
-                <%= link_to "Representantes", cliente_representante_comerciais_path(current_usuario.cliente) %>
+                <%= link_to "Representantes", cliente_representantes_path(current_usuario.cliente) %>
               </li>
               <li>
                 <%= link_to "Lojistas", lojistas_path %>
@@ -59,7 +59,7 @@
       </div>
     </div>
   <% end %>
-<% elsif current_usuario.representante_comercial? %>
+<% elsif current_usuario.representante? %>
   <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section">
       <h3>General</h3>
@@ -69,12 +69,12 @@
             <li><%= link_to "Dashboard", dashboard_index_path %></li>
           </ul>
         </li>
-        <% if current_usuario.representante_comercial %>
+        <% if current_usuario.representante %>
           <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
                 <%# %>
-                <%= link_to "Lojistas", cliente_representante_comercial_lojistas_path(current_usuario.convite_cliente, current_usuario.representante_comercial) %>
+                <%= link_to "Lojistas", cliente_representante_lojistas_path(current_usuario.convite_cliente, current_usuario.representante) %>
               </li>
             </ul>
           </li>

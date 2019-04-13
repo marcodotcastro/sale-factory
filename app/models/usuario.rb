@@ -30,9 +30,9 @@ class Usuario < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :cliente, dependent: :destroy
-  has_one :representante_comercial, dependent: :destroy
+  has_one :representante, dependent: :destroy
 
   has_one_attached :avatar
 
-  enum tipo: [:cliente, :representante_comercial, :cliente_equipe, :representante_equipe]
+  enum tipo: [:cliente, :representante, :cliente_equipe, :representante_equipe]
 end

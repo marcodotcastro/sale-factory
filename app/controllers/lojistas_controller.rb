@@ -2,32 +2,25 @@
 #
 # Table name: lojistas
 #
-#  id                         :bigint(8)        not null, primary key
-#  cep                        :string
-#  contato                    :string
-#  deleted_at                 :datetime
-#  descricao                  :string
-#  email                      :string
-#  endereco                   :string
-#  latitude                   :float
-#  longitude                  :float
-#  telefone                   :string
-#  telefone_whatsapp          :string
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
-#  cidade_id                  :bigint(8)
-#  representante_comercial_id :bigint(8)
+#  id                :bigint(8)        not null, primary key
+#  cep               :string
+#  contato           :string
+#  deleted_at        :datetime
+#  descricao         :string
+#  email             :string
+#  endereco          :string
+#  latitude          :float
+#  longitude         :float
+#  telefone          :string
+#  telefone_whatsapp :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  cidade_id         :bigint(8)
 #
 # Indexes
 #
-#  index_lojistas_on_cidade_id                   (cidade_id)
-#  index_lojistas_on_deleted_at                  (deleted_at)
-#  index_lojistas_on_representante_comercial_id  (representante_comercial_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (representante_comercial_id => representante_comerciais.id)
+#  index_lojistas_on_cidade_id   (cidade_id)
+#  index_lojistas_on_deleted_at  (deleted_at)
 #
 
 class LojistasController < ApplicationController
@@ -52,7 +45,7 @@ class LojistasController < ApplicationController
 
     respond_to do |format|
       if @lojista.save
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully created.'}}
+        format.html {redirect_to cliente_representante_lojista_path(@cliente, @representante, @lojista), flash: {success: 'Lojista was successfully created.'}}
       else
         format.html {render :new}
       end
@@ -62,7 +55,7 @@ class LojistasController < ApplicationController
   def update
     respond_to do |format|
       if @lojista.update(lojista_params)
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully updated.'}}
+        format.html {redirect_to cliente_representante_lojista_path(@cliente, @representante, @lojista), flash: {success: 'Lojista was successfully updated.'}}
       else
         format.html {render :edit}
       end
@@ -72,7 +65,7 @@ class LojistasController < ApplicationController
   def destroy
     @lojista.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_representante_comercial_lojistas_path(@cliente, @representante_comercial), flash: {success: 'Lojista was successfully destroyed.'}}
+      format.html {redirect_to cliente_representante_lojistas_path(@cliente, @representante), flash: {success: 'Lojista was successfully destroyed.'}}
     end
   end
 
@@ -83,6 +76,6 @@ class LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_comercial_id, :cidade_id)
+    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_id, :cidade_id)
   end
 end

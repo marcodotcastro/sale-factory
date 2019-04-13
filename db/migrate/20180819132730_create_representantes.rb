@@ -1,6 +1,6 @@
-class CreateRepresentanteComerciais < ActiveRecord::Migration[5.2]
+class CreateRepresentantes < ActiveRecord::Migration[5.2]
   def change
-    create_table :representante_comerciais do |t|
+    create_table :representantes do |t|
       t.string :descricao
       t.string :endereco
       t.string :cep

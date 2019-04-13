@@ -26,12 +26,6 @@
 #  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (setor_id => setores.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
-#
 
 FactoryBot.define do
   factory :cliente do
@@ -39,25 +33,28 @@ FactoryBot.define do
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
     contato {"Sr João Paulo"}
-    email {"joao.paulo@melcon.com.br"}
+    sequence(:email) {|n| "joao.paulo#{n}@gmail.com"}
     telefone {"(62) 3902-3200"}
     telefone_whatsapp {"(62) 99902-3200"}
     latitude {-16.4064447}
     longitude {-48.9497198}
 
-    association :setor, :factory => :setor
-    association :cidade, :factory => :cidade
-    association :usuario, :factory => :usuario
+    before(:create) do |cliente|
+      create(:usuario, tipo: "cliente", email: cliente.email, cliente: cliente)
+    end
 
-    trait :com_representante_comercial do
+    association :setor, factory: :setor
+    association :cidade, factory: :cidade
+
+    trait :com_representante do
       after(:create) do |cliente|
-        create(:representante_comercial, cliente: cliente)
+        create(:representante, clientes: [cliente])
       end
     end
 
-    trait :com_representante_comerciais do
+    trait :com_representantes do
       after(:create) do |cliente|
-        create_list(:representante_comercial, 2, cliente: cliente)
+        create_list(:representante, 2, clientes: [cliente])
       end
     end
 

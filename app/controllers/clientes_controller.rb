@@ -26,18 +26,12 @@
 #  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (setor_id => setores.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
-#
 
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
 
   def show
-    @representante_comerciais = @cliente.representante_comerciais
+    @representantes = @cliente.representantes
   end
 
   def new

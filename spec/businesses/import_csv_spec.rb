@@ -7,11 +7,11 @@ RSpec.describe "ImportCsv" do
   xit "representantes" do
 
     CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
-      RepresentanteComercial.create(row.to_hash.each_value(&:strip))
+      Representante.create(row.to_hash.each_value(&:strip))
     end
 
-    # expect(RepresentanteComercial.last.latitude).to eq(-21.7882576)
-    # expect(RepresentanteComercial.last.longitude).to eq(-43.3652338)
+    # expect(Representante.last.latitude).to eq(-21.7882576)
+    # expect(Representante.last.longitude).to eq(-43.3652338)
   end
 
   xit "lojistas" do

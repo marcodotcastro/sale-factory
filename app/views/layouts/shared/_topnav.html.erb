@@ -10,10 +10,10 @@
           <h2><%= current_usuario.cliente.descricao.upcase %></h2>
         </div>
       <% end %>
-    <% elsif current_usuario.representante_comercial? %>
-      <% if current_usuario.representante_comercial %>
+    <% elsif current_usuario.representante? %>
+      <% if current_usuario.representante %>
         <div class="navbar-text">
-          <h2><%= current_usuario.representante_comercial.descricao.upcase %></h2>
+          <h2><%= current_usuario.representante.descricao.upcase %></h2>
         </div>
       <% end %>
     <% end %>
@@ -37,11 +37,11 @@
             <% else %>
               <li><%= link_to "Perfil", new_cliente_path %></li>
             <% end %>
-          <% elsif current_usuario.representante_comercial? %>
-            <% if current_usuario.representante_comercial %>
-              <li><%= link_to("Perfil", cliente_representante_comercial_path(current_usuario.convite_cliente, current_usuario.representante_comercial)) %></li>
+          <% elsif current_usuario.representante? %>
+            <% if current_usuario.representante %>
+              <li><%= link_to("Perfil", cliente_representante_path(current_usuario.convite_cliente, current_usuario.representante)) %></li>
             <% else %>
-              <li><%= link_to "Perfil", new_cliente_representante_comercial_path(current_usuario.convite_cliente) %></li>
+              <li><%= link_to "Perfil", new_cliente_representante_path(current_usuario.convite_cliente) %></li>
             <% end %>
           <% end %>
         <% end %>

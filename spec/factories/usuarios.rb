@@ -29,6 +29,6 @@ FactoryBot.define do
     sequence(:email) {|n| "joao.paulo#{n}@melcon.com.br"}
     nome {"João Paulo"}
     password {12345678}
-    tipo {:cliente}
+    tipo {[:cliente, :representante].sample}
   end
 end

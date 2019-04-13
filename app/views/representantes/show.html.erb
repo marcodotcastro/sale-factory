@@ -21,7 +21,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante_comercial.descricao %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante.descricao %>">
             </div>
           </div>
 
@@ -30,7 +30,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.cidade.descricao %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.cidade.descricao %>">
             </div>
           </div>
 
@@ -39,7 +39,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.endereco %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.endereco %>">
             </div>
           </div>
 
@@ -47,7 +47,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.cep %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.cep %>">
             </div>
           </div>
 
@@ -58,7 +58,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante_comercial.contato %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @representante.contato %>">
             </div>
           </div>
 
@@ -67,7 +67,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.telefone %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.telefone %>">
             </div>
           </div>
 
@@ -76,7 +76,7 @@
 
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.telefone_whatsapp %>">
+              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.telefone_whatsapp %>">
             </div>
           </div>
 
@@ -84,7 +84,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante_comercial.email %>">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @representante.email %>">
             </div>
           </div>
 
@@ -92,7 +92,7 @@
 
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <%= link_to 'Editar', edit_cliente_representante_comercial_path(@cliente, @representante_comercial), class: "btn btn-primary" %>
+              <%= link_to 'Editar', edit_cliente_representante_path(@cliente, @representante), class: "btn btn-primary" %>
             </div>
           </div>
 

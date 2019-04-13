@@ -36,24 +36,24 @@
 #                                                       dashboard_index GET    /dashboard/index(.:format)                                                                                                      dashboard#index
 #                                                      dashboard_index2 GET    /dashboard/index2(.:format)                                                                                                     dashboard#index2
 #                                                      dashboard_index3 GET    /dashboard/index3(.:format)                                                                                                     dashboard#index3
-# cliente_representante_comercial_service_area_representante_comerciais GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/service_area/representante_comerciais(.:format)      representante_comerciais#service_area
-#         cliente_representante_comercial_lojista_service_area_lojistas GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:lojista_id/service_area/lojistas(.:format) representante_comerciais/lojistas#service_area
-#                              cliente_representante_comercial_lojistas GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas(.:format)                                   representante_comerciais/lojistas#index
-#                                                                       POST   /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas(.:format)                                   representante_comerciais/lojistas#create
-#                           new_cliente_representante_comercial_lojista GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/new(.:format)                               representante_comerciais/lojistas#new
-#                          edit_cliente_representante_comercial_lojista GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:id/edit(.:format)                          representante_comerciais/lojistas#edit
-#                               cliente_representante_comercial_lojista GET    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:id(.:format)                               representante_comerciais/lojistas#show
-#                                                                       PATCH  /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:id(.:format)                               representante_comerciais/lojistas#update
-#                                                                       PUT    /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:id(.:format)                               representante_comerciais/lojistas#update
-#                                                                       DELETE /clientes/:cliente_id/representante_comerciais/:representante_comercial_id/lojistas/:id(.:format)                               representante_comerciais/lojistas#destroy
-#                                      cliente_representante_comerciais GET    /clientes/:cliente_id/representante_comerciais(.:format)                                                                        representante_comerciais#index
-#                                                                       POST   /clientes/:cliente_id/representante_comerciais(.:format)                                                                        representante_comerciais#create
-#                                   new_cliente_representante_comercial GET    /clientes/:cliente_id/representante_comerciais/new(.:format)                                                                    representante_comerciais#new
-#                                  edit_cliente_representante_comercial GET    /clientes/:cliente_id/representante_comerciais/:id/edit(.:format)                                                               representante_comerciais#edit
-#                                       cliente_representante_comercial GET    /clientes/:cliente_id/representante_comerciais/:id(.:format)                                                                    representante_comerciais#show
-#                                                                       PATCH  /clientes/:cliente_id/representante_comerciais/:id(.:format)                                                                    representante_comerciais#update
-#                                                                       PUT    /clientes/:cliente_id/representante_comerciais/:id(.:format)                                                                    representante_comerciais#update
-#                                                                       DELETE /clientes/:cliente_id/representante_comerciais/:id(.:format)                                                                    representante_comerciais#destroy
+# cliente_representante_service_area_representantes GET    /clientes/:cliente_id/representantes/:representante_id/service_area/representantes(.:format)      representantes#service_area
+#         cliente_representante_lojista_service_area_lojistas GET    /clientes/:cliente_id/representantes/:representante_id/lojistas/:lojista_id/service_area/lojistas(.:format) representantes/lojistas#service_area
+#                              cliente_representante_lojistas GET    /clientes/:cliente_id/representantes/:representante_id/lojistas(.:format)                                   representantes/lojistas#index
+#                                                                       POST   /clientes/:cliente_id/representantes/:representante_id/lojistas(.:format)                                   representantes/lojistas#create
+#                           new_cliente_representante_lojista GET    /clientes/:cliente_id/representantes/:representante_id/lojistas/new(.:format)                               representantes/lojistas#new
+#                          edit_cliente_representante_lojista GET    /clientes/:cliente_id/representantes/:representante_id/lojistas/:id/edit(.:format)                          representantes/lojistas#edit
+#                               cliente_representante_lojista GET    /clientes/:cliente_id/representantes/:representante_id/lojistas/:id(.:format)                               representantes/lojistas#show
+#                                                                       PATCH  /clientes/:cliente_id/representantes/:representante_id/lojistas/:id(.:format)                               representantes/lojistas#update
+#                                                                       PUT    /clientes/:cliente_id/representantes/:representante_id/lojistas/:id(.:format)                               representantes/lojistas#update
+#                                                                       DELETE /clientes/:cliente_id/representantes/:representante_id/lojistas/:id(.:format)                               representantes/lojistas#destroy
+#                                      cliente_representantes GET    /clientes/:cliente_id/representantes(.:format)                                                                        representantes#index
+#                                                                       POST   /clientes/:cliente_id/representantes(.:format)                                                                        representantes#create
+#                                   new_cliente_representante GET    /clientes/:cliente_id/representantes/new(.:format)                                                                    representantes#new
+#                                  edit_cliente_representante GET    /clientes/:cliente_id/representantes/:id/edit(.:format)                                                               representantes#edit
+#                                       cliente_representante GET    /clientes/:cliente_id/representantes/:id(.:format)                                                                    representantes#show
+#                                                                       PATCH  /clientes/:cliente_id/representantes/:id(.:format)                                                                    representantes#update
+#                                                                       PUT    /clientes/:cliente_id/representantes/:id(.:format)                                                                    representantes#update
+#                                                                       DELETE /clientes/:cliente_id/representantes/:id(.:format)                                                                    representantes#destroy
 #                                                              clientes GET    /clientes(.:format)                                                                                                             clientes#index
 #                                                                       POST   /clientes(.:format)                                                                                                             clientes#create
 #                                                           new_cliente GET    /clientes/new(.:format)                                                                                                         clientes#new
@@ -105,10 +105,10 @@ Rails.application.routes.draw do
   get 'dashboard/index3'
 
   resources :clientes do
-    resources :representante_comerciais do
-      get "service_area/representante_comerciais", to: "representante_comerciais#service_area"
+    resources :representantes do
+      get "service_area/representantes", to: "representantes#service_area"
 
-      scope module: 'representante_comerciais' do
+      scope module: 'representantes' do
         resources :lojistas do
           get "service_area/lojistas", to: "lojistas#service_area"
         end

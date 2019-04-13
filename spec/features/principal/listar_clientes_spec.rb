@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Listar Clientes", :type => :feature do
 
   before(:all) do
-    create(:representante_comercial, :com_lojista)
+    create(:representante, :com_lojista)
   end
 
   scenario "ver principal" do
@@ -21,12 +21,12 @@ RSpec.feature "Listar Clientes", :type => :feature do
     click_link "Clientes"
     click_link "Show", match: :first
 
-    expect(page).to have_text("Representantes Comerciais")
+    expect(page).to have_text("representantes")
     expect(page).to have_text("Indústria Farmacêutica Melcon do Brasil S.A.")
     expect(page).to have_text("A R Olivo Representações Ltda ME 1")
   end
 
-  scenario "ver representante comercial" do
+  scenario "ver representante" do
     visit principais_index_path
 
     click_link "Clientes"

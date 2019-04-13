@@ -26,16 +26,10 @@
 #  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (setor_id => setores.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
-#
 
 class Cliente < ApplicationRecord
   acts_as_paranoid
-  has_many :representante_comerciais, dependent: :destroy
+  has_and_belongs_to_many :representantes
   belongs_to :cidade
   belongs_to :usuario
   belongs_to :setor
@@ -43,7 +37,6 @@ class Cliente < ApplicationRecord
   has_one_attached :logo
 
   validates :descricao, :setor_id, :cidade_id, presence: true
-
 
   def generate_geolocation
     address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
