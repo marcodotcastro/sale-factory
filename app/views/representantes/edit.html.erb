@@ -14,7 +14,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <%= simple_form_for([@cliente, @representante], html: {class: "form-horizontal form-label-left"}) do |f| %>
+        <%= simple_form_for(@representante, html: {class: "form-horizontal form-label-left"}) do |f| %>
 
           <%= render 'form', f: f %>
 

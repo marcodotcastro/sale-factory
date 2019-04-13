@@ -34,8 +34,8 @@ FactoryBot.define do
     email {"marcelos@gmail.com"}
     latitude {-22.6195575}
     longitude {-49.3215312}
-    
-    association :cidade, factory: :cidade
+
+    cidade {Cidade.first || association(:cidade)}
 
   end
 end

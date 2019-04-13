@@ -25,6 +25,7 @@
         <% else %>
           <%= image_tag "user.png" %>
         <% end %>
+        <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
         <span class=" fa fa-angle-down"></span>
       </a>
 
@@ -39,9 +40,9 @@
             <% end %>
           <% elsif current_usuario.representante? %>
             <% if current_usuario.representante %>
-              <li><%= link_to("Perfil", cliente_representante_path(current_usuario.convite_cliente, current_usuario.representante)) %></li>
+              <li><%= link_to("Perfil", representante_path(current_usuario.representante)) %></li>
             <% else %>
-              <li><%= link_to "Perfil", new_cliente_representante_path(current_usuario.convite_cliente) %></li>
+              <li><%= link_to "Perfil", new_representante_path %></li>
             <% end %>
           <% end %>
         <% end %>

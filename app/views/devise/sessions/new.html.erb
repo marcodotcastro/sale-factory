@@ -3,6 +3,7 @@
     <section class="login_content">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <h1>Autenticação</h1>
+        <div class="invalid-feedback"><%= alert %></div>
         <div>
           <%= f.input_field :email,
                             required: false,
@@ -25,6 +26,8 @@
         <%= f.button :submit, "Autenticar", class: "btn btn-default submit" %>
 
       <% end %>
+
+
 
       <%= render "devise/shared/links" %>
 

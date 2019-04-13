@@ -35,7 +35,7 @@
             <td><%= lojista.telefone %><%# TODO: Adicionar lojista.telefone_whatsapp %></td>
             <td><%# TODO: Adicionar lojista.email %></td>
             <td>
-              <%= link_to cliente_representante_lojista_path(@cliente, @representante, lojista) do %>
+              <%= link_to representante_lojista_path(@representante, lojista) do %>
                 <i class="fa fa-eye"></i>
               <% end %>
             </td>

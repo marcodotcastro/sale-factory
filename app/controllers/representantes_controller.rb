@@ -31,10 +31,9 @@
 
 class RepresentantesController < ApplicationController
   before_action :set_representante, only: [:show, :edit, :update, :destroy]
-  before_action :set_cliente, only: [:index, :new, :show, :edit, :create, :update, :destroy]
 
   def index
-    @representantes = @cliente.representantes
+    @representantes = Representante.all
   end
 
   def show
@@ -53,7 +52,7 @@ class RepresentantesController < ApplicationController
 
     respond_to do |format|
       if @representante.save!
-        format.html {redirect_to cliente_representante_path(@cliente, @representante), flash: {success: 'representante was successfully created.'}}
+        format.html {redirect_to representante_path(@representante), flash: {success: 'representante was successfully created.'}}
       else
         format.html {render :new}
       end
@@ -63,7 +62,7 @@ class RepresentantesController < ApplicationController
   def update
     respond_to do |format|
       if @representante.update(representante_params)
-        format.html {redirect_to cliente_representante_path(@cliente, @representante), flash: {success: 'representante was successfully updated.'}}
+        format.html {redirect_to representante_path(@representante), flash: {success: 'representante was successfully updated.'}}
       else
         format.html {render :edit}
       end
@@ -73,21 +72,17 @@ class RepresentantesController < ApplicationController
   def destroy
     @representante.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_representantes_path(@cliente), flash: {success: 'representante was successfully destroyed.'}}
+      format.html {redirect_to representantes_path, flash: {success: 'representante was successfully destroyed.'}}
     end
   end
 
   private
-
-  def set_cliente
-    @cliente = Cliente.find(params[:cliente_id])
-  end
 
   def set_representante
     @representante = Representante.find(params[:id])
   end
 
   def representante_params
-    params.require(:representante).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :latitude, :longitude, :cliente_id, :cidade_id, :usuario_id)
+    params.require(:representante).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id, clientes: [:cliente_id])
   end
 end

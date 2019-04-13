@@ -18,7 +18,7 @@
         <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
 
           <%= f.hidden_field :tipo, value: "representante" %>
-          <%= f.hidden_field :convite_cliente, value: current_usuario.id %>
+          <%= f.hidden_field :invited_by_id, value: current_usuario.id %>
 
           <%= f.input :nome %>
           <%= f.input :email %>

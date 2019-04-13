@@ -43,8 +43,8 @@ FactoryBot.define do
       create(:usuario, tipo: "cliente", email: cliente.email, cliente: cliente)
     end
 
-    association :setor, factory: :setor
-    association :cidade, factory: :cidade
+    cidade {Cidade.first || association(:cidade)}
+    setor {Setor.first || association(:setor)}
 
     trait :com_representante do
       after(:create) do |cliente|

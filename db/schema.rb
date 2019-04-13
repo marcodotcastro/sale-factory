@@ -134,10 +134,15 @@ ActiveRecord::Schema.define(version: 2019_04_12_210724) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.integer "invited_by_id"
+    t.string "invited_by_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tipo"
-    t.integer "convite_cliente"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_usuarios_on_deleted_at"
     t.index ["email"], name: "index_usuarios_on_email", unique: true

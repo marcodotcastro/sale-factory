@@ -42,11 +42,7 @@ FactoryBot.define do
     latitude {-21.348714}
     longitude {-47.7651449}
 
-    before(:create) do |representante|
-      create(:usuario, tipo: "representante", email: representante.email, representante: representante)
-    end
-
-    association :cidade, factory: :cidade
+    cidade {Cidade.first || association(:cidade)}
 
     trait :com_cliente do
       after(:create) do |representante|
@@ -64,6 +60,10 @@ FactoryBot.define do
       after(:create) do |representante|
         create_list(:lojista, 2, representantes: [representante])
       end
+    end
+
+    before(:create) do |representante|
+      create(:usuario, tipo: "representante", email: representante.email, representante: representante)
     end
 
   end

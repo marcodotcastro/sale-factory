@@ -84,26 +84,24 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
+  #ADMINISTRAÇÃO
+  devise_for :usuarios, :controllers => {invitations: 'usuarios/invitations', registrations: 'usuarios/registrations'}
+
+  get 'principais/index'
+  root to: 'principais#index'
+
   #DESENVOLVIVMENTO
   default_url_options :host => "localhost:3000"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener/inbox" if Rails.env.development?
 
-  #ADMINISTRAÇÃO
-
-  devise_for :usuarios, :controllers => {registrations: 'usuarios/registrations', invitations: 'usuarios/invitations'}
-
   resources :cidades
 
   #CLIENTES
-  get 'principais/index'
-  root to: 'principais#index'
-
   ##DASHBOARDS
-  get 'dashboard/index'
-  get 'dashboard/index2'
-  get 'dashboard/index3'
+  get 'dashboard/cliente'
 
+  ##RECURSOS
   resources :clientes do
     resources :representantes do
       get "service_area/representantes", to: "representantes#service_area"
@@ -120,5 +118,18 @@ Rails.application.routes.draw do
 
   #REPRESENTANTES
 
+  ##DASHBOARDS
+  get 'dashboard/representante'
+
+  ##RECURSOS
+  resources :representantes do
+    get "service_area/representantes", to: "representantes#service_area"
+
+    scope module: 'representantes' do
+      resources :lojistas do
+        get "service_area/lojistas", to: "lojistas#service_area"
+      end
+    end
+  end
 
 end
