@@ -35,7 +35,7 @@
 
 class Cliente < ApplicationRecord
   acts_as_paranoid
-  has_many :representante_comerciais, dependent: :destroy
+  has_and_belongs_to_many :representante_comerciais
   belongs_to :cidade
   belongs_to :usuario
   belongs_to :setor
@@ -43,7 +43,6 @@ class Cliente < ApplicationRecord
   has_one_attached :logo
 
   validates :descricao, :setor_id, :cidade_id, presence: true
-
 
   def generate_geolocation
     address = "#{self.descricao},#{self.estado}".gsub(" ", "+")

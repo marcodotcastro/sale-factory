@@ -45,19 +45,19 @@ FactoryBot.define do
     latitude {-16.4064447}
     longitude {-48.9497198}
 
+    association :usuario, :factory => :usuario
     association :setor, :factory => :setor
     association :cidade, :factory => :cidade
-    association :usuario, :factory => :usuario
 
     trait :com_representante_comercial do
       after(:create) do |cliente|
-        create(:representante_comercial, cliente: cliente)
+        create(:representante_comercial, clientes: [cliente])
       end
     end
 
     trait :com_representante_comerciais do
       after(:create) do |cliente|
-        create_list(:representante_comercial, 2, cliente: cliente)
+        create_list(:representante_comercial, 2, clientes: [cliente])
       end
     end
 

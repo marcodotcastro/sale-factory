@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2019_04_12_210724) do
     t.index ["usuario_id"], name: "index_clientes_on_usuario_id"
   end
 
+  create_table "clientes_representante_comerciais", id: false, force: :cascade do |t|
+    t.bigint "cliente_id"
+    t.bigint "representante_comercial_id"
+    t.index ["cliente_id"], name: "index_clientes_representantes_on_cliente_id"
+    t.index ["representante_comercial_id"], name: "index_representantes_clientes_on_representante_id"
+  end
+
   create_table "lojistas", force: :cascade do |t|
     t.string "descricao"
     t.string "endereco"
@@ -81,11 +88,16 @@ ActiveRecord::Schema.define(version: 2019_04_12_210724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
-    t.bigint "representante_comercial_id"
     t.datetime "deleted_at"
     t.index ["cidade_id"], name: "index_lojistas_on_cidade_id"
     t.index ["deleted_at"], name: "index_lojistas_on_deleted_at"
-    t.index ["representante_comercial_id"], name: "index_lojistas_on_representante_comercial_id"
+  end
+
+  create_table "lojistas_representante_comerciais", id: false, force: :cascade do |t|
+    t.bigint "representante_comercial_id"
+    t.bigint "lojista_id"
+    t.index ["lojista_id"], name: "index_lojistas_representantes_on_lojista_id"
+    t.index ["representante_comercial_id"], name: "index_representantes_lojistas_on_representante_comercial_id"
   end
 
   create_table "representante_comerciais", force: :cascade do |t|
@@ -101,11 +113,9 @@ ActiveRecord::Schema.define(version: 2019_04_12_210724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
-    t.bigint "cliente_id"
     t.bigint "usuario_id"
     t.datetime "deleted_at"
     t.index ["cidade_id"], name: "index_representante_comerciais_on_cidade_id"
-    t.index ["cliente_id"], name: "index_representante_comerciais_on_cliente_id"
     t.index ["deleted_at"], name: "index_representante_comerciais_on_deleted_at"
     t.index ["usuario_id"], name: "index_representante_comerciais_on_usuario_id"
   end
@@ -140,8 +150,6 @@ ActiveRecord::Schema.define(version: 2019_04_12_210724) do
   add_foreign_key "clientes", "setores"
   add_foreign_key "clientes", "usuarios"
   add_foreign_key "lojistas", "cidades"
-  add_foreign_key "lojistas", "representante_comerciais"
   add_foreign_key "representante_comerciais", "cidades"
-  add_foreign_key "representante_comerciais", "clientes"
   add_foreign_key "representante_comerciais", "usuarios"
 end
