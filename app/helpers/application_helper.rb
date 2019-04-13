@@ -7,9 +7,9 @@ module ApplicationHelper
       if usuario.cliente
         image_tag(usuario.cliente.logo.attached? ? usuario.cliente.logo : foto_vazia, class: "img-rectangle", size: "100x50")
       end
-    elsif usuario.representante_comercial?
-      if usuario.representante_comercial
-        image_tag(usuario.representante_comercial.logo.attached? ? usuario.representante_comercial.logo : foto_vazia, class: "img-rectangle", size: "100x50")
+    elsif usuario.representante?
+      if usuario.representante
+        image_tag(usuario.representante.logo.attached? ? usuario.representante.logo : foto_vazia, class: "img-rectangle", size: "100x50")
       end
     end
 

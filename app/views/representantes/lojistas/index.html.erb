@@ -1,7 +1,9 @@
+<p id="notice"><%= notice %></p>
+
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Representates Comerciais
+      <h2>Lojistas
         <small>...</small>
       </h2>
       <ul class="nav navbar-right panel_toolbox">
@@ -15,6 +17,7 @@
       <table class="table table-striped">
         <thead>
         <tr>
+          <th>#</th>
           <th>Descricao</th>
           <th>Contato</th>
           <th>Telefone</th>
@@ -24,15 +27,15 @@
         </thead>
 
         <tbody>
-        <% @representante_comerciais.each do |representante_comercial| %>
+        <% @lojistas.each do |lojista| %>
           <tr>
-            <th scope="row"><%= representante_comercial.id.to_s %></th>
-            <td><%= representante_comercial.descricao %></td>
-            <td><%= representante_comercial.contato %></td>
-            <td><%= representante_comercial.telefone %></td>
-            <td><%= representante_comercial.email %></td>
+            <th scope="row"><%= lojista.id.to_s %></th>
+            <td><%= lojista.descricao %></td>
+            <td><%# TODO: Adicionar lojista.contato %></td>
+            <td><%= lojista.telefone %><%# TODO: Adicionar lojista.telefone_whatsapp %></td>
+            <td><%# TODO: Adicionar lojista.email %></td>
             <td>
-              <%= link_to cliente_representante_comercial_path(@cliente, representante_comercial) do %>
+              <%= link_to cliente_representante_lojista_path(@cliente, @representante, lojista) do %>
                 <i class="fa fa-eye"></i>
               <% end %>
             </td>
@@ -44,4 +47,3 @@
     </div>
   </div>
 </div>
-

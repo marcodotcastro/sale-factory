@@ -4,13 +4,13 @@ RSpec.describe "Lojistas", type: :request do
 
   before(:all) do
     @lojista = create(:lojista)
-    @representante_comercial = @lojista.representante_comercial
-    @cliente = @representante_comercial.cliente
+    @representante = @lojista.representante
+    @cliente = @representante.cliente
   end
 
   describe "GET /lojistas" do
     it "works! (now write some real specs)" do
-      get cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista)
+      get cliente_representante_lojista_path(@cliente, @representante, @lojista)
       expect(response).to have_http_status(200)
     end
   end

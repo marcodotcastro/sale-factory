@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: representante_comerciais
+# Table name: representantes
 #
 #  id          :integer          not null, primary key
 #  description :string
@@ -20,11 +20,11 @@ RSpec.describe "Geolocation" do
   xit "import" do
 
     CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
-      RepresentanteComercial.create(row.to_hash)
+      Representante.create(row.to_hash)
     end
 
-    expect(RepresentanteComercial.last.latitude).to eq(-21.7923558)
-    expect(RepresentanteComercial.last.longitude).to eq(-43.3622146)
+    expect(Representante.last.latitude).to eq(-21.7923558)
+    expect(Representante.last.longitude).to eq(-43.3622146)
   end
 
   context "geolocation cep" do

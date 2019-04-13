@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "representante_comerciais/index", type: :view do
+RSpec.describe "representantes/index", type: :view do
 
   before(:each) do
     @cliente = assign(:cliente, create(:cliente))
-    @representante_comerciais = assign(:representante_comerciais, create_list(:representante_comercial, 2))
+    @representantes = assign(:representantes, create_list(:representante, 2))
   end
 
-  it "renders a list of representante_comerciais" do
+  it "renders a list of representantes" do
     render
-    assert_select "tr>td", :text => @representante_comerciais.first.descricao
+    assert_select "tr>td", :text => @representantes.first.descricao
   end
 end

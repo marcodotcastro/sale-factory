@@ -14,7 +14,7 @@ pt-BR:
       cliente:
         descricao: "Descrição"
         endereco: "Endereço"
-      representante_comercial:
+      representante:
         descricao: "Descrição"
         endereco: "Endereço"
       lojista:

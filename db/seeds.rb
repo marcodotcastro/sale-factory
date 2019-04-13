@@ -5,5 +5,5 @@ require 'csv'
 #   Setor.create(descricao: descricao)
 # end
 
-# FactoryBot.create(:cliente, :com_representante_comerciais)
-FactoryBot.create(:representante_comercial, :com_cliente, :com_lojistas)
+FactoryBot.create(:cliente, :com_representantes)
+FactoryBot.create(:representante, :com_cliente, :com_lojistas)

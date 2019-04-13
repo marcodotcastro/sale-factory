@@ -22,10 +22,6 @@
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#
 
 module LojistasHelper
 end

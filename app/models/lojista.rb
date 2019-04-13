@@ -22,14 +22,10 @@
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#
 
 class Lojista < ApplicationRecord
   acts_as_paranoid
-  has_and_belongs_to_many :representante_comerciais
+  has_and_belongs_to_many :representantes
   belongs_to :cidade
 
   def generate_geolocation

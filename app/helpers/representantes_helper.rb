@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: representante_comerciais
+# Table name: representantes
 #
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
@@ -20,15 +20,14 @@
 #
 # Indexes
 #
-#  index_representante_comerciais_on_cidade_id   (cidade_id)
-#  index_representante_comerciais_on_deleted_at  (deleted_at)
-#  index_representante_comerciais_on_usuario_id  (usuario_id)
+#  index_representantes_on_cidade_id   (cidade_id)
+#  index_representantes_on_deleted_at  (deleted_at)
+#  index_representantes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
 #
 
-module RepresentanteComerciaisHelper
+module RepresentantesHelper
 end

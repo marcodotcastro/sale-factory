@@ -4,14 +4,14 @@ RSpec.describe "lojistas/new", type: :view do
 
   before(:each) do
     @lojista = assign(:lojista, create(:lojista))
-    @representante_comercial = assign(:representante_comercial, @lojista.representante_comercial)
-    @cliente = assign(:cliente, @lojista.representante_comercial.cliente)
+    @representante = assign(:representante, @lojista.representante)
+    @cliente = assign(:cliente, @lojista.representante.cliente)
   end
 
   it "renders new lojista form" do
     render
 
-    assert_select "form[action=?][method=?]", cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), "post" do
+    assert_select "form[action=?][method=?]", cliente_representante_lojista_path(@cliente, @representante, @lojista), "post" do
 
       assert_select "input[name=?]", "lojista[descricao]"
 

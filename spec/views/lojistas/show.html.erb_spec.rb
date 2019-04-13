@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "lojistas/show", type: :view do
   before(:each) do
     @lojista = assign(:lojista, create(:lojista))
-    @representante_comercial = assign(:representante_comercial, @lojista.representante_comercial)
-    @cliente = assign(:cliente, @lojista.representante_comercial.cliente)
+    @representante = assign(:representante, @lojista.representante)
+    @cliente = assign(:cliente, @lojista.representante.cliente)
   end
 
   it "renders attributes in <p>" do

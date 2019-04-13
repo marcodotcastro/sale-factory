@@ -26,12 +26,6 @@
 #  index_clientes_on_setor_id    (setor_id)
 #  index_clientes_on_usuario_id  (usuario_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (setor_id => setores.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
-#
 
 require 'rails_helper'
 
@@ -44,17 +38,17 @@ RSpec.describe Cliente, type: :model do
     expect(@cliente.cidade.descricao).to eq(Cidade.last.descricao)
   end
 
-  it "uma cliente com representante comercial" do
-    @cliente = create(:cliente, :com_representante_comercial)
+  it "uma cliente com representante" do
+    @cliente = create(:cliente, :com_representante)
 
-    expect(@cliente.representante_comerciais.last.descricao).to eq(RepresentanteComercial.last.descricao)
+    expect(@cliente.representantes.last.descricao).to eq(Representante.last.descricao)
   end
 
-  it "uma cliente com representantes comerciais" do
-    @cliente = create(:cliente, :com_representante_comerciais)
+  it "uma cliente com representantes" do
+    @cliente = create(:cliente, :com_representantes)
 
-    expect(@cliente.representante_comerciais.first).to eq(RepresentanteComercial.last(2).first)
-    expect(@cliente.representante_comerciais.last).to eq(RepresentanteComercial.last(2).last)
+    expect(@cliente.representantes.first).to eq(Representante.last(2).first)
+    expect(@cliente.representantes.last).to eq(Representante.last(2).last)
   end
 
 end

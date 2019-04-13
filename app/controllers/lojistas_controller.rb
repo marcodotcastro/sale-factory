@@ -22,10 +22,6 @@
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#
 
 class LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
@@ -49,7 +45,7 @@ class LojistasController < ApplicationController
 
     respond_to do |format|
       if @lojista.save
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully created.'}}
+        format.html {redirect_to cliente_representante_lojista_path(@cliente, @representante, @lojista), flash: {success: 'Lojista was successfully created.'}}
       else
         format.html {render :new}
       end
@@ -59,7 +55,7 @@ class LojistasController < ApplicationController
   def update
     respond_to do |format|
       if @lojista.update(lojista_params)
-        format.html {redirect_to cliente_representante_comercial_lojista_path(@cliente, @representante_comercial, @lojista), flash: {success: 'Lojista was successfully updated.'}}
+        format.html {redirect_to cliente_representante_lojista_path(@cliente, @representante, @lojista), flash: {success: 'Lojista was successfully updated.'}}
       else
         format.html {render :edit}
       end
@@ -69,7 +65,7 @@ class LojistasController < ApplicationController
   def destroy
     @lojista.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_representante_comercial_lojistas_path(@cliente, @representante_comercial), flash: {success: 'Lojista was successfully destroyed.'}}
+      format.html {redirect_to cliente_representante_lojistas_path(@cliente, @representante), flash: {success: 'Lojista was successfully destroyed.'}}
     end
   end
 
@@ -80,6 +76,6 @@ class LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_comercial_id, :cidade_id)
+    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_id, :cidade_id)
   end
 end

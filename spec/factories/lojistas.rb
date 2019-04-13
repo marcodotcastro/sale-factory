@@ -22,10 +22,6 @@
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (cidade_id => cidades.id)
-#
 
 FactoryBot.define do
   factory :lojista do
@@ -39,7 +35,7 @@ FactoryBot.define do
     latitude {-22.6195575}
     longitude {-49.3215312}
     
-    association :cidade, :factory => :cidade
+    association :cidade, factory: :cidade
 
   end
 end
