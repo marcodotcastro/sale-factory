@@ -33,10 +33,11 @@ class RepresentantesController < ApplicationController
   before_action :set_representante, only: [:show, :edit, :update, :destroy]
 
   def index
-    @representantes = Representante.all
+    @representantes = current_usuario.cliente.representantes
   end
 
   def show
+    #TODO: Association cliente e lojista
     @lojistas = @representante.lojistas
   end
 
@@ -79,7 +80,7 @@ class RepresentantesController < ApplicationController
   private
 
   def set_representante
-    @representante = Representante.find(params[:id])
+    @representante = current_usuario.cliente.representantes.find(params[:id])
   end
 
   def representante_params
