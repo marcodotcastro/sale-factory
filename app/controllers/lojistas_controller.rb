@@ -27,7 +27,7 @@ class LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
 
   def index
-    @lojistas = Lojista.all
+    @lojistas = current_usuario.cliente.lojistas
   end
 
   def show

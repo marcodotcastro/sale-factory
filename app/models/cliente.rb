@@ -30,6 +30,7 @@
 class Cliente < ApplicationRecord
   acts_as_paranoid
   has_and_belongs_to_many :representantes
+  has_and_belongs_to_many :lojistas
   belongs_to :cidade
   belongs_to :usuario
   belongs_to :setor

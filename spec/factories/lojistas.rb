@@ -37,5 +37,9 @@ FactoryBot.define do
 
     cidade {Cidade.first || association(:cidade)}
 
+    before(:create) do |lojista|
+      lojista.clientes << Cliente.all.sample
+    end
+
   end
 end

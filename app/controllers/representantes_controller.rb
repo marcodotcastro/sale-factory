@@ -37,8 +37,7 @@ class RepresentantesController < ApplicationController
   end
 
   def show
-    #TODO: Association cliente e lojista
-    @lojistas = @representante.lojistas
+    @lojistas = current_usuario.cliente.lojistas
   end
 
   def new
