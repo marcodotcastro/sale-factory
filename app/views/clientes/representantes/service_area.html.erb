@@ -1,0 +1,131 @@
+<h4>Área de Atendimento dos Representantes</h4>
+<div id="map"></div>
+<script>
+
+    var representatives = {};
+
+    <% @representatives.each_with_index do |representative,index| %>
+    representatives['<%= "representative#{index}" %>'] = {
+        center: {
+            lat: <%= representative.latitude%>,
+            lng: <%= representative.longitude %>
+        }, description: '<%= representative.description%>'
+    };
+    <% end %>
+
+    var shopkeepers = {};
+
+    <% @shopkeepers.each_with_index do |shopkeeper,index| %>
+    <% unless shopkeeper.longitude.nil? and shopkeeper.latitude.nil? %>
+    shopkeepers["shopkeeper<%= index %>"] = {
+        center: {lat: <%= shopkeeper.latitude%>, lng: <%= shopkeeper.longitude %>},
+        name: '<%= shopkeeper.name %>'
+    };
+    <% end %>
+    <% end %>
+
+    var cities = {};
+
+    <% @cities.each_with_index do |city,index| %>
+    <% unless city.longitude.nil? and city.latitude.nil? %>
+    cities["city<%= index %>"] = {
+        center: {lat: <%= city.latitude%>, lng: <%= city.longitude %>},
+        population: <%= city.population %>,
+        description: '<%= city.description %>'
+    };
+    <% end %>
+    <% end %>
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: {lat: -15.7941, lng: -47.8825},
+            mapTypeId: 'terrain'
+        });
+
+        const infoArr = [];
+
+        Object.keys(representatives).forEach(key => {
+            const item = representatives[key];
+            let representativeCircle = new google.maps.Circle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: 10000 * 20,
+            });
+            const valor = item.description;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(representativeCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
+
+        Object.keys(shopkeepers).forEach(key => {
+            const item = shopkeepers[key];
+            let shopkeeperCircle = new google.maps.Circle({
+                strokeColor: '#000cff',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#000cff',
+                fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: 5000,
+            });
+            const valor = item.name;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(shopkeeperCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
+        Object.keys(cities).forEach(key => {
+            const item = cities[key];
+            let cityCircle = new google.maps.Circle({
+                strokeColor: '#000000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#000000',
+                fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: Math.sqrt(item.population) * 100
+            });
+            const valor = item.description;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(cityCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMbJkHlhWD-MZRz8bENATffO6YmyYulg0&callback=initMap">
+</script>

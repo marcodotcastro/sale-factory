@@ -32,7 +32,7 @@
             <td><%= representante.telefone %></td>
             <td><%= representante.email %></td>
             <td>
-              <%= link_to representante_path(representante) do %>
+              <%= link_to cliente_representante_path(@cliente, representante) do %>
                 <i class="fa fa-eye"></i>
               <% end %>
             </td>
