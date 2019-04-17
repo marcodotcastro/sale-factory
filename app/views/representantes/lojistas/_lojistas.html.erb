@@ -33,8 +33,15 @@
             <td><%= lojista.telefone %><%# TODO: Adicionar lojista.telefone_whatsapp %></td>
             <td><%# TODO: Adicionar lojista.email %></td>
             <td>
-              <%= link_to lojista_path(lojista) do %>
-                <i class="fa fa-eye"></i>
+              <%#TODO: Mover para o helpers %>
+              <% if current_usuario.representante? %>
+                <%= link_to representante_lojista_path(@representante, lojista) do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+              <% elsif current_usuario.cliente? %>
+                <%= link_to cliente_lojista_path(@cliente, lojista) do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
               <% end %>
             </td>
           </tr>

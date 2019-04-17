@@ -52,6 +52,6 @@ class Clientes::RepresentantesController < ApplicationController
   end
 
   def representante_params
-    params.require(:representante).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id, :cliente_id)
+    params.require(:representante).permit(:cliente_id)
   end
 end

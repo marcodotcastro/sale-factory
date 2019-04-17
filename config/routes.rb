@@ -121,19 +121,14 @@ Rails.application.routes.draw do
   ##RECURSOS
   resources :clientes do
     scope module: :clientes do
+      resources :lojistas do
+        get "service_area/clientes", to: "clientes#service_area"
+      end
       resources :representantes do
         get "service_area/representantes", to: "representantes#service_area"
-
-        scope module: 'representantes' do
-          resources :lojistas do
-            get "service_area/lojistas", to: "lojistas#service_area"
-          end
-        end
       end
     end
   end
-
-  resources :lojistas
 
   #REPRESENTANTES
 
@@ -142,12 +137,8 @@ Rails.application.routes.draw do
 
   ##RECURSOS
   resources :representantes do
-    get "service_area/representantes", to: "representantes#service_area"
-
     scope module: 'representantes' do
-      resources :lojistas do
-        get "service_area/lojistas", to: "lojistas#service_area"
-      end
+      resources :lojistas
     end
   end
 
