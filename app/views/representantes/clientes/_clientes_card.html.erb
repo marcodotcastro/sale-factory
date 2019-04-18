@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Representantes
+      <h2>Clientes
         <small>...</small>
       </h2>
       <ul class="nav navbar-right panel_toolbox">
@@ -10,21 +10,23 @@
       </ul>
       <div class="clearfix"></div>
     </div>
-    <div class="x_content">
-      <% @representantes.each do |representante| %>
+    <div class="row">
+      <% @clientes.each do |cliente| %>
         <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
           <div class="well profile_view">
             <div class="col-sm-12">
-              <h4 class="brief"><i><span title="<%= representante.descricao %>"><%= truncate representante.descricao %></span></i>
+              <h4 class="brief">
+                <i><span title="<%= cliente.descricao %>"><%= truncate cliente.descricao %></span></i>
               </h4>
               <div class="left col-xs-12">
-                <h2><%= representante.contato %></h2>
+                <h2><%= cliente.contato %></h2>
                 <ul class="list-unstyled">
                   <li><i class="fa fa-building"></i> <strong>Endereço: </strong>
-                    <span title="<%= representante.endereco %>"><%= truncate representante.endereco %></span></li>
-                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong><%= representante.email %></li>
-                  <li><i class="fa fa-phone"></i> <strong>Telefone: </strong><%= representante.telefone %></li>
-                  <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= representante.telefone_whatsapp %></li>
+                    <span title="<%= cliente.endereco %>"><%= truncate cliente.endereco %></span></li>
+                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong><%= cliente.email %></li>
+                  <li><i class="fa fa-phone"></i> <strong>Telefone: </strong><%= cliente.telefone %></li>
+                  <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= cliente.telefone_whatsapp %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -32,13 +34,7 @@
               <div class="col-xs-12 col-sm-6 emphasis"></div>
               <div class="col-xs-12 col-sm-6 emphasis">
                 <% if current_usuario.representante? %>
-                  <%= link_to representante_representante_path(@representante, representante) do %>
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <i class="fa fa-eye"> </i> Detalhes
-                    </button>
-                  <% end %>
-                <% elsif current_usuario.cliente? %>
-                  <%= link_to cliente_lojista_path(@cliente, representante) do %>
+                  <%= link_to representante_cliente_path(@representante, cliente) do %>
                     <button type="button" class="btn btn-primary btn-xs">
                       <i class="fa fa-eye"> </i> Detalhes
                     </button>

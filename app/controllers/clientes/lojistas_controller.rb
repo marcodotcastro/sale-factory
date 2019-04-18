@@ -32,9 +32,20 @@ class Clientes::LojistasController < ApplicationController
   end
 
   def show
+    @clientes = set_clientes_do_lojista_com_representante
   end
 
   private
+
+  def set_clientes_do_lojista_com_representante
+    #TODO: Como refatorar isso?
+    clientes = []
+    @lojista.clientes.each do |cliente|
+      if cliente.representantes.find_by(id: @representante)
+        clientes << cliente
+      end
+    end
+  end
 
   def get_lojistas
     current_usuario.cliente.lojistas

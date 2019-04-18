@@ -107,7 +107,9 @@
     </div>
   </div>
 
-  <%= render "representantes/clientes/clientes" %>
+  <% if current_usuario.representante? %>
+    <%= render "representantes/clientes/clientes_list" %>
+  <% end %>
 </div>
 
 
