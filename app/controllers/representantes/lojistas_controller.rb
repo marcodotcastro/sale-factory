@@ -30,13 +30,15 @@
 
 class Representantes::LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
-  before_action :set_representante, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+  before_action :set_clientes, only: [:new, :edit]
 
   def index
-    @lojistas = Lojista.all
+    @lojistas = get_lojistas
   end
 
   def show
+    @clientes = set_clientes_do_lojista_com_representante
   end
 
   def new
@@ -77,6 +79,24 @@ class Representantes::LojistasController < ApplicationController
 
   private
 
+  def set_clientes
+    @clientes = current_usuario.representante.clientes
+  end
+
+  def set_clientes_do_lojista_com_representante
+    #TODO: Como refatorar isso?
+    clientes = []
+    @lojista.clientes.each do |cliente|
+      if cliente.representantes.find_by(id: @representante)
+        clientes << cliente
+      end
+    end
+  end
+
+  def get_lojistas
+    current_usuario.representante.lojistas
+  end
+
   def set_lojista
     @lojista = Lojista.find(params[:id])
   end
@@ -85,8 +105,7 @@ class Representantes::LojistasController < ApplicationController
     @representante = Representante.find(params[:representante_id])
   end
 
-
   def lojista_params
-    params.require(:lojista).permit(:nome, :endereco, :telefone, :cep, :latitude, :longitude, :cliente_id, :representante_id, :cidade_id)
+    params.require(:lojista).permit(:descricao, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, cliente_ids: [])
   end
 end

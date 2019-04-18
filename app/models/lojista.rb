@@ -25,8 +25,8 @@
 
 class Lojista < ApplicationRecord
   acts_as_paranoid
-  has_and_belongs_to_many :representantes
-  has_and_belongs_to_many :clientes
+  has_and_belongs_to_many :representantes, -> { distinct }
+  has_and_belongs_to_many :clientes, -> { distinct }
   belongs_to :cidade
 
   def generate_geolocation

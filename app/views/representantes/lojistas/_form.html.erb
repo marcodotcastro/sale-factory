@@ -1,3 +1,7 @@
+<%= f.input :cliente_ids, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, input_html: {multiple: true}, class: "form-control" %>
+
+<div class="divider-dashed"></div>
+
 <%= f.input :descricao %>
 <%= f.input :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
 <%= f.input :endereco %>

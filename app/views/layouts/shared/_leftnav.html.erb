@@ -114,7 +114,9 @@
           <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
-                <%# %>
+                <%= link_to "Clientes", representante_clientes_path(current_usuario.representante) %>
+              </li>
+              <li>
                 <%= link_to "Lojistas", representante_lojistas_path(current_usuario.representante) %>
               </li>
             </ul>
@@ -123,8 +125,8 @@
         <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <%#TODO: Somente para venda %>
-            <li><%= link_to "Equipe", new_usuario_invitation_path %></li>
             <li><%= link_to 'Lojista', new_representante_lojista_path(current_usuario.representante) %></li>
+            <li><%= link_to "Equipe", new_usuario_invitation_path %></li>
           </ul>
         </li>
       </ul>

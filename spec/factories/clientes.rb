@@ -29,7 +29,7 @@
 
 FactoryBot.define do
   factory :cliente do
-    descricao {"Indústria Farmacêutica Melcon do Brasil S.A."}
+    sequence(:descricao) {|n| "Indústria Farmacêutica Melcon do Brasil S.A. #{n}"}
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
     contato {"Sr João Paulo"}

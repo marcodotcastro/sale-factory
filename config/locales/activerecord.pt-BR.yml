@@ -18,6 +18,7 @@ pt-BR:
         descricao: "Descrição"
         endereco: "Endereço"
       lojista:
+        cliente_ids: "Clientes"
         descricao: "Descrição"
         endereco: "Endereço"
       admin_user:

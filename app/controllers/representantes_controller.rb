@@ -33,7 +33,6 @@ class RepresentantesController < ApplicationController
   before_action :set_representante, only: [:show, :edit, :update, :destroy]
 
   def show
-    @lojistas = @representante.lojistas
   end
 
   def new
@@ -73,6 +72,10 @@ class RepresentantesController < ApplicationController
   end
 
   private
+
+  def get_lojistas
+    @representante.lojistas
+  end
 
   def set_representante
     @representante = Representante.find(params[:id])

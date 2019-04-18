@@ -21,7 +21,9 @@
           <th>Telefone</th>
           <th>Whatsapp</th>
           <th>Email</th>
-          <th>Representante</th>
+          <% if current_usuario.cliente? %>
+            <th>Representante</th>
+          <% end %>
           <th></th>
         </tr>
         </thead>
@@ -36,7 +38,9 @@
             <td>
               <%= lojista.telefone_whatsapp %></td>
             <td><%= lojista.email %></td>
-            <td><%= representante(lojista, @representante) %></td>
+            <% if current_usuario.cliente? %>
+              <td><%= representante(lojista, @representante) %></td>
+            <% end %>
             <td>
               <%#TODO: Mover para o helpers %>
               <% if current_usuario.representante? %>

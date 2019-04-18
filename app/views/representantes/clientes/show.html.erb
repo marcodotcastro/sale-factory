@@ -2,7 +2,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Cadastrar Lojista
+        <h2>Cliente
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -13,22 +13,9 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <div class="x_content">
-        <%= simple_form_for([@representante, @lojista], html: {class: "form-horizontal form-label-left"}) do |f| %>
-
-          <%= render 'form', f: f %>
-
-          <div class="form-group">
-            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <%= f.button :submit, "Salvar", class: "btn btn-success" %>
-            </div>
-          </div>
-
-        <% end %>
-      </div>
+      <%= render "cliente" %>
     </div>
   </div>
+  <%= render "representantes/lojistas/lojistas" %>
 </div>
-
-
 

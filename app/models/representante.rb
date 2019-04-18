@@ -31,8 +31,8 @@
 
 class Representante < ApplicationRecord
   acts_as_paranoid
-  has_and_belongs_to_many :clientes
-  has_and_belongs_to_many :lojistas
+  has_and_belongs_to_many :clientes, -> {distinct}
+  has_and_belongs_to_many :lojistas, -> {distinct}
   belongs_to :cidade
   belongs_to :usuario
 

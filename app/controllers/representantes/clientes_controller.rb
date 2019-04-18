@@ -23,32 +23,36 @@
 #  index_lojistas_on_deleted_at  (deleted_at)
 #
 
-class Clientes::LojistasController < ApplicationController
-  before_action :set_lojista, only: [:show]
-  before_action :set_cliente, only: [:index, :show]
+class Representantes::ClientesController < ApplicationController
+  before_action :set_cliente, only: [:show]
+  before_action :set_representante, only: [:index, :show]
 
   def index
-    @lojistas = get_lojistas
+    @clientes = current_usuario.representante.clientes
   end
 
   def show
+    @lojistas = set_lojistas_do_cliente_com_representante
   end
 
   private
 
-  def get_lojistas
-    current_usuario.cliente.lojistas
+  def set_lojistas_do_cliente_com_representante
+    #TODO: Como refatorar isso?
+    lojistas = []
+    @cliente.lojistas.each do |lojista|
+      if lojista.representantes.find_by(id: @representante)
+        lojistas << lojista
+      end
+    end
   end
 
   def set_cliente
-    @cliente = Cliente.find(params[:cliente_id])
+    @cliente = Cliente.find(params[:id])
   end
 
-  def set_lojista
-    @lojista = Lojista.find(params[:id])
+  def set_representante
+    @representante = current_usuario.representante
   end
 
-  def lojista_params
-    params.require(:lojista).permit(:cliente_id)
-  end
 end

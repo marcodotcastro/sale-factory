@@ -34,24 +34,33 @@ class Clientes::RepresentantesController < ApplicationController
   before_action :set_cliente, only: [:index, :show]
 
   def index
-    @representantes = current_usuario.cliente.representantes
+    @representantes = get_representantes
   end
 
   def show
-    @lojistas = current_usuario.cliente.lojistas
+    @lojistas = get_lojistas
   end
 
   private
+
+  def get_lojistas
+    current_usuario.cliente.lojistas
+  end
+
+  def get_representantes
+    current_usuario.cliente.representantes
+  end
 
   def set_cliente
     @cliente = current_usuario.cliente
   end
 
   def set_representante
-    @representante = current_usuario.cliente.representantes.find(params[:id])
+    @representante = get_representantes.find(params[:id])
   end
 
   def representante_params
     params.require(:representante).permit(:cliente_id)
   end
+
 end

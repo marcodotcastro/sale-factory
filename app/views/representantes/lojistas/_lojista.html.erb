@@ -25,17 +25,9 @@
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= representante(@lojista, @representante) %>">
               </div>
             </div>
-          <% elsif current_usuario.representante? %>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= cliente(@lojista, @cliente) %>">
-              </div>
-            </div>
-          <% end %>
 
-          <div class="divider-dashed"></div>
+            <div class="divider-dashed"></div>
+          <% end %>
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição
@@ -114,6 +106,8 @@
       </div>
     </div>
   </div>
+
+  <%= render "representantes/clientes/clientes" %>
 </div>
 
 
