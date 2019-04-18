@@ -29,4 +29,21 @@
 
 module ClientesHelper
 
+
+  def cliente(lojista, cliente)
+    #TODO: Como refatorar isso?
+    if cliente
+      cliente = lojista.clientes.select(:id, :descricao).distinct.find_by(id: cliente.id)
+      if cliente
+        return cliente.descricao
+      end
+    else
+      @representante.clientes.each do |cliente|
+        cliente = lojista.clientes.select(:id, :descricao).distinct.find_by(id: cliente.id)
+        return cliente.descricao if cliente
+      end
+    end
+    return "Sem Representante"
+  end
+
 end

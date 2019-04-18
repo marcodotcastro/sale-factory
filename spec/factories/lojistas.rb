@@ -38,7 +38,11 @@ FactoryBot.define do
     cidade {Cidade.first || association(:cidade)}
 
     before(:create) do |lojista|
-      lojista.clientes << Cliente.all.sample
+      lojista.clientes << Cliente.last(rand(Cliente.count) + 1)
+    end
+
+    before(:create) do |lojista|
+      lojista.representantes << Representante.last(rand(Representante.count) + 1)
     end
 
   end

@@ -16,10 +16,12 @@
         <thead>
         <tr>
           <th>#</th>
-          <th>Descricao</th>
+          <th>Descrição</th>
           <th>Contato</th>
           <th>Telefone</th>
+          <th>Whatsapp</th>
           <th>Email</th>
+          <th>Representante</th>
           <th></th>
         </tr>
         </thead>
@@ -29,9 +31,12 @@
           <tr>
             <th scope="row"><%= lojista.id.to_s %></th>
             <td><%= lojista.descricao %></td>
-            <td><%# TODO: Adicionar lojista.contato %></td>
-            <td><%= lojista.telefone %><%# TODO: Adicionar lojista.telefone_whatsapp %></td>
-            <td><%# TODO: Adicionar lojista.email %></td>
+            <td><%= lojista.contato %></td>
+            <td><%= lojista.telefone %></td>
+            <td>
+              <%= lojista.telefone_whatsapp %></td>
+            <td><%= lojista.email %></td>
+            <td><%= representante(lojista, @representante) %></td>
             <td>
               <%#TODO: Mover para o helpers %>
               <% if current_usuario.representante? %>

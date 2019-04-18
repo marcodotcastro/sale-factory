@@ -48,13 +48,13 @@ FactoryBot.define do
 
     trait :com_representante do
       after(:create) do |cliente|
-        create(:representante, clientes: [cliente])
+        create(:representante, :com_cliente, :com_lojistas, clientes: [cliente])
       end
     end
 
     trait :com_representantes do
       after(:create) do |cliente|
-        create_list(:representante, 2, clientes: [cliente])
+        create_list(:representante, 2, :com_cliente, :com_lojista, clientes: [cliente])
       end
     end
 
