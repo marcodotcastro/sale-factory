@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_205339) do
   end
 
   create_table "cidades", force: :cascade do |t|
+    t.string "codigo"
     t.string "descricao"
     t.string "estado"
     t.integer "populacao"

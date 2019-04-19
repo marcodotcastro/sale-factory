@@ -3,6 +3,7 @@
 # Table name: cidades
 #
 #  id         :bigint(8)        not null, primary key
+#  codigo     :string
 #  descricao  :string
 #  estado     :string
 #  latitude   :float

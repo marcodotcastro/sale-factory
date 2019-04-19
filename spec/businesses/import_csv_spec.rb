@@ -24,14 +24,21 @@ RSpec.describe "ImportCsv" do
     # expect(Lojista.last.longitude).to eq(-43.3652338)
   end
 
-  xit "import" do
+  it "Cidade" do
 
     CSV.foreach("spec/files/cidades.csv", headers: :true) do |row|
-      Cidade.create(row.to_hash.each_value(&:strip))
+      data = row.to_hash
+      if data["estado"].eql? "GO"
+        cidade = Cidade.new
+        cidade.estado = data["estado"]
+        cidade.codigo = data["codigo"]
+        cidade.descricao = data["descricao"]
+        cidade.populacao = data["populacao"].sub(".", "").to_i
+        cidade.save
+      end
     end
 
-    # expect(Lojista.last.latitude).to eq(-21.7882576)
-    # expect(Lojista.last.longitude).to eq(-43.3652338)
+    expect(Cidade.count).to eq(246)
   end
 
 end
