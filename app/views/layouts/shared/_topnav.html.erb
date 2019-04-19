@@ -34,20 +34,45 @@
           <%#TODO: Mover código para o helpers %>
           <% if current_usuario.cliente? %>
             <% if current_usuario.cliente %>
-              <li><%= link_to "Perfil", cliente_path(current_usuario.cliente) %></li>
+              <li>
+                <%= link_to cliente_path(current_usuario.cliente) do %>
+                  <i class="fa fa-user"></i> Perfil
+                <% end %>
+              </li>
             <% else %>
-              <li><%= link_to "Perfil", new_cliente_path %></li>
+              <li>
+                <%= link_to new_cliente_path do %>
+                  <i class="fa fa-user"></i> Perfil
+                <% end %>
+              </li>
             <% end %>
           <% elsif current_usuario.representante? %>
             <% if current_usuario.representante %>
-              <li><%= link_to("Perfil", representante_path(current_usuario.representante)) %></li>
+              <li>
+                <%= link_to representante_path(current_usuario.representante) do %>
+                  <i class="fa fa-user"></i> Perfil
+                <% end %>
+              </li>
             <% else %>
-              <li><%= link_to "Perfil", new_representante_path %></li>
+              <li>
+                <%= link_to new_representante_path do %>
+                  <i class="fa fa-user"></i> Perfil
+                <% end %>
+              </li>
             <% end %>
+            <li>
+              <%= link_to representante_dashboards_ranking_membro_path do %>
+                <i class="fa fa-sort-numeric-asc"></i> Ranking
+              <% end %>
+            </li>
           <% end %>
         <% end %>
         <% if usuario_signed_in? %>
-          <li><%= link_to "Acesso", edit_usuario_registration_path %></li>
+          <li>
+            <%= link_to edit_usuario_registration_path do %>
+              <i class="fa fa-cogs"></i> Configuração
+            <% end %>
+          </li>
         <% end %>
         <li>
           <% if usuario_signed_in? %>

@@ -22,9 +22,6 @@
 #                                usuario_invitation PATCH  /usuarios/invitation(.:format)                                                               usuarios/invitations#update
 #                                                   PUT    /usuarios/invitation(.:format)                                                               usuarios/invitations#update
 #                                                   POST   /usuarios/invitation(.:format)                                                               usuarios/invitations#create
-#                                  principais_index GET    /principais/index(.:format)                                                                  principais#index
-#                                              root GET    /                                                                                            principais#index
-#                                 letter_opener_web        /letter_opener/inbox                                                                         LetterOpenerWeb::Engine
 #                                           cidades GET    /cidades(.:format)                                                                           cidades#index
 #                                                   POST   /cidades(.:format)                                                                           cidades#create
 #                                        new_cidade GET    /cidades/new(.:format)                                                                       cidades#new
@@ -33,7 +30,20 @@
 #                                                   PATCH  /cidades/:id(.:format)                                                                       cidades#update
 #                                                   PUT    /cidades/:id(.:format)                                                                       cidades#update
 #                                                   DELETE /cidades/:id(.:format)                                                                       cidades#destroy
-#                                 dashboard_cliente GET    /dashboard/cliente(.:format)                                                                 dashboard#cliente
+#                                 letter_opener_web        /letter_opener/inbox                                                                         LetterOpenerWeb::Engine
+#                                  principais_index GET    /principais/index(.:format)                                                                  principais#index
+#                                              root GET    /                                                                                            principais#index
+#                          cliente_dashboards_geral GET    /clientes/:cliente_id/dashboards/geral(.:format)                                             clientes/dashboards#geral
+#                        cliente_dashboards_ranking GET    /clientes/:cliente_id/dashboards/ranking(.:format)                                           clientes/dashboards#ranking
+#                  cliente_dashboards_representante GET    /clientes/:cliente_id/dashboards/representante/:id(.:format)                                 clientes/dashboards#representante
+#                                          clientes GET    /clientes(.:format)                                                                          clientes#index
+#                                                   POST   /clientes(.:format)                                                                          clientes#create
+#                                       new_cliente GET    /clientes/new(.:format)                                                                      clientes#new
+#                                      edit_cliente GET    /clientes/:id/edit(.:format)                                                                 clientes#edit
+#                                           cliente GET    /clientes/:id(.:format)                                                                      clientes#show
+#                                                   PATCH  /clientes/:id(.:format)                                                                      clientes#update
+#                                                   PUT    /clientes/:id(.:format)                                                                      clientes#update
+#                                                   DELETE /clientes/:id(.:format)                                                                      clientes#destroy
 #             cliente_lojista_service_area_clientes GET    /clientes/:cliente_id/lojistas/:lojista_id/service_area/clientes(.:format)                   clientes/clientes#service_area
 #                                  cliente_lojistas GET    /clientes/:cliente_id/lojistas(.:format)                                                     clientes/lojistas#index
 #                                                   POST   /clientes/:cliente_id/lojistas(.:format)                                                     clientes/lojistas#create
@@ -52,15 +62,26 @@
 #                                                   PATCH  /clientes/:cliente_id/representantes/:id(.:format)                                           clientes/representantes#update
 #                                                   PUT    /clientes/:cliente_id/representantes/:id(.:format)                                           clientes/representantes#update
 #                                                   DELETE /clientes/:cliente_id/representantes/:id(.:format)                                           clientes/representantes#destroy
-#                                          clientes GET    /clientes(.:format)                                                                          clientes#index
+#                                                   GET    /clientes(.:format)                                                                          clientes#index
 #                                                   POST   /clientes(.:format)                                                                          clientes#create
-#                                       new_cliente GET    /clientes/new(.:format)                                                                      clientes#new
-#                                      edit_cliente GET    /clientes/:id/edit(.:format)                                                                 clientes#edit
-#                                           cliente GET    /clientes/:id(.:format)                                                                      clientes#show
+#                                                   GET    /clientes/new(.:format)                                                                      clientes#new
+#                                                   GET    /clientes/:id/edit(.:format)                                                                 clientes#edit
+#                                                   GET    /clientes/:id(.:format)                                                                      clientes#show
 #                                                   PATCH  /clientes/:id(.:format)                                                                      clientes#update
 #                                                   PUT    /clientes/:id(.:format)                                                                      clientes#update
 #                                                   DELETE /clientes/:id(.:format)                                                                      clientes#destroy
-#                           dashboard_representante GET    /dashboard/representante(.:format)                                                           dashboard#representante
+#                    representante_dashboards_geral GET    /representantes/:representante_id/dashboards/geral(.:format)                                 representantes/dashboards#geral
+#                  representante_dashboards_ranking GET    /representantes/:representante_id/dashboards/ranking(.:format)                               representantes/dashboards#ranking
+#           representante_dashboards_ranking_membro GET    /representantes/:representante_id/dashboards/ranking/membro(.:format)                        representantes/dashboards#membro
+#                  representante_dashboards_lojista GET    /representantes/:representante_id/dashboards/lojista/:id(.:format)                           representantes/dashboards#lojista
+#                                    representantes GET    /representantes(.:format)                                                                    representantes#index
+#                                                   POST   /representantes(.:format)                                                                    representantes#create
+#                                 new_representante GET    /representantes/new(.:format)                                                                representantes#new
+#                                edit_representante GET    /representantes/:id/edit(.:format)                                                           representantes#edit
+#                                     representante GET    /representantes/:id(.:format)                                                                representantes#show
+#                                                   PATCH  /representantes/:id(.:format)                                                                representantes#update
+#                                                   PUT    /representantes/:id(.:format)                                                                representantes#update
+#                                                   DELETE /representantes/:id(.:format)                                                                representantes#destroy
 #                            representante_lojistas GET    /representantes/:representante_id/lojistas(.:format)                                         representantes/lojistas#index
 #                                                   POST   /representantes/:representante_id/lojistas(.:format)                                         representantes/lojistas#create
 #                         new_representante_lojista GET    /representantes/:representante_id/lojistas/new(.:format)                                     representantes/lojistas#new
@@ -77,11 +98,11 @@
 #                                                   PATCH  /representantes/:representante_id/clientes/:id(.:format)                                     representantes/clientes#update
 #                                                   PUT    /representantes/:representante_id/clientes/:id(.:format)                                     representantes/clientes#update
 #                                                   DELETE /representantes/:representante_id/clientes/:id(.:format)                                     representantes/clientes#destroy
-#                                    representantes GET    /representantes(.:format)                                                                    representantes#index
+#                                                   GET    /representantes(.:format)                                                                    representantes#index
 #                                                   POST   /representantes(.:format)                                                                    representantes#create
-#                                 new_representante GET    /representantes/new(.:format)                                                                representantes#new
-#                                edit_representante GET    /representantes/:id/edit(.:format)                                                           representantes#edit
-#                                     representante GET    /representantes/:id(.:format)                                                                representantes#show
+#                                                   GET    /representantes/new(.:format)                                                                representantes#new
+#                                                   GET    /representantes/:id/edit(.:format)                                                           representantes#edit
+#                                                   GET    /representantes/:id(.:format)                                                                representantes#show
 #                                                   PATCH  /representantes/:id(.:format)                                                                representantes#update
 #                                                   PUT    /representantes/:id(.:format)                                                                representantes#update
 #                                                   DELETE /representantes/:id(.:format)                                                                representantes#destroy
@@ -102,20 +123,27 @@ Rails.application.routes.draw do
   #ADMINISTRAÇÃO
   devise_for :usuarios, :controllers => {invitations: 'usuarios/invitations', registrations: 'usuarios/registrations'}
 
-  get 'principais/index'
-  root to: 'principais#index'
+  resources :cidades
 
   #DESENVOLVIVMENTO
   default_url_options :host => "localhost:3000"
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener/inbox" if Rails.env.development?
 
-  resources :cidades
+  #TODOS
+  get 'principais/index'
+  root to: 'principais#index'
+
 
   #CLIENTES
   ##DASHBOARDS
-  get 'dashboard/cliente'
-
+  resources :clientes do
+    scope module: :clientes do
+      get "dashboards/geral", to: "dashboards#geral"
+      get "dashboards/ranking", to: "dashboards#ranking"
+      get "dashboards/representante/:id", to: "dashboards#representante", as: "dashboards_representante"
+    end
+  end
   ##RECURSOS
   resources :clientes do
     scope module: :clientes do
@@ -129,10 +157,15 @@ Rails.application.routes.draw do
   end
 
   #REPRESENTANTES
-
   ##DASHBOARDS
-  get 'dashboard/representante'
-
+  resources :representantes do
+    scope module: 'representantes' do
+      get "dashboards/geral", to: "dashboards#geral"
+      get "dashboards/ranking", to: "dashboards#ranking"
+      get "dashboards/ranking/membro", to: "dashboards#membro"
+      get "dashboards/lojista/:id", to: "dashboards#lojista", as: "dashboards_lojista"
+    end
+  end
   ##RECURSOS
   resources :representantes do
     scope module: 'representantes' do

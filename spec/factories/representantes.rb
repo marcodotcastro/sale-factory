@@ -35,7 +35,7 @@ FactoryBot.define do
     sequence(:descricao) {|n| "A R Olivo Representações Ltda ME #{n}"}
     endereco {"R Primeiro de Maio, 77 - Stª Cecilia - Cravinhos, SP"}
     cep {"14140-000"}
-    contato {"Ronaldo Henrique Olivo"}
+    sequence(:contato) {|n| "Ronaldo Henrique Olivo #{n}"}
     telefone {"(16) 99254-5151 / 3637-4299"}
     telefone_whatsapp {"(16) 99254-5151"}
     sequence(:email) {|n| "ronaldo.henrique#{n}@gmail.com"}

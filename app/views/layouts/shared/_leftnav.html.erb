@@ -68,69 +68,109 @@
 <br/>
 
 <%#TODO: Mover código para o helpers %>
-<% if current_usuario.cliente? %>
-  <% if current_usuario.cliente %>
-    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-      <div class="menu_section">
-        <h3>General</h3>
-        <ul class="nav side-menu">
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+  <div class="menu_section">
+    <h3>General</h3>
+    <ul class="nav side-menu">
+
+      <% if current_usuario.cliente? %>
+        <% if current_usuario.cliente %>
           <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><%= link_to "Dashboard", dashboard_cliente_path %></li>
+              <li>
+                <%= link_to cliente_dashboards_geral_path(current_usuario.cliente) do %>
+                  <i class="fa fa-pie-chart"></i> Dashboard
+                <% end %>
+              </li>
             </ul>
           </li>
-          <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
-                <%= link_to "Representantes", cliente_representantes_path(current_usuario.cliente) %>
-              </li>
-              <li>
-                <%= link_to "Lojistas", cliente_lojistas_path(current_usuario.cliente) %>
+                <%= link_to cliente_dashboards_ranking_path(current_usuario.cliente) do %>
+                  <i class="fa fa-sort-numeric-asc"></i> Ranking
+                <% end %>
               </li>
             </ul>
           </li>
-          <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li>
+                <%= link_to cliente_representantes_path(current_usuario.cliente) do %>
+                  <i class="fa fa-user-circle"></i> Representantes
+                <% end %>
+              </li>
+              <li>
+                <%= link_to cliente_lojistas_path(current_usuario.cliente) do %>
+                  <i class="fa fa-building"></i> Lojistas
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
             <% if current_usuario.cliente %>
               <ul class="nav child_menu">
-                <li><%= link_to "Representante", new_usuario_invitation_path %></li>
+                <li>
+                  <%= link_to new_usuario_invitation_path do %>
+                    <i class="fa fa-envelope-open"></i> Representante
+                  <% end %>
+                </li>
               </ul>
             <% end %>
           </li>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-<% elsif current_usuario.representante? %>
-  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-    <div class="menu_section">
-      <h3>General</h3>
-      <ul class="nav side-menu">
+        <% end %>
+      <% elsif current_usuario.representante? %>
         <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><%= link_to "Dashboard", dashboard_representante_path %></li>
+            <li>
+              <%= link_to representante_dashboards_geral_path(current_usuario.representante) do %>
+                <i class="fa fa-pie-chart"></i> Dashboard
+              <% end %>
+            </li>
+          </ul>
+        </li>
+        <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <li>
+              <%= link_to representante_dashboards_ranking_path(current_usuario.representante) do %>
+                <i class="fa fa-sort-numeric-asc"></i> Ranking
+              <% end %>
+            </li>
           </ul>
         </li>
         <% if current_usuario.representante %>
-          <li><a><i class="fa fa-edit"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
-                <%= link_to "Clientes", representante_clientes_path(current_usuario.representante) %>
+                <%= link_to representante_clientes_path(current_usuario.representante) do %>
+                  <i class="fa fa-industry"></i> Clientes
+                <% end %>
               </li>
               <li>
-                <%= link_to "Lojistas", representante_lojistas_path(current_usuario.representante) %>
+                <%= link_to representante_lojistas_path(current_usuario.representante) do %>
+                  <i class="fa fa-building"></i> Lojistas
+                <% end %>
               </li>
             </ul>
           </li>
         <% end %>
-        <li><a><i class="fa fa-desktop"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+        <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <%#TODO: Somente para venda %>
-            <li><%= link_to 'Lojista', new_representante_lojista_path(current_usuario.representante) %></li>
-            <li><%= link_to "Equipe", new_usuario_invitation_path %></li>
+            <li>
+              <%= link_to new_representante_lojista_path(current_usuario.representante) do %>
+                <i class="fa fa-building"></i> Lojista
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_usuario_invitation_path do %>
+                <i class="fa fa-users"></i> Equipe
+              <% end %>
+            </li>
           </ul>
         </li>
-      </ul>
-    </div>
-  </div>
-<% end %>
+      <% end %>
 
+    </ul>
+  </div>
+</div>
