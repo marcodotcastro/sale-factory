@@ -61,7 +61,7 @@
               </li>
             <% end %>
             <li>
-              <%= link_to representante_dashboards_ranking_membro_path do %>
+              <%= link_to representante_dashboards_ranking_membro_path(current_usuario.representante) do %>
                 <i class="fa fa-sort-numeric-asc"></i> Ranking
               <% end %>
             </li>

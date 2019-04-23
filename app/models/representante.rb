@@ -40,11 +40,4 @@ class Representante < ApplicationRecord
 
   validates :descricao, :cidade_id, presence: true
 
-  def generate_geolocation
-    address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
-    geolocation = Geolocation.new(address: address)
-    self.latitude = geolocation.latitude
-    self.longitude = geolocation.longitude
-  end
-
 end

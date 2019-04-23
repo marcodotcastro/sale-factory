@@ -29,11 +29,4 @@ class Lojista < ApplicationRecord
   has_and_belongs_to_many :clientes, -> { distinct }
   belongs_to :cidade
 
-  def generate_geolocation
-    address = "#{self.descricao},#{self.estado}".gsub(" ", "+")
-    geolocation = Geolocation.new(address: address)
-    self.latitude = geolocation.latitude
-    self.longitude = geolocation.longitude
-  end
-
 end

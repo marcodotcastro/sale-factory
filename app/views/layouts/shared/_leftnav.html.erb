@@ -82,6 +82,16 @@
                   <i class="fa fa-pie-chart"></i> Dashboard
                 <% end %>
               </li>
+              <li>
+                <%= link_to cliente_dashboards_mapa_representantes_path(current_usuario.cliente) do %>
+                  <i class="fa fa-map-marker"></i> Represenantes
+                <% end %>
+              </li>
+              <li>
+                <%= link_to cliente_dashboards_mapa_lojistas_path(current_usuario.cliente) do %>
+                  <i class="fa fa-map-marker"></i> Lojistas
+                <% end %>
+              </li>
             </ul>
           </li>
           <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
@@ -125,6 +135,16 @@
             <li>
               <%= link_to representante_dashboards_geral_path(current_usuario.representante) do %>
                 <i class="fa fa-pie-chart"></i> Dashboard
+              <% end %>
+            </li>
+            <li>
+              <%= link_to representante_dashboards_mapa_representantes_path(current_usuario.representante) do %>
+                <i class="fa fa-map-marker"></i> Represenantes
+              <% end %>
+            </li>
+            <li>
+              <%= link_to representante_dashboards_mapa_lojistas_path(current_usuario.representante) do %>
+                <i class="fa fa-map-marker"></i> Lojistas
               <% end %>
             </li>
           </ul>

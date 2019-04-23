@@ -13,4 +13,16 @@ class Clientes::DashboardsController < ApplicationController
     @representante = Representante.find(params[:id])
   end
 
+  def mapa_lojistas
+    @cidades = Cidade.all
+
+    @lojistas = Lojista.all
+  end
+
+  def mapa_representantes
+    @cidades = Cidade.all
+
+    @representantes = Representante.all
+  end
+
 end

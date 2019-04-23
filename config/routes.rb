@@ -139,6 +139,8 @@ Rails.application.routes.draw do
   ##DASHBOARDS
   resources :clientes do
     scope module: :clientes do
+      get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
+      get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
       get "dashboards/geral", to: "dashboards#geral"
       get "dashboards/ranking", to: "dashboards#ranking"
       get "dashboards/representante/:id", to: "dashboards#representante", as: "dashboards_representante"
@@ -148,10 +150,10 @@ Rails.application.routes.draw do
   resources :clientes do
     scope module: :clientes do
       resources :lojistas do
-        get "service_area/clientes", to: "clientes#service_area"
+
       end
       resources :representantes do
-        get "service_area/representantes", to: "representantes#service_area"
+
       end
     end
   end
@@ -160,6 +162,8 @@ Rails.application.routes.draw do
   ##DASHBOARDS
   resources :representantes do
     scope module: 'representantes' do
+      get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
+      get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
       get "dashboards/geral", to: "dashboards#geral"
       get "dashboards/ranking", to: "dashboards#ranking"
       get "dashboards/ranking/membro", to: "dashboards#membro"
