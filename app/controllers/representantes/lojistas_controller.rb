@@ -98,11 +98,11 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def set_lojista
-    @lojista = Lojista.find(params[:id])
+    @lojista = Lojista.friendly.find(params[:id])
   end
 
   def set_representante
-    @representante = Representante.find(params[:representante_id])
+    @representante = Representante.friendly.find(params[:representante_id])
   end
 
   def lojista_params

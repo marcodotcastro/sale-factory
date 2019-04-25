@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -21,6 +22,7 @@
 #
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
+#  index_lojistas_on_slug        (slug) UNIQUE
 #
 
 FactoryBot.define do

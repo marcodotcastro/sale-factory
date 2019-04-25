@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -21,12 +22,17 @@
 #
 #  index_lojistas_on_cidade_id   (cidade_id)
 #  index_lojistas_on_deleted_at  (deleted_at)
+#  index_lojistas_on_slug        (slug) UNIQUE
 #
 
 class Lojista < ApplicationRecord
   acts_as_paranoid
+  extend FriendlyId
+
   has_and_belongs_to_many :representantes, -> { distinct }
   has_and_belongs_to_many :clientes, -> { distinct }
   belongs_to :cidade
+
+  friendly_id :descricao, use: :slugged
 
 end

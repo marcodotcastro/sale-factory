@@ -10,7 +10,7 @@ class Clientes::DashboardsController < ApplicationController
   end
 
   def representante
-    @representante = Representante.find(params[:id])
+    @representante = Representante.friendly.find(params[:id])
   end
 
   def mapa_lojistas

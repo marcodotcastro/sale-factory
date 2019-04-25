@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -22,6 +23,7 @@
 #
 #  index_representantes_on_cidade_id   (cidade_id)
 #  index_representantes_on_deleted_at  (deleted_at)
+#  index_representantes_on_slug        (slug) UNIQUE
 #  index_representantes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
@@ -31,10 +33,14 @@
 
 class Representante < ApplicationRecord
   acts_as_paranoid
+  extend FriendlyId
+
   has_and_belongs_to_many :clientes, -> {distinct}
   has_and_belongs_to_many :lojistas, -> {distinct}
   belongs_to :cidade
   belongs_to :usuario
+
+  friendly_id :descricao, use: :slugged
 
   has_one_attached :logo
 

@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -22,6 +23,7 @@
 #
 #  index_representantes_on_cidade_id   (cidade_id)
 #  index_representantes_on_deleted_at  (deleted_at)
+#  index_representantes_on_slug        (slug) UNIQUE
 #  index_representantes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
@@ -78,7 +80,7 @@ class RepresentantesController < ApplicationController
   end
 
   def set_representante
-    @representante = Representante.find(params[:id])
+    @representante = Representante.friendly.find(params[:id])
   end
 
   def representante_params

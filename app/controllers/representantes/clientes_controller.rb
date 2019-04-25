@@ -48,7 +48,7 @@ class Representantes::ClientesController < ApplicationController
   end
 
   def set_cliente
-    @cliente = Cliente.find(params[:id])
+    @cliente = Cliente.friendly.find(params[:id])
   end
 
   def set_representante

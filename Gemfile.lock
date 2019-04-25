@@ -143,6 +143,8 @@ GEM
       jquery-rails
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
+    friendly_id (5.2.5)
+      activerecord (>= 4.0.0)
     gentelella-rails (0.1.11)
       bootstrap-daterangepicker-rails (>= 0.1.7)
       bootstrap-sass (~> 3.3.6)
@@ -412,6 +414,7 @@ DEPENDENCIES
   devise_invitable (~> 1.7.5)
   factory_bot_rails
   ffaker
+  friendly_id (~> 5.2.4)
   gentelella-rails
   geocoder
   httparty

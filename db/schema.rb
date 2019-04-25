@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_205339) do
+ActiveRecord::Schema.define(version: 2019_04_25_123530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(version: 2019_04_16_205339) do
     t.bigint "usuario_id"
     t.bigint "setor_id"
     t.datetime "deleted_at"
+    t.string "slug"
     t.index ["cidade_id"], name: "index_clientes_on_cidade_id"
     t.index ["deleted_at"], name: "index_clientes_on_deleted_at"
     t.index ["setor_id"], name: "index_clientes_on_setor_id"
+    t.index ["slug"], name: "index_clientes_on_slug", unique: true
     t.index ["usuario_id"], name: "index_clientes_on_usuario_id"
   end
 
@@ -83,6 +85,17 @@ ActiveRecord::Schema.define(version: 2019_04_16_205339) do
     t.index ["representante_id"], name: "index_representantes_clientes_on_representante_id"
   end
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "lojistas", force: :cascade do |t|
     t.string "descricao"
     t.string "endereco"
@@ -97,8 +110,10 @@ ActiveRecord::Schema.define(version: 2019_04_16_205339) do
     t.datetime "updated_at", null: false
     t.bigint "cidade_id"
     t.datetime "deleted_at"
+    t.string "slug"
     t.index ["cidade_id"], name: "index_lojistas_on_cidade_id"
     t.index ["deleted_at"], name: "index_lojistas_on_deleted_at"
+    t.index ["slug"], name: "index_lojistas_on_slug", unique: true
   end
 
   create_table "lojistas_representantes", id: false, force: :cascade do |t|
@@ -123,8 +138,10 @@ ActiveRecord::Schema.define(version: 2019_04_16_205339) do
     t.bigint "cidade_id"
     t.bigint "usuario_id"
     t.datetime "deleted_at"
+    t.string "slug"
     t.index ["cidade_id"], name: "index_representantes_on_cidade_id"
     t.index ["deleted_at"], name: "index_representantes_on_deleted_at"
+    t.index ["slug"], name: "index_representantes_on_slug", unique: true
     t.index ["usuario_id"], name: "index_representantes_on_usuario_id"
   end
 

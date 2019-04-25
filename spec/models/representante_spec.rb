@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -22,12 +23,12 @@
 #
 #  index_representantes_on_cidade_id   (cidade_id)
 #  index_representantes_on_deleted_at  (deleted_at)
+#  index_representantes_on_slug        (slug) UNIQUE
 #  index_representantes_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (cidade_id => cidades.id)
-#  fk_rails_...  (usuario_id => usuarios.id)
 #
 
 require 'rails_helper'

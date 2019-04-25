@@ -52,11 +52,11 @@ class Clientes::LojistasController < ApplicationController
   end
 
   def set_cliente
-    @cliente = Cliente.find(params[:cliente_id])
+    @cliente = Cliente.friendly.find(params[:cliente_id])
   end
 
   def set_lojista
-    @lojista = Lojista.find(params[:id])
+    @lojista = Lojista.friendly.find(params[:id])
   end
 
   def lojista_params
