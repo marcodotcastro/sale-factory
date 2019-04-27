@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_04_27_131945) do
     t.index ["representante_id"], name: "index_representantes_lojistas_on_representante_id"
   end
 
-  create_table "pedidos", id: false, force: :cascade do |t|
+  create_table "pedidos", force: :cascade do |t|
     t.bigint "produto_id"
     t.bigint "solicitacao_id"
     t.integer "quantidade"

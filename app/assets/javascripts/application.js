@@ -20,9 +20,27 @@
 //= require jquery.vmap.sampledata
 //= require gentelella-custom
 //= require toastr.min
+//= require cocoon
 //= require_tree .
 
 
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
+
+
+$(document).ready(function () {
+    $('#pedidos')
+        .on('cocoon:before-insert', function (e, pedido_to_be_added) {
+            pedido_to_be_added.fadeIn('slow');
+        })
+        .on('cocoon:after-insert', function (e, added_pedido) {
+            // e.g. set the background of inserted pedido
+            added_pedido.css("background", "red");
+        })
+        .on('cocoon:before-remove', function (e, pedido) {
+            // allow some time for the animation to complete
+            $(this).data('remove-timeout', 1000);
+            pedido.fadeOut('slow');
+        });
+});

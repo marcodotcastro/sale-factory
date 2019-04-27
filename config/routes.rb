@@ -134,21 +134,19 @@ Rails.application.routes.draw do
   get 'principais/index'
   root to: 'principais#index'
 
-
   #CLIENTES
-  ##DASHBOARDS
   resources :clientes do
     scope module: :clientes do
+      ##DASHBOARDS
+
       get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
       get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
       get "dashboards/geral", to: "dashboards#geral"
       get "dashboards/ranking", to: "dashboards#ranking"
       get "dashboards/representante/:id", to: "dashboards#representante", as: "dashboards_representante"
-    end
-  end
-  ##RECURSOS
-  resources :clientes do
-    scope module: :clientes do
+
+      ##RECURSOS
+
       resources :lojistas
       resources :representantes
       resources :produtos
@@ -156,23 +154,21 @@ Rails.application.routes.draw do
   end
 
   #REPRESENTANTES
-  ##DASHBOARDS
   resources :representantes do
     scope module: 'representantes' do
+      ##DASHBOARDS
       get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
       get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
       get "dashboards/geral", to: "dashboards#geral"
       get "dashboards/ranking", to: "dashboards#ranking"
       get "dashboards/ranking/membro", to: "dashboards#membro"
       get "dashboards/lojista/:id", to: "dashboards#lojista", as: "dashboards_lojista"
-    end
-  end
-  ##RECURSOS
-  resources :representantes do
-    scope module: 'representantes' do
+
+      ##RECURSOS
       resources :lojistas
       resources :clientes
       resources :produtos
+      resources :solicitacoes
     end
   end
 

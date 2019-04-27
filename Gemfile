@@ -24,6 +24,7 @@ gem 'devise_invitable', '~> 1.7.5'
 gem "paranoia", "~> 2.2"
 gem 'friendly_id', '~> 5.2.4'
 gem 'factory_bot_rails'
+gem "cocoon"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'

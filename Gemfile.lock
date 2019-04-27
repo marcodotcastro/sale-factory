@@ -89,6 +89,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    cocoon (1.2.12)
     codeclimate-engine-rb (0.4.1)
       virtus (~> 1.0)
     coderay (1.1.2)
@@ -411,6 +412,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
+  cocoon
   coffee-rails (~> 4.2)
   database_cleaner
   devise_invitable (~> 1.7.5)

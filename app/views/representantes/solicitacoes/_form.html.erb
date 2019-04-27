@@ -1,0 +1,25 @@
+<%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
+
+<div class="ln_solid"></div>
+
+<h3>Pedidos</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Quantidade</th>
+    <th>Produto</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody class="line_items">
+  <%= f.simple_fields_for :pedidos do |pedido| %>
+    <%= render 'pedido_fields', f: pedido %>
+  <% end %>
+  </tbody>
+  <div class="links">
+    <%= link_to_add_association 'adicionar pedido', f, :pedidos, data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"}, class: "btn btn-primary" %>
+  </div>
+</table>
+

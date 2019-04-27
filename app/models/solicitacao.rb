@@ -24,4 +24,7 @@ class Solicitacao < ApplicationRecord
   belongs_to :cliente
   has_many :pedidos
   has_many :produtos, through: :pedidos
+  accepts_nested_attributes_for :pedidos, reject_if: :all_blank, allow_destroy: true
+
+  validates_presence_of :cliente_id
 end

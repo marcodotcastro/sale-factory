@@ -184,12 +184,21 @@
                   <i class="fa fa-building"></i> Lojistas
                 <% end %>
               </li>
+              <li>
+                <%= link_to representante_solicitacoes_path(current_usuario.representante) do %>
+                  <i class="fa fa-send"></i> Solicitações
+                <% end %>
+              </li>
             </ul>
           </li>
         <% end %>
         <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <%#TODO: Somente para venda %>
+            <li>
+              <%= link_to new_representante_solicitacao_path(current_usuario.representante) do %>
+                <i class="fa fa-send"></i> Solicitação
+              <% end %>
+            </li>
             <li>
               <%= link_to new_representante_lojista_path(current_usuario.representante) do %>
                 <i class="fa fa-building"></i> Lojista

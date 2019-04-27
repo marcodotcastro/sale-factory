@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Solicitação
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
+
+          <% if current_usuario.cliente? %>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Representante
+
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.representante.descricao %>">
+              </div>
+            </div>
+
+            <div class="divider-dashed"></div>
+          <% end %>
+
+
+          <% if current_usuario.representante? %>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
+
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.cliente.descricao %>">
+              </div>
+            </div>
+
+            <div class="divider-dashed"></div>
+          <% end %>
+
+          <%#TODO: Mover para o helpers %>
+          <% if current_usuario.representante? %>
+            <div class="form-group">
+              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                <%= link_to 'Editar', edit_representante_solicitacao_path(@representante, @solicitacao), class: "btn btn-primary" %>
+                <%= link_to 'Excluir', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+              </div>
+            </div>
+          <% end %>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Pedidos
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="x_content">
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Produto</th>
+            <th>Quatidade</th>
+            <th></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @solicitacao.pedidos.each do |pedido| %>
+            <tr>
+              <th scope="row"><%= pedido.id.to_s %></th>
+              <td><%= pedido.produto.descricao %></td>
+              <td><%= pedido.quantidade %></td>
+
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
