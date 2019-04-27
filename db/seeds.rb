@@ -20,7 +20,7 @@ ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 #   end
 # end
 
-puts "Clientes, Representantes e Lojistas"
+puts "Clientes, Produtos, Representantes e Lojistas"
 FactoryBot.create(:cliente, :com_representante, :com_representantes)
 
 # ["Construção", "Alimentos", "Serviços Industrial de Utilidade Pública", "Derivados de Petróleo e Biocomustíveis", "Químicos", "Metalurgia", "Farmacêutico"].each do |descricao|

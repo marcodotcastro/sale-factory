@@ -149,12 +149,9 @@ Rails.application.routes.draw do
   ##RECURSOS
   resources :clientes do
     scope module: :clientes do
-      resources :lojistas do
-
-      end
-      resources :representantes do
-
-      end
+      resources :lojistas
+      resources :representantes
+      resources :produtos
     end
   end
 

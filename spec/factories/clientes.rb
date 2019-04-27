@@ -60,5 +60,9 @@ FactoryBot.define do
       end
     end
 
+    after(:create) do |cliente|
+      create_list(:produto, 5, cliente: cliente)
+    end
+
   end
 end
