@@ -33,6 +33,7 @@ class Representantes::ClientesController < ApplicationController
 
   def show
     @lojistas = set_lojistas_do_cliente_com_representante
+    @produtos = @cliente.produtos
   end
 
   private
