@@ -175,6 +175,11 @@
                 <% end %>
               </li>
               <li>
+                <%= link_to representante_produtos_path(current_usuario.representante) do %>
+                  <i class="fa fa-gift"></i> Produtos
+                <% end %>
+              </li>
+              <li>
                 <%= link_to representante_lojistas_path(current_usuario.representante) do %>
                   <i class="fa fa-building"></i> Lojistas
                 <% end %>

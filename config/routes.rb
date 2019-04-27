@@ -172,6 +172,7 @@ Rails.application.routes.draw do
     scope module: 'representantes' do
       resources :lojistas
       resources :clientes
+      resources :produtos
     end
   end
 

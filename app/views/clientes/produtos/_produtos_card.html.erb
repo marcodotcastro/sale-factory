@@ -20,14 +20,28 @@
               <div class="left col-xs-12">
                 <h2><%= number_to_currency produto.preco %></h2>
               </div>
+              <% if current_usuario.representante? %>
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-industry"></i> <strong>Cliente: </strong>
+                    <span title="<%= produto.cliente.descricao %>"><%= truncate produto.cliente.descricao %></span></li>
+                </ul>
+              <% end %>
             </div>
             <div class="col-xs-12 bottom text-center">
               <div class="col-xs-12 col-sm-6 emphasis"></div>
               <div class="col-xs-12 col-sm-6 emphasis">
-                <%= link_to cliente_produto_path(@cliente, produto) do %>
-                  <button type="button" class="btn btn-primary btn-xs">
-                    <i class="fa fa-eye"> </i> Detalhes
-                  </button>
+                <% if current_usuario.cliente? %>
+                  <%= link_to cliente_produto_path(@cliente, produto) do %>
+                    <button type="button" class="btn btn-primary btn-xs">
+                      <i class="fa fa-eye"> </i> Detalhes
+                    </button>
+                  <% end %>
+                <% elsif current_usuario.representante? %>
+                  <%= link_to representante_produto_path(@representante, produto) do %>
+                    <button type="button" class="btn btn-primary btn-xs">
+                      <i class="fa fa-eye"> </i> Detalhes
+                    </button>
+                  <% end %>
                 <% end %>
               </div>
             </div>
