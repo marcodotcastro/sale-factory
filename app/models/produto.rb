@@ -20,4 +20,6 @@
 
 class Produto < ApplicationRecord
   belongs_to :cliente
+  has_many :pedidos
+  has_many :solicitacoes, through: :pedidos
 end

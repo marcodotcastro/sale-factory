@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_27_114632) do
+ActiveRecord::Schema.define(version: 2019_04_27_131945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,14 @@ ActiveRecord::Schema.define(version: 2019_04_27_114632) do
     t.index ["representante_id"], name: "index_representantes_lojistas_on_representante_id"
   end
 
+  create_table "pedidos", id: false, force: :cascade do |t|
+    t.bigint "produto_id"
+    t.bigint "solicitacao_id"
+    t.integer "quantidade"
+    t.index ["produto_id"], name: "index_produtos_solicitacoes_on_produto_id"
+    t.index ["solicitacao_id"], name: "index_solicitacoes_produtos_on_solicitacao_id"
+  end
+
   create_table "produtos", force: :cascade do |t|
     t.string "descricao"
     t.string "preco"
@@ -160,6 +168,15 @@ ActiveRecord::Schema.define(version: 2019_04_27_114632) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "solicitacoes", force: :cascade do |t|
+    t.bigint "representante_id"
+    t.bigint "cliente_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_solicitacoes_on_cliente_id"
+    t.index ["representante_id"], name: "index_solicitacoes_on_representante_id"
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "nome", default: "", null: false
     t.string "email", default: "", null: false
@@ -187,4 +204,6 @@ ActiveRecord::Schema.define(version: 2019_04_27_114632) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "produtos", "clientes"
   add_foreign_key "representantes", "cidades"
+  add_foreign_key "solicitacoes", "clientes"
+  add_foreign_key "solicitacoes", "representantes"
 end

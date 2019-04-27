@@ -37,6 +37,7 @@ class Representante < ApplicationRecord
 
   has_and_belongs_to_many :clientes, -> {distinct}
   has_and_belongs_to_many :lojistas, -> {distinct}
+  has_many :solicitacoes
   belongs_to :cidade
   belongs_to :usuario
 
