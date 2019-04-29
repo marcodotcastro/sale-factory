@@ -2,7 +2,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Solicitação
+        <h2> <%= @solicitacao.produtos.any? ? "Solicitação" : "Cadastrar Pedido" %>
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -10,6 +10,12 @@
           </li>
         </ul>
         <div class="clearfix"></div>
+      </div>
+      <div class="nav navbar-right">
+        <%#TODO: Mover para o helpers %>
+        <% if current_usuario.representante? %>
+          <%= link_to 'Excluir Solicitação', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+        <% end %>
       </div>
       <div class="x_content">
         <form data-parsley-validate class="form-horizontal form-label-left">
@@ -42,15 +48,6 @@
             <div class="divider-dashed"></div>
           <% end %>
 
-          <%#TODO: Mover para o helpers %>
-          <% if current_usuario.representante? %>
-            <div class="form-group">
-              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                <%= link_to 'Editar', edit_representante_solicitacao_path(@representante, @solicitacao), class: "btn btn-primary" %>
-                <%= link_to 'Excluir', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
-              </div>
-            </div>
-          <% end %>
 
         </form>
       </div>
@@ -69,7 +66,9 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-
+      <div class="nav navbar-right">
+        <%= link_to @solicitacao.produtos.any? ? "Editar Pedidos" : "Cadastrar Pedidos", edit_representante_solicitacao_path(@representante, @solicitacao), class: "btn btn-primary" %>
+      </div>
       <div class="x_content">
 
         <table class="table table-striped">
@@ -78,7 +77,6 @@
             <th>#</th>
             <th>Produto</th>
             <th>Quatidade</th>
-            <th></th>
           </tr>
           </thead>
 
@@ -88,7 +86,6 @@
               <th scope="row"><%= pedido.id.to_s %></th>
               <td><%= pedido.produto.descricao %></td>
               <td><%= pedido.quantidade %></td>
-
             </tr>
           <% end %>
           </tbody>

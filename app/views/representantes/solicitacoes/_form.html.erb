@@ -1,4 +1,4 @@
-<%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
+<%= f.input :cliente, input_html: {value: @solicitacao.cliente.descricao}, class: "form-control", readonly: true %>
 
 <div class="ln_solid"></div>
 

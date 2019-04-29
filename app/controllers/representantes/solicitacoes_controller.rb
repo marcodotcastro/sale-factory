@@ -16,6 +16,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def edit
+    @produtos = @solicitacao.cliente.produtos
     build_pedido
   end
 
@@ -35,7 +36,7 @@ class Representantes::SolicitacoesController < ApplicationController
   def update
     respond_to do |format|
       if @solicitacao.update(solicitacao_params)
-        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitacao was successfully updated.'}}
+        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Pedidos was successfully updated.'}}
       else
         format.html {render :edit}
       end

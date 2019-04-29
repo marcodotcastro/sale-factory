@@ -2,7 +2,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Cadastrar Solicitação
+        <h2>Informe o Cliente
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -14,7 +14,7 @@
       <div class="x_content">
         <%= simple_form_for([@representante, @solicitacao], html: {class: "form-horizontal form-label-left"}) do |f| %>
 
-          <%= render 'form', f: f %>
+          <%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
 
           <div class="form-group">
             <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
