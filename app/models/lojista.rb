@@ -29,8 +29,9 @@ class Lojista < ApplicationRecord
   acts_as_paranoid
   extend FriendlyId
 
-  has_and_belongs_to_many :representantes, -> { distinct }
-  has_and_belongs_to_many :clientes, -> { distinct }
+  has_and_belongs_to_many :representantes, -> {distinct}
+  has_and_belongs_to_many :clientes, -> {distinct}
+  has_and_belongs_to_many :lojistas, -> {distinct}
   belongs_to :cidade
 
   friendly_id :descricao, use: :slugged

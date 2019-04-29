@@ -17,6 +17,7 @@
         </div>
         <div class="x_content">
           <%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
+          <%= f.input :lojista_id, as: :select, collection: @lojistas.map {|c| [c.descricao, c.id]}, class: "form-control" %>
         </div>
       <% end %>
     </div>

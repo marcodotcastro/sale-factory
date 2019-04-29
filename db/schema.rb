@@ -171,10 +171,12 @@ ActiveRecord::Schema.define(version: 2019_04_29_154725) do
   create_table "solicitacoes", force: :cascade do |t|
     t.bigint "representante_id"
     t.bigint "cliente_id"
+    t.bigint "lojista_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
     t.index ["cliente_id"], name: "index_solicitacoes_on_cliente_id"
+    t.index ["lojista_id"], name: "index_solicitacoes_on_lojista_id"
     t.index ["representante_id"], name: "index_solicitacoes_on_representante_id"
   end
 
@@ -206,5 +208,6 @@ ActiveRecord::Schema.define(version: 2019_04_29_154725) do
   add_foreign_key "produtos", "clientes"
   add_foreign_key "representantes", "cidades"
   add_foreign_key "solicitacoes", "clientes"
+  add_foreign_key "solicitacoes", "lojistas"
   add_foreign_key "solicitacoes", "representantes"
 end
