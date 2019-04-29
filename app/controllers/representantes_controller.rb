@@ -49,7 +49,7 @@ class RepresentantesController < ApplicationController
 
     respond_to do |format|
       if @representante.save!
-        format.html {redirect_to representante_path(@representante), flash: {success: 'representante was successfully created.'}}
+        format.html {redirect_to representante_path(@representante), flash: {success: 'representante foi criado com sucesso.'}}
       else
         format.html {render :new}
       end
@@ -59,7 +59,7 @@ class RepresentantesController < ApplicationController
   def update
     respond_to do |format|
       if @representante.update(representante_params)
-        format.html {redirect_to representante_path(@representante), flash: {success: 'representante was successfully updated.'}}
+        format.html {redirect_to representante_path(@representante), flash: {success: 'representante foi alterado com sucesso.'}}
       else
         format.html {render :edit}
       end
@@ -69,7 +69,7 @@ class RepresentantesController < ApplicationController
   def destroy
     @representante.destroy
     respond_to do |format|
-      format.html {redirect_to representantes_path, flash: {success: 'representante was successfully destroyed.'}}
+      format.html {redirect_to representantes_path, flash: {success: 'representante foi excluido com sucesso.'}}
     end
   end
 

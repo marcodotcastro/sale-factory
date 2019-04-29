@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_154725) do
 
   create_table "produtos", force: :cascade do |t|
     t.string "descricao"
-    t.string "preco"
+    t.float "preco"
     t.bigint "cliente_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -24,7 +24,7 @@ class Clientes::ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.save
-        format.html {redirect_to cliente_produto_path(@cliente, @produto), flash: {success: 'Produto was successfully created.'}}
+        format.html {redirect_to cliente_produto_path(@cliente, @produto), flash: {success: 'Produto foi criado com sucesso.'}}
       else
         format.html {render :new}
       end
@@ -34,7 +34,7 @@ class Clientes::ProdutosController < ApplicationController
   def update
     respond_to do |format|
       if @produto.update(produto_params)
-        format.html {redirect_to cliente_produto_path(@cliente, @produto), flash: {success: 'Produto was successfully updated.'}}
+        format.html {redirect_to cliente_produto_path(@cliente, @produto), flash: {success: 'Produto foi alterado com sucesso.'}}
       else
         format.html {render :edit}
       end
@@ -44,7 +44,7 @@ class Clientes::ProdutosController < ApplicationController
   def destroy
     @produto.destroy
     respond_to do |format|
-      format.html {redirect_to cliente_produtos_path(@cliente), flash: {success: 'Produto was successfully destroyed.'}}
+      format.html {redirect_to cliente_produtos_path(@cliente), flash: {success: 'Produto foi excluido com sucesso.'}}
     end
   end
 

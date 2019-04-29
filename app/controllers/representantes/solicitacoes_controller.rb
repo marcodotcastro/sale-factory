@@ -1,6 +1,6 @@
 class Representantes::SolicitacoesController < ApplicationController
   before_action :set_solicitacao, only: [:show, :edit, :update, :destroy]
-  before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+  before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy, :status]
   before_action :set_clientes, only: [:new, :edit, :create]
 
   def index
@@ -25,8 +25,8 @@ class Representantes::SolicitacoesController < ApplicationController
     @solicitacao.representante = current_usuario.representante
 
     respond_to do |format|
-      if @solicitacao.save
-        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitacao was successfully created.'}}
+      if @solicitacao.save!
+        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitação foi criada com sucesso.'}}
       else
         format.html {render :new}
       end
@@ -34,9 +34,11 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def update
+    @produtos = @solicitacao.cliente.produtos
+
     respond_to do |format|
       if @solicitacao.update(solicitacao_params)
-        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Pedidos was successfully updated.'}}
+        format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitação foi alterada com sucesso.'}}
       else
         format.html {render :edit}
       end
@@ -46,7 +48,15 @@ class Representantes::SolicitacoesController < ApplicationController
   def destroy
     @solicitacao.destroy
     respond_to do |format|
-      format.html {redirect_to representante_solicitacoes_path(@representante), flash: {success: 'Solicitacao was successfully destroyed.'}}
+      format.html {redirect_to representante_solicitacoes_path(@representante), flash: {success: 'Solicitação foi excluida com sucesso.'}}
+    end
+  end
+
+  def status
+    solicitacao = Solicitacao.find(params[:solicitacao_id])
+    solicitacao.send(params[:status] + "!")
+    respond_to do |format|
+      format.html {redirect_to representante_solicitacoes_path(@representante), flash: {success: 'Solicitação foi alterada com sucesso.'}}
     end
   end
 

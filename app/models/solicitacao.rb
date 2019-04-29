@@ -30,42 +30,35 @@ class Solicitacao < ApplicationRecord
 
   validates_presence_of :cliente_id
 
-  aasm :representante, :column => 'status' do
+  aasm :column => 'status' do
+    #representante
     state :criado, initial: true
     state :solicitado
+    #cliente
+    state :analisado
+    state :aceito
+    state :recusado
+    #comum
     state :cancelado
 
     event :solicitar do
       transitions from: :criado, to: :solicitado
     end
 
-    event :cancelar do
-      transitions from: [:criado, :solicitado], to: :cancelado
-    end
-
-  end
-
-  aasm :cliente, :column => 'status' do
-    state :solicitado
-    state :cancelado
-    state :analisado
-    state :aceito
-    state :nao_aceito
-
     event :analisar do
-      transitions from: :solicitado, to: :analisado
+      transitions from: [:solicitado], to: :analisado
     end
 
     event :aceitar do
-      transitions from: :analisado, to: :aceito
+      transitions from: [:solicitado, :analisado], to: :aceito
     end
 
-    event :nao_aceitar do
-      transitions from: :analisado, to: :nao_aceito
+    event :recusar do
+      transitions from: [:solicitado, :analisado], to: :recusado
     end
 
     event :cancelar do
-      transitions from: :solicitado, to: :cancelado
+      transitions from: [:criado, :solicitado, :analisando], to: :cancelado
     end
 
   end

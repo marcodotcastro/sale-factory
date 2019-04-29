@@ -11,53 +11,74 @@
         </ul>
         <div class="clearfix"></div>
       </div>
+      <div class="nav navbar-left">
+        <%#TODO: Mover para o helpers %>
+        <% if current_usuario.representante? %>
+          <% if @solicitacao.criado? %>
+            <% if @solicitacao.produtos.any? %>
+              <%= link_to "Solicitar", representante_solicitacao_status_path(@representante, @solicitacao, status: :solicitar), method: :post, class: "btn btn-info" %>
+            <% end %>
+            <%= link_to "Cancelar", representante_solicitacao_status_path(@representante, @solicitacao, status: :cancelar), method: :post, class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+        <% if current_usuario.cliente? %>
+          <% if @solicitacao.analisado? or @solicitacao.solicitado? %>
+            <%= link_to "Aceitar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :aceitar), method: :post, class: "btn btn-success" %>
+            <%= link_to "Recusar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :recusar), method: :post, class: "btn btn-info" %>
+          <% end %>
+          <% if @solicitacao.solicitado? %>
+            <%= link_to "Analisar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :analisar), method: :post, class: "btn btn-warning" %>
+          <% end %>
+          <% if @solicitacao.solicitado? or @solicitacao.analisado? %>
+            <%= link_to "Cancelar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :cancelar), method: :post, class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+      </div>
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
-          <%= link_to 'Cancelar Solicitação', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+          <% if @solicitacao.criado? %>
+            <%= link_to @solicitacao.produtos.any? ? "Editar Produto" : "Cadastrar Produto", edit_representante_solicitacao_path(@representante, @solicitacao), class: "btn btn-primary" %>
+          <% end %>
         <% end %>
       </div>
       <div class="x_content">
         <form data-parsley-validate class="form-horizontal form-label-left">
-
           <% if current_usuario.cliente? %>
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Representante
-
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.representante.descricao %>">
               </div>
             </div>
-
             <div class="divider-dashed"></div>
           <% end %>
-
-
           <% if current_usuario.representante? %>
-
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
-
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.cliente.descricao %>">
               </div>
             </div>
-
             <div class="divider-dashed"></div>
           <% end %>
-
-
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Situação
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.status.capitalize %>">
+            </div>
+          </div>
         </form>
       </div>
     </div>
   </div>
-
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Pedidos
+        <h2>Produtos
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -66,33 +87,30 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <div class="nav navbar-right">
-        <%= link_to @solicitacao.produtos.any? ? "Editar Pedidos" : "Cadastrar Pedidos", edit_representante_solicitacao_path(@representante, @solicitacao), class: "btn btn-primary" %>
-      </div>
       <div class="x_content">
-
         <table class="table table-striped">
           <thead>
           <tr>
             <th>#</th>
             <th>Produto</th>
             <th>Quatidade</th>
+            <th>Preço</th>
+            <th>Total</th>
           </tr>
           </thead>
-
           <tbody>
           <% @solicitacao.pedidos.each do |pedido| %>
             <tr>
               <th scope="row"><%= pedido.id.to_s %></th>
               <td><%= pedido.produto.descricao %></td>
               <td><%= pedido.quantidade %></td>
+              <td><%= number_to_currency pedido.produto.preco %></td>
+              <td><%= number_to_currency pedido.produto.preco * pedido.quantidade %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
-
       </div>
-
     </div>
   </div>
 </div>

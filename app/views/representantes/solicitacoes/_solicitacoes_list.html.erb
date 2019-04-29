@@ -11,31 +11,52 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-
       <table class="table table-striped">
         <thead>
         <tr>
           <th>#</th>
-          <th>Cliente</th>
+          <%#TODO: Mover para o helpers %>
+          <% if current_usuario.representante? %>
+            <th>Cliente</th>
+          <% elsif current_usuario.cliente? %>
+            <th>Representante</th>
+          <% end %>
+          <th>Contato</th>
+          <th>Quantidade</th>
+          <th>Situação</th>
           <th></th>
         </tr>
         </thead>
-
         <tbody>
         <% @solicitacoes.each do |solicitacao| %>
           <tr>
             <th scope="row"><%= solicitacao.id.to_s %></th>
-            <td><%= solicitacao.cliente.descricao %></td>
+            <%#TODO: Mover para o helpers %>
+            <% if current_usuario.representante? %>
+              <td><%= solicitacao.cliente.descricao %></td>
+              <td><%= solicitacao.cliente.contato %></td>
+            <% elsif current_usuario.cliente? %>
+              <td><%= solicitacao.representante.descricao %></td>
+              <td><%= solicitacao.representante.contato %></td>
+            <% end %>
+            <td><%= solicitacao.pedidos.sum(:quantidade) %> itens</td>
+            <td><%= solicitacao.status.capitalize %></td>
             <td>
-              <%= link_to representante_solicitacao_path(@representante, solicitacao) do %>
-                <i class="fa fa-eye"></i>
+              <%#TODO: Mover para o helpers %>
+              <% if current_usuario.representante? %>
+                <%= link_to representante_solicitacao_path(@representante, solicitacao) do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+              <% elsif current_usuario.cliente? %>
+                <%= link_to cliente_solicitacao_path(@cliente, solicitacao) do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
               <% end %>
             </td>
           </tr>
         <% end %>
         </tbody>
       </table>
-
     </div>
   </div>
 </div>

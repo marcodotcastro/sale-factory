@@ -34,7 +34,7 @@ FactoryBot.define do
     sequence(:descricao) {|n| "Indústria Farmacêutica Melcon do Brasil S.A. #{n}"}
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
-    contato {"Sr João Paulo"}
+    sequence(:contato) {|n| "Sr João Paulo #{n}"}
     sequence(:email) {|n| "joao.paulo#{n}@gmail.com"}
     telefone {"(62) 3902-3200"}
     telefone_whatsapp {"(62) 99902-3200"}

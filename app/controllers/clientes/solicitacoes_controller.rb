@@ -1,6 +1,6 @@
 class Clientes::SolicitacoesController < ApplicationController
   before_action :set_solicitacao, only: [:show, :edit, :update, :destroy]
-  before_action :set_cliente, only: [:index, :show, :edit, :update]
+  before_action :set_cliente, only: [:index, :show, :edit, :update, :status]
 
   def index
     @solicitacoes = get_solicitacoes
@@ -12,17 +12,11 @@ class Clientes::SolicitacoesController < ApplicationController
   def edit
   end
 
-  def update
-    if solicitacao_params[:status].eql? "cancelar"
-      @solicitacao.cancelar
-    end
-
+  def status
+    solicitacao = Solicitacao.find(params[:solicitacao_id])
+    solicitacao.send(params[:status] + "!")
     respond_to do |format|
-      if @solicitacao.save
-        format.html {redirect_to cliente_solicitacao_path(@cliente, @solicitacao), flash: {success: 'Pedidos was successfully updated.'}}
-      else
-        format.html {render :edit}
-      end
+      format.html {redirect_to cliente_solicitacoes_path(@cliente), flash: {success: 'Solicitacão foi alterada com sucesso.'}}
     end
   end
 

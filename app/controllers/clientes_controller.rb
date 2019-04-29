@@ -48,7 +48,7 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.save
-        format.html {redirect_to @cliente, flash: {success: 'Cliente was successfully created.'}}
+        format.html {redirect_to @cliente, flash: {success: 'Cliente foi criado com sucesso.'}}
       else
         format.html {render :new}
       end
@@ -58,7 +58,7 @@ class ClientesController < ApplicationController
   def update
     respond_to do |format|
       if @cliente.update(cliente_params)
-        format.html {redirect_to @cliente, flash: {success: 'Cliente was successfully updated.'}}
+        format.html {redirect_to @cliente, flash: {success: 'Cliente foi alterado com sucesso.'}}
       else
         format.html {render :edit}
       end
@@ -68,7 +68,7 @@ class ClientesController < ApplicationController
   def destroy
     @cliente.destroy
     respond_to do |format|
-      format.html {redirect_to root_path, flash: {success: 'Cliente was successfully destroyed.'}}
+      format.html {redirect_to root_path, flash: {success: 'Cliente foi excluido com sucesso.'}}
     end
   end
 
