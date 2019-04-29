@@ -1,4 +1,4 @@
-<%#TODO: Adicionar status %>
+<%= f.input :status, as: :select, collection: Solicitacao.aasm(:cliente).events.map {|c| [c.name.capitalize, c.name]}, class: "form-control" %>
 <div class="ln_solid"></div>
 <h3>Produtos</h3>
 <table class="table table-striped">

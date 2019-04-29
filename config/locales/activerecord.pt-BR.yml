@@ -14,10 +14,11 @@ pt-BR:
       cliente:
         descricao: "Descrição"
         endereco: "Endereço"
+      solicitacao:
+        status: "Situação"
       produto:
         descricao: "Descrição"
         preco: "Preço"
-
       representante:
         descricao: "Descrição"
         endereco: "Endereço"

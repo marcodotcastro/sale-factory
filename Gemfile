@@ -25,6 +25,7 @@ gem "paranoia", "~> 2.2"
 gem 'friendly_id', '~> 5.2.4'
 gem 'factory_bot_rails'
 gem "cocoon"
+gem 'aasm'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'

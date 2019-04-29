@@ -13,8 +13,12 @@ class Clientes::SolicitacoesController < ApplicationController
   end
 
   def update
+    if solicitacao_params[:status].eql? "cancelar"
+      @solicitacao.cancelar
+    end
+
     respond_to do |format|
-      if @solicitacao.update(solicitacao_params)
+      if @solicitacao.save
         format.html {redirect_to cliente_solicitacao_path(@cliente, @solicitacao), flash: {success: 'Pedidos was successfully updated.'}}
       else
         format.html {render :edit}
@@ -25,7 +29,7 @@ class Clientes::SolicitacoesController < ApplicationController
   private
 
   def get_solicitacoes
-    current_usuario.cliente.solicitacoes
+    current_usuario.cliente.solicitacoes.where.not(status: :criado)
   end
 
   def set_solicitacao

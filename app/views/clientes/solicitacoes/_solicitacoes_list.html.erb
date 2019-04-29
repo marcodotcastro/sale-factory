@@ -17,6 +17,7 @@
           <th>#</th>
           <th>Representante</th>
           <th>Quantidade</th>
+          <th>Situação</th>
           <th></th>
         </tr>
         </thead>
@@ -26,6 +27,7 @@
             <th scope="row"><%= solicitacao.id.to_s %></th>
             <td><%= solicitacao.representante.descricao %></td>
             <td><%= solicitacao.pedidos.sum(:quantidade) %> itens</td>
+            <td><%= solicitacao.status.capitalize %></td>
             <td>
               <%= link_to cliente_solicitacao_path(@cliente, solicitacao) do %>
                 <i class="fa fa-eye"></i>
