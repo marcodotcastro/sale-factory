@@ -1,0 +1,22 @@
+<%#TODO: Adicionar status %>
+<div class="ln_solid"></div>
+<h3>Produtos</h3>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Quantidade</th>
+    <th>Produto</th>
+  </tr>
+  </thead>
+  <tbody class="line_items">
+  <% @solicitacao.pedidos.each do |pedido| %>
+    <tr>
+      <th scope="row"><%= pedido.id.to_s %></th>
+      <td><%= pedido.quantidade %></td>
+      <td><%= pedido.produto.descricao %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

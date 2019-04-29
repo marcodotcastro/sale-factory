@@ -106,6 +106,11 @@
           <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>
+                <%= link_to cliente_solicitacoes_path(current_usuario.cliente) do %>
+                  <i class="fa fa-send"></i> Solicicações
+                <% end %>
+              </li>
+              <li>
                 <%= link_to cliente_produtos_path(current_usuario.cliente) do %>
                   <i class="fa fa-gift"></i> Produtos
                 <% end %>

@@ -150,6 +150,7 @@ Rails.application.routes.draw do
       resources :lojistas
       resources :representantes
       resources :produtos
+      resources :solicitacoes
     end
   end
 
