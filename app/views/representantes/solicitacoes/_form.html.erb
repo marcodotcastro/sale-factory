@@ -2,7 +2,7 @@
 
 <div class="ln_solid"></div>
 
-<h3>Pedidos</h3>
+<h3>Produtos</h3>
 
 <table class="table table-striped">
   <thead>
@@ -19,7 +19,7 @@
   <% end %>
   </tbody>
   <div class="links">
-    <%= link_to_add_association 'adicionar pedido', f, :pedidos, data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"}, class: "btn btn-primary" %>
+    <%= link_to_add_association 'adicionar produto', f, :pedidos, data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"}, class: "btn btn-primary" %>
   </div>
 </table>
 

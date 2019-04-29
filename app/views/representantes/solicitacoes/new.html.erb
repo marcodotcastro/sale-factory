@@ -11,19 +11,14 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <div class="x_content">
-        <%= simple_form_for([@representante, @solicitacao], html: {class: "form-horizontal form-label-left"}) do |f| %>
-
+      <%= simple_form_for([@representante, @solicitacao], html: {class: "form-horizontal form-label-left"}) do |f| %>
+        <div class="nav navbar-right">
+          <%= f.button :submit, "Continuar", class: "btn btn-success" %>
+        </div>
+        <div class="x_content">
           <%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
-
-          <div class="form-group">
-            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <%= f.button :submit, "Salvar", class: "btn btn-success" %>
-            </div>
-          </div>
-
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

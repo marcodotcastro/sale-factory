@@ -14,7 +14,7 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
-          <%= link_to 'Excluir Solicitação', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+          <%= link_to 'Cancelar Solicitação', representante_solicitacao_path(@representante, @solicitacao), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
       <div class="x_content">

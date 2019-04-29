@@ -11,6 +11,14 @@
         </ul>
         <div class="clearfix"></div>
       </div>
+      <div class="nav navbar-right">
+        <%#TODO: Mover para o helpers %>
+        <% if current_usuario.cliente? %>
+          <%= link_to 'Editar Produto', edit_cliente_produto_path(@cliente, @produto), class: "btn btn-primary" %>
+          <%= link_to 'Excluir Produto', cliente_produto_path(@cliente, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+        <% end %>
+      </div>
+
       <div class="x_content">
         <form data-parsley-validate class="form-horizontal form-label-left">
 
@@ -45,15 +53,6 @@
             </div>
           </div>
 
-          <%#TODO: Mover para o helpers %>
-          <% if current_usuario.cliente? %>
-            <div class="form-group">
-              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                <%= link_to 'Editar', edit_cliente_produto_path(@cliente, @produto), class: "btn btn-primary" %>
-                <%= link_to 'Excluir', cliente_produto_path(@cliente, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
-              </div>
-            </div>
-          <% end %>
 
         </form>
       </div>
