@@ -34,6 +34,8 @@ class Lojista < ApplicationRecord
   has_and_belongs_to_many :lojistas, -> {distinct}
   belongs_to :cidade
 
+  validates_presence_of :cidade_id
+
   friendly_id :descricao, use: :slugged
 
 end
