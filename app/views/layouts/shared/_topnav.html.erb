@@ -26,9 +26,9 @@
           <%= image_tag "user.png" %>
         <% end %>
         <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
+        <%= current_usuario.points %> xp
         <span class=" fa fa-angle-down"></span>
       </a>
-
       <ul class="dropdown-menu dropdown-usermenu pull-right">
         <% if usuario_signed_in? %>
           <%#TODO: Mover código para o helpers %>
@@ -53,6 +53,11 @@
                   <i class="fa fa-user"></i> Perfil
                 <% end %>
               </li>
+              <li>
+                <%= link_to representante_dashboards_ranking_membro_path(current_usuario.representante) do %>
+                  <i class="fa fa-sort-numeric-asc"></i> Ranking
+                <% end %>
+              </li>
             <% else %>
               <li>
                 <%= link_to new_representante_path do %>
@@ -60,11 +65,6 @@
                 <% end %>
               </li>
             <% end %>
-            <li>
-              <%= link_to representante_dashboards_ranking_membro_path(current_usuario.representante) do %>
-                <i class="fa fa-sort-numeric-asc"></i> Ranking
-              <% end %>
-            </li>
           <% end %>
         <% end %>
         <% if usuario_signed_in? %>

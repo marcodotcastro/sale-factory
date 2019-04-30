@@ -64,7 +64,7 @@ FactoryBot.define do
     end
 
     before(:create) do |representante|
-      create(:usuario, tipo: "representante", email: representante.email, representante: representante)
+      create(:usuario, tipo: "representante", nome: representante.contato, email: representante.email, representante: representante)
     end
 
   end

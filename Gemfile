@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'factory_bot_rails'
 gem "cocoon"
 gem 'aasm'
+gem 'merit', "~> 3.0.2"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'

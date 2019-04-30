@@ -45,3 +45,8 @@ end
 
 puts "Solicitações e Pedidos"
 FactoryBot.create_list(:solicitacao, 5, :com_pedido)
+
+
+puts "Medalhas"
+
+

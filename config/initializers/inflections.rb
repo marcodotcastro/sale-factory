@@ -62,4 +62,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   # Inglês
   inflect.irregular "admin_user", "admin_users"
   inflect.irregular "admin_comment", "admin_comments"
+
+  #Bug: merit para português
+  inflect.irregular "sash", "sashes"
+  inflect.irregular "merit_score_point", "merit_score_points"
 end

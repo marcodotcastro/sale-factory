@@ -12,6 +12,7 @@
 #  invitation_sent_at     :datetime
 #  invitation_token       :string
 #  invited_by_type        :string
+#  level                  :integer          default(0)
 #  nome                   :string           default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
@@ -20,6 +21,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  invited_by_id          :integer
+#  sash_id                :integer
 #
 # Indexes
 #

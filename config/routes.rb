@@ -140,7 +140,7 @@
 
 Rails.application.routes.draw do
   #ADMINISTRAÇÃO
-  devise_for :usuarios, :controllers => {invitations: 'usuarios/invitations', registrations: 'usuarios/registrations'}
+  devise_for :usuarios, :controllers => {invitations: 'usuarios/invitations', registrations: 'usuarios/registrations', confirmations: 'usuarios/confirmations'}
 
   resources :cidades
 
