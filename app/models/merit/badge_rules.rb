@@ -45,9 +45,10 @@ module Merit
       #   user.name.length > 4
       # end
 
-      grant_on 'representantes/lojistas#create', badge: 'primeiro-lojista' do |mais_lojista|
-        mais_lojista.usuario.lojistas.count == 1
-      end
+      #Lojista
+      #NOTE: Não é possível acessar o current_usuario na rules do merit
+      grant_on 'representantes/lojistas#create', badge: "primeiro-lojista", level: 1, model_name: "Lojista"
+
     end
   end
 end

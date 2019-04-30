@@ -53,6 +53,7 @@ class Representantes::LojistasController < ApplicationController
 
     respond_to do |format|
       if @lojista.save
+        @lojista.representantes << @representante
         format.html {redirect_to representante_lojista_path(@representante, @lojista), flash: {success: 'Lojista foi criado com sucesso.'}}
       else
         format.html {render :new}

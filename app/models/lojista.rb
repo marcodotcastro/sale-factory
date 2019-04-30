@@ -32,6 +32,7 @@ class Lojista < ApplicationRecord
   has_and_belongs_to_many :representantes, -> {distinct}
   has_and_belongs_to_many :clientes, -> {distinct}
   has_and_belongs_to_many :lojistas, -> {distinct}
+  has_many :solicitacaos
   belongs_to :cidade
 
   validates_presence_of :cidade_id

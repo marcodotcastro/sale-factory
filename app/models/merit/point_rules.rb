@@ -27,9 +27,8 @@ module Merit
       # score -10, :on => 'comments#destroy'
 
       #Lojista
-      score 10, to: :lojista_creator, :on => 'representantes/lojistas#create'
-
-      score -15, to: :lojista_creator, :on => 'representantes/lojistas#destroy'
+      score 10, :on => 'representantes/lojistas#create'
+      score -15, :on => 'representantes/lojistas#destroy'
 
     end
   end
