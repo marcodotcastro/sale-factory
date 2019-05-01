@@ -26,7 +26,9 @@
           <%= image_tag "user.png" %>
         <% end %>
         <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
-        <%= current_usuario.points %> xp
+        <% if current_usuario.representante %>
+          <%= current_usuario.points %> xp
+        <% end %>
         <span class=" fa fa-angle-down"></span>
       </a>
       <ul class="dropdown-menu dropdown-usermenu pull-right">

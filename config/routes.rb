@@ -62,6 +62,7 @@
 #                                              PATCH  /clientes/:cliente_id/produtos/:id(.:format)                                             clientes/produtos#update
 #                                              PUT    /clientes/:cliente_id/produtos/:id(.:format)                                             clientes/produtos#update
 #                                              DELETE /clientes/:cliente_id/produtos/:id(.:format)                                             clientes/produtos#destroy
+#                   cliente_solicitacao_status POST   /clientes/:cliente_id/solicitacoes/:solicitacao_id/status(.:format)                      clientes/solicitacoes#status
 #                         cliente_solicitacoes GET    /clientes/:cliente_id/solicitacoes(.:format)                                             clientes/solicitacoes#index
 #                                              POST   /clientes/:cliente_id/solicitacoes(.:format)                                             clientes/solicitacoes#create
 #                      new_cliente_solicitacao GET    /clientes/:cliente_id/solicitacoes/new(.:format)                                         clientes/solicitacoes#new
@@ -108,7 +109,7 @@
 #                                              PATCH  /representantes/:representante_id/produtos/:id(.:format)                                 representantes/produtos#update
 #                                              PUT    /representantes/:representante_id/produtos/:id(.:format)                                 representantes/produtos#update
 #                                              DELETE /representantes/:representante_id/produtos/:id(.:format)                                 representantes/produtos#destroy
-#          representante_solicitacao_solicitar POST   /representantes/:representante_id/solicitacoes/:solicitacao_id/solicitar(.:format)       representantes/solicitacoes#solicitar
+#             representante_solicitacao_status POST   /representantes/:representante_id/solicitacoes/:solicitacao_id/status(.:format)          representantes/solicitacoes#status
 #                   representante_solicitacoes GET    /representantes/:representante_id/solicitacoes(.:format)                                 representantes/solicitacoes#index
 #                                              POST   /representantes/:representante_id/solicitacoes(.:format)                                 representantes/solicitacoes#create
 #                new_representante_solicitacao GET    /representantes/:representante_id/solicitacoes/new(.:format)                             representantes/solicitacoes#new

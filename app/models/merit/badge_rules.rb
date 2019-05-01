@@ -45,12 +45,35 @@ module Merit
       #   user.name.length > 4
       # end
 
-      #Lojista
+      # Representante
+      ## Cadastro
+      grant_on ['representantes#create', 'representantes#update'], badge: "perfil", model_name: "Representante"
+      ## Venda
+      # FIXME: Por está sendo validado na requisição do cliente as medalhas estão sendo vinculadas a ele.
+      # TODO: Buscar um solução para não vincular ao cliente. Sugerir uma parametro para vinculo manual
+      grant_on 'clientes/solicitacoes#status', badge: "1-venda", model_name: "Solicitacao" do |solicitacao|
+        badge = Merit::Badge.by_name("1-venda").first
+        solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 1
+      end
+      grant_on 'clientes/solicitacoes#status', badge: "5-venda", model_name: "Solicitacao" do |solicitacao|
+        badge = Merit::Badge.by_name("5-venda").first
+        solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 5
+      end
+      grant_on 'clientes/solicitacoes#status', badge: "10-venda", model_name: "Solicitacao" do |solicitacao|
+        badge = Merit::Badge.by_name("10-venda").first
+        solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 10
+      end
+      grant_on 'clientes/solicitacoes#status', badge: "50-venda", model_name: "Solicitacao" do |solicitacao|
+        badge = Merit::Badge.by_name("50-venda").first
+        solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 50
+      end
+      grant_on 'clientes/solicitacoes#status', badge: "100-venda", model_name: "Solicitacao" do |solicitacao|
+        badge = Merit::Badge.by_name("100-venda").first
+        solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 100
+      end
+      ## Lojista
       #NOTE: Não é possível acessar o current_usuario na rules do merit
       grant_on 'representantes/lojistas#create', badge: "1-lojista", model_name: "Lojista"
-
-      #Representante
-      grant_on ['representantes#create', 'representantes#update'], badge: "perfil", model_name: "Representante"
 
     end
   end

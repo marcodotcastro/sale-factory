@@ -25,8 +25,26 @@ module Merit
       # ]
       #
       # score -10, :on => 'comments#destroy'
+      #
 
-      #Lojista
+      # Representante
+      ## Venda
+      score 5, :on => 'representantes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+        solicitacao.solicitado?
+      end
+      score -30, :on => 'representantes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+        solicitacao.cancelado?
+      end
+      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+        solicitacao.representante.usuario.add_points(20) if solicitacao.aceito?
+      end
+      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+        solicitacao.representante.usuario.add_points(-25) if solicitacao.recusado?
+      end
+      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+        solicitacao.representante.usuario.add_points(-30) if solicitacao.cancelado?
+      end
+      ## Lojista
       score 10, :on => 'representantes/lojistas#create'
       score -15, :on => 'representantes/lojistas#destroy'
 

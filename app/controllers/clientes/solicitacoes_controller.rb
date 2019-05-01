@@ -13,8 +13,8 @@ class Clientes::SolicitacoesController < ApplicationController
   end
 
   def status
-    solicitacao = Solicitacao.find(params[:solicitacao_id])
-    solicitacao.send(params[:status] + "!")
+    @solicitacao = Solicitacao.find(params[:solicitacao_id])
+    @solicitacao.send(params[:status] + "!")
     respond_to do |format|
       format.html {redirect_to cliente_solicitacoes_path(@cliente), flash: {success: 'Solicitacão foi alterada com sucesso.'}}
     end
@@ -23,7 +23,7 @@ class Clientes::SolicitacoesController < ApplicationController
   private
 
   def get_solicitacoes
-    current_usuario.cliente.solicitacoes.where.not(status: :criado)
+    current_usuario.cliente.solicitacoes.where.not(status: :criado).order(created_at: :desc)
   end
 
   def set_solicitacao

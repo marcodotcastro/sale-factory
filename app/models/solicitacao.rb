@@ -42,17 +42,26 @@ class Solicitacao < ApplicationRecord
     state :solicitado
     #cliente
     state :analisado
+    state :pendente
     state :aceito
     state :recusado
     #comum
     state :cancelado
 
     event :solicitar do
-      transitions from: :criado, to: :solicitado
+      transitions from: [:criado, :pendente], to: :solicitado
     end
 
     event :analisar do
       transitions from: [:solicitado], to: :analisado
+    end
+
+    event :pendenciar do
+      transitions from: :solicitado, to: :pendente
+    end
+
+    event :pendenciar do
+      transitions from: :solicitado, to: :pendente
     end
 
     event :aceitar do

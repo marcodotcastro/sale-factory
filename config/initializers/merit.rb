@@ -19,9 +19,22 @@ Merit.setup do |config|
   config.current_user_method = 'current_usuario'
 end
 
-#Lojista
-Merit::Badge.create!(id: 1, name: "1-lojista", description: "1º lojista", level: 1)
-Merit::Badge.create!(id: 2, name: "10-lojista", description: "10º lojista", level: 2) #NOTE: Não é possível acessar o current_usuario na rules do merit
-
 #Representante
-Merit::Badge.create!(id: 3, name: "perfil", description: "Perfil cadastrado")
+Merit::Badge.create!(id: 1, name: "perfil", description: "Perfil cadastrado")
+#Venda
+Merit::Badge.create!(id: 100, name: "1-venda", description: "1º venda", level: 1)
+Merit::Badge.create!(id: 101, name: "5-venda", description: "1º venda", level: 2)
+Merit::Badge.create!(id: 102, name: "10-venda", description: "10º venda", level: 3)
+Merit::Badge.create!(id: 103, name: "50-venda", description: "50º venda", level: 4)
+Merit::Badge.create!(id: 104, name: "100-venda", description: "100º venda", level: 5)
+#Equipe
+Merit::Badge.create!(id: 200, name: "1-membro", description: "1º membro", level: 1)
+Merit::Badge.create!(id: 201, name: "5-membro", description: "5º membro", level: 2)
+Merit::Badge.create!(id: 202, name: "10-membro", description: "10º membro", level: 3)
+Merit::Badge.create!(id: 203, name: "25-membro", description: "25º membro", level: 4)
+Merit::Badge.create!(id: 204, name: "50-membro", description: "50º membro", level: 5)
+
+#Lojista
+Merit::Badge.create!(id: 300, name: "1-lojista", description: "1º lojista", level: 1)
+Merit::Badge.create!(id: 301, name: "10-lojista", description: "10º lojista", level: 2) #NOTE: Não é possível acessar o current_usuario na rules do merit
+

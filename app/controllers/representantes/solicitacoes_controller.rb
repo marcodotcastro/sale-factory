@@ -54,8 +54,8 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def status
-    solicitacao = Solicitacao.find(params[:solicitacao_id])
-    solicitacao.send(params[:status] + "!")
+    @solicitacao = Solicitacao.find(params[:solicitacao_id])
+    @solicitacao.send(params[:status] + "!")
     respond_to do |format|
       format.html {redirect_to representante_solicitacoes_path(@representante), flash: {success: 'Solicitação foi alterada com sucesso.'}}
     end
@@ -64,7 +64,7 @@ class Representantes::SolicitacoesController < ApplicationController
   private
 
   def get_solicitacoes
-    current_usuario.representante.solicitacoes
+    current_usuario.representante.solicitacoes.order(created_at: :desc)
   end
 
   def build_pedido
