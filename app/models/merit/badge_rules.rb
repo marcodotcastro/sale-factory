@@ -47,7 +47,10 @@ module Merit
 
       #Lojista
       #NOTE: Não é possível acessar o current_usuario na rules do merit
-      grant_on 'representantes/lojistas#create', badge: "primeiro-lojista", level: 1, model_name: "Lojista"
+      grant_on 'representantes/lojistas#create', badge: "1-lojista", model_name: "Lojista"
+
+      #Representante
+      grant_on ['representantes#create', 'representantes#update'], badge: "perfil", model_name: "Representante"
 
     end
   end

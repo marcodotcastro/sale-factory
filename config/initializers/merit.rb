@@ -19,5 +19,9 @@ Merit.setup do |config|
   config.current_user_method = 'current_usuario'
 end
 
-Merit::Badge.create!(id: 1, name: "primeiro-lojista", level: 1)
-Merit::Badge.create!(id: 2, name: "primeiro-lojista", level: 2)
+#Lojista
+Merit::Badge.create!(id: 1, name: "1-lojista", description: "1º lojista", level: 1)
+Merit::Badge.create!(id: 2, name: "10-lojista", description: "10º lojista", level: 2) #NOTE: Não é possível acessar o current_usuario na rules do merit
+
+#Representante
+Merit::Badge.create!(id: 3, name: "perfil", description: "Perfil cadastrado")

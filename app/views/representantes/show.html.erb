@@ -6,7 +6,7 @@
           <small>
             <b>Medalhas:</b>
             <% current_usuario.badges.each do |bagde| %>
-              <%= bagde.name %> <%= (" e level " + bagde.level.to_s) if bagde.level %>,
+              <%= bagde.name %>,
             <% end %>
           </small>
         </h2>
