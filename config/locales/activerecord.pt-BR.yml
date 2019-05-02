@@ -11,6 +11,8 @@ pt-BR:
         one: "Cliente"
         other: "Clientes"
     attributes:
+      comentario:
+        descricao: "Descrição"
       cliente:
         descricao: "Descrição"
         endereco: "Endereço"

@@ -38,8 +38,9 @@ class Usuario < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :cliente, dependent: :destroy
-  has_one :representante, dependent: :destroy
+  has_one :cliente
+  has_one :representante
+  has_many :comentarios
 
   has_one_attached :avatar
 
