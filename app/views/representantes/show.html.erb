@@ -3,12 +3,7 @@
     <div class="x_panel">
       <div class="x_title">
         <h2>Meu Perfil
-          <small>
-            <b>Medalhas:</b>
-            <% current_usuario.badges.each do |bagde| %>
-              <%= bagde.name %>,
-            <% end %>
-          </small>
+          <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -16,7 +11,14 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-
+      <div class="x_content">
+        <form data-parsley-validate class="form-horizontal form-label-left">
+          <b>Medalhas <%= link_to "(regras)", representante_jogos_path(current_usuario.representante) %>: </b>
+          <% current_usuario.badges.each do |bagde| %>
+            <%= bagde.name %>,
+          <% end %>
+        </form>
+      </div>
       <%= render 'representante' %>
     </div>
   </div>

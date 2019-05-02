@@ -118,6 +118,7 @@
 #                                              PATCH  /representantes/:representante_id/solicitacoes/:id(.:format)                             representantes/solicitacoes#update
 #                                              PUT    /representantes/:representante_id/solicitacoes/:id(.:format)                             representantes/solicitacoes#update
 #                                              DELETE /representantes/:representante_id/solicitacoes/:id(.:format)                             representantes/solicitacoes#destroy
+#                          representante_jogos GET    /representantes/:representante_id/jogos(.:format)                                        representantes/jogos#index
 #                               representantes GET    /representantes(.:format)                                                                representantes#index
 #                                              POST   /representantes(.:format)                                                                representantes#create
 #                            new_representante GET    /representantes/new(.:format)                                                            representantes#new
@@ -194,6 +195,9 @@ Rails.application.routes.draw do
       resources :solicitacoes do
         post "status", to: "status"
       end
+
+      ##JOGO
+      get "jogos", to: "jogos#index"
     end
   end
 

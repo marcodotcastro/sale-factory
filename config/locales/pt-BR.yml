@@ -213,3 +213,7 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  merit:
+    granted_badge: "concedido a medalha %{badge_name}"
+    granted_points: "concedidos os pontos %{points}"
+    removed_badge: "removido a medalha %{badge_name}"
