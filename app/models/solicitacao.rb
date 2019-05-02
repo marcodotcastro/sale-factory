@@ -44,6 +44,7 @@ class Solicitacao < ApplicationRecord
     #cliente
     state :analisado
     state :pendente
+    state :resolvido
     state :aceito
     state :recusado
     #comum
@@ -58,11 +59,11 @@ class Solicitacao < ApplicationRecord
     end
 
     event :pendenciar do
-      transitions from: :solicitado, to: :pendente
+      transitions from: [:solicitado, :resolvido], to: :pendente
     end
 
-    event :pendenciar do
-      transitions from: :solicitado, to: :pendente
+    event :resolver do
+      transitions from: :pendente, to: :resolvido
     end
 
     event :aceitar do

@@ -181,6 +181,7 @@ Rails.application.routes.draw do
       resources :produtos
       resources :solicitacoes do
         post "status", to: "status"
+        resources :comentarios
       end
     end
   end
