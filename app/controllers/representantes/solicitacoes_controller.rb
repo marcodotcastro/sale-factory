@@ -57,7 +57,7 @@ class Representantes::SolicitacoesController < ApplicationController
     @solicitacao = Solicitacao.find(params[:solicitacao_id])
     @solicitacao.send(params[:status] + "!")
     respond_to do |format|
-      format.html {redirect_to representante_solicitacoes_path(@representante), flash: {success: 'Solicitação foi alterada com sucesso.'}}
+      format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitação foi alterada com sucesso.'}}
     end
   end
 

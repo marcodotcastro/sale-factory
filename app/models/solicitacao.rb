@@ -29,6 +29,7 @@ class Solicitacao < ApplicationRecord
   belongs_to :lojista
   belongs_to :cliente
   has_many :pedidos
+  has_many :comentarios
   has_many :produtos, through: :pedidos
   accepts_nested_attributes_for :pedidos, reject_if: :all_blank, allow_destroy: true
 
@@ -43,6 +44,7 @@ class Solicitacao < ApplicationRecord
     #cliente
     state :analisado
     state :pendente
+    state :resolvido
     state :aceito
     state :recusado
     #comum
@@ -57,11 +59,11 @@ class Solicitacao < ApplicationRecord
     end
 
     event :pendenciar do
-      transitions from: :solicitado, to: :pendente
+      transitions from: [:solicitado, :resolvido], to: :pendente
     end
 
-    event :pendenciar do
-      transitions from: :solicitado, to: :pendente
+    event :resolver do
+      transitions from: :pendente, to: :resolvido
     end
 
     event :aceitar do
