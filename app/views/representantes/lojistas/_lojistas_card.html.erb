@@ -15,16 +15,27 @@
         <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
           <div class="col-md-12 col-sm-12 well profile_view">
             <div class="col-sm-12">
-              <h4 class="brief"><i><span title="<%= lojista.descricao %>"><%= truncate lojista.descricao %></span></i>
+              <h4 class="brief">
+                <i><span title="<%= lojista.descricao %>"><%= truncate lojista.descricao, length: 40 %></span></i>
               </h4>
+            </div>
+            <div class="col-sm-12">
+              <%= image_tag foto_logo_url(lojista), class: "img-rectangle img-fluid", size: "80x80" %>
+            </div>
+            <div class="col-sm-12">
+              <h5><%= lojista.contato %></h5>
+            </div>
+            <div class="col-sm-12">
               <div class="left col-xs-12">
-                <h2><%= lojista.contato %></h2>
                 <ul class="list-unstyled">
                   <li><i class="fa fa-building"></i> <strong>Endereço: </strong>
-                    <span title="<%= lojista.endereco %>"><%= truncate lojista.endereco %></span></li>
-                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong><%= lojista.email %></li>
+                    <span title="<%= lojista.endereco %>"><%= truncate lojista.endereco, length: 25 %></span>
+                  </li>
+                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong>
+                    <span title="<%= lojista.email %>"><%= truncate lojista.email, length: 25 %></span></li>
                   <li><i class="fa fa-phone"></i> <strong>Telefone: </strong><%= lojista.telefone %></li>
-                  <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= lojista.telefone_whatsapp %></li>
+                  <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= lojista.telefone_whatsapp %>
+                  </li>
                 </ul>
               </div>
             </div>

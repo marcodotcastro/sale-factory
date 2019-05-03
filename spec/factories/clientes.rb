@@ -42,7 +42,7 @@ FactoryBot.define do
     longitude {-48.9497198}
 
     after(:create) do |cliente|
-      cliente.logo.attach(io: File.open(Rails.root.join("spec", "files", "cliente-logo-#{rand(1..7)}.jpg")), filename: "cliente-logo-#{rand(1..7)}.jpg", content_type: "image/jpeg")
+      cliente.logo.attach(io: File.open(Rails.root.join("spec", "files", "cliente-logo-#{rand(1..4)}.jpg")), filename: "cliente-logo-#{rand(1..4)}.jpg", content_type: "image/jpeg")
     end
 
     before(:create) do |cliente|

@@ -37,6 +37,8 @@ class Lojista < ApplicationRecord
 
   validates_presence_of :cidade_id
 
+  has_one_attached :logo
+
   friendly_id :descricao, use: :slugged
 
 end

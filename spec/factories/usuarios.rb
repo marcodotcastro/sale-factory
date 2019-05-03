@@ -40,9 +40,9 @@ FactoryBot.define do
 
     after(:create) do |usuario|
       if usuario.representante?
-        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "representante-usuario-#{rand(1..4)}.jpg")), filename: "representante-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
+        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "representante-usuario-#{rand(1..7)}.jpg")), filename: "representante-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
       else
-        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "cliente-usuario-#{rand(1..7)}.jpg")), filename: "cliente-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
+        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "cliente-usuario-#{rand(1..4)}.jpg")), filename: "cliente-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
       end
     end
 

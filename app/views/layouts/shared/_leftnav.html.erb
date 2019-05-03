@@ -2,7 +2,11 @@
   <div class="navbar nav_title" style="border: 0;">
     <div class="logo">
       <%#FIXME: Melhorar logo do cliente %>
-      <%= foto_logo_url(current_usuario) %>
+      <% if current_usuario.representante? %>
+        <%= image_tag foto_logo_url(current_usuario.representante), class: "img-rectangle img-fluid", size: "80x80" %>
+      <% elsif current_usuario.cliente? %>
+        <%= image_tag foto_logo_url(current_usuario.cliente), class: "img-rectangle img-fluid", size: "80x80" %>
+      <% end %>
     </div>
   </div>
 <% end %>

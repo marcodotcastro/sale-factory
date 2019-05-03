@@ -1,3 +1,10 @@
+<div class="form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12">Logo</label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <%= f.input_field :logo, :as => :file, label: nil, class: "form-control col-md-7 col-xs-12" %>
+  </div>
+</div>
+
 <%= f.input :descricao %>
 <%= f.input :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
 <%= f.input :endereco %>
