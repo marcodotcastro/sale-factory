@@ -12,8 +12,8 @@
     </div>
     <div class="x_content">
       <% @representantes.each do |representante| %>
-        <div class="col-sm-3 col-md-3 col-lg-4 profile_details">
-          <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
+        <div class="col-sm-4 col-md-4 col-lg-12 profile_details">
+          <div class="col-sm-12 col-md-12 well profile_view">
             <div class="col-sm-12">
               <h4 class="brief">
                 <i><span title="<%= representante.descricao %>"><%= truncate representante.descricao, length: 40 %></span></i>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-12">
               <div class="left col-xs-4 text-center">
-                <%= image_tag foto_avatar_url(representante.usuario), class: "logo", size: "80x80" %>
+                <%= image_tag foto_avatar_url(representante.usuario), class: "logo", size: "250x250" %>
               </div>
             </div>
             <div class="col-sm-12">

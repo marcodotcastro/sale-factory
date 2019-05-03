@@ -67,6 +67,6 @@ class Clientes::ProdutosController < ApplicationController
   end
 
   def produto_params
-    params.require(:produto).permit(:descricao, :preco)
+    params.require(:produto).permit(:foto, :descricao, :preco)
   end
 end

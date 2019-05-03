@@ -22,4 +22,7 @@ class Produto < ApplicationRecord
   belongs_to :cliente
   has_many :pedidos
   has_many :solicitacoes, through: :pedidos
+
+  has_one_attached :foto
+
 end
