@@ -21,7 +21,7 @@
       <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         <%#TODO: Mover código para o helpers %>
         <% if current_usuario %>
-          <%= image_tag foto_avatar_url(current_usuario), size: "50x50" %><%= current_usuario.nome %>
+          <%= image_tag foto_avatar_url(current_usuario), class: "logo", size: "50x50" %><%= current_usuario.nome %>
         <% else %>
           <%= image_tag "user.png" %>
         <% end %>

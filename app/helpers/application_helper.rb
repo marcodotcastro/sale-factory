@@ -5,11 +5,11 @@ module ApplicationHelper
 
     if usuario.cliente?
       if usuario.cliente
-        image_tag(usuario.cliente.logo.attached? ? usuario.cliente.logo : foto_vazia, class: "img-rectangle", size: "100x50")
+        image_tag(usuario.cliente.logo.attached? ? usuario.cliente.logo : foto_vazia, class: "img-rectangle img-fluid")
       end
     elsif usuario.representante?
       if usuario.representante
-        image_tag(usuario.representante.logo.attached? ? usuario.representante.logo : foto_vazia, class: "img-rectangle", size: "100x50")
+        image_tag(usuario.representante.logo.attached? ? usuario.representante.logo : foto_vazia, class: "img-rectangle img-fluid")
       end
     end
 

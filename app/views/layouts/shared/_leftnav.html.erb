@@ -1,7 +1,9 @@
 <%= link_to root_path do %>
   <div class="navbar nav_title" style="border: 0;">
-    <%#FIXME: Melhorar logo do cliente %>
-    <%= foto_logo_url(current_usuario) %>
+    <div class="logo">
+      <%#FIXME: Melhorar logo do cliente %>
+      <%= foto_logo_url(current_usuario) %>
+    </div>
   </div>
 <% end %>
 
@@ -14,7 +16,7 @@
       <% if current_usuario.cliente %>
         <%= link_to cliente_path(current_usuario.cliente) do %>
           <div class="profile_pic">
-            <%= image_tag foto_avatar_url(current_usuario), class: "img-circle profile_img", size: "50x60" %>
+            <%= image_tag foto_avatar_url(current_usuario), class: "img-circle profile_img logo", size: "50x60" %>
           </div>
           <div class="profile_info">
             <span>Bem Vindo,</span>
