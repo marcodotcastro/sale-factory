@@ -45,6 +45,10 @@ FactoryBot.define do
 
     cidade {Cidade.first || association(:cidade)}
 
+    after(:create) do |representante|
+      representante.logo.attach(io: File.open(Rails.root.join("spec", "files", "representante-logo-#{rand(1..4)}.jpg")), filename: "representante-logo-#{rand(1..4)}.jpg", content_type: "image/jpeg")
+    end
+
     trait :com_cliente do
       after(:create) do |representante|
         create_list(:cliente, 2, representantes: [representante])

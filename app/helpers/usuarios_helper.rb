@@ -36,7 +36,7 @@ module UsuariosHelper
   def foto_avatar_url(usuario)
     foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
 
-    usuario.avatar.attached? ? usuario.avatar : foto_vazia
+    usuario.avatar.attached? ? url_for(usuario.avatar) : foto_vazia
   end
 
 end

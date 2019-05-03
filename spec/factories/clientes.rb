@@ -41,6 +41,10 @@ FactoryBot.define do
     latitude {-16.4064447}
     longitude {-48.9497198}
 
+    after(:create) do |cliente|
+      cliente.logo.attach(io: File.open(Rails.root.join("spec", "files", "cliente-logo-#{rand(1..7)}.jpg")), filename: "cliente-logo-#{rand(1..7)}.jpg", content_type: "image/jpeg")
+    end
+
     before(:create) do |cliente|
       create(:usuario, tipo: "cliente", email: cliente.email, cliente: cliente)
     end
