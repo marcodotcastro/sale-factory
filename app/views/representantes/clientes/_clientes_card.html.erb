@@ -16,14 +16,25 @@
           <div class="well profile_view">
             <div class="col-sm-12">
               <h4 class="brief">
-                <i><span title="<%= cliente.descricao %>"><%= truncate cliente.descricao, length: 25 %></span></i>
+                <i><span title="<%= cliente.descricao %>"><%= truncate cliente.descricao, length: 40 %></span></i>
               </h4>
+            </div>
+            <div class="col-sm-12">
+              <div class="left col-xs-4 text-center">
+                <%= image_tag foto_avatar_url(cliente.usuario), class: "logo", size: "80x80" %>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <h5><%= cliente.contato %></h5>
+            </div>
+            <div class="col-sm-12">
               <div class="left col-xs-12">
-                <h2><%= cliente.contato %></h2>
                 <ul class="list-unstyled">
                   <li><i class="fa fa-building"></i> <strong>Endereço: </strong>
-                    <span title="<%= cliente.endereco %>"><%= truncate cliente.endereco, length: 25 %></span></li>
-                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong><%= cliente.email %></li>
+                    <span title="<%= cliente.endereco %>"><%= truncate cliente.endereco, length: 25 %></span>
+                  </li>
+                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong>
+                    <span title="<%= cliente.email %>"><%= truncate cliente.email, length: 25 %></span></li>
                   <li><i class="fa fa-phone"></i> <strong>Telefone: </strong><%= cliente.telefone %></li>
                   <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= cliente.telefone_whatsapp %>
                   </li>
