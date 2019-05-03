@@ -11,6 +11,12 @@
         </ul>
         <div class="clearfix"></div>
       </div>
+      <div class="nav navbar-right">
+        <%#TODO: Mover para o helpers %>
+        <% if current_usuario.cliente? %>
+          <%= link_to "Desvincular Representante", cliente_representante_desvincular_path(@cliente, @representante), method: :post, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+        <% end %>
+      </div>
       <%= render "representantes/representante" %>
     </div>
   </div>

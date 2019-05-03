@@ -31,7 +31,7 @@
 
 class Clientes::RepresentantesController < ApplicationController
   before_action :set_representante, only: [:show]
-  before_action :set_cliente, only: [:index, :show]
+  before_action :set_cliente, only: [:index, :show, :desvincular]
 
   def index
     @representantes = get_representantes
@@ -39,6 +39,15 @@ class Clientes::RepresentantesController < ApplicationController
 
   def show
     @lojistas = get_lojistas
+  end
+
+  def desvincular
+    representante = get_representantes.friendly.find(params[:representante_id])
+    get_representantes.delete(representante)
+
+    respond_to do |format|
+      format.html {redirect_to cliente_representantes_path(@cliente), flash: {success: 'Representante foi excluido com sucesso.'}}
+    end
   end
 
   private

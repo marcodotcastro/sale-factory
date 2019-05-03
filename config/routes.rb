@@ -46,6 +46,7 @@
 #                                              PATCH  /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#update
 #                                              PUT    /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#update
 #                                              DELETE /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#destroy
+#            cliente_representante_desvincular POST   /clientes/:cliente_id/representantes/:representante_id/desvincular(.:format)                  clientes/representantes#desvincular
 #                       cliente_representantes GET    /clientes/:cliente_id/representantes(.:format)                                                clientes/representantes#index
 #                                              POST   /clientes/:cliente_id/representantes(.:format)                                                clientes/representantes#create
 #                    new_cliente_representante GET    /clientes/:cliente_id/representantes/new(.:format)                                            clientes/representantes#new
@@ -63,6 +64,14 @@
 #                                              PUT    /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#update
 #                                              DELETE /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#destroy
 #                   cliente_solicitacao_status POST   /clientes/:cliente_id/solicitacoes/:solicitacao_id/status(.:format)                           clientes/solicitacoes#status
+#              cliente_solicitacao_comentarios GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      clientes/comentarios#index
+#                                              POST   /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      clientes/comentarios#create
+#           new_cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/new(.:format)                  clientes/comentarios#new
+#          edit_cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id/edit(.:format)             clientes/comentarios#edit
+#               cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#show
+#                                              PATCH  /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#update
+#                                              PUT    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#update
+#                                              DELETE /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#destroy
 #                         cliente_solicitacoes GET    /clientes/:cliente_id/solicitacoes(.:format)                                                  clientes/solicitacoes#index
 #                                              POST   /clientes/:cliente_id/solicitacoes(.:format)                                                  clientes/solicitacoes#create
 #                      new_cliente_solicitacao GET    /clientes/:cliente_id/solicitacoes/new(.:format)                                              clientes/solicitacoes#new
@@ -177,7 +186,9 @@ Rails.application.routes.draw do
       ##RECURSOS
 
       resources :lojistas
-      resources :representantes
+      resources :representantes do
+        post "desvincular", to: "representantes#desvincular"
+      end
       resources :produtos
       resources :solicitacoes do
         post "status", to: "status"
