@@ -30,18 +30,20 @@ class Clientes::DashboardsController < ApplicationController
   end
 
   def mapa_lojistas
+    listas_consulta
 
-    @q_cidades = Cidade.ransack(params[:q_cidades])
-    @cidades = @q_cidades.result(distinct: true)
+    @lojista_list = current_usuario.cliente.lojistas.order(descricao: :asc)
 
-    @q_lojistas = Lojista.ransack(params[:q_lojistas])
-    @lojista = @q_lojistas.result(distinct: true)
+    consultar_cidades
 
+    consultar_lojistas
   end
 
   def mapa_representantes
 
-    listas_representantes
+    listas_consulta
+
+    @representante_list = current_usuario.cliente.representantes.order(descricao: :asc)
 
     consultar_cidades
 
@@ -51,13 +53,22 @@ class Clientes::DashboardsController < ApplicationController
 
   private
 
+  def consultar_lojistas
+    if params[:lojista].present?
+      q_lojistas = Lojista.ransack(id_eq: params[:lojista][:descricao_eq])
+    else
+      q_lojistas = Lojista.ransack(cidade_estado_eq: current_usuario.cliente.cidade.estado)
+    end
+    @lojistas = q_lojistas.result(distinct: true).joins(:clientes).where("clientes_lojistas.cliente_id = #{current_usuario.cliente.id}")
+  end
+
   def consultar_representantes
     if params[:representante].present?
-      q_representantes = Representante.ransack(id_eq: params[:representante][:descricao_eq])
+      q_representantes = Representante.ransack(id_eq: params[:representante][:descricao_eq], cliente_id: current_usuario.cliente.id)
     else
-      q_representantes = Representante.ransack(cidade_estado_eq: current_usuario.cliente.cidade.estado)
+      q_representantes = Representante.ransack(cidade_estado_eq: current_usuario.cliente.cidade.estado, cliente_id: current_usuario.cliente.id)
     end
-    @representantes = q_representantes.result(distinct: true)
+    @representantes = q_representantes.result(distinct: true).joins(:clientes).where("clientes_representantes.cliente_id = #{current_usuario.cliente.id}")
   end
 
   def consultar_cidades
@@ -69,8 +80,7 @@ class Clientes::DashboardsController < ApplicationController
     @cidades = q_cidades.result(distinct: true)
   end
 
-  def listas_representantes
-    @representante_list = current_usuario.cliente.representantes.order(descricao: :asc)
+  def listas_consulta
     @estado_list = Cidade.select(:estado).distinct.order(estado: :asc)
     @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
   end
