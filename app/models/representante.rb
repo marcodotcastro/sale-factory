@@ -47,4 +47,29 @@ class Representante < ApplicationRecord
 
   validates :descricao, :cidade_id, presence: true
 
+
+  def total_de_vendas(cliente = nil)
+    if cliente
+      self.solicitacoes.where(status: :aceito, cliente_id: cliente.id).count
+    else
+      self.solicitacoes.where(status: :aceito).count
+    end
+  end
+
+  def total_de_lojistas(cliente = nil)
+    if cliente
+      Lojista.joins([:clientes, :representantes]).where("clientes_lojistas.cliente_id = #{cliente.id} and lojistas_representantes.representante_id = #{self.id}").distinct.count
+    else
+      Lojista.joins(:representantes).where("lojistas_representantes.representante_id = #{self.id}").distinct.count
+    end
+  end
+
+  def total_de_cidades(cliente = nil)
+    if cliente
+      Cidade.joins(lojistas: [:clientes, :representantes]).where("clientes_lojistas.cliente_id = #{cliente.id} and representantes.id = #{self.id}").distinct.count
+    else
+      Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{self.id}").distinct.count
+    end
+  end
+
 end

@@ -19,6 +19,14 @@ class Clientes::DashboardsController < ApplicationController
 
   def representante
     @representante = Representante.friendly.find(params[:id])
+    cliente = current_usuario.cliente
+
+
+    @total_vendas = @representante.total_de_vendas(cliente)
+
+    @total_lojistas = @representante.total_de_lojistas(cliente)
+
+    @total_cidades = @representante.total_de_cidades(cliente)
   end
 
   def mapa_lojistas

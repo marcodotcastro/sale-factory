@@ -157,27 +157,12 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to representante_dashboards_mapa_representantes_path(current_usuario.representante) do %>
-                  <i class="fa fa-map-marker"></i> Represenantes
-                <% end %>
-              </li>
-              <li>
                 <%= link_to representante_dashboards_mapa_lojistas_path(current_usuario.representante) do %>
                   <i class="fa fa-map-marker"></i> Lojistas
                 <% end %>
               </li>
             </ul>
           </li>
-          <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li>
-                <%= link_to representante_dashboards_ranking_path(current_usuario.representante) do %>
-                  <i class="fa fa-sort-numeric-asc"></i> Ranking
-                <% end %>
-              </li>
-            </ul>
-          </li>
-
           <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li>

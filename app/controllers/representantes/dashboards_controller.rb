@@ -1,28 +1,26 @@
 class Representantes::DashboardsController < ApplicationController
-
-  def ranking
-    @representantes_mais_vendas = Representante.order(id: :desc).last(10)
-    @lojistas_mais_compras = Lojista.order(id: :desc).last(10)
-  end
+  before_action :set_representante, only: [:geral]
 
   def geral
-    @representantes_mais_vendas = Representante.order(id: :desc).last(10)
+    @total_vendas = @representante.total_de_vendas
+    @total_lojistas = @representante.total_de_lojistas
+    @total_cidades = @representante.total_de_cidades
   end
 
-  def membro
-    @representantes_mais_vendas = Representante.order(id: :desc).last(10)
-  end
-  
   def mapa_lojistas
     @cidades = Cidade.all
-
     @lojistas = Lojista.all
   end
 
   def mapa_representantes
     @cidades = Cidade.all
-
     @representantes = Representante.all
+  end
+
+  private
+
+  def set_representante
+    @representante = Representante.friendly.find(params[:representante_id])
   end
 
 end
