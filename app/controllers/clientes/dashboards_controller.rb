@@ -55,7 +55,7 @@ class Clientes::DashboardsController < ApplicationController
 
   def consultar_lojistas
     if params[:lojista].present?
-      q_lojistas = Lojista.ransack(id_eq: params[:lojista][:descricao_eq])
+      q_lojistas = Lojista.ransack(id_eq: params[:lojista][:id_eq])
     else
       q_lojistas = Lojista.ransack(cidade_estado_eq: current_usuario.cliente.cidade.estado)
     end
@@ -64,7 +64,7 @@ class Clientes::DashboardsController < ApplicationController
 
   def consultar_representantes
     if params[:representante].present?
-      q_representantes = Representante.ransack(id_eq: params[:representante][:descricao_eq], cliente_id: current_usuario.cliente.id)
+      q_representantes = Representante.ransack(id_eq: params[:representante][:id_eq], cliente_id: current_usuario.cliente.id)
     else
       q_representantes = Representante.ransack(cidade_estado_eq: current_usuario.cliente.cidade.estado, cliente_id: current_usuario.cliente.id)
     end

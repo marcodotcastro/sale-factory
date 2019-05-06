@@ -1,3 +1,24 @@
+<div class="row">
+  <%= form_tag representante_dashboards_mapa_lojistas_path(current_usuario.representante), method: :get do |f| %>
+    <div class="col-md-1 col-sm-1 col-xs-1">
+      <%= select_tag "cidade[estado_eq]", options_from_collection_for_select(@estado_list, "estado", "estado"), include_blank: "All", class: "form-control" %>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <%= text_field_tag "cidade[populacao_gteq]", nil, placeholder: "População", class: "form-control" %>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <%= select_tag "cidade[descricao_eq]", options_from_collection_for_select(@cidade_list, "descricao", "descricao"), include_blank: "All", class: "form-control" %>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <%= select_tag "lojista[id_eq]", options_from_collection_for_select(@lojista_list, "id", "descricao"), include_blank: "All", class: "form-control" %>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <%= submit_tag "Pesquisar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", request.path, class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>
+
 Legenda: Cidades: <%= @cidades.count %> e
 Lojistas: <%= @lojistas.count %>
 <div class="row">
