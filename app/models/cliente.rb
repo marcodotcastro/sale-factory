@@ -47,4 +47,20 @@ class Cliente < ApplicationRecord
 
   validates :descricao, :setor_id, :cidade_id, presence: true
 
+  def total_de_representantes
+    self.representantes.count
+  end
+
+  def total_de_vendas
+    self.solicitacoes.where(status: :aceito).count
+  end
+
+  def total_de_lojistas
+    self.lojistas.count
+  end
+
+  def total_de_cidades
+    Cidade.joins(lojistas: :clientes).where("clientes_lojistas.cliente_id = #{self.id}").distinct.count
+  end
+
 end

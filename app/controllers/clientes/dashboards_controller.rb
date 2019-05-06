@@ -6,7 +6,15 @@ class Clientes::DashboardsController < ApplicationController
   end
 
   def geral
-    @representantes_mais_vendas = Representante.order(id: :desc).last(10)
+    cliente = current_usuario.cliente
+
+    @total_representantes = cliente.total_de_representantes
+
+    @total_vendas = cliente.total_de_vendas
+
+    @total_lojistas = cliente.total_de_lojistas
+
+    @total_cidades = cliente.total_de_cidades
   end
 
   def representante
