@@ -55,7 +55,7 @@ class Solicitacao < ApplicationRecord
     end
 
     event :analisar do
-      transitions from: [:solicitado], to: :analisado
+      transitions from: [:solicitado, :resolvido], to: :analisado
     end
 
     event :pendenciar do
@@ -67,11 +67,11 @@ class Solicitacao < ApplicationRecord
     end
 
     event :aceitar do
-      transitions from: [:solicitado, :analisado], to: :aceito
+      transitions from: [:solicitado, :analisado, :resolvido], to: :aceito
     end
 
     event :recusar do
-      transitions from: [:solicitado, :analisado], to: :recusado
+      transitions from: [:solicitado, :analisado, :resolvido], to: :recusado
     end
 
     event :cancelar do
