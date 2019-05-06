@@ -47,10 +47,14 @@
     <!-- /footer content -->
   </div>
 </div>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&callback=initMap" data-turbolinks-eval="true">
-</script>
-<%= javascript_include_tag 'application' %>
+
+<% if action_name.include? "mapa" %>
+  <script async defer
+          src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&callback=initMap" data-turbolinks-eval="true">
+  </script>
+<% end %>
+
+<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <% unless flash.empty? %>
   <script type="text/javascript">
