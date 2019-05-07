@@ -1,17 +1,17 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="row">
     <%= search_form_for @q, url: current_usuario.cliente? ? cliente_solicitacoes_path(current_usuario.cliente) : representante_solicitacoes_path(current_usuario.representante) do |f| %>
-
       <div class="col-md-3 col-sm-3 col-xs-3">
         <%= f.collection_select :status_eq, @statuses, "status", "status", {include_blank: 'Todas Situações'}, {class: "form-control"} %>
       </div>
-      <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos Representantes'}, {class: "form-control"} %>
-      </div>
+      <% if current_usuario.cliente? %>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos Representantes'}, {class: "form-control"} %>
+        </div>
+      <% end %>
       <div class="col-md-3 col-sm-3 col-xs-3">
         <%= f.select :lojista_id_eq, options_from_collection_for_select(@lojistas, "id", "descricao"), {include_blank: 'Todos Lojistas'}, {class: "form-control"} %>
       </div>
-
       <div class="col-md-3 col-sm-3 col-xs-3">
         <%= f.submit "Pesquisar", class: "btn btn-default" %>
         <%= link_to "Limpar", request.path, class: "btn btn-default" %>

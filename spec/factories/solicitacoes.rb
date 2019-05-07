@@ -35,11 +35,11 @@ FactoryBot.define do
     end
 
     before(:create) do |solicitacao|
-      solicitacao.cliente = Cliente.first
+      solicitacao.cliente = Cliente.all.sample
     end
 
     before(:create) do |solicitacao|
-      solicitacao.representante = Representante.first
+      solicitacao.representante = Representante.all.sample
     end
 
     before(:create) do |solicitacao|

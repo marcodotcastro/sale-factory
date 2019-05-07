@@ -87,13 +87,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def set_clientes_do_lojista_com_representante
-    #TODO: Como refatorar isso?
-    clientes = []
-    @lojista.clientes.each do |cliente|
-      if cliente.representantes.find_by(id: @representante)
-        clientes << cliente
-      end
-    end
+    Cliente.joins(lojistas: [:representantes]).where("representantes.id = #{@representante.id} and lojistas.id = #{@lojista.id}").distinct
   end
 
   def get_lojistas

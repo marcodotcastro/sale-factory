@@ -26,9 +26,11 @@
 class Representantes::ClientesController < ApplicationController
   before_action :set_cliente, only: [:show]
   before_action :set_representante, only: [:index, :show]
+  before_action :get_cidades, only: [:index]
+  before_action :get_estados, only: [:index]
 
   def index
-    @clientes = current_usuario.representante.clientes
+    @clientes = get_clientes.result(distinct: true)
   end
 
   def show
@@ -39,13 +41,11 @@ class Representantes::ClientesController < ApplicationController
   private
 
   def set_lojistas_do_cliente_com_representante
-    #TODO: Como refatorar isso?
-    lojistas = []
-    @cliente.lojistas.each do |lojista|
-      if lojista.representantes.find_by(id: @representante)
-        lojistas << lojista
-      end
-    end
+    Lojista.joins(clientes: [:representantes]).where("representantes.id = #{@representante.id} and clientes.id = #{@cliente.id}").distinct
+  end
+
+  def get_clientes
+    @q = current_usuario.representante.clientes.ransack(params[:q])
   end
 
   def set_cliente
@@ -54,6 +54,14 @@ class Representantes::ClientesController < ApplicationController
 
   def set_representante
     @representante = current_usuario.representante
+  end
+
+  def get_cidades
+    @cidades = Cidade.joins(clientes: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct
+  end
+
+  def get_estados
+    @estados = Cidade.joins(clientes: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct
   end
 
 end

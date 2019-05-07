@@ -1,9 +1,11 @@
 class Clientes::SolicitacoesController < ApplicationController
   before_action :set_solicitacao, only: [:show, :edit, :update, :destroy]
   before_action :set_cliente, only: [:index, :show, :edit, :update, :status]
+  before_action :get_lojistas, only: [:index]
+  before_action :get_statuses, only: [:index]
+  before_action :get_representantes, only: [:index]
 
   def index
-    listas_solicitacao
     @solicitacoes = get_solicitacoes.result(distinct: true)
   end
 
@@ -39,9 +41,15 @@ class Clientes::SolicitacoesController < ApplicationController
     params.require(:solicitacao).permit(:status)
   end
 
-  def listas_solicitacao
+  def get_statuses
     @statuses = Solicitacao.select(:status).where.not(status: :criado).distinct
+  end
+
+  def get_representantes
     @representantes = Representante.joins(:solicitacoes).where("solicitacoes.cliente_id = #{current_usuario.cliente.id}").distinct
+  end
+
+  def get_lojistas
     @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.cliente_id = #{current_usuario.cliente.id}").distinct
   end
 

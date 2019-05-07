@@ -43,11 +43,6 @@ FactoryBot.define do
       lojista.logo.attach(io: File.open(Rails.root.join("spec", "files", "lojista-logo-#{rand(1..6)}.jpg")), filename: "lojista-logo-#{rand(1..6)}.jpg", content_type: "image/jpeg")
     end
 
-
-    before(:create) do |lojista|
-      lojista.clientes << Cliente.last(rand(Cliente.count) + 1)
-    end
-
     before(:create) do |lojista|
       lojista.representantes << Representante.last(rand(Representante.count) + 1)
     end

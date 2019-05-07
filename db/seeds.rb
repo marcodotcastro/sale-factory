@@ -44,4 +44,4 @@ Lojista.all.each do |lojista|
 end
 
 puts "Solicitações e Pedidos"
-FactoryBot.create_list(:solicitacao, 5, :com_pedido)
+FactoryBot.create_list(:solicitacao, 100, :com_pedido)
