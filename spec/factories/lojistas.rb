@@ -39,14 +39,14 @@ FactoryBot.define do
 
     before(:create) do |lojista|
       #Vincular representantes
-      lojista.representantes << Representante.last(rand(Representante.count) + 1)
+      lojista.representantes << [Representante.all.sample]
       #Vincular cidade
       lojista.cidade = Cidade.all.sample
     end
 
     after(:create) do |lojista|
       #Anexar logo
-      lojista.logo.attach(io: File.open(Rails.root.join("spec", "files", "lojista-logo-#{rand(1..6)}.jpg")), filename: "lojista-logo-#{rand(1..6)}.jpg", content_type: "image/jpeg")
+      lojista.logo.attach(io: File.open(Rails.root.join("spec", "files", "logos", "lojista-logo-#{rand(1..6)}.jpg")), filename: "lojista-logo-#{rand(1..6)}.jpg", content_type: "image/jpeg")
     end
 
   end

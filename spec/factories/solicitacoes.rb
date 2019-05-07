@@ -35,18 +35,13 @@ FactoryBot.define do
     end
 
     before(:create) do |solicitacao|
-      #Vincular cliente
-      solicitacao.cliente = Cliente.all.sample
-    end
-
-    before(:create) do |solicitacao|
+      representante = Representante.all.sample
       #Vincular representante
-      solicitacao.representante = Representante.all.sample
-    end
-
-    before(:create) do |solicitacao|
+      solicitacao.representante = representante
+      #Vincular cliente
+      solicitacao.cliente = representante.clientes.all.sample
       #Vincular lojista
-      solicitacao.lojista = Lojista.all.sample
+      solicitacao.lojista = representante.lojistas.all.sample
     end
 
   end

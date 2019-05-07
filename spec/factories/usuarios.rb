@@ -33,8 +33,8 @@
 
 FactoryBot.define do
   factory :usuario do
-    sequence(:email) {|n| "joao.paulo#{n}@melcon.com.br"}
-    nome {"João Paulo"}
+    sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
+    sequence(:nome) {|n| "Ana Paula #{n}"}
     password {12345678}
     tipo {[:cliente, :representante].sample}
 
@@ -49,9 +49,9 @@ FactoryBot.define do
     after(:create) do |usuario|
       #Anexar avatar
       if usuario.representante?
-        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "representante-usuario-#{rand(1..7)}.jpg")), filename: "representante-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
+        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "usuarios", "usuario-h-#{rand(1..5)}.jpg")), filename: "cliente-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
       else
-        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "cliente-usuario-#{rand(1..4)}.jpg")), filename: "cliente-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
+        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "usuarios", "usuario-m-#{rand(1..6)}.jpg")), filename: "representante-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
       end
     end
 

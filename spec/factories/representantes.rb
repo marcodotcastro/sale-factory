@@ -48,11 +48,12 @@ FactoryBot.define do
       create(:usuario, :vincular_convite, tipo: "representante", nome: representante.contato, email: representante.email, representante: representante)
       #Vincular cidade
       representante.cidade = Cidade.all.sample
+      representante.clientes << [Cliente.all.sample]
     end
 
     after(:create) do |representante|
       #Anexar logo
-      representante.logo.attach(io: File.open(Rails.root.join("spec", "files", "representante-logo-#{rand(1..7)}.jpg")), filename: "representante-logo-#{rand(1..7)}.jpg", content_type: "image/jpeg")
+      representante.logo.attach(io: File.open(Rails.root.join("spec", "files", "logos", "representante-logo-#{rand(1..7)}.jpg")), filename: "representante-logo-#{rand(1..7)}.jpg", content_type: "image/jpeg")
     end
 
   end

@@ -34,25 +34,25 @@ FactoryBot.define do
     sequence(:descricao) {|n| "Indústria Farmacêutica Melcon do Brasil S.A. #{n}"}
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
-    sequence(:contato) {|n| "Sr João Paulo #{n}"}
-    sequence(:email) {|n| "joao.paulo#{n}@gmail.com"}
+    sequence(:contato) {|n| "Sra Ana Paula #{n}"}
+    sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
     telefone {"(62) 3902-3200"}
     telefone_whatsapp {"(62) 99902-3200"}
     latitude {-16.4064447}
     longitude {-48.9497198}
 
+    setor {Setor.all.sample || association(:setor)}
+
     before(:create) do |cliente|
       #Criar usuário
-      create(:usuario, tipo: "cliente", email: cliente.email, cliente: cliente)
+      create(:usuario, tipo: "cliente", nome: cliente.contato, email: cliente.email, cliente: cliente)
       #Vincular cidade
       cliente.cidade = Cidade.all.sample
-      #Vincular setor
-      cliente.setor = create(:setor)
     end
 
     after(:create) do |cliente|
       #Anexar foto
-      cliente.logo.attach(io: File.open(Rails.root.join("spec", "files", "cliente-logo-#{rand(1..4)}.jpg")), filename: "cliente-logo-#{rand(1..4)}.jpg", content_type: "image/jpeg")
+      cliente.logo.attach(io: File.open(Rails.root.join("spec", "files", "logos", "cliente-logo-#{rand(1..4)}.jpg")), filename: "cliente-logo-#{rand(1..4)}.jpg", content_type: "image/jpeg")
     end
 
   end
