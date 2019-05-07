@@ -3,13 +3,13 @@
     <%= search_form_for @q, url: current_usuario.cliente? ? cliente_solicitacoes_path(current_usuario.cliente) : representante_solicitacoes_path(current_usuario.representante) do |f| %>
 
       <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.collection_select :status_eq, @statuses, "status", "status", {include_blank: 'Todos'}, {class: "form-control"} %>
+        <%= f.collection_select :status_eq, @statuses, "status", "status", {include_blank: 'Todas Situações'}, {class: "form-control"} %>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos'}, {class: "form-control"} %>
+        <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos Representantes'}, {class: "form-control"} %>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.select :lojista_id_eq, options_from_collection_for_select(@lojistas, "id", "descricao"), {include_blank: 'Todos'}, {class: "form-control"} %>
+        <%= f.select :lojista_id_eq, options_from_collection_for_select(@lojistas, "id", "descricao"), {include_blank: 'Todos Lojistas'}, {class: "form-control"} %>
       </div>
 
       <div class="col-md-3 col-sm-3 col-xs-3">

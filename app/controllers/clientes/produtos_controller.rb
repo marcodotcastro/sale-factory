@@ -4,7 +4,7 @@ class Clientes::ProdutosController < ApplicationController
   before_action :set_produtos, only: [:new, :edit]
 
   def index
-    @produtos = get_produtos
+    @produtos = get_produtos.result(distinct: true)
   end
 
   def show
@@ -51,11 +51,11 @@ class Clientes::ProdutosController < ApplicationController
   private
 
   def set_produtos
-    @produtos = current_usuario.cliente.produtos
+    @produtos = get_produtos
   end
 
   def get_produtos
-    current_usuario.cliente.produtos
+    @q = current_usuario.cliente.produtos.ransack(params[:q])
   end
 
   def set_produto
