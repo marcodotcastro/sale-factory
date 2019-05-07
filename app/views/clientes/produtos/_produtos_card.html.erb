@@ -6,6 +6,10 @@
         <%= f.search_field :descricao_cont, {placeholder: "Descrição do Produto", class: "form-control"} %>
       </div>
 
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <%= f.search_field :preco_gteq, {placeholder: "Preço do Produto", class: "form-control"} %>
+      </div>
+
       <% if current_usuario.representante? %>
         <div class="col-md-3 col-sm-3 col-xs-3">
           <%= f.collection_select :cliente_id_eq, @clientes, "id", "descricao", {include_blank: 'Todos Clientes'}, {class: "form-control"} %>
@@ -42,7 +46,7 @@
               <h2><%= number_to_currency produto.preco %></h2>
             </div>
             <div class="col-sm-12">
-              <%= image_tag foto_url(produto), class: "logo", size: "250x250" %>
+              <%= image_tag foto_url(produto), class: "img-profile", size: "250x250" %>
             </div>
             <% if current_usuario.representante? %>
               <div class="col-sm-12">
@@ -57,22 +61,19 @@
               </div>
             <% end %>
             <div class="col-xs-12 bottom text-center">
-              <div class="col-xs-12 col-sm-6 emphasis"></div>
-              <div class="col-xs-12 col-sm-6 emphasis">
-                <% if current_usuario.cliente? %>
-                  <%= link_to cliente_produto_path(@cliente, produto) do %>
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <i class="fa fa-eye"> </i> Detalhes
-                    </button>
-                  <% end %>
-                <% elsif current_usuario.representante? %>
-                  <%= link_to representante_produto_path(@representante, produto) do %>
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <i class="fa fa-eye"> </i> Detalhes
-                    </button>
-                  <% end %>
+              <% if current_usuario.cliente? %>
+                <%= link_to cliente_produto_path(@cliente, produto) do %>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
                 <% end %>
-              </div>
+              <% elsif current_usuario.representante? %>
+                <%= link_to representante_produto_path(@representante, produto) do %>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

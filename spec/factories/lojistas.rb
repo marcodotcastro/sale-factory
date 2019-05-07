@@ -28,12 +28,12 @@
 FactoryBot.define do
   factory :lojista do
     sequence(:descricao) {|n| "Drogarias Bifarma #{n}"}
+    sequence(:contato) {|n| "Marcelo Sousa #{n}"}
+    sequence(:email) {|n| "marcelos#{n}@gmail.com"}
     endereco {"R. Barão do Rio Branco, 535 - Centro, Birigui - SP"}
     cep {"16200-001"}
-    contato {"Marcelo Sousa"}
     telefone {"(21) 99254-4332"}
     telefone_whatsapp {"(21) 99254-4332"}
-    email {"marcelos@gmail.com"}
     latitude {-22.6195575}
     longitude {-49.3215312}
 

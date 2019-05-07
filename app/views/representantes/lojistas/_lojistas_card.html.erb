@@ -1,4 +1,24 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="row">
+    <%= search_form_for @q, url: current_usuario.cliente? ? cliente_lojistas_path(current_usuario.cliente) : representante_lojistas_path(current_usuario.representante) do |f| %>
+      <div class="col-md-3 col-sm-3 col-lg-3">
+        <%= f.search_field :descricao_cont, {placeholder: "Nome do Lojista", class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.search_field :contato_cont, {placeholder: "Nome do Contato", class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.collection_select :cidade_estado_eq, @estados, "estado", "estado", {include_blank: 'Todos Estados'}, {class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.collection_select :cidade_id_eq, @cidades, "id", "descricao", {include_blank: 'Todas Cidades'}, {class: "form-control"} %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-lg-3">
+        <%= f.submit "Pesquisar", class: "btn btn-default" %>
+        <%= link_to "Limpar", request.path, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
   <div class="x_panel">
     <div class="x_title">
       <h2>Lojistas
@@ -40,22 +60,19 @@
               </div>
             </div>
             <div class="col-xs-12 bottom text-center">
-              <div class="col-xs-12 col-sm-6 emphasis"></div>
-              <div class="col-xs-12 col-sm-6 emphasis">
-                <% if current_usuario.representante? %>
-                  <%= link_to representante_lojista_path(@representante, lojista) do %>
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <i class="fa fa-eye"> </i> Detalhes
-                    </button>
-                  <% end %>
-                <% elsif current_usuario.cliente? %>
-                  <%= link_to cliente_lojista_path(@cliente, lojista) do %>
-                    <button type="button" class="btn btn-primary btn-xs">
-                      <i class="fa fa-eye"> </i> Detalhes
-                    </button>
-                  <% end %>
+              <% if current_usuario.representante? %>
+                <%= link_to representante_lojista_path(@representante, lojista) do %>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
                 <% end %>
-              </div>
+              <% elsif current_usuario.cliente? %>
+                <%= link_to cliente_lojista_path(@cliente, lojista) do %>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

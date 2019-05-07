@@ -32,9 +32,11 @@ class Representantes::LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
   before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy]
   before_action :set_clientes, only: [:new, :edit]
+  before_action :get_cidades, only: [:index]
+  before_action :get_estados, only: [:index]
 
   def index
-    @lojistas = get_lojistas
+    @lojistas = get_lojistas.result(distinct: true)
   end
 
   def show
@@ -95,7 +97,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def get_lojistas
-    current_usuario.representante.lojistas
+    @q = current_usuario.representante.lojistas.ransack(params[:q])
   end
 
   def set_lojista
@@ -109,4 +111,13 @@ class Representantes::LojistasController < ApplicationController
   def lojista_params
     params.require(:lojista).permit(:logo, :descricao, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, cliente_ids: [])
   end
+
+  def get_cidades
+    @cidades = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct
+  end
+
+  def get_estados
+    @estados = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct
+  end
+
 end

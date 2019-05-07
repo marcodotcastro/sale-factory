@@ -32,9 +32,11 @@
 class Clientes::RepresentantesController < ApplicationController
   before_action :set_representante, only: [:show]
   before_action :set_cliente, only: [:index, :show, :desvincular]
+  before_action :get_cidades, only: [:index]
+  before_action :get_estados, only: [:index]
 
   def index
-    @representantes = get_representantes
+    @representantes = get_representantes.result(distinct: true)
   end
 
   def show
@@ -57,7 +59,7 @@ class Clientes::RepresentantesController < ApplicationController
   end
 
   def get_representantes
-    current_usuario.cliente.representantes
+    @q = current_usuario.cliente.representantes.ransack(params[:q])
   end
 
   def set_cliente
@@ -71,5 +73,14 @@ class Clientes::RepresentantesController < ApplicationController
   def representante_params
     params.require(:representante).permit(:cliente_id)
   end
+
+  def get_cidades
+    @cidades = Cidade.joins(representantes: :clientes).where("clientes.id = #{current_usuario.cliente.id}").distinct
+  end
+
+  def get_estados
+    @estados = Cidade.joins(representantes: :clientes).where("clientes.id = #{current_usuario.cliente.id}").select(:estado).distinct
+  end
+
 
 end
