@@ -80,6 +80,10 @@ class Solicitacao < ApplicationRecord
 
   end
 
+  def valor_total_dos_produtos
+    self.pedidos.joins(:produto).group(:id).sum("produtos.preco * quantidade").values.sum
+  end
+
   private
 
   def vincular_lojista_ao_cliente

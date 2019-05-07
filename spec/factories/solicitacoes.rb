@@ -26,6 +26,8 @@
 FactoryBot.define do
   factory :solicitacao do
 
+    status {["criado", "solicitado", "aceito"].sample}
+
     trait :com_pedido do
       after(:create) do |solicitacao|
         create(:pedido, solicitacao: solicitacao)
@@ -33,11 +35,11 @@ FactoryBot.define do
     end
 
     before(:create) do |solicitacao|
-      solicitacao.cliente = Cliente.all.sample
+      solicitacao.cliente = Cliente.first
     end
 
     before(:create) do |solicitacao|
-      solicitacao.representante = Representante.all.sample
+      solicitacao.representante = Representante.first
     end
 
     before(:create) do |solicitacao|

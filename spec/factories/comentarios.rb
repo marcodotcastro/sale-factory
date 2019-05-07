@@ -17,8 +17,15 @@
 
 FactoryBot.define do
   factory :comentario do
-    descricao { "MyString" }
-    usuario { nil }
-    solicitacao { nil }
+    descricao {Faker::Lorem.sentence}
+
+    before(:create) do |solicitacao|
+      solicitacao.cliente = Cliente.first
+    end
+
+    before(:create) do |solicitacao|
+      solicitacao.representante = Representante.first
+    end
+
   end
 end

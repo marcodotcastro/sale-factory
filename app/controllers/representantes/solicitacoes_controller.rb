@@ -5,7 +5,8 @@ class Representantes::SolicitacoesController < ApplicationController
   before_action :set_lojistas, only: [:new, :edit, :create]
 
   def index
-    @solicitacoes = get_solicitacoes
+    listas_solicitacao
+    @solicitacoes = get_solicitacoes.result(distinct: true)
   end
 
   def show
@@ -64,7 +65,7 @@ class Representantes::SolicitacoesController < ApplicationController
   private
 
   def get_solicitacoes
-    current_usuario.representante.solicitacoes.order(created_at: :desc)
+    @q = current_usuario.representante.solicitacoes.order(created_at: :desc).ransack(params[:q])
   end
 
   def build_pedido
@@ -90,4 +91,11 @@ class Representantes::SolicitacoesController < ApplicationController
   def solicitacao_params
     params.require(:solicitacao).permit(:representante_id, :cliente_id, :lojista_id, pedidos_attributes: [:id, :quantidade, :produto_id, :_destroy])
   end
+
+  def listas_solicitacao
+    @statuses = Solicitacao.select(:status).where.not(status: :criado).distinct
+    @representantes = Representante.joins(:solicitacoes).where("solicitacoes.representante_id = #{current_usuario.representante.id}").distinct
+    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.representante_id = #{current_usuario.representante.id}").distinct
+  end
+
 end
