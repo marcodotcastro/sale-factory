@@ -13,8 +13,8 @@
       <%= select_tag "lojista[id_eq]", options_from_collection_for_select(@lojista_list, "id", "descricao"), include_blank: "All", class: "form-control" %>
     </div>
     <div class="col-md-3 col-sm-3 col-xs-3">
-      <%= submit_tag "Pesquisar", class: "btn btn-success" %>
-      <%= link_to "Limpar", request.path, class: "btn btn-info" %>
+      <%= submit_tag "Pesquisar", class: "btn btn-default" %>
+      <%= link_to "Limpar", request.path, class: "btn btn-default" %>
     </div>
   <% end %>
 </div>
