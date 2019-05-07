@@ -37,14 +37,16 @@ FactoryBot.define do
     latitude {-22.6195575}
     longitude {-49.3215312}
 
-    cidade {Cidade.first || association(:cidade)}
-
-    after(:create) do |lojista|
-      lojista.logo.attach(io: File.open(Rails.root.join("spec", "files", "lojista-logo-#{rand(1..6)}.jpg")), filename: "lojista-logo-#{rand(1..6)}.jpg", content_type: "image/jpeg")
+    before(:create) do |lojista|
+      #Vincular representantes
+      lojista.representantes << Representante.last(rand(Representante.count) + 1)
+      #Vincular cidade
+      lojista.cidade = Cidade.all.sample
     end
 
-    before(:create) do |lojista|
-      lojista.representantes << Representante.last(rand(Representante.count) + 1)
+    after(:create) do |lojista|
+      #Anexar logo
+      lojista.logo.attach(io: File.open(Rails.root.join("spec", "files", "lojista-logo-#{rand(1..6)}.jpg")), filename: "lojista-logo-#{rand(1..6)}.jpg", content_type: "image/jpeg")
     end
 
   end

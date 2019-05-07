@@ -644,6 +644,10 @@ body {
   height: 200px
 }
 
+.fixed_height_100_pc {
+  height: 100%
+}
+
 .overflow_hidden {
   overflow: hidden
 }
@@ -1969,12 +1973,16 @@ ul.quick-list li i {
   width: 20%
 }
 
-.w_25 {
-  width: 25%
+.w_30 {
+  width: 30%
 }
 
-.w_55 {
-  width: 55%
+.w_50 {
+  width: 50%
+}
+
+.w_70 {
+  width: 70%
 }
 
 h5.graph_title {

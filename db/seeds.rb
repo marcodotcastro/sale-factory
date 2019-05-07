@@ -1,6 +1,6 @@
 require 'csv'
 
-puts "Estados"
+puts "#Estados"
 # Importa Cidades com a geolocation para consumir app google
 ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 
@@ -20,28 +20,21 @@ ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 #   end
 # end
 
-puts "Clientes, Produtos, Representantes e Lojistas"
-FactoryBot.create(:cliente, :com_representante, :com_representantes)
-
 # ["Construção", "Alimentos", "Serviços Industrial de Utilidade Pública", "Derivados de Petróleo e Biocomustíveis", "Químicos", "Metalurgia", "Farmacêutico"].each do |descricao|
 #   Setor.create(descricao: descricao)
 # end
 
-Usuario.where(tipo: :representante).each do |usuario|
-  usuario.update(invited_by_id: Cliente.all.sample.id, invited_by_type: :cliente)
-end
+puts "#Clientes"
+FactoryBot.create_list(:cliente, 5)
 
-Cliente.all.each do |cidade|
-  cidade.update(cidade_id: Cidade.all.sample.id)
-end
+puts "#Produtos"
+FactoryBot.create_list(:produto, 25)
 
-Representante.all.each do |representante|
-  representante.update(cidade_id: Cidade.all.sample.id)
-end
+puts "#Representantes"
+FactoryBot.create_list(:representante, 50)
 
-Lojista.all.each do |lojista|
-  lojista.update(cidade_id: Cidade.all.sample.id)
-end
+puts "#Lojistas"
+FactoryBot.create_list(:lojista, 250)
 
-puts "Solicitações e Pedidos"
-FactoryBot.create_list(:solicitacao, 100, :com_pedido)
+puts "#Solicitações e Pedidos"
+FactoryBot.create_list(:solicitacao, 500, :com_pedido)

@@ -18,6 +18,7 @@ FactoryBot.define do
     quantidade {Faker::Number.number(2)}
 
     before(:create) do |pedido|
+      #Vincular produto
       pedido.produto = Produto.all.sample
     end
 

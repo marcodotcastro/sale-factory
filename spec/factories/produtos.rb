@@ -27,5 +27,10 @@ FactoryBot.define do
       produto.foto.attach(io: File.open(Rails.root.join("spec", "files", "produto-foto-#{rand(1..5)}.jpg")), filename: "produto-foto-#{rand(1..5)}.jpg", content_type: "image/jpeg")
     end
 
+    before(:create) do |produto|
+      produto.cliente = Cliente.all.sample
+    end
+
+
   end
 end

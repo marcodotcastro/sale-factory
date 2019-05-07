@@ -43,32 +43,16 @@ FactoryBot.define do
     latitude {-21.348714}
     longitude {-47.7651449}
 
-    cidade {Cidade.first || association(:cidade)}
+    before(:create) do |representante|
+      #Criar usuário
+      create(:usuario, :vincular_convite, tipo: "representante", nome: representante.contato, email: representante.email, representante: representante)
+      #Vincular cidade
+      representante.cidade = Cidade.all.sample
+    end
 
     after(:create) do |representante|
+      #Anexar logo
       representante.logo.attach(io: File.open(Rails.root.join("spec", "files", "representante-logo-#{rand(1..7)}.jpg")), filename: "representante-logo-#{rand(1..7)}.jpg", content_type: "image/jpeg")
-    end
-
-    trait :com_cliente do
-      after(:create) do |representante|
-        create_list(:cliente, 2, representantes: [representante])
-      end
-    end
-
-    trait :com_lojista do
-      after(:create) do |representante|
-        create(:lojista, representantes: [representante])
-      end
-    end
-
-    trait :com_lojistas do
-      after(:create) do |representante|
-        create_list(:lojista, 2, representantes: [representante])
-      end
-    end
-
-    before(:create) do |representante|
-      create(:usuario, tipo: "representante", nome: representante.contato, email: representante.email, representante: representante)
     end
 
   end

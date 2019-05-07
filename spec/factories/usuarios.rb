@@ -38,7 +38,16 @@ FactoryBot.define do
     password {12345678}
     tipo {[:cliente, :representante].sample}
 
+    trait :vincular_convite do
+      before(:create) do |usuario|
+        #Vincular convite
+        usuario.invited_by_id = Cliente.all.sample.id
+        usuario.invited_by_type = :cliente
+      end
+    end
+
     after(:create) do |usuario|
+      #Anexar avatar
       if usuario.representante?
         usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "representante-usuario-#{rand(1..7)}.jpg")), filename: "representante-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
       else

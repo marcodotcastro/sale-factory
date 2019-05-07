@@ -20,11 +20,13 @@ FactoryBot.define do
     descricao {Faker::Lorem.sentence}
 
     before(:create) do |solicitacao|
-      solicitacao.cliente = Cliente.first
+      #Vincular cliente
+      solicitacao.cliente = Cliente.all.sample
     end
 
     before(:create) do |solicitacao|
-      solicitacao.representante = Representante.first
+      #Vincular representante
+      solicitacao.representante = Representante.all.sample
     end
 
   end
