@@ -36,7 +36,7 @@ class Clientes::RepresentantesController < ApplicationController
   before_action :get_estados, only: [:index]
 
   def index
-    @representantes = get_representantes.result(distinct: true)
+    @representantes = get_representantes.result(distinct: true).page(params[:page])
   end
 
   def show

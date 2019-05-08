@@ -6,11 +6,8 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-
-<li class="disabled">
+<% unless current_page.first? %>
   <%= link_to url, remote: remote do %>
-    <i class="material-icons">skip_previous</i>
+    <button class="btn btn-default"> <i class="fa fa-fast-backward"></i></button>
   <% end %>
-</li>
-
-
+<% end %>
