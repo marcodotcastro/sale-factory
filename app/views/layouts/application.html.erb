@@ -49,6 +49,8 @@
 </div>
 
 <% if action_name.include? "mapa" %>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
   <script async defer
           src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&callback=initMap" data-turbolinks-eval="true">
   </script>

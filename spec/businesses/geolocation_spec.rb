@@ -17,15 +17,6 @@ require 'rails_helper'
 
 RSpec.describe "Geolocation" do
 
-  xit "import" do
-
-    CSV.foreach("spec/files/representantes.csv", headers: :true) do |row|
-      Representante.create(row.to_hash)
-    end
-
-    expect(Representante.last.latitude).to eq(-21.7923558)
-    expect(Representante.last.longitude).to eq(-43.3622146)
-  end
 
   context "geolocation cep" do
 
@@ -59,8 +50,10 @@ RSpec.describe "Geolocation" do
 
   context "geolocation address" do
 
-    xit "MG,Abadia dos Dourados" do
-      address = 'Abadia dos Dourados,MG'
+    xit "GO,Panamá" do
+      #FIXME: A API não está pesquisando cidades do Brasil. No exemplo da cidade Paramá GO, a api busca o país.
+
+      address = 'GO,Panamá'
       geolocation = Geolocation.new(address: address)
 
       expect(geolocation.latitude).to eq(-18.4871142)

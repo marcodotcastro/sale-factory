@@ -46,16 +46,14 @@
     <% end %>
     <% end %>
 
-    var lojistas = {};
+    var lojistas = [];
 
-    <% @lojistas.each_with_index do |lojista,index| %>
-    <% unless lojista.cidade.longitude.nil? and lojista.cidade.latitude.nil? %>
-    lojistas["lojista<%= index %>"] = {
+    <% @lojistas.each do |lojista| %>
+    lojistas.push({
         center: {lat: <%= lojista.cidade.latitude%>, lng: <%= lojista.cidade.longitude %>},
         populacao: <%= lojista.cidade.populacao %>,
         descricao: '<%= lojista.descricao %>'
-    };
-    <% end %>
+    });
     <% end %>
 
     function initMap() {
@@ -109,30 +107,16 @@
 
         });
 
-        Object.keys(lojistas).forEach(key => {
-            const item = lojistas[key];
 
-            let cityCircle = new google.maps.Circle({
-                strokeColor: '#000000',
-                strokeWeight: 2,
-                fillColor: '#000000',
-                map: map,
-                center: item.center,
-                radius: 10000
+        var markers = lojistas.map(function (lojista, i) {
+            return new google.maps.Marker({
+                position: lojista.center,
+                title: lojista.descricao
             });
-            const valor = item.descricao;
-            const infoWindow = new google.maps.InfoWindow({
-                content: valor
-            });
-            infoArr.push(infoWindow);
-
-            google.maps.event.addListener(cityCircle, 'click', function (ev) {
-                infoWindow.setPosition(ev.latLng);
-                infoArr.forEach(info => info.close());
-                infoWindow.open(map);
-            });
-
         });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers);
 
     }
 </script>
