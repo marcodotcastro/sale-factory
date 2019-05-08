@@ -5,8 +5,8 @@ class Clientes::DashboardsController < ApplicationController
     @lojistas_mais_compras = Lojista.joins(:solicitacoes).where("solicitacoes.status = 'aceito'").select("lojistas.*", "count(solicitacoes.id) as solicitacoes_por_lojista").order(solicitacoes_por_lojista: :desc).group(:id).limit(10)
 
     #FIXME
-    @representantes_mais_lojistas = Representante.joins(:lojistas).distinct.select("representantes.*", "count(lojistas.id) as lojistas_por_representante").order(lojistas_por_representante: :desc).group(:id).limit(10)
-    @representantes_mais_cidades = Representante.joins(lojistas: :cidade).distinct.select("representantes.*", "count(cidades.id) as cidades_por_representantes").order(cidades_por_representantes: :desc).group(:id).limit(10)
+    @representantes_mais_lojistas = Representante.joins(:lojistas).distinct.select("representantes.*", "count( DISTINCT lojistas.id) as lojistas_por_representante").order(lojistas_por_representante: :desc).group(:id).limit(10)
+    @representantes_mais_cidades = Representante.joins(lojistas: [:cidade]).distinct.select("representantes.*", "count( DISTINCT cidades.id) as cidades_por_representantes").order(cidades_por_representantes: :desc).group(:id).limit(10)
   end
 
   def geral
