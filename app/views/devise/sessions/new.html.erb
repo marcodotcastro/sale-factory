@@ -4,33 +4,12 @@
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <h1>Autenticação</h1>
         <div class="invalid-feedback"><%= alert %></div>
-        <div>
-          <%= f.input_field :email,
-                            required: false,
-                            autofocus: true,
-                            placeholder: "Email",
-                            class: "form-control"
-          %>
-        </div>
-        <div>
-          <%= f.input_field :password,
-                            required: false,
-                            placeholder: "Senha",
-                            class: "form-control"
-          %>
-        </div>
-
+        <%= f.input_field :email, required: false, autofocus: true, placeholder: "Email", class: "form-control" %>
+        <%= f.input_field :password, required: false, placeholder: "Senha", class: "form-control" %>
         <%= f.input :remember_me, label: "Lembrar-me", as: :boolean if devise_mapping.rememberable? %>
-
-
-        <%= f.button :submit, "Autenticar", class: "btn btn-default submit" %>
-
+        <%= f.button :submit, "Autenticar", class: "btn btn-default" %>
       <% end %>
-
-
-
       <%= render "devise/shared/links" %>
-
     </section>
   </div>
 </div>
