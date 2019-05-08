@@ -1,10 +1,14 @@
 class Clientes::DashboardsController < ApplicationController
+  before_action :consultar_lojistas, only: [:mapa_lojistas]
+  before_action :consultar_representantes, only: [:mapa_representantes]
+  before_action :consultar_cidades, only: [:mapa_representantes, :mapa_lojistas]
+  before_action :get_cidades, only: [:mapa_representantes, :mapa_lojistas]
+  before_action :get_estados, only: [:mapa_representantes, :mapa_lojistas]
 
   def ranking
     @representantes_mais_vendas = Representante.joins(:solicitacoes).where("solicitacoes.status = 'aceito'").select("representantes.*", "count(solicitacoes.id) as solicitacoes_por_representante").order(solicitacoes_por_representante: :desc).group(:id).limit(10)
     @lojistas_mais_compras = Lojista.joins(:solicitacoes).where("solicitacoes.status = 'aceito'").select("lojistas.*", "count(solicitacoes.id) as solicitacoes_por_lojista").order(solicitacoes_por_lojista: :desc).group(:id).limit(10)
 
-    #FIXME
     @representantes_mais_lojistas = Representante.joins(:lojistas).distinct.select("representantes.*", "count( DISTINCT lojistas.id) as lojistas_por_representante").order(lojistas_por_representante: :desc).group(:id).limit(10)
     @representantes_mais_cidades = Representante.joins(lojistas: [:cidade]).distinct.select("representantes.*", "count( DISTINCT cidades.id) as cidades_por_representantes").order(cidades_por_representantes: :desc).group(:id).limit(10)
   end
@@ -34,25 +38,11 @@ class Clientes::DashboardsController < ApplicationController
   end
 
   def mapa_lojistas
-    listas_consulta
-
     @lojista_list = current_usuario.cliente.lojistas.order(descricao: :asc)
-
-    consultar_cidades
-
-    consultar_lojistas
   end
 
   def mapa_representantes
-
-    listas_consulta
-
     @representante_list = current_usuario.cliente.representantes.order(descricao: :asc)
-
-    consultar_cidades
-
-    consultar_representantes
-
   end
 
   private
@@ -84,8 +74,11 @@ class Clientes::DashboardsController < ApplicationController
     @cidades = q_cidades.result(distinct: true)
   end
 
-  def listas_consulta
+  def get_estados
     @estado_list = Cidade.select(:estado).distinct.order(estado: :asc)
+  end
+
+  def get_cidades
     @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
   end
 
