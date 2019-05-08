@@ -37,22 +37,22 @@
     </div>
     <div class="x_content">
       <% @produtos.each do |produto| %>
-        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-          <div class="col-md-12 col-sm-12 well profile_view">
-            <div class="col-sm-12">
+        <div class="col-md-4 col-sm-4 col-lg-3 profile_details">
+          <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
+            <div class="col-sm-12 col-md-12 col-lg-12">
               <h4 class="brief">
                 <i><span title="<%= produto.descricao %>"><%= truncate produto.descricao, length: 40 %></span></i>
               </h4>
             </div>
-            <div class="left col-xs-12">
+            <div class="left col-sm-12 col-md-12 col-lg-12">
               <h2><%= number_to_currency produto.preco %></h2>
             </div>
-            <div class="col-sm-12">
-              <%= image_tag foto_url(produto), class: "img-profile", size: "250x250" %>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <%= image_tag foto_url(produto), class: "img-profile" %>
             </div>
             <% if current_usuario.representante? %>
-              <div class="col-sm-12">
-                <div class="left col-xs-12">
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="left col-sm-12 col-md-12 col-lg-12">
                   <ul class="list-unstyled">
                     <li><i class="fa fa-industry"></i> <strong>Cliente: </strong>
                       <span title="<%= produto.cliente.descricao %>"><%= truncate produto.cliente.descricao %></span>
@@ -62,7 +62,7 @@
                 </div>
               </div>
             <% end %>
-            <div class="col-xs-12 bottom text-center">
+            <div class="col-sm-12 col-md-12 col-lg-12 bottom text-center">
               <% if current_usuario.cliente? %>
                 <%= link_to cliente_produto_path(@cliente, produto) do %>
                   <button type="button" class="btn btn-primary btn-xs">

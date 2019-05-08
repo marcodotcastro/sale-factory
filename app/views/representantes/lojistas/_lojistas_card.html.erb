@@ -35,21 +35,21 @@
     </div>
     <div class="x_content">
       <% @lojistas.each do |lojista| %>
-        <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
-          <div class="col-md-12 col-sm-12 well profile_view">
-            <div class="col-sm-12">
+        <div class="col-sm-4 col-md-4 col-lg-3 profile_details">
+          <div class="col-sm-12 col-md-12 col-sm-12 well profile_view">
+            <div class="col-sm-12 col-md-12 col-lg-12">
               <h4 class="brief">
                 <i><span title="<%= lojista.descricao %>"><%= truncate lojista.descricao, length: 40 %></span></i>
               </h4>
             </div>
-            <div class="col-sm-12">
-              <%= image_tag foto_logo_url(lojista), class: "logo", size: "250x250" %>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <%= image_tag foto_logo_url(lojista), class: "img-profile" %>
             </div>
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-md-12 col-lg-12">
               <h5><%= lojista.contato %></h5>
             </div>
-            <div class="col-sm-12">
-              <div class="left col-xs-12">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="left col-sm-12 col-md-12 col-lg-12">
                 <ul class="list-unstyled">
                   <li><i class="fa fa-building"></i> <strong>Endereço: </strong>
                     <span title="<%= lojista.endereco %>"><%= truncate lojista.endereco, length: 25 %></span>
@@ -62,7 +62,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xs-12 bottom text-center">
+            <div class="col-sm-12 col-md-12 col-lg-12 bottom text-center">
               <% if current_usuario.representante? %>
                 <%= link_to representante_lojista_path(@representante, lojista) do %>
                   <button type="button" class="btn btn-primary btn-xs">
