@@ -1,4 +1,5 @@
 class Clientes::DashboardsController < ApplicationController
+  before_action :set_cliente, only: [:mapa_representantes, :mapa_lojistas]
   before_action :consultar_lojistas, only: [:mapa_lojistas]
   before_action :consultar_representantes, only: [:mapa_representantes]
   before_action :consultar_cidades, only: [:mapa_representantes, :mapa_lojistas]
@@ -80,6 +81,10 @@ class Clientes::DashboardsController < ApplicationController
 
   def get_cidades
     @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
+  end
+
+  def set_cliente
+    @cliente = Cliente.friendly.find(params[:cliente_id])
   end
 
 end
