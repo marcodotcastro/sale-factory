@@ -1,88 +1,90 @@
-<div class="nav">
-  <div class="toggle">
-    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-  </div>
-  <ul class="nav navbar-nav navbar-right">
-    <%#TODO: Mover código para o helpers %>
-    <% if current_usuario.cliente? %>
-      <% if current_usuario.cliente %>
-        <div class="navbar-text">
-          <h2><%= current_usuario.cliente.descricao.upcase %></h2>
-        </div>
-      <% end %>
-    <% elsif current_usuario.representante? %>
-      <% if current_usuario.representante %>
-        <div class="navbar-text">
-          <h2><%= current_usuario.representante.descricao.upcase %></h2>
-        </div>
-      <% end %>
-    <% end %>
-    <li class="">
-      <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-        <%#TODO: Mover código para o helpers %>
-        <% if current_usuario %>
-          <%= image_tag foto_avatar_url(current_usuario), class: "logo", size: "50x50" %><%= current_usuario.nome %>
-        <% else %>
-          <%= image_tag "user.png" %>
+<% if current_usuario %>
+  <div class="nav">
+    <div class="toggle">
+      <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <%#TODO: Mover código para o helpers %>
+      <% if current_usuario.cliente? %>
+        <% if current_usuario.cliente %>
+          <div class="navbar-text">
+            <h2><%= current_usuario.cliente.descricao.upcase %></h2>
+          </div>
         <% end %>
-        <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
+      <% elsif current_usuario.representante? %>
         <% if current_usuario.representante %>
-          <%= current_usuario.points %> xp
+          <div class="navbar-text">
+            <h2><%= current_usuario.representante.descricao.upcase %></h2>
+          </div>
         <% end %>
-        <span class=" fa fa-angle-down"></span>
-      </a>
-      <ul class="dropdown-menu dropdown-usermenu pull-right">
-        <% if usuario_signed_in? %>
+      <% end %>
+      <li class="">
+        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <%#TODO: Mover código para o helpers %>
-          <% if current_usuario.cliente? %>
-            <% if current_usuario.cliente %>
-              <li>
-                <%= link_to cliente_path(current_usuario.cliente) do %>
-                  <i class="fa fa-user"></i> Perfil
-                <% end %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to new_cliente_path do %>
-                  <i class="fa fa-user"></i> Perfil
-                <% end %>
-              </li>
-            <% end %>
-          <% elsif current_usuario.representante? %>
-            <% if current_usuario.representante %>
-              <li>
-                <%= link_to representante_path(current_usuario.representante) do %>
-                  <i class="fa fa-user"></i> Perfil
-                <% end %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to new_representante_path do %>
-                  <i class="fa fa-user"></i> Perfil
-                <% end %>
-              </li>
+          <% if current_usuario %>
+            <%= image_tag foto_avatar_url(current_usuario), class: "logo", size: "50x50" %><%= current_usuario.nome %>
+          <% else %>
+            <%= image_tag "user.png" %>
+          <% end %>
+          <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
+          <% if current_usuario.representante %>
+            <%= current_usuario.points %> xp
+          <% end %>
+          <span class=" fa fa-angle-down"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-usermenu pull-right">
+          <% if usuario_signed_in? %>
+            <%#TODO: Mover código para o helpers %>
+            <% if current_usuario.cliente? %>
+              <% if current_usuario.cliente %>
+                <li>
+                  <%= link_to cliente_path(current_usuario.cliente) do %>
+                    <i class="fa fa-user"></i> Perfil
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_cliente_path do %>
+                    <i class="fa fa-user"></i> Perfil
+                  <% end %>
+                </li>
+              <% end %>
+            <% elsif current_usuario.representante? %>
+              <% if current_usuario.representante %>
+                <li>
+                  <%= link_to representante_path(current_usuario.representante) do %>
+                    <i class="fa fa-user"></i> Perfil
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to new_representante_path do %>
+                    <i class="fa fa-user"></i> Perfil
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
-        <% if usuario_signed_in? %>
+          <% if usuario_signed_in? %>
+            <li>
+              <%= link_to edit_usuario_registration_path do %>
+                <i class="fa fa-cogs"></i> Conta
+              <% end %>
+            </li>
+          <% end %>
           <li>
-            <%= link_to edit_usuario_registration_path do %>
-              <i class="fa fa-cogs"></i> Configuração
+            <% if usuario_signed_in? %>
+              <%= link_to destroy_usuario_session_path, :method => :delete do %>
+                <i class="fa fa-sign-out"></i> Sair
+              <% end %>
+            <% else %>
+              <%= link_to new_usuario_session_path do %>
+                <i class="fa fa-sign-in"></i> Entrar
+              <% end %>
             <% end %>
           </li>
-        <% end %>
-        <li>
-          <% if usuario_signed_in? %>
-            <%= link_to destroy_usuario_session_path, :method => :delete do %>
-              <i class="fa fa-sign-out"></i> Sair
-            <% end %>
-          <% else %>
-            <%= link_to new_usuario_session_path do %>
-              <i class="fa fa-sign-in"></i> Entrar
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<% end %>

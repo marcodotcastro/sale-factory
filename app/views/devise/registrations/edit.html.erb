@@ -1,75 +1,47 @@
-<div class="login_wrapper">
-  <div class="animate form login_form">
-    <section class="login_content">
-
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
-
-        <h2>Alterar Acesso</h2>
-
-        <%= f.error_notification %>
-
-        <div>
-          <%= f.input_field :avatar,
-                            :as => :file,
-                            required: false,
-                            autofocus: true,
-                            class: "form-control" %>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Alterar Conta
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put, class: "form-horizontal form-label-left"}) do |f| %>
+        <div class="nav navbar-right">
+          <%= f.button :submit, "Alterar Conta", class: "btn btn-success" %>
+          <%= link_to "Excluir Conta", registration_path(resource_name), data: {confirm: "Você tem certeza?"}, method: :delete, class: "btn btn-danger" %>
         </div>
 
-        <div>
-          <%= f.input_field :nome,
-                            required: false,
-                            autofocus: true,
-                            placeholder: "Nome",
-                            class: "form-control"
-          %>
+        <div class="x_content">
+          <div class="divider-dashed"></div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Logo</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.input_field :avatar, :as => :file, label: nil, class: "form-control col-md-7 col-xs-12" %>
+            </div>
+          </div>
+
+          <%= f.input :nome, required: true, autofocus: true, placeholder: "Nome" %>
+          <%= f.input :email, required: true, autofocus: true, placeholder: "Email" %>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></p>
+          <% end %>
+          <div class="divider-dashed"></div>
+
+          <%= f.input :password, required: false, placeholder: "Nova Senha" %>
+          <%= f.input :password_confirmation, required: false, placeholder: "Confirmação da Senha" %>
+          <%= f.input :current_password, required: false, placeholder: "Senha Atual" %>
+
         </div>
-
-        <div>
-          <%= f.input_field :email,
-                            required: false,
-                            autofocus: true,
-                            placeholder: "Email",
-                            class: "form-control"
-          %>
-        </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></p>
-        <% end %>
-
-        <div>
-          <%= f.input_field :password,
-                            required: false,
-                            placeholder: "Nova Senha",
-                            class: "form-control"
-          %>
-        </div>
-
-        <div>
-          <%= f.input_field :password_confirmation,
-                            required: false,
-                            placeholder: "Confirmação da Senha",
-                            class: "form-control"
-          %>
-        </div>
-
-        <div>
-          <%= f.input_field :current_password,
-                            required: false,
-                            placeholder: "Senha Atual",
-                            class: "form-control"
-          %>
-        </div>
-
-        <%= f.button :submit, "Alterar" %>
 
       <% end %>
-
-      <h3>Cancelar minha conta</h3>
-
-      <p>Infeliz? <%= link_to "Cancelar minha conta", registration_path(resource_name), data: {confirm: "Você tem certeza?"}, method: :delete %></p>
-
-    </section>
+    </div>
   </div>
 </div>

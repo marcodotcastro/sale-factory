@@ -14,19 +14,17 @@
       <div class="x_content">
 
         <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
-
-          <%= f.hidden_field :tipo, value: "representante" %>
-          <%= f.hidden_field :invited_by_id, value: current_usuario.id %>
-
-          <%= f.input :nome %>
-          <%= f.input :email %>
-
-          <div class="form-group">
-            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-              <%= f.button :submit, "Enviar Convite", class: "btn btn-success" %>
-            </div>
+          <div class="nav navbar-right">
+            <%= f.button :submit, "Enviar Convite", class: "btn btn-success" %>
           </div>
+          <div class="x_content">
+            <div class="divider-dashed"></div>
+            <%= f.hidden_field :tipo, value: "representante" %>
+            <%= f.hidden_field :invited_by_id, value: current_usuario.id %>
 
+            <%= f.input :nome %>
+            <%= f.input :email %>
+          </div>
 
         <% end %>
 

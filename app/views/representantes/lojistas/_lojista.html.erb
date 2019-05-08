@@ -19,6 +19,9 @@
         <% end %>
       </div>
       <div class="x_content">
+        <% if current_usuario.representante? %>
+          <div class="divider-dashed"></div>
+        <% end %>
         <form data-parsley-validate class="form-horizontal form-label-left">
 
           <% if current_usuario.cliente? %>
@@ -31,7 +34,6 @@
               </div>
             </div>
 
-            <div class="divider-dashed"></div>
           <% end %>
 
           <div class="form-group">
