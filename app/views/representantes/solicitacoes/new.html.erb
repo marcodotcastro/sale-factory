@@ -16,6 +16,7 @@
           <%= f.button :submit, "Continuar", class: "btn btn-success" %>
         </div>
         <div class="x_content">
+          <div class="divider-dashed"></div>
           <%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
           <%= f.input :lojista_id, as: :select, collection: @lojistas.map {|c| [c.descricao, c.id]}, class: "form-control" %>
         </div>

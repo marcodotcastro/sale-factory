@@ -18,43 +18,32 @@
           <%= link_to 'Excluir Produto', cliente_produto_path(@cliente, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
-
       <div class="x_content">
-        <div class="divider-dashed"></div>
+        <% if current_usuario.cliente? %>
+          <div class="divider-dashed"></div>
+        <% end %>
         <form data-parsley-validate class="form-horizontal form-label-left">
-
           <% if current_usuario.representante? %>
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
-
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.cliente.descricao %>">
               </div>
             </div>
-
-            <div class="divider-dashed"></div>
           <% end %>
-
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição
-
-            </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.descricao %>">
             </div>
           </div>
-
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Preço
-
-            </label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Preço </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= number_to_currency @produto.preco %>">
             </div>
           </div>
-
-
         </form>
       </div>
     </div>

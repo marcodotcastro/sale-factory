@@ -17,7 +17,9 @@
   <% end %>
   </tbody>
   <div class="links">
-    <%= link_to_add_association 'adicionar produto', f, :pedidos, data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"}, class: "btn btn-primary" %>
+    <div class="nav navbar-right">
+      <%= link_to_add_association 'Adicionar Produto', f, :pedidos, data: {"association-insertion-node" => "tbody.line_items", "association-insertion-method" => "append"}, class: "btn btn-primary" %>
+    </div>
   </div>
 </table>
 

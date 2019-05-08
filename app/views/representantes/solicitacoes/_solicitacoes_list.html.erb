@@ -70,11 +70,15 @@
               <%#TODO: Mover para o helpers %>
               <% if current_usuario.representante? %>
                 <%= link_to representante_solicitacao_path(@representante, solicitacao) do %>
-                  <i class="fa fa-eye"></i>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
                 <% end %>
               <% elsif current_usuario.cliente? %>
                 <%= link_to cliente_solicitacao_path(@cliente, solicitacao) do %>
-                  <i class="fa fa-eye"></i>
+                  <button type="button" class="btn btn-primary btn-xs">
+                    <i class="fa fa-eye"> </i> Detalhes
+                  </button>
                 <% end %>
               <% end %>
             </td>

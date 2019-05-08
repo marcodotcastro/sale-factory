@@ -47,6 +47,7 @@
         <% end %>
       </div>
       <div class="x_content">
+        <div class="divider-dashed"></div>
         <form data-parsley-validate class="form-horizontal form-label-left">
           <% if current_usuario.cliente? %>
             <div class="form-group">
@@ -56,7 +57,6 @@
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.representante.descricao %>">
               </div>
             </div>
-            <div class="divider-dashed"></div>
           <% end %>
           <% if current_usuario.representante? %>
             <div class="form-group">
@@ -66,7 +66,6 @@
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.cliente.descricao %>">
               </div>
             </div>
-            <div class="divider-dashed"></div>
           <% end %>
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Lojista
