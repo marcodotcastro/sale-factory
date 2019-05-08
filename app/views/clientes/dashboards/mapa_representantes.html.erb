@@ -50,7 +50,8 @@
     representantes["representante<%= index %>"] = {
         center: {lat: <%= representante.cidade.latitude%>, lng: <%= representante.cidade.longitude %>},
         populacao: <%= representante.cidade.populacao %>,
-        descricao: '<%= representante.descricao %>'
+        descricao: '<%= representante.descricao %>',
+        link: '<a href="/clientes/<%= @cliente.slug %>/representantes/<%= representante.slug %>"><%= representante.descricao %></a>'
     };
     <% end %>
     <% end %>
@@ -117,9 +118,9 @@
                 fillOpacity: 0.35,
                 map: map,
                 center: item.center,
-                radius: 175000
+                radius: 150000
             });
-            const valor = item.descricao;
+            const valor = item.link;
             const infoWindow = new google.maps.InfoWindow({
                 content: valor
             });
