@@ -18,7 +18,12 @@
     </div>
   <% end %>
 </div>
-Legenda: São <%= @cidades.count %> cidades atendidas por <%= @representantes.count %> representantes.
+<div class="text-info text-center">
+  <cite>São <b class="text-danger"><%= @cidades.count %> cidades atendidas</b> por
+    <b class="text-danger"><%= @representantes.count %> representantes</b>
+    encontrados
+    em sua pesquisa.</cite>
+</div>
 <div class="row">
   <div class="x_content">
     <div id="representante-map"></div>

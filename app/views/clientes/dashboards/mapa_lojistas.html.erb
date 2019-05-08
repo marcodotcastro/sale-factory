@@ -18,8 +18,12 @@
     </div>
   <% end %>
 </div>
-
-Legenda: São <%= @lojistas.count %> lojistas antendidos em <%= @cidades.count %> cidades.
+<div class="text-info text-center">
+  <cite>São <b class="text-danger"><%= @lojistas.count %> lojistas antendidos</b> em
+    <b class="text-danger"><%= @cidades.count %> cidades</b>
+    encontrados
+    em sua pesquisa.</cite>
+</div>
 <div class="row">
   <div class="x_content">
     <div id="lojista-map"></div>
