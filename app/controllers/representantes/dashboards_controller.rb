@@ -30,7 +30,7 @@ class Representantes::DashboardsController < ApplicationController
     else
       q_lojistas = Lojista.ransack(cidade_estado_eq: current_usuario.representante.cidade.estado)
     end
-    @lojistas = q_lojistas.result(distinct: true).joins(:representantes).where("lojistas_representantes.representante_id = #{current_usuario.representante.id}")
+    @lojistas = q_lojistas.result(distinct: true).joins(:representantes).where("lojistas_representantes.representante_id = #{current_usuario.representante.id}").order(descricao: :asc)
   end
 
   def consultar_cidades
@@ -39,7 +39,7 @@ class Representantes::DashboardsController < ApplicationController
     else
       q_cidades = Cidade.ransack(estado_eq: current_usuario.representante.cidade.estado)
     end
-    @cidades = q_cidades.result(distinct: true)
+    @cidades = q_cidades.result(distinct: true).order(descricao: :asc)
   end
 
   #FIXME: Refatorar

@@ -35,7 +35,7 @@ class Representantes::IndustriasController < ApplicationController
 
   def show
     @lojistas = set_lojistas_do_industria_com_representante.page(params[:page_lojista])
-    @produtos = @industria.produtos.page(params[:page_produto])
+    @produtos = @industria.produtos.order(descricao: :asc).page(params[:page_produto])
   end
 
   private
@@ -45,7 +45,7 @@ class Representantes::IndustriasController < ApplicationController
   end
 
   def get_industrias
-    @q = current_usuario.representante.industrias.ransack(params[:q])
+    @q = current_usuario.representante.industrias.order(descricao: :asc).ransack(params[:q])
   end
 
   def set_industria

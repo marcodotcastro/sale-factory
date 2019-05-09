@@ -8,7 +8,7 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def show
-    @produtos = @industria.produtos.page(params[:page_produto])
+    @produtos = @industria.produtos.order(descricao: :asc).page(params[:page_produto])
   end
 
   def new
@@ -55,7 +55,7 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def get_produtos
-    @q = current_usuario.industria.produtos.ransack(params[:q])
+    @q = current_usuario.industria.produtos.order(descricao: :asc).ransack(params[:q])
   end
 
   def set_produto

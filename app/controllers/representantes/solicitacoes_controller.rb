@@ -11,8 +11,8 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def show
-    @pedidos = @solicitacao.pedidos.page(params[:page_pedido])
-    @comentarios = @solicitacao.comentarios.page(params[:page_comentarioT])
+    @pedidos = @solicitacao.pedidos.order(id: :asc).page(params[:page_pedido])
+    @comentarios = @solicitacao.comentarios.order(descricao: :asc).page(params[:page_comentarioT])
   end
 
   def new
@@ -21,7 +21,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def edit
-    @produtos = @solicitacao.industria.produtos
+    @produtos = @solicitacao.industria.produtos.order(descricao: :asc)
     build_pedido
   end
 
@@ -39,7 +39,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def update
-    @produtos = @solicitacao.industria.produtos
+    @produtos = @solicitacao.industria.produtos.order(descricao: :asc)
 
     respond_to do |format|
       if @solicitacao.update(solicitacao_params)
@@ -91,10 +91,6 @@ class Representantes::SolicitacoesController < ApplicationController
     @representante = Representante.friendly.find(params[:representante_id])
   end
 
-  def solicitacao_params
-    params.require(:solicitacao).permit(:representante_id, :industria_id, :lojista_id, pedidos_attributes: [:id, :quantidade, :produto_id, :_destroy])
-  end
-
   def get_statuses
     @statuses = Solicitacao.where("representante_id = #{@representante.id}").select(:status).distinct.order(status: :asc)
   end
@@ -103,4 +99,7 @@ class Representantes::SolicitacoesController < ApplicationController
     @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.representante_id = #{current_usuario.representante.id}").distinct.order(descricao: :asc)
   end
 
+  def solicitacao_params
+    params.require(:solicitacao).permit(:representante_id, :industria_id, :lojista_id, pedidos_attributes: [:id, :quantidade, :produto_id, :_destroy])
+  end
 end

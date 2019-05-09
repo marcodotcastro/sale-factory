@@ -91,7 +91,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def get_lojistas
-    @q = current_usuario.representante.lojistas.ransack(params[:q])
+    @q = current_usuario.representante.lojistas.order(descricao: :asc).ransack(params[:q])
   end
 
   def set_lojista

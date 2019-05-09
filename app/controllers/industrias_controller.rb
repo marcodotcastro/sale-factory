@@ -33,7 +33,7 @@ class IndustriasController < ApplicationController
   before_action :set_industria, only: [:show, :edit, :update, :destroy]
 
   def show
-    @representantes = @industria.representantes
+    @representantes = @industria.representantes.order(descricao: :asc)
   end
 
   def new

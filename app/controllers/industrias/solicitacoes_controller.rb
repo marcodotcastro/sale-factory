@@ -10,8 +10,8 @@ class Industrias::SolicitacoesController < ApplicationController
   end
 
   def show
-    @pedidos = @solicitacao.pedidos.page(params[:page_pedido])
-    @comentarios = @solicitacao.comentarios.page(params[:page_comentario])
+    @pedidos = @solicitacao.pedidos.order(id: :asc).page(params[:page_pedido])
+    @comentarios = @solicitacao.comentarios.order(descricao: :asc).page(params[:page_comentario])
   end
 
   def edit

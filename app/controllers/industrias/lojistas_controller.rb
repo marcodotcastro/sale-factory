@@ -39,7 +39,7 @@ class Industrias::LojistasController < ApplicationController
   private
 
   def get_lojistas
-    @q = current_usuario.industria.lojistas.ransack(params[:q])
+    @q = current_usuario.industria.lojistas.order(descricao: :asc).ransack(params[:q])
   end
 
   def set_industria
@@ -55,11 +55,11 @@ class Industrias::LojistasController < ApplicationController
   end
 
   def get_cidades
-    @cidades = Cidade.joins(lojistas: [:industrias]).where("industrias.id = #{current_usuario.industria.id}").distinct
+    @cidades = Cidade.joins(lojistas: [:industrias]).where("industrias.id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
   end
 
   def get_estados
-    @estados = Cidade.joins(lojistas: [:industrias]).where("industrias.id = #{current_usuario.industria.id}").select(:estado).distinct
+    @estados = Cidade.joins(lojistas: [:industrias]).where("industrias.id = #{current_usuario.industria.id}").select(:estado).distinct.order(estado: :asc)
   end
 
 end

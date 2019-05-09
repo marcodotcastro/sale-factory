@@ -54,7 +54,7 @@ class Industrias::DashboardsController < ApplicationController
     else
       q_lojistas = Lojista.ransack(cidade_estado_eq: current_usuario.industria.cidade.estado)
     end
-    @lojistas = q_lojistas.result(distinct: true).joins(:industrias).where("industrias_lojistas.industria_id = #{current_usuario.industria.id}")
+    @lojistas = q_lojistas.result(distinct: true).joins(:industrias).where("industrias_lojistas.industria_id = #{current_usuario.industria.id}").order(descricao: :asc)
   end
 
   def consultar_representantes
@@ -63,7 +63,7 @@ class Industrias::DashboardsController < ApplicationController
     else
       q_representantes = Representante.ransack(cidade_estado_eq: current_usuario.industria.cidade.estado, industria_id: current_usuario.industria.id)
     end
-    @representantes = q_representantes.result(distinct: true).joins(:industrias).where("industrias_representantes.industria_id = #{current_usuario.industria.id}")
+    @representantes = q_representantes.result(distinct: true).joins(:industrias).where("industrias_representantes.industria_id = #{current_usuario.industria.id}").order(descricao: :asc)
   end
 
   def consultar_cidades
@@ -72,7 +72,7 @@ class Industrias::DashboardsController < ApplicationController
     else
       q_cidades = Cidade.ransack(estado_eq: current_usuario.industria.cidade.estado)
     end
-    @cidades = q_cidades.result(distinct: true)
+    @cidades = q_cidades.result(distinct: true).order(descricao: :asc)
   end
 
   def get_estados
