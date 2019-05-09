@@ -8,6 +8,10 @@
         <div class="col-md-3 col-sm-3 col-xs-3">
           <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos Representantes'}, {class: "form-control"} %>
         </div>
+      <% elsif current_usuario.representante? %>
+        <div class="col-md-3 col-sm-3 col-xs-3">
+          <%= f.select :industria_id_eq, options_from_collection_for_select(@industrias, "id", "descricao"), {include_blank: 'Todos Indústrias'}, {class: "form-control"} %>
+        </div>
       <% end %>
       <div class="col-md-3 col-sm-3 col-xs-3">
         <%= f.select :lojista_id_eq, options_from_collection_for_select(@lojistas, "id", "descricao"), {include_blank: 'Todos Lojistas'}, {class: "form-control"} %>
@@ -19,7 +23,7 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @solicitacoes, param_name: "page_solicitacao"  %>
+    <%= paginate @solicitacoes, param_name: "page_solicitacao" %>
   </div>
   <div class="x_panel">
     <div class="x_title">

@@ -51,29 +51,48 @@
         <form data-parsley-validate class="form-horizontal form-label-left">
           <% if current_usuario.industria? %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Representante
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                <%= link_to industria_representante_path(@industria, @solicitacao.representante) do %>
+                  Representante <i class="fa fa-eye"> </i>
+                <% end %>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.representante.descricao %>">
               </div>
             </div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                <%= link_to industria_lojista_path(@industria, @solicitacao.lojista) do %>
+                  Lojista <i class="fa fa-eye"> </i>
+                <% end %>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.lojista.descricao %>">
+              </div>
+            </div>
           <% end %>
           <% if current_usuario.representante? %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Industria
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                <%= link_to representante_industria_path(@representante, @solicitacao.industria) do %>
+                  Indústria <i class="fa fa-eye"> </i>
+                <% end %>
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.industria.descricao %>">
               </div>
             </div>
-          <% end %>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Lojista
-            </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.lojista.descricao %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                <%= link_to representante_lojista_path(@representante, @solicitacao.lojista) do %>
+                  Lojista <i class="fa fa-eye"> </i>
+                <% end %>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.lojista.descricao %>">
+              </div>
             </div>
-          </div>
+          <% end %>
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Situação
             </label>

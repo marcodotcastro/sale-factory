@@ -25,7 +25,7 @@ class Representantes::ProdutosController < ApplicationController
   end
 
   def get_industrias
-    @industrias = current_usuario.representante.industrias
+    @industrias = current_usuario.representante.industrias.order(descricao: :asc)
   end
 
 end

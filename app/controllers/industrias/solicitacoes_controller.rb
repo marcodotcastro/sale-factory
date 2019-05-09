@@ -44,15 +44,15 @@ class Industrias::SolicitacoesController < ApplicationController
   end
 
   def get_statuses
-    @statuses = Solicitacao.where("industria_id = #{current_usuario.industria.id}").select(:status).where.not(status: :criado).distinct
+    @statuses = Solicitacao.where("industria_id = #{current_usuario.industria.id}").select(:status).where.not(status: :criado).distinct.order(status: :asc)
   end
 
   def get_representantes
-    @representantes = Representante.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct
+    @representantes = Representante.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
   end
 
   def get_lojistas
-    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct
+    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
   end
 
 end

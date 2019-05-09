@@ -20,6 +20,7 @@
       <%= render "representantes/representante" %>
     </div>
   </div>
-
-  <%= render "representantes/lojistas/lojistas_list" %>
+  <% if current_usuario.industria? %>
+    <%= render "representantes/lojistas/lojistas_list" %>
+  <% end %>
 </div>

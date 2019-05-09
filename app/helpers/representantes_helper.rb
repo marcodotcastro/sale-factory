@@ -36,17 +36,14 @@ module RepresentantesHelper
   def representante(lojista, representante)
     #TODO: Como refatorar isso?
     if representante
-      representante = lojista.representantes.select(:id, :descricao).distinct.find_by(id: representante.id)
-      if representante
-        return representante.descricao
-      end
+      representante = lojista.representantes.distinct.find_by(id: representante.id)
+      return representante if representante
     else
       @industria.representantes.each do |representante|
-        representante = lojista.representantes.select(:id, :descricao).distinct.find_by(id: representante.id)
-        return representante.descricao if representante
+        representante = lojista.representantes.distinct.find_by(id: representante.id)
+        return representante if representante
       end
     end
-    return "Sem Representante"
   end
 
 end

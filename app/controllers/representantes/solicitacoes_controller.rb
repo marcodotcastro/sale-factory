@@ -1,7 +1,7 @@
 class Representantes::SolicitacoesController < ApplicationController
   before_action :set_solicitacao, only: [:show, :edit, :update, :destroy]
   before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy, :status]
-  before_action :set_industrias, only: [:new, :edit, :create]
+  before_action :set_industrias, only: [:new, :edit, :create, :index]
   before_action :set_lojistas, only: [:new, :edit, :create]
   before_action :get_lojistas, only: [:index]
   before_action :get_statuses, only: [:index]
@@ -80,11 +80,11 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def set_industrias
-    @industrias = current_usuario.representante.industrias
+    @industrias = current_usuario.representante.industrias.order(descricao: :asc)
   end
 
   def set_lojistas
-    @lojistas = current_usuario.representante.lojistas
+    @lojistas = current_usuario.representante.lojistas.order(descricao: :asc)
   end
 
   def set_representante
@@ -96,11 +96,11 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def get_statuses
-    @statuses = Solicitacao.where("representante_id = #{@representante.id}").select(:status).distinct
+    @statuses = Solicitacao.where("representante_id = #{@representante.id}").select(:status).distinct.order(status: :asc)
   end
 
   def get_lojistas
-    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.representante_id = #{current_usuario.representante.id}").distinct
+    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.representante_id = #{current_usuario.representante.id}").distinct.order(descricao: :asc)
   end
 
 end

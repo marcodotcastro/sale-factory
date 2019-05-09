@@ -30,9 +30,11 @@
             <th scope="row"><%= produto.id.to_s %></th>
             <td><%= produto.descricao %></td>
             <td><%= number_to_currency produto.preco %></td>
-            <td>
-              <%= link_to industria_produto_path(@industria, produto) do %>
-                <i class="fa fa-eye"></i>
+            <td width="10%">
+              <%= link_to representante_produto_path(@representante, produto) do %>
+                <button type="button" class="btn btn-primary btn-xs">
+                  <i class="fa fa-eye"> </i> Detalhes
+                </button>
               <% end %>
             </td>
           </tr>

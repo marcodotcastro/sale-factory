@@ -40,7 +40,9 @@
             <td><%= industria.email %></td>
             <td>
               <%= link_to representante_industria_path(@representante, industria) do %>
-                <i class="fa fa-eye"></i>
+                <button type="button" class="btn btn-primary btn-xs">
+                  <i class="fa fa-eye"> </i> Detalhes
+                </button>
               <% end %>
             </td>
           </tr>

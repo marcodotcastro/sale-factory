@@ -27,7 +27,17 @@
       <% @pedidos.each do |pedido| %>
         <tr>
           <th scope="row"><%= pedido.id.to_s %></th>
-          <td><%= pedido.produto.descricao %></td>
+          <td>
+            <% if current_usuario.industria? %>
+              <%= link_to industria_produto_path(@industria, pedido.produto) do %>
+                <%= pedido.produto.descricao %> <i class="fa fa-eye"> </i>
+              <% end %>
+            <% elsif current_usuario.representante? %>
+              <%= link_to representante_produto_path(@representante, pedido.produto) do %>
+                <%= pedido.produto.descricao %> <i class="fa fa-eye"> </i>
+              <% end %>
+            <% end %>
+          </td>
           <td><%= pedido.quantidade %></td>
           <td><%= number_to_currency pedido.produto.preco %></td>
           <td><%= number_to_currency pedido.produto.preco * pedido.quantidade %></td>

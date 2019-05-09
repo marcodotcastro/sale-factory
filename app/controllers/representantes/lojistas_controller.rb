@@ -83,7 +83,7 @@ class Representantes::LojistasController < ApplicationController
   private
 
   def set_industrias
-    @industrias = current_usuario.representante.industrias
+    @industrias = current_usuario.representante.industrias.order(descricao: :asc)
   end
 
   def set_industrias_do_lojista_com_representante
@@ -107,11 +107,11 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def get_cidades
-    @cidades = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct
+    @cidades = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct.order(descricao: :asc)
   end
 
   def get_estados
-    @estados = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct
+    @estados = Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct.order(estado: :asc)
   end
 
 end

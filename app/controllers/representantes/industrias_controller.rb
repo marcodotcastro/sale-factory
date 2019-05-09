@@ -57,11 +57,11 @@ class Representantes::IndustriasController < ApplicationController
   end
 
   def get_cidades
-    @cidades = Cidade.joins(industrias: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct
+    @cidades = Cidade.joins(industrias: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").distinct.order(descricao: :asc)
   end
 
   def get_estados
-    @estados = Cidade.joins(industrias: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct
+    @estados = Cidade.joins(industrias: [:representantes]).where("representantes.id = #{current_usuario.representante.id}").select(:estado).distinct.order(estado: :asc)
   end
 
 end
