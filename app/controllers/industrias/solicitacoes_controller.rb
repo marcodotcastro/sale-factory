@@ -48,11 +48,11 @@ class Industrias::SolicitacoesController < ApplicationController
   end
 
   def get_representantes
-    @representantes = Representante.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
+    @representantes = Representante.joins(:solicitacoes, :industrias).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
   end
 
   def get_lojistas
-    @lojistas = Lojista.joins(:solicitacoes).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
+    @lojistas = Lojista.joins(:solicitacoes, representantes: [:industrias]).where("solicitacoes.industria_id = #{current_usuario.industria.id}").distinct.order(descricao: :asc)
   end
 
 end
