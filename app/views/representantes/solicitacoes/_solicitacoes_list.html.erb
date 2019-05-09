@@ -1,10 +1,10 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="row">
-    <%= search_form_for @q, url: current_usuario.cliente? ? cliente_solicitacoes_path(current_usuario.cliente) : representante_solicitacoes_path(current_usuario.representante) do |f| %>
+    <%= search_form_for @q, url: current_usuario.industria? ? industria_solicitacoes_path(current_usuario.industria) : representante_solicitacoes_path(current_usuario.representante) do |f| %>
       <div class="col-md-3 col-sm-3 col-xs-3">
         <%= f.collection_select :status_eq, @statuses, "status", "status", {include_blank: 'Todas Situações'}, {class: "form-control"} %>
       </div>
-      <% if current_usuario.cliente? %>
+      <% if current_usuario.industria? %>
         <div class="col-md-3 col-sm-3 col-xs-3">
           <%= f.select :representante_id_eq, options_from_collection_for_select(@representantes, "id", "descricao"), {include_blank: 'Todos Representantes'}, {class: "form-control"} %>
         </div>
@@ -39,8 +39,8 @@
           <th><%= sort_link @q, :id, "#" %></th>
           <%#TODO: Mover para o helpers %>
           <% if current_usuario.representante? %>
-            <th><%= sort_link @q, :cliente_id %></th>
-          <% elsif current_usuario.cliente? %>
+            <th><%= sort_link @q, :industria_id %></th>
+          <% elsif current_usuario.industria? %>
             <th><%= sort_link @q, :representante_id %></th>
           <% end %>
           <th><%= sort_link @q, :lojista_id %></th>
@@ -56,11 +56,11 @@
             <th scope="row"><%= solicitacao.id.to_s %></th>
             <%#TODO: Mover para o helpers %>
             <% if current_usuario.representante? %>
-              <td><%= link_to solicitacao.cliente.descricao, representante_clientes_path(solicitacao.cliente) %></td>
+              <td><%= link_to solicitacao.industria.descricao, representante_industrias_path(solicitacao.industria) %></td>
               <td><%= link_to solicitacao.lojista.descricao, representante_lojistas_path(solicitacao.lojista) %></td>
-            <% elsif current_usuario.cliente? %>
-              <td><%= link_to solicitacao.representante.descricao, cliente_representantes_path(solicitacao.representante) %></td>
-              <td><%= link_to solicitacao.lojista.descricao, cliente_lojistas_path(solicitacao.lojista) %></td>
+            <% elsif current_usuario.industria? %>
+              <td><%= link_to solicitacao.representante.descricao, industria_representantes_path(solicitacao.representante) %></td>
+              <td><%= link_to solicitacao.lojista.descricao, industria_lojistas_path(solicitacao.lojista) %></td>
             <% end %>
             <td><%= solicitacao.pedidos.sum(:quantidade) %> itens</td>
             <td><%= number_to_currency solicitacao.valor_total_dos_produtos %></td>
@@ -74,8 +74,8 @@
                     <i class="fa fa-eye"> </i> Detalhes
                   </button>
                 <% end %>
-              <% elsif current_usuario.cliente? %>
-                <%= link_to cliente_solicitacao_path(@cliente, solicitacao) do %>
+              <% elsif current_usuario.industria? %>
+                <%= link_to industria_solicitacao_path(@industria, solicitacao) do %>
                   <button type="button" class="btn btn-primary btn-xs">
                     <i class="fa fa-eye"> </i> Detalhes
                   </button>

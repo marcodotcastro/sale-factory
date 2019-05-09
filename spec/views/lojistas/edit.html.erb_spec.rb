@@ -5,13 +5,13 @@ RSpec.describe "lojistas/edit", type: :view do
   before(:each) do
     @lojista = assign(:lojista, create(:lojista))
     @representante = assign(:representante, @lojista.representante)
-    @cliente = assign(:cliente, @lojista.representante.cliente)
+    @industria = assign(:industria, @lojista.representante.industria)
   end
 
   it "renders the edit lojista form" do
     render
 
-    assert_select "form[action=?][method=?]", cliente_representante_lojista_path(@cliente, @representante, @lojista), "post" do
+    assert_select "form[action=?][method=?]", industria_representante_lojista_path(@industria, @representante, @lojista), "post" do
 
       assert_select "input[name=?]", "lojista[descricao]"
 

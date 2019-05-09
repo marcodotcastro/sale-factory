@@ -7,13 +7,13 @@ pt-BR:
           has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
-      cliente:
-        one: "Cliente"
-        other: "Clientes"
+      industria:
+        one: "Industria"
+        other: "Industrias"
     attributes:
       comentario:
         descricao: "Descrição"
-      cliente:
+      industria:
         descricao: "Descrição"
         endereco: "Endereço"
       solicitacao:
@@ -25,7 +25,7 @@ pt-BR:
         descricao: "Descrição"
         endereco: "Endereço"
       lojista:
-        cliente_ids: "Clientes"
+        industria_ids: "Industrias"
         descricao: "Descrição"
         endereco: "Endereço"
       admin_user:

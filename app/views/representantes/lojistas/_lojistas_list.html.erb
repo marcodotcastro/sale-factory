@@ -25,7 +25,7 @@
           <th>Telefone</th>
           <th>Whatsapp</th>
           <th>Email</th>
-          <% if current_usuario.cliente? %>
+          <% if current_usuario.industria? %>
             <th>Representante</th>
           <% end %>
           <th></th>
@@ -42,7 +42,7 @@
             <td>
               <%= lojista.telefone_whatsapp %></td>
             <td><%= lojista.email %></td>
-            <% if current_usuario.cliente? %>
+            <% if current_usuario.industria? %>
               <td><%= representante(lojista, @representante) %></td>
             <% end %>
             <td>
@@ -51,8 +51,8 @@
                 <%= link_to representante_lojista_path(@representante, lojista) do %>
                   <i class="fa fa-eye"></i>
                 <% end %>
-              <% elsif current_usuario.cliente? %>
-                <%= link_to cliente_lojista_path(@cliente, lojista) do %>
+              <% elsif current_usuario.industria? %>
+                <%= link_to industria_lojista_path(@industria, lojista) do %>
                   <i class="fa fa-eye"></i>
                 <% end %>
               <% end %>

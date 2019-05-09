@@ -2,7 +2,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Informe o Cliente e Lojista
+        <h2>Informe o Industria e Lojista
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -17,7 +17,7 @@
         </div>
         <div class="x_content">
           <div class="divider-dashed"></div>
-          <%= f.input :cliente_id, as: :select, collection: @clientes.map {|c| [c.descricao, c.id]}, class: "form-control" %>
+          <%= f.input :industria_id, as: :select, collection: @industrias.map {|c| [c.descricao, c.id]}, class: "form-control" %>
           <%= f.input :lojista_id, as: :select, collection: @lojistas.map {|c| [c.descricao, c.id]}, class: "form-control" %>
         </div>
       <% end %>

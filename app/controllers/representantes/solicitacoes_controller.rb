@@ -1,7 +1,7 @@
 class Representantes::SolicitacoesController < ApplicationController
   before_action :set_solicitacao, only: [:show, :edit, :update, :destroy]
   before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy, :status]
-  before_action :set_clientes, only: [:new, :edit, :create]
+  before_action :set_industrias, only: [:new, :edit, :create]
   before_action :set_lojistas, only: [:new, :edit, :create]
   before_action :get_lojistas, only: [:index]
   before_action :get_statuses, only: [:index]
@@ -21,7 +21,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def edit
-    @produtos = @solicitacao.cliente.produtos
+    @produtos = @solicitacao.industria.produtos
     build_pedido
   end
 
@@ -39,7 +39,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def update
-    @produtos = @solicitacao.cliente.produtos
+    @produtos = @solicitacao.industria.produtos
 
     respond_to do |format|
       if @solicitacao.update(solicitacao_params)
@@ -79,8 +79,8 @@ class Representantes::SolicitacoesController < ApplicationController
     @solicitacao = Solicitacao.find(params[:id])
   end
 
-  def set_clientes
-    @clientes = current_usuario.representante.clientes
+  def set_industrias
+    @industrias = current_usuario.representante.industrias
   end
 
   def set_lojistas
@@ -92,7 +92,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def solicitacao_params
-    params.require(:solicitacao).permit(:representante_id, :cliente_id, :lojista_id, pedidos_attributes: [:id, :quantidade, :produto_id, :_destroy])
+    params.require(:solicitacao).permit(:representante_id, :industria_id, :lojista_id, pedidos_attributes: [:id, :quantidade, :produto_id, :_destroy])
   end
 
   def get_statuses

@@ -41,7 +41,7 @@ module RepresentantesHelper
         return representante.descricao
       end
     else
-      @cliente.representantes.each do |representante|
+      @industria.representantes.each do |representante|
         representante = lojista.representantes.select(:id, :descricao).distinct.find_by(id: representante.id)
         return representante.descricao if representante
       end

@@ -1,6 +1,6 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="col-md-4 col-sm-4 col-xs-4">
-    <%= select_tag "cliente", options_from_collection_for_select(Cliente.all, "id", "descricao"), class: "form-control col-md-7 col-xs-12 select optional", include_blank: "Todos Clientes" %>
+    <%= select_tag "industria", options_from_collection_for_select(Industria.all, "id", "descricao"), class: "form-control col-md-7 col-xs-12 select optional", include_blank: "Todos Industrias" %>
   </div>
 </div>
 

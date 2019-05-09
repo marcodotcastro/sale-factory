@@ -4,7 +4,7 @@ RSpec.describe "lojistas/show", type: :view do
   before(:each) do
     @lojista = assign(:lojista, create(:lojista))
     @representante = assign(:representante, @lojista.representante)
-    @cliente = assign(:cliente, @lojista.representante.cliente)
+    @industria = assign(:industria, @lojista.representante.industria)
   end
 
   it "renders attributes in <p>" do

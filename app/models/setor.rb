@@ -9,5 +9,5 @@
 #
 
 class Setor < ApplicationRecord
-  has_many :clientes
+  has_many :industrias
 end

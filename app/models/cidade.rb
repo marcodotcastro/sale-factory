@@ -14,7 +14,7 @@
 #
 
 class Cidade < ApplicationRecord
-  has_many :clientes
+  has_many :industrias
   has_many :representantes
   has_many :lojistas
 

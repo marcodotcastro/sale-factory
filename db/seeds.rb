@@ -24,8 +24,8 @@ ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 #   Setor.create(descricao: descricao)
 # end
 
-puts "#Clientes"
-FactoryBot.create_list(:cliente, 5)
+puts "#Industrias"
+FactoryBot.create_list(:industria, 5)
 
 puts "#Produtos"
 FactoryBot.create_list(:produto, 25)

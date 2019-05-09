@@ -6,19 +6,19 @@
 #  status           :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  cliente_id       :bigint(8)
+#  industria_id     :bigint(8)
 #  lojista_id       :bigint(8)
 #  representante_id :bigint(8)
 #
 # Indexes
 #
-#  index_solicitacoes_on_cliente_id        (cliente_id)
+#  index_solicitacoes_on_industria_id      (industria_id)
 #  index_solicitacoes_on_lojista_id        (lojista_id)
 #  index_solicitacoes_on_representante_id  (representante_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (cliente_id => clientes.id)
+#  fk_rails_...  (industria_id => industrias.id)
 #  fk_rails_...  (lojista_id => lojistas.id)
 #  fk_rails_...  (representante_id => representantes.id)
 #
@@ -27,21 +27,21 @@ class Solicitacao < ApplicationRecord
   include AASM
   belongs_to :representante
   belongs_to :lojista
-  belongs_to :cliente
+  belongs_to :industria
   has_many :pedidos
   has_many :comentarios
   has_many :produtos, through: :pedidos
   accepts_nested_attributes_for :pedidos, reject_if: :all_blank, allow_destroy: true
 
-  validates_presence_of :cliente_id, :lojista_id
+  validates_presence_of :industria_id, :lojista_id
 
-  after_create :vincular_lojista_ao_cliente
+  after_create :vincular_lojista_ao_industria
 
   aasm :column => 'status' do
     #representante
     state :criado, initial: true
     state :solicitado
-    #cliente
+    #industria
     state :analisado
     state :pendente
     state :resolvido
@@ -86,8 +86,8 @@ class Solicitacao < ApplicationRecord
 
   private
 
-  def vincular_lojista_ao_cliente
-    self.cliente.lojistas << self.lojista
+  def vincular_lojista_ao_industria
+    self.industria.lojistas << self.lojista
   end
 
 end

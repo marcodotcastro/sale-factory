@@ -57,44 +57,6 @@ ActiveRecord::Schema.define(version: 2019_05_02_163451) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "clientes", force: :cascade do |t|
-    t.string "descricao"
-    t.string "endereco"
-    t.string "cep"
-    t.string "contato"
-    t.string "telefone"
-    t.string "telefone_whatsapp"
-    t.string "email"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "cidade_id"
-    t.bigint "usuario_id"
-    t.bigint "setor_id"
-    t.datetime "deleted_at"
-    t.string "slug"
-    t.index ["cidade_id"], name: "index_clientes_on_cidade_id"
-    t.index ["deleted_at"], name: "index_clientes_on_deleted_at"
-    t.index ["setor_id"], name: "index_clientes_on_setor_id"
-    t.index ["slug"], name: "index_clientes_on_slug", unique: true
-    t.index ["usuario_id"], name: "index_clientes_on_usuario_id"
-  end
-
-  create_table "clientes_lojistas", id: false, force: :cascade do |t|
-    t.bigint "lojista_id"
-    t.bigint "cliente_id"
-    t.index ["cliente_id"], name: "index_clientes_lojistas_on_cliente_id"
-    t.index ["lojista_id"], name: "index_lojistas_clientes_on_lojista_id"
-  end
-
-  create_table "clientes_representantes", id: false, force: :cascade do |t|
-    t.bigint "cliente_id"
-    t.bigint "representante_id"
-    t.index ["cliente_id"], name: "index_clientes_representantes_on_cliente_id"
-    t.index ["representante_id"], name: "index_representantes_clientes_on_representante_id"
-  end
-
   create_table "comentarios", force: :cascade do |t|
     t.string "descricao"
     t.bigint "usuario_id"
@@ -114,6 +76,44 @@ ActiveRecord::Schema.define(version: 2019_05_02_163451) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "industrias", force: :cascade do |t|
+    t.string "descricao"
+    t.string "endereco"
+    t.string "cep"
+    t.string "contato"
+    t.string "telefone"
+    t.string "telefone_whatsapp"
+    t.string "email"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cidade_id"
+    t.bigint "usuario_id"
+    t.bigint "setor_id"
+    t.datetime "deleted_at"
+    t.string "slug"
+    t.index ["cidade_id"], name: "index_industrias_on_cidade_id"
+    t.index ["deleted_at"], name: "index_industrias_on_deleted_at"
+    t.index ["setor_id"], name: "index_industrias_on_setor_id"
+    t.index ["slug"], name: "index_industrias_on_slug", unique: true
+    t.index ["usuario_id"], name: "index_industrias_on_usuario_id"
+  end
+
+  create_table "industrias_lojistas", id: false, force: :cascade do |t|
+    t.bigint "lojista_id"
+    t.bigint "industria_id"
+    t.index ["industria_id"], name: "index_industrias_lojistas_on_industria_id"
+    t.index ["lojista_id"], name: "index_lojistas_industrias_on_lojista_id"
+  end
+
+  create_table "industrias_representantes", id: false, force: :cascade do |t|
+    t.bigint "industria_id"
+    t.bigint "representante_id"
+    t.index ["industria_id"], name: "index_industrias_representantes_on_industria_id"
+    t.index ["representante_id"], name: "index_representantes_industrias_on_representante_id"
   end
 
   create_table "lojistas", force: :cascade do |t|
@@ -189,10 +189,10 @@ ActiveRecord::Schema.define(version: 2019_05_02_163451) do
   create_table "produtos", force: :cascade do |t|
     t.string "descricao"
     t.float "preco"
-    t.bigint "cliente_id"
+    t.bigint "industria_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cliente_id"], name: "index_produtos_on_cliente_id"
+    t.index ["industria_id"], name: "index_produtos_on_industria_id"
   end
 
   create_table "representantes", force: :cascade do |t|
@@ -230,12 +230,12 @@ ActiveRecord::Schema.define(version: 2019_05_02_163451) do
 
   create_table "solicitacoes", force: :cascade do |t|
     t.bigint "representante_id"
-    t.bigint "cliente_id"
+    t.bigint "industria_id"
     t.bigint "lojista_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
-    t.index ["cliente_id"], name: "index_solicitacoes_on_cliente_id"
+    t.index ["industria_id"], name: "index_solicitacoes_on_industria_id"
     t.index ["lojista_id"], name: "index_solicitacoes_on_lojista_id"
     t.index ["representante_id"], name: "index_solicitacoes_on_representante_id"
   end
@@ -267,9 +267,9 @@ ActiveRecord::Schema.define(version: 2019_05_02_163451) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "produtos", "clientes"
+  add_foreign_key "produtos", "industrias"
   add_foreign_key "representantes", "cidades"
-  add_foreign_key "solicitacoes", "clientes"
+  add_foreign_key "solicitacoes", "industrias"
   add_foreign_key "solicitacoes", "lojistas"
   add_foreign_key "solicitacoes", "representantes"
 end

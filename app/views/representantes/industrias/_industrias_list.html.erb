@@ -1,0 +1,53 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Industrias
+        <small>...</small>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="text-center">
+      <%= paginate @industrias, param_name: "page_industria" %>
+    </div>
+    <div class="x_content">
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Descrição</th>
+          <th>Contato</th>
+          <th>Telefone</th>
+          <th>Whatsapp</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @industrias.each do |industria| %>
+          <tr>
+            <th scope="row"><%= industria.id.to_s %></th>
+            <td><%= industria.descricao %></td>
+            <td><%= industria.contato %></td>
+            <td><%= industria.telefone %></td>
+            <td>
+              <%= industria.telefone_whatsapp %></td>
+            <td><%= industria.email %></td>
+            <td>
+              <%= link_to representante_industria_path(@representante, industria) do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

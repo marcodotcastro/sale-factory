@@ -14,8 +14,8 @@
     <% if @solicitacao.pendente? or @solicitacao.resolvido? or @solicitacao.recusado? or @solicitacao.cancelado? %>
       <% if current_usuario.representante? %>
         <%= link_to "Adicionar Comentário", new_representante_solicitacao_comentario_path(@representante, @solicitacao), class: "btn btn-primary" %>
-      <% elsif current_usuario.cliente? %>
-        <%= link_to "Adicionar Comentário", new_cliente_solicitacao_comentario_path(@cliente, @solicitacao), class: "btn btn-primary" %>
+      <% elsif current_usuario.industria? %>
+        <%= link_to "Adicionar Comentário", new_industria_solicitacao_comentario_path(@industria, @solicitacao), class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>
@@ -35,7 +35,7 @@
       <% @comentarios.each do |comentario| %>
         <tr>
           <td><%= comentario.usuario.nome %></td>
-          <td><%= comentario.usuario.representante? ? comentario.usuario.representante.descricao : comentario.usuario.cliente.descricao %></td>
+          <td><%= comentario.usuario.representante? ? comentario.usuario.representante.descricao : comentario.usuario.industria.descricao %></td>
           <td><%= comentario.descricao %></td>
         </tr>
       <% end %>

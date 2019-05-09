@@ -35,7 +35,7 @@ class Representante < ApplicationRecord
   acts_as_paranoid
   extend FriendlyId
 
-  has_and_belongs_to_many :clientes, -> {distinct}
+  has_and_belongs_to_many :industrias, -> {distinct}
   has_and_belongs_to_many :lojistas, -> {distinct}
   has_many :solicitacoes
   belongs_to :cidade
@@ -48,25 +48,25 @@ class Representante < ApplicationRecord
   validates :descricao, :cidade_id, presence: true
 
 
-  def total_de_vendas(cliente = nil)
-    if cliente
-      self.solicitacoes.where(status: :aceito, cliente_id: cliente.id).count
+  def total_de_vendas(industria = nil)
+    if industria
+      self.solicitacoes.where(status: :aceito, industria_id: industria.id).count
     else
       self.solicitacoes.where(status: :aceito).count
     end
   end
 
-  def total_de_lojistas(cliente = nil)
-    if cliente
-      Lojista.joins([:clientes, :representantes]).where("clientes_lojistas.cliente_id = #{cliente.id} and lojistas_representantes.representante_id = #{self.id}").distinct.count
+  def total_de_lojistas(industria = nil)
+    if industria
+      Lojista.joins([:industrias, :representantes]).where("industrias_lojistas.industria_id = #{industria.id} and lojistas_representantes.representante_id = #{self.id}").distinct.count
     else
       Lojista.joins(:representantes).where("lojistas_representantes.representante_id = #{self.id}").distinct.count
     end
   end
 
-  def total_de_cidades(cliente = nil)
-    if cliente
-      Cidade.joins(lojistas: [:clientes, :representantes]).where("clientes_lojistas.cliente_id = #{cliente.id} and representantes.id = #{self.id}").distinct.count
+  def total_de_cidades(industria = nil)
+    if industria
+      Cidade.joins(lojistas: [:industrias, :representantes]).where("industrias_lojistas.industria_id = #{industria.id} and representantes.id = #{self.id}").distinct.count
     else
       Cidade.joins(lojistas: [:representantes]).where("representantes.id = #{self.id}").distinct.count
     end

@@ -49,25 +49,25 @@ module Merit
       ## Cadastro
       grant_on ['representantes#create', 'representantes#update'], badge: "perfil", model_name: "Representante"
       ## Venda
-      # FIXME: Por está sendo validado na requisição do cliente as medalhas estão sendo vinculadas a ele.
-      # TODO: Buscar um solução para não vincular ao cliente. Sugerir uma parametro para vinculo manual
-      grant_on 'clientes/solicitacoes#status', badge: "1-venda", model_name: "Solicitacao" do |solicitacao|
+      # FIXME: Por está sendo validado na requisição do industria as medalhas estão sendo vinculadas a ele.
+      # TODO: Buscar um solução para não vincular ao industria. Sugerir uma parametro para vinculo manual
+      grant_on 'industrias/solicitacoes#status', badge: "1-venda", model_name: "Solicitacao" do |solicitacao|
         badge = Merit::Badge.by_name("1-venda").first
         solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 1
       end
-      grant_on 'clientes/solicitacoes#status', badge: "5-venda", model_name: "Solicitacao" do |solicitacao|
+      grant_on 'industrias/solicitacoes#status', badge: "5-venda", model_name: "Solicitacao" do |solicitacao|
         badge = Merit::Badge.by_name("5-venda").first
         solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 5
       end
-      grant_on 'clientes/solicitacoes#status', badge: "10-venda", model_name: "Solicitacao" do |solicitacao|
+      grant_on 'industrias/solicitacoes#status', badge: "10-venda", model_name: "Solicitacao" do |solicitacao|
         badge = Merit::Badge.by_name("10-venda").first
         solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 10
       end
-      grant_on 'clientes/solicitacoes#status', badge: "50-venda", model_name: "Solicitacao" do |solicitacao|
+      grant_on 'industrias/solicitacoes#status', badge: "50-venda", model_name: "Solicitacao" do |solicitacao|
         badge = Merit::Badge.by_name("50-venda").first
         solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 50
       end
-      grant_on 'clientes/solicitacoes#status', badge: "100-venda", model_name: "Solicitacao" do |solicitacao|
+      grant_on 'industrias/solicitacoes#status', badge: "100-venda", model_name: "Solicitacao" do |solicitacao|
         badge = Merit::Badge.by_name("100-venda").first
         solicitacao.representante.usuario.add_badge(badge.id) if solicitacao.representante.solicitacoes.where(status: :aceito).count >= 100
       end

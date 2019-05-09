@@ -1,0 +1,84 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+  <div class="row">
+    <%= search_form_for @q, url: industria_representantes_path(current_usuario.industria) do |f| %>
+      <div class="col-md-3 col-sm-3 col-lg-3">
+        <%= f.search_field :descricao_cont, {placeholder: "Nome do Representante", class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.search_field :contato_cont, {placeholder: "Nome do Contato", class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.collection_select :cidade_estado_eq, @estados, "estado", "estado", {include_blank: 'Todos Estados'}, {class: "form-control"} %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-lg-2">
+        <%= f.collection_select :cidade_id_eq, @cidades, "id", "descricao", {include_blank: 'Todas Cidades'}, {class: "form-control"} %>
+      </div>
+      <div class="col-md-3 col-sm-3 col-lg-3">
+        <%= f.submit "Pesquisar", class: "btn btn-default" %>
+        <%= link_to "Limpar", request.path, class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="text-center">
+    <%= paginate @representantes, param_name: "page_representante"  %>
+  </div>
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Representantes
+        <small>...</small>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <% @representantes.each do |representante| %>
+        <div class="col-sm-4 col-md-4 col-lg-3 profile_details">
+          <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <h4 class="brief">
+                <i><span title="<%= representante.descricao %>"><%= truncate representante.descricao, length: 40 %></span></i>
+              </h4>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="left col-sm-12 col-md-12 col-lg-12 text-center">
+                <%= image_tag foto_avatar_url(representante.usuario), class: "img-profile" %>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <h5><%= representante.contato %></h5>
+            </div>
+            <div class="col-sm-12">
+              <div class="left col-xs-12">
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-building"></i> <strong>Endereço: </strong>
+                    <span title="<%= representante.endereco %>"><%= truncate representante.endereco, length: 25 %></span>
+                  </li>
+                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong>
+                    <span title="<%= representante.email %>"><%= truncate representante.email, length: 25 %></span></li>
+                  <li><i class="fa fa-phone"></i> <strong>Telefone: </strong><%= representante.telefone %></li>
+                  <li><i class="fa fa-whatsapp"></i> <strong>Whatsapp: </strong><%= representante.telefone_whatsapp %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 bottom text-center">
+              <%= link_to industria_dashboards_representante_path(@industria, representante) do %>
+                <button type="button" class="btn btn-success btn-xs">
+                  <i class="fa fa-eye"> </i> Dashboard
+                </button>
+              <% end %>
+              <%= link_to industria_representante_path(@industria, representante) do %>
+                <button type="button" class="btn btn-primary btn-xs">
+                  <i class="fa fa-eye"> </i> Detalhes
+                </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

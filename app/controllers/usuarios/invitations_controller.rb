@@ -24,7 +24,7 @@ class Usuarios::InvitationsController < Devise::InvitationsController
     usuario = Usuario.find_by(email: usuario_params[:email])
     representante = usuario.representante
     if representante
-      representantes = current_usuario.cliente.representantes << usuario.representante
+      representantes = current_usuario.industria.representantes << usuario.representante
       if representantes.find(representante.id)
         return true
       end

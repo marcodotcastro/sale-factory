@@ -35,13 +35,13 @@ module Merit
       score -30, :on => 'representantes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
         solicitacao.cancelado?
       end
-      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+      score 0, :on => 'industrias/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
         solicitacao.representante.usuario.add_points(20) if solicitacao.aceito?
       end
-      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+      score 0, :on => 'industrias/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
         solicitacao.representante.usuario.add_points(-25) if solicitacao.recusado?
       end
-      score 0, :on => 'clientes/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
+      score 0, :on => 'industrias/solicitacoes#status', model_name: "Solicitacao" do |solicitacao|
         solicitacao.representante.usuario.add_points(-30) if solicitacao.cancelado?
       end
       ## Lojista

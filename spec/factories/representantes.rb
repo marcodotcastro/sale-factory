@@ -48,7 +48,7 @@ FactoryBot.define do
       create(:usuario, :vincular_convite, tipo: "representante", nome: representante.contato, email: representante.email, representante: representante)
       #Vincular cidade
       representante.cidade = Cidade.all.sample
-      representante.clientes << [Cliente.all.sample]
+      representante.industrias << [Industria.all.sample]
     end
 
     after(:create) do |representante|

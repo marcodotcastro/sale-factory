@@ -31,7 +31,7 @@
 class Representantes::LojistasController < ApplicationController
   before_action :set_lojista, only: [:show, :edit, :update, :destroy]
   before_action :set_representante, only: [:index, :show, :create, :new, :edit, :update, :destroy]
-  before_action :set_clientes, only: [:new, :edit]
+  before_action :set_industrias, only: [:new, :edit]
   before_action :get_cidades, only: [:index]
   before_action :get_estados, only: [:index]
 
@@ -40,7 +40,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def show
-    @clientes = set_clientes_do_lojista_com_representante.page(params[:page_cliente])
+    @industrias = set_industrias_do_lojista_com_representante.page(params[:page_industria])
   end
 
   def new
@@ -82,12 +82,12 @@ class Representantes::LojistasController < ApplicationController
 
   private
 
-  def set_clientes
-    @clientes = current_usuario.representante.clientes
+  def set_industrias
+    @industrias = current_usuario.representante.industrias
   end
 
-  def set_clientes_do_lojista_com_representante
-    Cliente.joins(lojistas: [:representantes]).where("representantes.id = #{@representante.id} and lojistas.id = #{@lojista.id}").distinct
+  def set_industrias_do_lojista_com_representante
+    Industria.joins(lojistas: [:representantes]).where("representantes.id = #{@representante.id} and lojistas.id = #{@lojista.id}").distinct
   end
 
   def get_lojistas
@@ -103,7 +103,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:logo, :descricao, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, cliente_ids: [])
+    params.require(:lojista).permit(:logo, :descricao, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, industria_ids: [])
   end
 
   def get_cidades

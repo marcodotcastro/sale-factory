@@ -5,10 +5,10 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <%#TODO: Mover código para o helpers %>
-      <% if current_usuario.cliente? %>
-        <% if current_usuario.cliente %>
+      <% if current_usuario.industria? %>
+        <% if current_usuario.industria %>
           <div class="navbar-text">
-            <h2><%= current_usuario.cliente.descricao.upcase %></h2>
+            <h2><%= current_usuario.industria.descricao.upcase %></h2>
           </div>
         <% end %>
       <% elsif current_usuario.representante? %>
@@ -35,16 +35,16 @@
         <ul class="dropdown-menu dropdown-usermenu pull-right">
           <% if usuario_signed_in? %>
             <%#TODO: Mover código para o helpers %>
-            <% if current_usuario.cliente? %>
-              <% if current_usuario.cliente %>
+            <% if current_usuario.industria? %>
+              <% if current_usuario.industria %>
                 <li>
-                  <%= link_to cliente_path(current_usuario.cliente) do %>
+                  <%= link_to industria_path(current_usuario.industria) do %>
                     <i class="fa fa-user"></i> Perfil
                   <% end %>
                 </li>
               <% else %>
                 <li>
-                  <%= link_to new_cliente_path do %>
+                  <%= link_to new_industria_path do %>
                     <i class="fa fa-user"></i> Perfil
                   <% end %>
                 </li>

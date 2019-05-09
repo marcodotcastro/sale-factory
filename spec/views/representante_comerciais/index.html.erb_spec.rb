@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "representantes/index", type: :view do
 
   before(:each) do
-    @cliente = assign(:cliente, create(:cliente))
+    @industria = assign(:industria, create(:industria))
     @representantes = assign(:representantes, create_list(:representante, 2))
   end
 

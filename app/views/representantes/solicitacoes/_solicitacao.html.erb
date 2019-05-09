@@ -25,16 +25,16 @@
           <% end %>
 
         <% end %>
-        <% if current_usuario.cliente? %>
+        <% if current_usuario.industria? %>
           <% if @solicitacao.analisado? or @solicitacao.solicitado? or @solicitacao.resolvido? %>
-            <%= link_to "Aceitar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :aceitar), method: :post, class: "btn btn-success" %>
+            <%= link_to "Aceitar", industria_solicitacao_status_path(@industria, @solicitacao, status: :aceitar), method: :post, class: "btn btn-success" %>
           <% end %>
           <% if @solicitacao.solicitado? or @solicitacao.resolvido? %>
-            <%= link_to "Analisar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :analisar), method: :post, class: "btn btn-warning" %>
+            <%= link_to "Analisar", industria_solicitacao_status_path(@industria, @solicitacao, status: :analisar), method: :post, class: "btn btn-warning" %>
           <% end %>
           <% if @solicitacao.analisado? or @solicitacao.solicitado? or @solicitacao.resolvido? %>
-            <%= link_to "Pendenciar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :pendenciar), method: :post, class: "btn btn-warning" %>
-            <%= link_to "Recusar", cliente_solicitacao_status_path(@cliente, @solicitacao, status: :recusar), method: :post, class: "btn btn-danger" %>
+            <%= link_to "Pendenciar", industria_solicitacao_status_path(@industria, @solicitacao, status: :pendenciar), method: :post, class: "btn btn-warning" %>
+            <%= link_to "Recusar", industria_solicitacao_status_path(@industria, @solicitacao, status: :recusar), method: :post, class: "btn btn-danger" %>
           <% end %>
         <% end %>
       </div>
@@ -49,7 +49,7 @@
       <div class="x_content">
         <div class="divider-dashed"></div>
         <form data-parsley-validate class="form-horizontal form-label-left">
-          <% if current_usuario.cliente? %>
+          <% if current_usuario.industria? %>
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Representante
               </label>
@@ -60,10 +60,10 @@
           <% end %>
           <% if current_usuario.representante? %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Cliente
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Industria
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.cliente.descricao %>">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @solicitacao.industria.descricao %>">
               </div>
             </div>
           <% end %>

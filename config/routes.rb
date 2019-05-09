@@ -33,61 +33,61 @@
 #                            letter_opener_web        /letter_opener/inbox                                                                          LetterOpenerWeb::Engine
 #                             principais_index GET    /principais/index(.:format)                                                                   principais#index
 #                                         root GET    /                                                                                             principais#index
-#       cliente_dashboards_mapa_representantes GET    /clientes/:cliente_id/dashboards/mapa/representantes(.:format)                                clientes/dashboards#mapa_representantes
-#             cliente_dashboards_mapa_lojistas GET    /clientes/:cliente_id/dashboards/mapa/lojistas(.:format)                                      clientes/dashboards#mapa_lojistas
-#                     cliente_dashboards_geral GET    /clientes/:cliente_id/dashboards/geral(.:format)                                              clientes/dashboards#geral
-#                   cliente_dashboards_ranking GET    /clientes/:cliente_id/dashboards/ranking(.:format)                                            clientes/dashboards#ranking
-#             cliente_dashboards_representante GET    /clientes/:cliente_id/dashboards/representante/:id(.:format)                                  clientes/dashboards#representante
-#                             cliente_lojistas GET    /clientes/:cliente_id/lojistas(.:format)                                                      clientes/lojistas#index
-#                                              POST   /clientes/:cliente_id/lojistas(.:format)                                                      clientes/lojistas#create
-#                          new_cliente_lojista GET    /clientes/:cliente_id/lojistas/new(.:format)                                                  clientes/lojistas#new
-#                         edit_cliente_lojista GET    /clientes/:cliente_id/lojistas/:id/edit(.:format)                                             clientes/lojistas#edit
-#                              cliente_lojista GET    /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#show
-#                                              PATCH  /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#update
-#                                              PUT    /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#update
-#                                              DELETE /clientes/:cliente_id/lojistas/:id(.:format)                                                  clientes/lojistas#destroy
-#            cliente_representante_desvincular POST   /clientes/:cliente_id/representantes/:representante_id/desvincular(.:format)                  clientes/representantes#desvincular
-#                       cliente_representantes GET    /clientes/:cliente_id/representantes(.:format)                                                clientes/representantes#index
-#                                              POST   /clientes/:cliente_id/representantes(.:format)                                                clientes/representantes#create
-#                    new_cliente_representante GET    /clientes/:cliente_id/representantes/new(.:format)                                            clientes/representantes#new
-#                   edit_cliente_representante GET    /clientes/:cliente_id/representantes/:id/edit(.:format)                                       clientes/representantes#edit
-#                        cliente_representante GET    /clientes/:cliente_id/representantes/:id(.:format)                                            clientes/representantes#show
-#                                              PATCH  /clientes/:cliente_id/representantes/:id(.:format)                                            clientes/representantes#update
-#                                              PUT    /clientes/:cliente_id/representantes/:id(.:format)                                            clientes/representantes#update
-#                                              DELETE /clientes/:cliente_id/representantes/:id(.:format)                                            clientes/representantes#destroy
-#                             cliente_produtos GET    /clientes/:cliente_id/produtos(.:format)                                                      clientes/produtos#index
-#                                              POST   /clientes/:cliente_id/produtos(.:format)                                                      clientes/produtos#create
-#                          new_cliente_produto GET    /clientes/:cliente_id/produtos/new(.:format)                                                  clientes/produtos#new
-#                         edit_cliente_produto GET    /clientes/:cliente_id/produtos/:id/edit(.:format)                                             clientes/produtos#edit
-#                              cliente_produto GET    /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#show
-#                                              PATCH  /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#update
-#                                              PUT    /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#update
-#                                              DELETE /clientes/:cliente_id/produtos/:id(.:format)                                                  clientes/produtos#destroy
-#                   cliente_solicitacao_status POST   /clientes/:cliente_id/solicitacoes/:solicitacao_id/status(.:format)                           clientes/solicitacoes#status
-#              cliente_solicitacao_comentarios GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      clientes/comentarios#index
-#                                              POST   /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      clientes/comentarios#create
-#           new_cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/new(.:format)                  clientes/comentarios#new
-#          edit_cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id/edit(.:format)             clientes/comentarios#edit
-#               cliente_solicitacao_comentario GET    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#show
-#                                              PATCH  /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#update
-#                                              PUT    /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#update
-#                                              DELETE /clientes/:cliente_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  clientes/comentarios#destroy
-#                         cliente_solicitacoes GET    /clientes/:cliente_id/solicitacoes(.:format)                                                  clientes/solicitacoes#index
-#                                              POST   /clientes/:cliente_id/solicitacoes(.:format)                                                  clientes/solicitacoes#create
-#                      new_cliente_solicitacao GET    /clientes/:cliente_id/solicitacoes/new(.:format)                                              clientes/solicitacoes#new
-#                     edit_cliente_solicitacao GET    /clientes/:cliente_id/solicitacoes/:id/edit(.:format)                                         clientes/solicitacoes#edit
-#                          cliente_solicitacao GET    /clientes/:cliente_id/solicitacoes/:id(.:format)                                              clientes/solicitacoes#show
-#                                              PATCH  /clientes/:cliente_id/solicitacoes/:id(.:format)                                              clientes/solicitacoes#update
-#                                              PUT    /clientes/:cliente_id/solicitacoes/:id(.:format)                                              clientes/solicitacoes#update
-#                                              DELETE /clientes/:cliente_id/solicitacoes/:id(.:format)                                              clientes/solicitacoes#destroy
-#                                     clientes GET    /clientes(.:format)                                                                           clientes#index
-#                                              POST   /clientes(.:format)                                                                           clientes#create
-#                                  new_cliente GET    /clientes/new(.:format)                                                                       clientes#new
-#                                 edit_cliente GET    /clientes/:id/edit(.:format)                                                                  clientes#edit
-#                                      cliente GET    /clientes/:id(.:format)                                                                       clientes#show
-#                                              PATCH  /clientes/:id(.:format)                                                                       clientes#update
-#                                              PUT    /clientes/:id(.:format)                                                                       clientes#update
-#                                              DELETE /clientes/:id(.:format)                                                                       clientes#destroy
+#       industria_dashboards_mapa_representantes GET    /industrias/:industria_id/dashboards/mapa/representantes(.:format)                                industrias/dashboards#mapa_representantes
+#             industria_dashboards_mapa_lojistas GET    /industrias/:industria_id/dashboards/mapa/lojistas(.:format)                                      industrias/dashboards#mapa_lojistas
+#                     industria_dashboards_geral GET    /industrias/:industria_id/dashboards/geral(.:format)                                              industrias/dashboards#geral
+#                   industria_dashboards_ranking GET    /industrias/:industria_id/dashboards/ranking(.:format)                                            industrias/dashboards#ranking
+#             industria_dashboards_representante GET    /industrias/:industria_id/dashboards/representante/:id(.:format)                                  industrias/dashboards#representante
+#                             industria_lojistas GET    /industrias/:industria_id/lojistas(.:format)                                                      industrias/lojistas#index
+#                                              POST   /industrias/:industria_id/lojistas(.:format)                                                      industrias/lojistas#create
+#                          new_industria_lojista GET    /industrias/:industria_id/lojistas/new(.:format)                                                  industrias/lojistas#new
+#                         edit_industria_lojista GET    /industrias/:industria_id/lojistas/:id/edit(.:format)                                             industrias/lojistas#edit
+#                              industria_lojista GET    /industrias/:industria_id/lojistas/:id(.:format)                                                  industrias/lojistas#show
+#                                              PATCH  /industrias/:industria_id/lojistas/:id(.:format)                                                  industrias/lojistas#update
+#                                              PUT    /industrias/:industria_id/lojistas/:id(.:format)                                                  industrias/lojistas#update
+#                                              DELETE /industrias/:industria_id/lojistas/:id(.:format)                                                  industrias/lojistas#destroy
+#            industria_representante_desvincular POST   /industrias/:industria_id/representantes/:representante_id/desvincular(.:format)                  industrias/representantes#desvincular
+#                       industria_representantes GET    /industrias/:industria_id/representantes(.:format)                                                industrias/representantes#index
+#                                              POST   /industrias/:industria_id/representantes(.:format)                                                industrias/representantes#create
+#                    new_industria_representante GET    /industrias/:industria_id/representantes/new(.:format)                                            industrias/representantes#new
+#                   edit_industria_representante GET    /industrias/:industria_id/representantes/:id/edit(.:format)                                       industrias/representantes#edit
+#                        industria_representante GET    /industrias/:industria_id/representantes/:id(.:format)                                            industrias/representantes#show
+#                                              PATCH  /industrias/:industria_id/representantes/:id(.:format)                                            industrias/representantes#update
+#                                              PUT    /industrias/:industria_id/representantes/:id(.:format)                                            industrias/representantes#update
+#                                              DELETE /industrias/:industria_id/representantes/:id(.:format)                                            industrias/representantes#destroy
+#                             industria_produtos GET    /industrias/:industria_id/produtos(.:format)                                                      industrias/produtos#index
+#                                              POST   /industrias/:industria_id/produtos(.:format)                                                      industrias/produtos#create
+#                          new_industria_produto GET    /industrias/:industria_id/produtos/new(.:format)                                                  industrias/produtos#new
+#                         edit_industria_produto GET    /industrias/:industria_id/produtos/:id/edit(.:format)                                             industrias/produtos#edit
+#                              industria_produto GET    /industrias/:industria_id/produtos/:id(.:format)                                                  industrias/produtos#show
+#                                              PATCH  /industrias/:industria_id/produtos/:id(.:format)                                                  industrias/produtos#update
+#                                              PUT    /industrias/:industria_id/produtos/:id(.:format)                                                  industrias/produtos#update
+#                                              DELETE /industrias/:industria_id/produtos/:id(.:format)                                                  industrias/produtos#destroy
+#                   industria_solicitacao_status POST   /industrias/:industria_id/solicitacoes/:solicitacao_id/status(.:format)                           industrias/solicitacoes#status
+#              industria_solicitacao_comentarios GET    /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      industrias/comentarios#index
+#                                              POST   /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios(.:format)                      industrias/comentarios#create
+#           new_industria_solicitacao_comentario GET    /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/new(.:format)                  industrias/comentarios#new
+#          edit_industria_solicitacao_comentario GET    /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/:id/edit(.:format)             industrias/comentarios#edit
+#               industria_solicitacao_comentario GET    /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  industrias/comentarios#show
+#                                              PATCH  /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  industrias/comentarios#update
+#                                              PUT    /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  industrias/comentarios#update
+#                                              DELETE /industrias/:industria_id/solicitacoes/:solicitacao_id/comentarios/:id(.:format)                  industrias/comentarios#destroy
+#                         industria_solicitacoes GET    /industrias/:industria_id/solicitacoes(.:format)                                                  industrias/solicitacoes#index
+#                                              POST   /industrias/:industria_id/solicitacoes(.:format)                                                  industrias/solicitacoes#create
+#                      new_industria_solicitacao GET    /industrias/:industria_id/solicitacoes/new(.:format)                                              industrias/solicitacoes#new
+#                     edit_industria_solicitacao GET    /industrias/:industria_id/solicitacoes/:id/edit(.:format)                                         industrias/solicitacoes#edit
+#                          industria_solicitacao GET    /industrias/:industria_id/solicitacoes/:id(.:format)                                              industrias/solicitacoes#show
+#                                              PATCH  /industrias/:industria_id/solicitacoes/:id(.:format)                                              industrias/solicitacoes#update
+#                                              PUT    /industrias/:industria_id/solicitacoes/:id(.:format)                                              industrias/solicitacoes#update
+#                                              DELETE /industrias/:industria_id/solicitacoes/:id(.:format)                                              industrias/solicitacoes#destroy
+#                                     industrias GET    /industrias(.:format)                                                                           industrias#index
+#                                              POST   /industrias(.:format)                                                                           industrias#create
+#                                  new_industria GET    /industrias/new(.:format)                                                                       industrias#new
+#                                 edit_industria GET    /industrias/:id/edit(.:format)                                                                  industrias#edit
+#                                      industria GET    /industrias/:id(.:format)                                                                       industrias#show
+#                                              PATCH  /industrias/:id(.:format)                                                                       industrias#update
+#                                              PUT    /industrias/:id(.:format)                                                                       industrias#update
+#                                              DELETE /industrias/:id(.:format)                                                                       industrias#destroy
 # representante_dashboards_mapa_representantes GET    /representantes/:representante_id/dashboards/mapa/representantes(.:format)                    representantes/dashboards#mapa_representantes
 #       representante_dashboards_mapa_lojistas GET    /representantes/:representante_id/dashboards/mapa/lojistas(.:format)                          representantes/dashboards#mapa_lojistas
 #               representante_dashboards_geral GET    /representantes/:representante_id/dashboards/geral(.:format)                                  representantes/dashboards#geral
@@ -102,14 +102,14 @@
 #                                              PATCH  /representantes/:representante_id/lojistas/:id(.:format)                                      representantes/lojistas#update
 #                                              PUT    /representantes/:representante_id/lojistas/:id(.:format)                                      representantes/lojistas#update
 #                                              DELETE /representantes/:representante_id/lojistas/:id(.:format)                                      representantes/lojistas#destroy
-#                       representante_clientes GET    /representantes/:representante_id/clientes(.:format)                                          representantes/clientes#index
-#                                              POST   /representantes/:representante_id/clientes(.:format)                                          representantes/clientes#create
-#                    new_representante_cliente GET    /representantes/:representante_id/clientes/new(.:format)                                      representantes/clientes#new
-#                   edit_representante_cliente GET    /representantes/:representante_id/clientes/:id/edit(.:format)                                 representantes/clientes#edit
-#                        representante_cliente GET    /representantes/:representante_id/clientes/:id(.:format)                                      representantes/clientes#show
-#                                              PATCH  /representantes/:representante_id/clientes/:id(.:format)                                      representantes/clientes#update
-#                                              PUT    /representantes/:representante_id/clientes/:id(.:format)                                      representantes/clientes#update
-#                                              DELETE /representantes/:representante_id/clientes/:id(.:format)                                      representantes/clientes#destroy
+#                       representante_industrias GET    /representantes/:representante_id/industrias(.:format)                                          representantes/industrias#index
+#                                              POST   /representantes/:representante_id/industrias(.:format)                                          representantes/industrias#create
+#                    new_representante_industria GET    /representantes/:representante_id/industrias/new(.:format)                                      representantes/industrias#new
+#                   edit_representante_industria GET    /representantes/:representante_id/industrias/:id/edit(.:format)                                 representantes/industrias#edit
+#                        representante_industria GET    /representantes/:representante_id/industrias/:id(.:format)                                      representantes/industrias#show
+#                                              PATCH  /representantes/:representante_id/industrias/:id(.:format)                                      representantes/industrias#update
+#                                              PUT    /representantes/:representante_id/industrias/:id(.:format)                                      representantes/industrias#update
+#                                              DELETE /representantes/:representante_id/industrias/:id(.:format)                                      representantes/industrias#destroy
 #                       representante_produtos GET    /representantes/:representante_id/produtos(.:format)                                          representantes/produtos#index
 #                                              POST   /representantes/:representante_id/produtos(.:format)                                          representantes/produtos#create
 #                    new_representante_produto GET    /representantes/:representante_id/produtos/new(.:format)                                      representantes/produtos#new
@@ -173,8 +173,8 @@ Rails.application.routes.draw do
   root to: 'principais#index'
 
   #CLIENTES
-  resources :clientes do
-    scope module: :clientes do
+  resources :industrias do
+    scope module: :industrias do
       ##DASHBOARDS
 
       get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
@@ -210,7 +210,7 @@ Rails.application.routes.draw do
 
       ##RECURSOS
       resources :lojistas
-      resources :clientes
+      resources :industrias
       resources :produtos
       resources :solicitacoes do
         post "status", to: "status"

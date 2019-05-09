@@ -36,20 +36,20 @@ FactoryBot.define do
     sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
     sequence(:nome) {|n| "Ana Paula #{n}"}
     password {12345678}
-    tipo {[:cliente, :representante].sample}
+    tipo {[:industria, :representante].sample}
 
     trait :vincular_convite do
       before(:create) do |usuario|
         #Vincular convite
-        usuario.invited_by_id = Cliente.all.sample.id
-        usuario.invited_by_type = :cliente
+        usuario.invited_by_id = Industria.all.sample.id
+        usuario.invited_by_type = :industria
       end
     end
 
     after(:create) do |usuario|
       #Anexar avatar
       if usuario.representante?
-        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "usuarios", "usuario-h-#{rand(1..5)}.jpg")), filename: "cliente-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
+        usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "usuarios", "usuario-h-#{rand(1..5)}.jpg")), filename: "industria-usuario-#{rand(1..4)}.jpg", content_type: "image/jpeg")
       else
         usuario.avatar.attach(io: File.open(Rails.root.join("spec", "files", "usuarios", "usuario-m-#{rand(1..6)}.jpg")), filename: "representante-usuario-#{rand(1..7)}.jpg", content_type: "image/jpeg")
       end
