@@ -96,8 +96,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def get_statuses
-    #FIXME: Adicionar somente os status que existem para o representante
-    @statuses = Solicitacao.select(:status).distinct
+    @statuses = Solicitacao.where("representante_id = #{@representante.id}").select(:status).distinct
   end
 
   def get_lojistas
