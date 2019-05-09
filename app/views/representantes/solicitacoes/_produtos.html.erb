@@ -9,6 +9,9 @@
     </ul>
     <div class="clearfix"></div>
   </div>
+  <div class="text-center">
+    <%= paginate @pedidos, param_name: "page_pedido" %>
+  </div>
   <div class="x_content">
     <table class="table table-striped">
       <thead>
@@ -21,7 +24,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @solicitacao.pedidos.each do |pedido| %>
+      <% @pedidos.each do |pedido| %>
         <tr>
           <th scope="row"><%= pedido.id.to_s %></th>
           <td><%= pedido.produto.descricao %></td>

@@ -19,7 +19,7 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @solicitacoes %>
+    <%= paginate @solicitacoes, param_name: "page_solicitacao"  %>
   </div>
   <div class="x_panel">
     <div class="x_title">

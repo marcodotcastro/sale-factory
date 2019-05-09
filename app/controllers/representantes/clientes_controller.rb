@@ -30,12 +30,12 @@ class Representantes::ClientesController < ApplicationController
   before_action :get_estados, only: [:index]
 
   def index
-    @clientes = get_clientes.result(distinct: true).page(params[:page])
+    @clientes = get_clientes.result(distinct: true).page(params[:page_cliente])
   end
 
   def show
-    @lojistas = set_lojistas_do_cliente_com_representante
-    @produtos = @cliente.produtos
+    @lojistas = set_lojistas_do_cliente_com_representante.page(params[:page_lojista])
+    @produtos = @cliente.produtos.page(params[:page_produto])
   end
 
   private

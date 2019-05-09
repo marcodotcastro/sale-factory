@@ -19,6 +19,9 @@
       <% end %>
     <% end %>
   </div>
+  <div class="text-center">
+    <%= paginate @comentarios, param_name: "page_comentario" %>
+  </div>
   <div class="x_content">
     <table class="table table-striped">
       <thead>
@@ -29,7 +32,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @solicitacao.comentarios.each do |comentario| %>
+      <% @comentarios.each do |comentario| %>
         <tr>
           <td><%= comentario.usuario.nome %></td>
           <td><%= comentario.usuario.representante? ? comentario.usuario.representante.descricao : comentario.usuario.cliente.descricao %></td>

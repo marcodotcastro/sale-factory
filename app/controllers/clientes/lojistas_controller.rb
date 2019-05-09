@@ -30,7 +30,7 @@ class Clientes::LojistasController < ApplicationController
   before_action :get_estados, only: [:index]
 
   def index
-    @lojistas = get_lojistas.result(distinct: true).page(params[:page])
+    @lojistas = get_lojistas.result(distinct: true).page(params[:page_lojista])
   end
 
   def show

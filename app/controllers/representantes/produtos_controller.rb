@@ -4,7 +4,7 @@ class Representantes::ProdutosController < ApplicationController
   before_action :get_clientes, only: [:index]
 
   def index
-    @produtos = set_produtos_dos_clientes_do_representante.result(distinct: true).page(params[:page])
+    @produtos = set_produtos_dos_clientes_do_representante.result(distinct: true).page(params[:page_produto])
   end
 
   def show

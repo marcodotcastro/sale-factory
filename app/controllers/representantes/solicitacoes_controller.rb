@@ -7,10 +7,12 @@ class Representantes::SolicitacoesController < ApplicationController
   before_action :get_statuses, only: [:index]
 
   def index
-    @solicitacoes = get_solicitacoes.result(distinct: true).page(params[:page])
+    @solicitacoes = get_solicitacoes.result(distinct: true).page(params[:page_solicitacao])
   end
 
   def show
+    @pedidos = @solicitacao.pedidos.page(params[:page_pedido])
+    @comentarios = @solicitacao.comentarios.page(params[:page_comentarioT])
   end
 
   def new
@@ -94,6 +96,7 @@ class Representantes::SolicitacoesController < ApplicationController
   end
 
   def get_statuses
+    #FIXME: Adicionar somente os status que existem para o representante
     @statuses = Solicitacao.select(:status).distinct
   end
 

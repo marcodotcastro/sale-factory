@@ -4,11 +4,11 @@ class Clientes::ProdutosController < ApplicationController
   before_action :set_produtos, only: [:new, :edit]
 
   def index
-    @produtos = get_produtos.result(distinct: true).page(params[:page])
+    @produtos = get_produtos.result(distinct: true).page(params[:page_produto])
   end
 
   def show
-    @produtos = @cliente.produtos
+    @produtos = @cliente.produtos.page(params[:page_produto])
   end
 
   def new

@@ -6,10 +6,12 @@ class Clientes::SolicitacoesController < ApplicationController
   before_action :get_representantes, only: [:index]
 
   def index
-    @solicitacoes = get_solicitacoes.result(distinct: true).page(params[:page])
+    @solicitacoes = get_solicitacoes.result(distinct: true).page(params[:page_solicitacao])
   end
 
   def show
+    @pedidos = @solicitacao.pedidos.page(params[:page_pedido])
+    @comentarios = @solicitacao.comentarios.page(params[:page_comentario])
   end
 
   def edit

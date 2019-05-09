@@ -22,7 +22,7 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @produtos %>
+    <%= paginate @produtos, param_name: "page_produto"  %>
   </div>
   <div class="x_panel">
     <div class="x_title">

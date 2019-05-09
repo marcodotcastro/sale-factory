@@ -36,11 +36,11 @@ class Clientes::RepresentantesController < ApplicationController
   before_action :get_estados, only: [:index]
 
   def index
-    @representantes = get_representantes.result(distinct: true).page(params[:page])
+    @representantes = get_representantes.result(distinct: true).page(params[:page_representante])
   end
 
   def show
-    @lojistas = get_lojistas
+    @lojistas = get_lojistas.page(params[:page_lojista])
   end
 
   def desvincular
@@ -55,6 +55,7 @@ class Clientes::RepresentantesController < ApplicationController
   private
 
   def get_lojistas
+    #FIXME: Lojistas que são do representante e do cliente
     current_usuario.cliente.lojistas
   end
 
