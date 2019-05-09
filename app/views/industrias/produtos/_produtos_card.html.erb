@@ -12,7 +12,7 @@
 
       <% if current_usuario.representante? %>
         <div class="col-md-3 col-sm-3 col-xs-3">
-          <%= f.collection_select :industria_id_eq, @industrias, "id", "descricao", {include_blank: 'Todos Industrias'}, {class: "form-control"} %>
+          <%= f.collection_select :industria_id_eq, @industrias, "id", "descricao", {include_blank: 'Todos Indústrias'}, {class: "form-control"} %>
         </div>
       <% end %>
       <div class="col-md-3 col-sm-3 col-xs-3">
@@ -54,7 +54,7 @@
               <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="left col-sm-12 col-md-12 col-lg-12">
                   <ul class="list-unstyled">
-                    <li><i class="fa fa-industry"></i> <strong>Industria: </strong>
+                    <li><i class="fa fa-industry"></i> <strong>Indústria: </strong>
                       <span title="<%= produto.industria.descricao %>"><%= truncate produto.industria.descricao %></span>
                     </li>
                     <li>

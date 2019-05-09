@@ -7,6 +7,7 @@ class Representantes::DashboardsController < ApplicationController
     @total_cidades = @representante.total_de_cidades
   end
 
+  #FIXME: Remover metodos das actions
   def mapa_lojistas
     listas_consulta
 
@@ -41,6 +42,7 @@ class Representantes::DashboardsController < ApplicationController
     @cidades = q_cidades.result(distinct: true)
   end
 
+  #FIXME: Refatorar
   def listas_consulta
     @estado_list = Cidade.select(:estado).distinct.order(estado: :asc)
     @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
