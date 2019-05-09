@@ -55,8 +55,7 @@ class Clientes::RepresentantesController < ApplicationController
   private
 
   def get_lojistas
-    #FIXME: Lojistas que são do representante e do cliente
-    current_usuario.cliente.lojistas
+    Lojista.joins(:representantes, :clientes).where("lojistas_representantes.representante_id = #{@representante.id} and clientes_lojistas.cliente_id = #{current_usuario.cliente.id}")
   end
 
   def get_representantes

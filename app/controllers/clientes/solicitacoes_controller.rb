@@ -44,7 +44,7 @@ class Clientes::SolicitacoesController < ApplicationController
   end
 
   def get_statuses
-    @statuses = Solicitacao.select(:status).where.not(status: :criado).distinct
+    @statuses = Solicitacao.where("cliente_id = #{current_usuario.cliente.id}").select(:status).where.not(status: :criado).distinct
   end
 
   def get_representantes
