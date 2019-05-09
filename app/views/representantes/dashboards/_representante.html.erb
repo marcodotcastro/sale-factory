@@ -1,32 +1,34 @@
 <!-- top tiles -->
 <div class="row tile_count">
   <div class="text-center">
-    <% if current_usuario.industria? %>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div class="count"><%= @total_vendas %></div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-        <div class="count"><%= @total_lojistas %></div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-        <div class="count"><%= @total_cidades %></div>
-      </div>
-    <% elsif current_usuario.representante? %>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div class="count"><%= @total_vendas %></div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-        <div class="count"><%= @total_lojistas %></div>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-        <div class="count"><%= @total_cidades %></div>
-      </div>
-    <% end %>
+    <h1>
+      <% if current_usuario.industria? %>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
+          <div class="count"><%= @total_vendas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
+          <div class="count"><%= @total_lojistas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
+          <div class="count"><%= @total_cidades %></div>
+        </div>
+      <% elsif current_usuario.representante? %>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
+          <div class="count"><%= @total_vendas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
+          <div class="count"><%= @total_lojistas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
+          <div class="count"><%= @total_cidades %></div>
+        </div>
+      <% end %>
+    </h1>
   </div>
 </div>

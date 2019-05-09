@@ -44,8 +44,8 @@ class Industrias::RepresentantesController < ApplicationController
   end
 
   def desvincular
-    representante = get_representantes.friendly.find(params[:representante_id])
-    get_representantes.delete(representante)
+    representante = current_usuario.industria.representantes.friendly.find(params[:representante_id])
+    current_usuario.industria.representantes.delete(representante)
 
     respond_to do |format|
       format.html {redirect_to industria_representantes_path(@industria), flash: {success: 'Representante foi excluido com sucesso.'}}
