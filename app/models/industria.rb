@@ -55,6 +55,10 @@ class Industria < ApplicationRecord
     self.solicitacoes.where(status: :aceito).count
   end
 
+  def total_de_receitas
+    self.solicitacoes.joins(:produtos).where("solicitacoes.status = 'aceito'").group("pedidos.id").sum("produtos.preco * pedidos.quantidade").values.sum
+  end
+
   def total_de_lojistas
     self.lojistas.count
   end

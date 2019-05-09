@@ -2,7 +2,8 @@ class Representantes::DashboardsController < ApplicationController
   before_action :set_representante, only: [:geral]
 
   def geral
-    @total_vendas = @representante.total_de_vendas
+    @total_de_vendas = @representante.total_de_vendas
+    @total_de_receitas = @representante.total_de_receitas
     @total_lojistas = @representante.total_de_lojistas
     @total_cidades = @representante.total_de_cidades
   end

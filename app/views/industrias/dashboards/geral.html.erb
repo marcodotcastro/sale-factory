@@ -8,7 +8,7 @@
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div><%= @total_vendas %></div>
+        <div><%= @total_de_vendas %></div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
@@ -17,6 +17,14 @@
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
         <div><%= @total_cidades %></div>
+      </div>
+    </h1>
+  </div>
+  <div class="text-center">
+    <h1>
+      <div class="col-md-12 col-sm-12 col-xs-12 tile_stats_count">
+        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE RECEITAS</span>
+        <div><%= number_to_currency @total_de_receitas %></div>
       </div>
     </h1>
   </div>

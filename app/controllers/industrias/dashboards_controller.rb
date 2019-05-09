@@ -19,7 +19,8 @@ class Industrias::DashboardsController < ApplicationController
 
     @total_representantes = industria.total_de_representantes
 
-    @total_vendas = industria.total_de_vendas
+    @total_de_vendas = industria.total_de_vendas
+    @total_de_receitas = industria.total_de_receitas
 
     @total_lojistas = industria.total_de_lojistas
 
@@ -30,8 +31,8 @@ class Industrias::DashboardsController < ApplicationController
     @representante = Representante.friendly.find(params[:id])
     industria = current_usuario.industria
 
-
-    @total_vendas = @representante.total_de_vendas(industria)
+    @total_de_vendas = @representante.total_de_vendas(industria)
+    @total_de_receitas = @representante.total_de_receitas(industria)
 
     @total_lojistas = @representante.total_de_lojistas(industria)
 

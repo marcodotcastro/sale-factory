@@ -56,6 +56,14 @@ class Representante < ApplicationRecord
     end
   end
 
+  def total_de_receitas(industria = nil)
+    if industria
+      self.solicitacoes.joins(:produtos).where("solicitacoes.status = 'aceito' and solicitacoes.industria_id = #{industria.id}").group("pedidos.id").sum("produtos.preco * pedidos.quantidade").values.sum
+    else
+      self.solicitacoes.joins(:produtos).where("solicitacoes.status = 'aceito'").group("pedidos.id").sum("produtos.preco * pedidos.quantidade").values.sum
+    end
+  end
+
   def total_de_lojistas(industria = nil)
     if industria
       Lojista.joins([:industrias, :representantes]).where("industrias_lojistas.industria_id = #{industria.id} and lojistas_representantes.representante_id = #{self.id}").distinct.count

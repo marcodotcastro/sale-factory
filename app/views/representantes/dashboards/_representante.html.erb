@@ -2,33 +2,26 @@
 <div class="row tile_count">
   <div class="text-center">
     <h1>
-      <% if current_usuario.industria? %>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-          <div class="count"><%= @total_vendas %></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-          <div class="count"><%= @total_lojistas %></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-          <div class="count"><%= @total_cidades %></div>
-        </div>
-      <% elsif current_usuario.representante? %>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-          <div class="count"><%= @total_vendas %></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-          <div class="count"><%= @total_lojistas %></div>
-        </div>
-        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-          <div class="count"><%= @total_cidades %></div>
-        </div>
-      <% end %>
+      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
+        <div class="count"><%= @total_de_vendas %></div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
+        <div class="count"><%= @total_lojistas %></div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+        <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
+        <div class="count"><%= @total_cidades %></div>
+      </div>
+    </h1>
+  </div>
+  <div class="text-center">
+    <h1>
+      <div class="col-md-12 col-sm-12 col-xs-12 tile_stats_count">
+        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE RECEITAS</span>
+        <div><%= number_to_currency @total_de_receitas %></div>
+      </div>
     </h1>
   </div>
 </div>
