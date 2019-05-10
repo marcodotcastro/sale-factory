@@ -37,13 +37,14 @@ module RepresentantesHelper
     #TODO: Como refatorar isso?
     if representante
       representante = lojista.representantes.distinct.find_by(id: representante.id)
-      return representante if representante
     else
       @industria.representantes.each do |representante|
         representante = lojista.representantes.distinct.find_by(id: representante.id)
-        return representante if representante
+        representante if representante
       end
     end
+
+    return representante if representante
   end
 
 end

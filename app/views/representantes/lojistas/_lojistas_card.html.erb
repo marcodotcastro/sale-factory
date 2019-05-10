@@ -20,7 +20,8 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @lojistas %>
+    <%= paginate @lojistas, param_name: "page_lojista" %>
+    <%= page_entries_info @lojistas %>
   </div>
   <div class="x_panel">
     <div class="x_title">

@@ -7,9 +7,36 @@ pt-BR:
           has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
+      cidade:
+        one: "Cidade"
+        other: "Cidades"
+      comentario:
+        one: "Comentário"
+        other: "Comentários"
       industria:
-        one: "Industria"
-        other: "Industrias"
+        one: "Indústria"
+        other: "Indústrias"
+      lojista:
+        one: "Lojista"
+        other: "Lojistas"
+      pedido:
+        one: "Pedido"
+        other: "Pedidos"
+      produto:
+        one: "Produto"
+        other: "Produtos"
+      representante:
+        one: "Representante"
+        other: "Representantes"
+      setor:
+        one: "Setor"
+        other: "Setores"
+      solicitacao:
+        one: "Solicitação"
+        other: "Solicitações"
+      usuario:
+        one: "Usuário"
+        other: "Usuários"
     attributes:
       comentario:
         descricao: "Descrição"
