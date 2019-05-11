@@ -21,6 +21,7 @@
 //= require gentelella-custom
 //= require toastr.min
 //= require cocoon
+//= require dashboards/index
 //= require_tree .
 
 

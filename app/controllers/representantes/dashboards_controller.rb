@@ -1,22 +1,21 @@
 class Representantes::DashboardsController < ApplicationController
   before_action :set_representante, only: [:geral]
+  before_action :get_estados, only: [:mapa_lojistas]
+  before_action :get_cidades, only: [:mapa_lojistas]
+  before_action :consultar_cidades, only: [:mapa_lojistas]
+  before_action :consultar_lojistas, only: [:mapa_lojistas]
 
   def geral
     @total_de_vendas = @representante.total_de_vendas
-    @total_de_receitas = @representante.total_de_receitas
     @total_lojistas = @representante.total_de_lojistas
     @total_cidades = @representante.total_de_cidades
+
+    @total_de_receitas = @representante.total_de_receitas
+    @vendas_6_meses = Solicitacao.where(status: "aceito", representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
   end
 
-  #FIXME: Remover metodos das actions
   def mapa_lojistas
-    listas_consulta
-
-    @lojista_list = current_usuario.representante.lojistas.order(descricao: :asc)
-
-    consultar_cidades
-
-    consultar_lojistas
+    @select_lojistas = current_usuario.representante.lojistas.order(descricao: :asc)
   end
 
   private
@@ -43,10 +42,12 @@ class Representantes::DashboardsController < ApplicationController
     @cidades = q_cidades.result(distinct: true).order(descricao: :asc)
   end
 
-  #FIXME: Refatorar
-  def listas_consulta
-    @estado_list = Cidade.select(:estado).distinct.order(estado: :asc)
-    @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
+  def get_estados
+    @select_estados = Cidade.select(:estado).distinct.order(estado: :asc)
+  end
+
+  def get_cidades
+    @select_cidades = Cidade.select(:descricao).distinct.order(descricao: :asc)
   end
 
 end

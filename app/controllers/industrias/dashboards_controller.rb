@@ -19,13 +19,12 @@ class Industrias::DashboardsController < ApplicationController
     industria = current_usuario.industria
 
     @total_representantes = industria.total_de_representantes
-
     @total_de_vendas = industria.total_de_vendas
-    @total_de_receitas = industria.total_de_receitas
-
     @total_lojistas = industria.total_de_lojistas
-
     @total_cidades = industria.total_de_cidades
+
+    @total_de_receitas = industria.total_de_receitas
+    @vendas_6_meses = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
   end
 
   def representante
@@ -33,19 +32,19 @@ class Industrias::DashboardsController < ApplicationController
     industria = current_usuario.industria
 
     @total_de_vendas = @representante.total_de_vendas(industria)
-    @total_de_receitas = @representante.total_de_receitas(industria)
-
     @total_lojistas = @representante.total_de_lojistas(industria)
-
     @total_cidades = @representante.total_de_cidades(industria)
+
+    @vendas_6_meses = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id, representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
+    @total_de_receitas = @representante.total_de_receitas(industria)
   end
 
   def mapa_lojistas
-    @lojista_list = current_usuario.industria.lojistas.order(descricao: :asc)
+    @select_lojistas = current_usuario.industria.lojistas.order(descricao: :asc)
   end
 
   def mapa_representantes
-    @representante_list = current_usuario.industria.representantes.order(descricao: :asc)
+    @select_representantes = current_usuario.industria.representantes.order(descricao: :asc)
   end
 
   private
@@ -78,11 +77,11 @@ class Industrias::DashboardsController < ApplicationController
   end
 
   def get_estados
-    @estado_list = Cidade.select(:estado).distinct.order(estado: :asc)
+    @select_estados = Cidade.select(:estado).distinct.order(estado: :asc)
   end
 
   def get_cidades
-    @cidade_list = Cidade.select(:descricao).distinct.order(descricao: :asc)
+    @select_cidades = Cidade.select(:descricao).distinct.order(descricao: :asc)
   end
 
   def set_industria

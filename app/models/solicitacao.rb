@@ -4,6 +4,7 @@
 #
 #  id               :bigint(8)        not null, primary key
 #  status           :string
+#  venda_data       :date
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  industria_id     :bigint(8)
@@ -36,6 +37,7 @@ class Solicitacao < ApplicationRecord
   validates_presence_of :industria_id, :lojista_id
 
   after_create :vincular_lojista_ao_industria
+  after_update :adicionar_data_da_venda
 
   aasm :column => 'status' do
     #representante
@@ -88,6 +90,10 @@ class Solicitacao < ApplicationRecord
 
   def vincular_lojista_ao_industria
     self.industria.lojistas << self.lojista
+  end
+
+  def adicionar_data_da_venda
+    self.venda_data = DateTime.current if self.aceito?
   end
 
 end

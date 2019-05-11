@@ -4,6 +4,7 @@
 #
 #  id               :bigint(8)        not null, primary key
 #  status           :string
+#  venda_data       :date
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  industria_id     :bigint(8)
@@ -42,6 +43,10 @@ FactoryBot.define do
       solicitacao.industria = representante.industrias.all.sample
       #Vincular lojista
       solicitacao.lojista = representante.lojistas.all.sample
+    end
+
+    after(:create) do |solicitacao|
+      solicitacao.update(venda_data: rand(6.months.ago..Time.now)) if solicitacao.aceito?
     end
 
   end
