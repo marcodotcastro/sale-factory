@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  raio_cobertura    :integer
 #  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string

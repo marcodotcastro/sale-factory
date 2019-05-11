@@ -54,7 +54,6 @@
         var receitas = [];
 
         <% @vendas_6_meses.each do |solicitacoes| %>
-        <%= puts solicitacoes.mes.to_s + " = " + solicitacoes.vendas.to_s %>
         receitas.push([gd(<%= solicitacoes.mes.year %>, <%= solicitacoes.mes.month %>, <%= solicitacoes.mes.day %>), <%= solicitacoes.vendas %>])
         <% end %>
 

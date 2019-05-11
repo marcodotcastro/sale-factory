@@ -51,6 +51,9 @@ pt-BR:
       representante:
         descricao: "Descrição"
         endereco: "Endereço"
+        cep: "CEP"
+        telefone_whatsapp: "Whatsapp"
+        raio_cobertura: "Raio de Cobertura"
       lojista:
         industria_ids: "Industrias"
         descricao: "Descrição"

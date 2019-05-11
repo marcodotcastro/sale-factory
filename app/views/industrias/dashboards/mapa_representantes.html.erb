@@ -51,6 +51,7 @@
         center: {lat: <%= representante.cidade.latitude%>, lng: <%= representante.cidade.longitude %>},
         populacao: <%= representante.cidade.populacao %>,
         descricao: '<%= representante.descricao %>',
+        raio: '<%= representante.raio_cobertura %>',
         link: '<a href="/industrias/<%= @industria.slug %>/representantes/<%= representante.slug %>"><%= representante.descricao %></a>'
     };
     <% end %>
@@ -116,6 +117,33 @@
                 strokeWeight: 2,
                 fillColor: '#000000',
                 fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: item.raio ? item.raio * 1000 : 150000
+            });
+            const valor = item.link;
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(cityCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
+        Object.keys(representantes).forEach(key => {
+            const item = representantes[key];
+
+            let cityCircle = new google.maps.Circle({
+                strokeColor: '#00ff05',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#00ff05',
+                fillOpacity: 0,
                 map: map,
                 center: item.center,
                 radius: 150000

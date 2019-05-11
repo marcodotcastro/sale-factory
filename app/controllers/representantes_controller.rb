@@ -11,6 +11,7 @@
 #  endereco          :string
 #  latitude          :float
 #  longitude         :float
+#  raio_cobertura    :integer
 #  slug              :string
 #  telefone          :string
 #  telefone_whatsapp :string
@@ -84,6 +85,6 @@ class RepresentantesController < ApplicationController
   end
 
   def representante_params
-    params.require(:representante).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id, industrias: [:industria_id])
+    params.require(:representante).permit(:logo, :descricao, :contato, :endereco, :cep, :telefone, :telefone_whatsapp, :email, :raio_cobertura, :latitude, :longitude, :cidade_id, :usuario_id, industrias: [:industria_id])
   end
 end
