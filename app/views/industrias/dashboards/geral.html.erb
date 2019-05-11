@@ -43,7 +43,7 @@
       </div>
 
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div id="grafico_receitas" class="demo-placeholder"></div>
+        <div id="grafico_6_meses" class="grafico_6_meses"></div>
       </div>
 
       <div class="clearfix"></div>
@@ -61,7 +61,7 @@
         receitas.push([gd(<%= solicitacoes.mes.year %>, <%= solicitacoes.mes.month %>, <%= solicitacoes.mes.day %>), <%= solicitacoes.vendas %>])
         <% end %>
 
-        var grafico_receitas_settings = {
+        var grafico_6_meses_settings = {
             series: {
                 lines: {
                     show: true,
@@ -100,9 +100,9 @@
             tooltip: false
         }
 
-        if ($("#grafico_receitas").length) {
+        if ($("#grafico_6_meses").length) {
 
-            $.plot($("#grafico_receitas"), [receitas], grafico_receitas_settings);
+            $.plot($("#grafico_6_meses"), [receitas], grafico_6_meses_settings);
         }
 
     }
