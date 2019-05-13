@@ -20,9 +20,9 @@ ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 #   end
 # end
 
-# ["Construção", "Alimentos", "Serviços Industrial de Utilidade Pública", "Derivados de Petróleo e Biocomustíveis", "Químicos", "Metalurgia", "Farmacêutico"].each do |descricao|
-#   Setor.create(descricao: descricao)
-# end
+["Farmacêutico", "Construção", "Alimentos", "Serviços Industrial de Utilidade Pública", "Derivados de Petróleo e Biocomustíveis", "Químicos", "Metalurgia"].each do |descricao|
+  Setor.create(descricao: descricao)
+end
 
 puts "#Industrias"
 FactoryBot.create_list(:industria, 5)
