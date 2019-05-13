@@ -26,7 +26,7 @@
           <% else %>
             <%= image_tag "user.png" %>
           <% end %>
-          <%= "<b style='color: red' >(#{current_usuario.tipo.capitalize}) </b> ".html_safe if Rails.env.development? %>
+          <%= "<b style='color: red' >(#{current_usuario.tipo.try(:capitalize)}) </b> ".html_safe if Rails.env.development? %>
           <% if current_usuario.representante %>
             <%= current_usuario.points %> xp
           <% end %>

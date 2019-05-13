@@ -13,7 +13,7 @@
       </div>
       <div class="x_content">
 
-        <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
+        <%= simple_form_for @usuario ? @usuario : resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
           <div class="nav navbar-right">
             <%= f.button :submit, "Enviar Convite", class: "btn btn-success" %>
           </div>
@@ -23,7 +23,7 @@
             <%= f.hidden_field :invited_by_id, value: current_usuario.id %>
 
             <%= f.input :nome %>
-            <%= f.input :email %>
+            <%= f.input :email, required: true %>
           </div>
 
         <% end %>

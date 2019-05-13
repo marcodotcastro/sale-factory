@@ -1,15 +1,22 @@
 module ApplicationHelper
 
   def foto_logo_url(empresa)
-    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
-
-    empresa.logo.attached? ? empresa.logo : foto_vazia
+    validar_anexo(empresa ? empresa.logo : nil)
   end
 
-  def foto_url(empresa)
-    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
+  def foto_url(usuario)
+    validar_anexo(usuario ? usuario.foto : nil)
+  end
 
-    empresa.foto.attached? ? empresa.foto : foto_vazia
+  private
+
+  def validar_anexo(anexo)
+    foto_vazia = "https://bikepower.com.br/images/sem_foto.png"
+    if anexo
+      anexo.attached? ? anexo : foto_vazia
+    else
+      foto_vazia
+    end
   end
 
 

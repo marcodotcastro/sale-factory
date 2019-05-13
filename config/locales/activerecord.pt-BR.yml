@@ -58,6 +58,12 @@ pt-BR:
         industria_ids: "Industrias"
         descricao: "Descrição"
         endereco: "Endereço"
+      usuario:
+        nome: "Nome"
+        email: "Email"
+        password: "Nova Senha"
+        password_confirmation: "Confirmação da Senha"
+        current_password: "Senha Atual"
       admin_user:
         email: "Email"
         password: "Senha"
