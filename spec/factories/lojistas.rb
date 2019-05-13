@@ -12,6 +12,7 @@
 #  latitude          :float
 #  longitude         :float
 #  slug              :string
+#  tamanho           :integer
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -36,6 +37,7 @@ FactoryBot.define do
     telefone_whatsapp {"(21) 99254-4332"}
     latitude {-22.6195575}
     longitude {-49.3215312}
+    tamanho {[:micro, :pequeno, :medio, :grande, :gigante].sample}
 
     before(:create) do |lojista|
       #Vincular representantes

@@ -1,0 +1,123 @@
+<div class="text-info text-center">
+  <cite>São <b class="text-danger"><%= @lojistas.count %> lojistas antendidos</b> em
+    <b class="text-danger"><%= @cidades.count %> cidades</b>
+    encontrados
+    em sua pesquisa.</cite>
+</div>
+<div class="row">
+  <div class="x_content">
+    <div id="lojista-map"></div>
+  </div>
+</div>
+
+<script>
+
+    var cidades = {};
+
+    <% @cidades.each_with_index do |cidade,index| %>
+    <% unless cidade.longitude.nil? and cidade.latitude.nil? %>
+    cidades["cidade<%= index %>"] = {
+        center: {lat: <%= cidade.latitude%>, lng: <%= cidade.longitude %>},
+        populacao: <%= cidade.populacao %>,
+        descricao: '<%= cidade.descricao %>'
+    };
+    <% end %>
+    <% end %>
+
+    var lojistas = [];
+
+    <% @lojistas.each do |lojista| %>
+    lojistas.push({
+        center: {lat: <%= lojista.cidade.latitude%>, lng: <%= lojista.cidade.longitude %>},
+        populacao: <%= lojista.cidade.populacao %>,
+        descricao: '<%= lojista.descricao %>',
+        tamanho: '<%= lojista.tamanho %>'
+    });
+    <% end %>
+
+    function initMap() {
+        <%#TODO: Adicionar estado, sua capital e o centro do mapa com a capital  %>
+        var map = new google.maps.Map(document.getElementById('lojista-map'), {
+            zoom: 7,
+            center: {lat: -16.6954997, lng: -49.4446992},
+            mapTypeId: 'terrain'
+        });
+
+        const infoArr = [];
+
+        Object.keys(cidades).forEach(key => {
+            const item = cidades[key];
+
+            var fillcolor;
+
+            if (item.populacao <= 10000) {
+                fillcolor = '#ff0004'
+            } else if (item.populacao > 10000 && item.populacao <= 20000) {
+                fillcolor = '#ff46cf'
+            } else if (item.populacao > 20000 && item.populacao <= 50000) {
+                fillcolor = '#f9ff0f'
+            } else if (item.populacao > 50000 && item.populacao <= 100000) {
+                fillcolor = '#1520ff'
+            } else if (item.populacao > 100000) {
+                fillcolor = '#00ff05'
+            }
+
+            let cityCircle = new google.maps.Circle({
+                strokeColor: '#000000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: fillcolor,
+                fillOpacity: 0.35,
+                map: map,
+                center: item.center,
+                radius: Math.sqrt(item.populacao) * 50
+            });
+            const valor = item.descricao + ", " + formatNumber(item.populacao) + " hab";
+            const infoWindow = new google.maps.InfoWindow({
+                content: valor
+            });
+            infoArr.push(infoWindow);
+
+            google.maps.event.addListener(cityCircle, 'click', function (ev) {
+                infoWindow.setPosition(ev.latLng);
+                infoArr.forEach(info => info.close());
+                infoWindow.open(map);
+            });
+
+        });
+
+
+        var markers = lojistas.map(function (lojista, i) {
+
+            if (lojista.tamanho == "micro") {
+                var pinColor = "DC0000";
+            } else if (lojista.tamanho == "pequeno") {
+                var pinColor = "DC7F00";
+            } else if (lojista.tamanho == "medio") {
+                var pinColor = "CFDC00";
+            } else if (lojista.tamanho == "grande") {
+                var pinColor = "82DC00";
+            } else if (lojista.tamanho == "gigante") {
+                var pinColor = "00DCD5";
+            } else {
+                var pinColor = "000000";
+            }
+
+            var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                new google.maps.Size(21, 34),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(10, 34));
+
+            return new google.maps.Marker({
+                position: lojista.center,
+                title: lojista.descricao,
+                icon: pinImage,
+            });
+        });
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+    }
+</script>

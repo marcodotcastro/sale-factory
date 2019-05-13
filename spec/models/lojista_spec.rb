@@ -12,6 +12,7 @@
 #  latitude          :float
 #  longitude         :float
 #  slug              :string
+#  tamanho           :integer
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null

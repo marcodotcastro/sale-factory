@@ -12,6 +12,7 @@
 #  latitude          :float
 #  longitude         :float
 #  slug              :string
+#  tamanho           :integer
 #  telefone          :string
 #  telefone_whatsapp :string
 #  created_at        :datetime         not null
@@ -34,6 +35,8 @@ class Lojista < ApplicationRecord
   has_and_belongs_to_many :lojistas, -> {distinct}
   has_many :solicitacoes
   belongs_to :cidade
+
+  enum tamanho: [:micro, :pequeno, :medio, :grande, :gigante]
 
   validates_presence_of :cidade_id
 
