@@ -34,5 +34,18 @@
 require 'rails_helper'
 
 RSpec.describe Usuario, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    #DADO
+    create(:usuario, nome: "Usuário 1", email: "usuario1@gmail.com")
+  end
+
+  it "usuário" do
+    #QUANDO
+    usuario = Usuario.last
+
+    #ENTÃO
+    expect(usuario.nome).to eq("Usuário 1")
+  end
+
 end

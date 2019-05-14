@@ -36,24 +36,22 @@ require 'rails_helper'
 
 RSpec.describe Representante, type: :model do
 
-  it "uma representante" do
-    @representante = create(:representante)
+  before(:all) do
+    #DADO
+    create(:cidade)
+    create(:setor)
+    create(:industria, descricao: "Indústria 1")
 
-    expect(@representante.descricao).to eq(Representante.last.descricao)
-    expect(@representante.cidade.descricao).to eq(Cidade.last.descricao)
+    create(:representante, descricao: "Representante 1")
   end
 
-  it "uma representante com representante" do
-    @representante = create(:representante, :com_lojista)
+  it "representante" do
+    #QUANDO
+    representante = Representante.last
 
-    expect(@representante.lojistas.first.descricao).to eq(Lojista.last.descricao)
-  end
-
-  it "uma representante com representantes" do
-    @representante = create(:representante, :com_lojistas)
-
-    expect(@representante.lojistas.first.descricao).to eq(Lojista.last(2).first.descricao)
-    expect(@representante.lojistas.last.descricao).to eq(Lojista.last(2).last.descricao)
+    #ENTÃO
+    expect(representante.descricao).to eq("Representante 1")
+    expect(representante.industrias.first.descricao).to eq("Indústria 1")
   end
 
 end

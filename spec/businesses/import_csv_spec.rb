@@ -24,7 +24,7 @@ RSpec.describe "ImportCsv" do
     # expect(Lojista.last.longitude).to eq(-43.3652338)
   end
 
-  it "Cidade" do
+  xit "Cidade" do
 
     CSV.foreach("spec/files/cidades.csv", headers: :true) do |row|
       data = row.to_hash

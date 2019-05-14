@@ -18,12 +18,17 @@ require 'rails_helper'
 RSpec.describe Cidade, type: :model do
 
   before(:all) do
-    @cidade = create(:cidade)
+    #DADO
+    create(:cidade, descricao: "Cidade 1", estado: "ES1")
   end
 
-  it "uma cidade" do
-    expect(@cidade.descricao).to eq("Anápolis")
-    expect(@cidade.estado).to eq("Goiás")
+  it "cidade" do
+    #QUANDO
+    cidade = Cidade.last
+
+    #ENTÃO
+    expect(cidade.descricao).to eq("Cidade 1")
+    expect(cidade.estado).to eq("ES1")
   end
 
 end

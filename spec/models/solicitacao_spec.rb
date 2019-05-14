@@ -27,5 +27,28 @@
 require 'rails_helper'
 
 RSpec.describe Solicitacao, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    #DADO
+    create(:cidade)
+    create(:setor, descricao: "Setor 1")
+    industria = create(:industria, descricao: "Indústria 1")
+    representante = create(:representante, descricao: "Representante 1", industrias: [industria])
+    lojista = create(:lojista, descricao: "Lojista 1", representantes: [representante])
+    create(:produto, descricao: "Produto 1", industria: industria)
+
+    create(:solicitacao, :com_pedido, industria: industria, representante: representante, lojista: lojista)
+  end
+
+  it "solicitacao" do
+    #QUANDO
+    solicitacao = Solicitacao.last
+
+    #ENTÃO
+    expect(solicitacao.industria.descricao).to eq("Indústria 1")
+    expect(solicitacao.representante.descricao).to eq("Representante 1")
+    expect(solicitacao.lojista.descricao).to eq("Lojista 1")
+    expect(solicitacao.produtos.first.descricao).to eq("Produto 1")
+  end
+
 end

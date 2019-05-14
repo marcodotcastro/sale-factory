@@ -56,8 +56,13 @@ class Geolocation
     if @address
       url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@address}&key=#{Rails.application.credentials.google_maps_api_key}"
       response = HTTParty.get(URI.escape(url))
-      @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
-      @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]
+      if response.parsed_response["results"].empty?
+        @latitude = 0
+        @longitude = 0
+      else
+        @latitude = response.parsed_response["results"].first["geometry"]["location"]["lat"]
+        @longitude = response.parsed_response["results"].first["geometry"]["location"]["lng"]
+      end
     end
   end
 

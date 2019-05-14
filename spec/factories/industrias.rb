@@ -41,7 +41,7 @@ FactoryBot.define do
     latitude {-16.4064447}
     longitude {-48.9497198}
 
-    setor {Setor.first || association(:setor)}
+    setor {Setor.last || association(:setor)}
 
     before(:create) do |industria|
       #Criar usuário

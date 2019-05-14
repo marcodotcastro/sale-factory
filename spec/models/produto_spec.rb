@@ -21,5 +21,24 @@
 require 'rails_helper'
 
 RSpec.describe Produto, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    #DADO
+    create(:cidade)
+    create(:setor, descricao: "Setor 1")
+    create(:industria, descricao: "Indústria 1")
+
+    create(:produto, descricao: "Produto 1")
+  end
+
+  it "produto" do
+    #QUANDO
+    produto = Produto.last
+
+    #ENTÃO
+    expect(produto.descricao).to eq("Produto 1")
+    expect(produto.industria.descricao).to eq("Indústria 1")
+    expect(produto.industria.setor.descricao).to eq("Setor 1")
+  end
+
 end

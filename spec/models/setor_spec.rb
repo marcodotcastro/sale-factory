@@ -11,5 +11,17 @@
 require 'rails_helper'
 
 RSpec.describe Setor, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before(:all) do
+    #DADO
+    create(:setor, descricao: "Setor 1")
+  end
+
+  it "setor" do
+    #QUANDO
+    setor = Setor.last
+
+    #ENTÃO
+    expect(setor.descricao).to eq("Setor 1")
+  end
 end
