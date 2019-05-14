@@ -43,5 +43,6 @@ RSpec.configure do |config|
 
   #Código para Reuso nos Testes
   config.include(AcessoHelper)
+  config.include(PerfilHelper)
 
 end
