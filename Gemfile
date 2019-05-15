@@ -29,6 +29,7 @@ gem 'aasm'
 gem 'merit', "~> 3.0.2"
 gem 'ransack'
 gem 'kaminari'
+gem 'activeadmin'
 
 
 group :development, :test do

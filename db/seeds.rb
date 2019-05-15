@@ -1,5 +1,7 @@
 require 'csv'
 
+AdminUser.create!(email: 'admin@elevante.com.br', password: '12345678', password_confirmation: '12345678')
+
 puts "#Estados"
 # Importa Cidades com a geolocation para consumir app google
 ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
@@ -38,3 +40,4 @@ FactoryBot.create_list(:lojista, 250)
 
 puts "#Solicitações e Pedidos"
 FactoryBot.create_list(:solicitacao, 500, :com_pedido)
+

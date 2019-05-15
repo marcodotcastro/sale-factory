@@ -7,6 +7,9 @@ pt-BR:
           has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
+      admin_user:
+        one: "Administrador"
+        other: "Administradores"
       cidade:
         one: "Cidade"
         other: "Cidades"
@@ -64,6 +67,16 @@ pt-BR:
         password: "Nova Senha"
         password_confirmation: "Confirmação da Senha"
         current_password: "Senha Atual"
+      setor:
+        descricao: "Descrição"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      cidade:
+        codigo: "Código"
+        descricao: "Descrição"
+        populacao: "População"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
       admin_user:
         email: "Email"
         password: "Senha"
