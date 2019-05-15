@@ -48,6 +48,8 @@ pt-BR:
         endereco: "Endereço"
       solicitacao:
         status: "Situação"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
       produto:
         descricao: "Descrição"
         preco: "Preço"

@@ -1,4 +1,9 @@
 ActiveAdmin.register AdminUser do
+  menu parent: "Configurações"
+  breadcrumb do
+    ['admin', 'configurações', 'administração']
+  end
+
   permit_params :email, :password, :password_confirmation
 
   index do
