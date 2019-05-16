@@ -4,6 +4,7 @@
 #
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
+#  cnpj              :string
 #  contato           :string
 #  deleted_at        :datetime
 #  descricao         :string
@@ -32,6 +33,7 @@
 FactoryBot.define do
   factory :industria do
     sequence(:descricao) {|n| "Indústria Farmacêutica Melcon do Brasil S.A. #{n}"}
+    cnpj {Faker::CNPJ.numeric}
     endereco {"MD 7 - Viela Vp-2DA - Distrito Agro-Industrial de Anápolis (D A I A)"}
     cep {"75132-055"}
     sequence(:contato) {|n| "Sra Ana Paula #{n}"}

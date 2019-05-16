@@ -3,6 +3,7 @@
 # Table name: usuarios
 #
 #  id                     :bigint(8)        not null, primary key
+#  cpf                    :string           default(""), not null
 #  deleted_at             :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null

@@ -4,6 +4,7 @@
 #
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
+#  cnpj              :string
 #  contato           :string
 #  deleted_at        :datetime
 #  descricao         :string

@@ -40,6 +40,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem "ffaker"
   gem "faker"
+  gem "cpf_faker"
   gem "rubycritic"
   gem "simplecov"
 end

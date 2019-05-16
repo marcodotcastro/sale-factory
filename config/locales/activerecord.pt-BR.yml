@@ -46,6 +46,9 @@ pt-BR:
       industria:
         descricao: "Descrição"
         endereco: "Endereço"
+        cnpj: "CNPJ"
+        cep: "CEP"
+        telefone_whatsapp: "Whatsapp"
       solicitacao:
         status: "Situação"
         created_at: "Criado em"
@@ -56,16 +59,21 @@ pt-BR:
       representante:
         descricao: "Descrição"
         endereco: "Endereço"
+        cnpj: "CNPJ"
         cep: "CEP"
         telefone_whatsapp: "Whatsapp"
-        raio_cobertura: "Raio de Cobertura"
+      raio_cobertura: "Raio de Cobertura"
       lojista:
         industria_ids: "Industrias"
         descricao: "Descrição"
         endereco: "Endereço"
+        cnpj: "CNPJ"
+        cep: "CEP"
+        telefone_whatsapp: "Whatsapp"
       usuario:
         nome: "Nome"
         email: "Email"
+        cpf: "CPF"
         password: "Nova Senha"
         password_confirmation: "Confirmação da Senha"
         current_password: "Senha Atual"

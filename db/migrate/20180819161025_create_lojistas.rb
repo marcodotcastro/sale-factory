@@ -2,6 +2,7 @@ class CreateLojistas < ActiveRecord::Migration[5.2]
   def change
     create_table :lojistas do |t|
       t.string :descricao
+      t.string :cnpj
       t.string :endereco
       t.string :cep
       t.string :contato

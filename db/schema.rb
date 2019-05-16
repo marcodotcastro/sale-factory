@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_193706) do
 
   create_table "industrias", force: :cascade do |t|
     t.string "descricao"
+    t.string "cnpj"
     t.string "endereco"
     t.string "cep"
     t.string "contato"
@@ -144,6 +145,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_193706) do
 
   create_table "lojistas", force: :cascade do |t|
     t.string "descricao"
+    t.string "cnpj"
     t.string "endereco"
     t.string "cep"
     t.string "contato"
@@ -224,6 +226,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_193706) do
 
   create_table "representantes", force: :cascade do |t|
     t.string "descricao"
+    t.string "cnpj"
     t.string "endereco"
     t.string "cep"
     t.string "contato"
@@ -272,6 +275,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_193706) do
   create_table "usuarios", force: :cascade do |t|
     t.string "nome", default: "", null: false
     t.string "email", default: "", null: false
+    t.string "cpf", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

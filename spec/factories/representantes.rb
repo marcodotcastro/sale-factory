@@ -4,6 +4,7 @@
 #
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
+#  cnpj              :string
 #  contato           :string
 #  deleted_at        :datetime
 #  descricao         :string
@@ -35,6 +36,7 @@
 FactoryBot.define do
   factory :representante do
     sequence(:descricao) {|n| "A R Olivo Representações Ltda ME #{n}"}
+    cnpj {Faker::CNPJ.numeric}
     endereco {"R Primeiro de Maio, 77 - Stª Cecilia - Cravinhos, SP"}
     cep {"14140-000"}
     sequence(:contato) {|n| "Ronaldo Henrique Olivo #{n}"}

@@ -21,7 +21,7 @@
           <div class="divider-dashed"></div>
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Logo</label>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <%= f.input_field :avatar, :as => :file, label: nil, class: "form-control col-md-7 col-xs-12" %>
             </div>
@@ -29,6 +29,7 @@
 
           <%= f.input :nome, required: true, autofocus: true, placeholder: "Nome" %>
           <%= f.input :email, required: true, autofocus: true, placeholder: "Email" %>
+          <%= f.input :cpf, required: true, autofocus: true, placeholder: "CPF" %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Atualmente aguardando confirmação para: <%= resource.unconfirmed_email %></p>
