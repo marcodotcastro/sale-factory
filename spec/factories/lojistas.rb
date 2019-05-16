@@ -4,6 +4,7 @@
 #
 #  id                :bigint(8)        not null, primary key
 #  cep               :string
+#  cnpj              :string
 #  contato           :string
 #  deleted_at        :datetime
 #  descricao         :string
@@ -29,6 +30,7 @@
 FactoryBot.define do
   factory :lojista do
     sequence(:descricao) {|n| "Drogarias Bifarma #{n}"}
+    cnpj {Faker::CNPJ.numeric}
     sequence(:contato) {|n| "Marcelo Sousa #{n}"}
     sequence(:email) {|n| "marcelos#{n}@gmail.com"}
     endereco {"R. Barão do Rio Branco, 535 - Centro, Birigui - SP"}

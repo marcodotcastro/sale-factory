@@ -8,6 +8,7 @@
 </div>
 
 <%= f.input :descricao %>
+<%= f.input :cnpj %>
 <%= f.input :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
 <%= f.input :endereco %>
 <%= f.input :cep %>

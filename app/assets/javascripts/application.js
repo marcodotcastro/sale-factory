@@ -22,6 +22,7 @@
 //= require toastr.min
 //= require cocoon
 //= require dashboards/index
+//= stub active_admin
 //= require_tree .
 
 

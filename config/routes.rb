@@ -22,14 +22,49 @@
 #                        usuario_invitation PATCH  /usuarios/invitation(.:format)                                                                usuarios/invitations#update
 #                                           PUT    /usuarios/invitation(.:format)                                                                usuarios/invitations#update
 #                                           POST   /usuarios/invitation(.:format)                                                                usuarios/invitations#create
-#                                   cidades GET    /cidades(.:format)                                                                            cidades#index
-#                                           POST   /cidades(.:format)                                                                            cidades#create
-#                                new_cidade GET    /cidades/new(.:format)                                                                        cidades#new
-#                               edit_cidade GET    /cidades/:id/edit(.:format)                                                                   cidades#edit
-#                                    cidade GET    /cidades/:id(.:format)                                                                        cidades#show
-#                                           PATCH  /cidades/:id(.:format)                                                                        cidades#update
-#                                           PUT    /cidades/:id(.:format)                                                                        cidades#update
-#                                           DELETE /cidades/:id(.:format)                                                                        cidades#destroy
+#                    new_admin_user_session GET    /admin/login(.:format)                                                                        active_admin/devise/sessions#new
+#                        admin_user_session POST   /admin/login(.:format)                                                                        active_admin/devise/sessions#create
+#                destroy_admin_user_session DELETE /admin/logout(.:format)                                                                       active_admin/devise/sessions#destroy
+#                   new_admin_user_password GET    /admin/password/new(.:format)                                                                 active_admin/devise/passwords#new
+#                  edit_admin_user_password GET    /admin/password/edit(.:format)                                                                active_admin/devise/passwords#edit
+#                       admin_user_password PATCH  /admin/password(.:format)                                                                     active_admin/devise/passwords#update
+#                                           PUT    /admin/password(.:format)                                                                     active_admin/devise/passwords#update
+#                                           POST   /admin/password(.:format)                                                                     active_admin/devise/passwords#create
+#                                admin_root GET    /admin(.:format)                                                                              admin/dashboard#index
+#           batch_action_admin_solicitacoes POST   /admin/solicitacoes/batch_action(.:format)                                                    admin/solicitacoes#batch_action
+#                        admin_solicitacoes GET    /admin/solicitacoes(.:format)                                                                 admin/solicitacoes#index
+#                batch_action_admin_cidades POST   /admin/cidades/batch_action(.:format)                                                         admin/cidades#batch_action
+#                             admin_cidades GET    /admin/cidades(.:format)                                                                      admin/cidades#index
+#                                           POST   /admin/cidades(.:format)                                                                      admin/cidades#create
+#                          new_admin_cidade GET    /admin/cidades/new(.:format)                                                                  admin/cidades#new
+#                         edit_admin_cidade GET    /admin/cidades/:id/edit(.:format)                                                             admin/cidades#edit
+#                              admin_cidade GET    /admin/cidades/:id(.:format)                                                                  admin/cidades#show
+#                                           PATCH  /admin/cidades/:id(.:format)                                                                  admin/cidades#update
+#                                           PUT    /admin/cidades/:id(.:format)                                                                  admin/cidades#update
+#                                           DELETE /admin/cidades/:id(.:format)                                                                  admin/cidades#destroy
+#            batch_action_admin_admin_users POST   /admin/admin_users/batch_action(.:format)                                                     admin/admin_users#batch_action
+#                         admin_admin_users GET    /admin/admin_users(.:format)                                                                  admin/admin_users#index
+#                                           POST   /admin/admin_users(.:format)                                                                  admin/admin_users#create
+#                      new_admin_admin_user GET    /admin/admin_users/new(.:format)                                                              admin/admin_users#new
+#                     edit_admin_admin_user GET    /admin/admin_users/:id/edit(.:format)                                                         admin/admin_users#edit
+#                          admin_admin_user GET    /admin/admin_users/:id(.:format)                                                              admin/admin_users#show
+#                                           PATCH  /admin/admin_users/:id(.:format)                                                              admin/admin_users#update
+#                                           PUT    /admin/admin_users/:id(.:format)                                                              admin/admin_users#update
+#                                           DELETE /admin/admin_users/:id(.:format)                                                              admin/admin_users#destroy
+#                batch_action_admin_setores POST   /admin/setores/batch_action(.:format)                                                         admin/setores#batch_action
+#                             admin_setores GET    /admin/setores(.:format)                                                                      admin/setores#index
+#                                           POST   /admin/setores(.:format)                                                                      admin/setores#create
+#                           new_admin_setor GET    /admin/setores/new(.:format)                                                                  admin/setores#new
+#                          edit_admin_setor GET    /admin/setores/:id/edit(.:format)                                                             admin/setores#edit
+#                               admin_setor GET    /admin/setores/:id(.:format)                                                                  admin/setores#show
+#                                           PATCH  /admin/setores/:id(.:format)                                                                  admin/setores#update
+#                                           PUT    /admin/setores/:id(.:format)                                                                  admin/setores#update
+#                                           DELETE /admin/setores/:id(.:format)                                                                  admin/setores#destroy
+#                           admin_dashboard GET    /admin/dashboard(.:format)                                                                    admin/dashboard#index
+#                            admin_comments GET    /admin/comments(.:format)                                                                     admin/comments#index
+#                                           POST   /admin/comments(.:format)                                                                     admin/comments#create
+#                             admin_comment GET    /admin/comments/:id(.:format)                                                                 admin/comments#show
+#                                           DELETE /admin/comments/:id(.:format)                                                                 admin/comments#destroy
 #                         letter_opener_web        /letter_opener/inbox                                                                          LetterOpenerWeb::Engine
 #                          principais_index GET    /principais/index(.:format)                                                                   principais#index
 #                                      root GET    /                                                                                             principais#index
@@ -156,8 +191,8 @@
 Rails.application.routes.draw do
   #ADMINISTRAÇÃO
   devise_for :usuarios, :controllers => {invitations: 'usuarios/invitations', registrations: 'usuarios/registrations', confirmations: 'usuarios/confirmations'}
-
-  resources :cidades
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   #DESENVOLVIVMENTO
   default_url_options :host => "localhost:3000"

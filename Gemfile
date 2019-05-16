@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) {|repo| "https://github.com/#{repo}.git"}
+git_source(:github) {|repo| 'https://github.com/#{repo}.git'}
 
 ruby '2.6.2'
 
@@ -21,26 +21,28 @@ gem 'gentelella-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'devise_invitable', '~> 1.7.5'
-gem "paranoia", "~> 2.2"
+gem 'paranoia', '~> 2.2'
 gem 'friendly_id', '~> 5.2.4'
 gem 'factory_bot_rails'
-gem "cocoon"
+gem 'cocoon'
 gem 'aasm'
-gem 'merit', "~> 3.0.2"
+gem 'merit', '~> 3.0.2'
 gem 'ransack'
 gem 'kaminari'
+gem 'activeadmin'
 
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'database_cleaner'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'annotate'
   gem 'pry-byebug'
-  gem "ffaker"
-  gem "faker"
-  gem "rubycritic"
-  gem "simplecov"
+  gem 'ffaker'
+  gem 'faker'
+  gem 'cpf_faker'
+  gem 'rubycritic'
+  gem 'simplecov'
 end
 
 group :development do
@@ -52,6 +54,7 @@ group :development do
   gem 'better_errors'
   gem 'rails_layout'
   gem 'letter_opener_web'
+  gem 'rails-erd'
 end
 
 group :test do

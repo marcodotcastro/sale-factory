@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
-class DeviseCreateUsuarios < ActiveRecord::Migration[5.2]
+class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :usuarios do |t|
+    create_table :admin_users do |t|
       ## Database authenticatable
-      t.string :nome, null: false, default: ""
-      t.string :email, null: false, default: ""
-      t.string :cpf, null: false, default: ""
+      t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
-      t.string :reset_password_token
+      t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
       ## Rememberable
@@ -34,22 +32,13 @@ class DeviseCreateUsuarios < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      ## Invitable
-      t.string :invitation_token
-      t.datetime :invitation_created_at
-      t.datetime :invitation_sent_at
-      t.datetime :invitation_accepted_at
-      t.integer  :invitation_limit
-      t.integer  :invited_by_id
-      t.string   :invited_by_type
 
       t.timestamps null: false
     end
 
-    add_index :usuarios, :email, unique: true
-    add_index :usuarios, :reset_password_token, unique: true
-    add_index :usuarios, :invitation_token, unique: true
-    # add_index :usuarios, :confirmation_token,   unique: true
-    # add_index :usuarios, :unlock_token,         unique: true
+    add_index :admin_users, :email,                unique: true
+    add_index :admin_users, :reset_password_token, unique: true
+    # add_index :admin_users, :confirmation_token,   unique: true
+    # add_index :admin_users, :unlock_token,         unique: true
   end
 end

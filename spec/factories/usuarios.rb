@@ -3,6 +3,7 @@
 # Table name: usuarios
 #
 #  id                     :bigint(8)        not null, primary key
+#  cpf                    :string           default(""), not null
 #  deleted_at             :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -33,8 +34,10 @@
 
 FactoryBot.define do
   factory :usuario do
-    sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
     sequence(:nome) {|n| "Ana Paula #{n}"}
+    sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
+    cpf {Faker::CPF.numeric}
+
     password {12345678}
     tipo {[:industria, :representante].sample}
 
