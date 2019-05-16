@@ -61,7 +61,7 @@ class Solicitacao < ApplicationRecord
     end
 
     event :pendenciar do
-      transitions from: [:solicitado, :resolvido], to: :pendente
+      transitions from: [:solicitado, :resolvido, :analisado], to: :pendente
     end
 
     event :resolver do
