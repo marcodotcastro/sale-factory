@@ -46,4 +46,9 @@ class Usuario < ApplicationRecord
   has_one_attached :avatar
 
   enum tipo: [:industria, :representante, :equipe_industria]
+
+  def industria
+    self.industria? ? super : self.invited_by
+  end
+
 end

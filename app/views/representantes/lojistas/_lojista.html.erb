@@ -24,7 +24,7 @@
         <% end %>
         <div class="col-sm-8 col-md-8 col-lg-8">
           <form data-parsley-validate class="form-horizontal form-label-left">
-            <% if current_usuario.industria? %>
+            <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
               <% if representante = representante(@lojista, @representante) %>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">

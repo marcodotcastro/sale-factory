@@ -13,13 +13,13 @@
       </div>
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
-        <% if current_usuario.industria? %>
+        <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
           <%= link_to 'Editar Produto', edit_industria_produto_path(@industria, @produto), class: "btn btn-primary" %>
           <%= link_to 'Excluir Produto', industria_produto_path(@industria, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
       <div class="x_content">
-        <% if current_usuario.industria? %>
+        <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
           <div class="divider-dashed"></div>
         <% end %>
         <div class="col-sm-8 col-md-8 col-lg-8">

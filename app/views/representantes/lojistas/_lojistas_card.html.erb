@@ -1,6 +1,6 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="row">
-    <%= search_form_for @q, url: current_usuario.industria? ? industria_lojistas_path(current_usuario.industria) : representante_lojistas_path(current_usuario.representante) do |f| %>
+    <%= search_form_for @q, url: (current_usuario.industria? or current_usuario.equipe_industria?) ? industria_lojistas_path(current_usuario.industria) : representante_lojistas_path(current_usuario.representante) do |f| %>
       <div class="col-md-3 col-sm-3 col-lg-3">
         <%= f.search_field :descricao_cont, {placeholder: "Nome do Lojista", class: "form-control"} %>
       </div>
@@ -70,7 +70,7 @@
                     <i class="fa fa-eye"> </i> Detalhes
                   </button>
                 <% end %>
-              <% elsif current_usuario.industria? %>
+              <% elsif (current_usuario.industria? or current_usuario.equipe_industria?) %>
                 <%= link_to industria_lojista_path(@industria, lojista) do %>
                   <button type="button" class="btn btn-primary btn-xs">
                     <i class="fa fa-eye"> </i> Detalhes
