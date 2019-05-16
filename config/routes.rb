@@ -234,7 +234,7 @@ Rails.application.routes.draw do
       end
       resources :produtos
       resources :solicitacoes do
-        get "status", to: "status"
+        post "status", to: "status"
         resources :comentarios
       end
       get 'equipe/index'
@@ -256,7 +256,7 @@ Rails.application.routes.draw do
       resources :industrias
       resources :produtos
       resources :solicitacoes do
-        get "status", to: "status"
+        post "status", to: "status"
         resources :comentarios
       end
 
