@@ -87,6 +87,12 @@ pt-BR:
         populacao: "População"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+      plano:
+        descricao: "Descrição"
+        numero_convites: "Número de Convites"
+        preco: "Preço"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
       admin_user:
         email: "Email"
         password: "Senha"
