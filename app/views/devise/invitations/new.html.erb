@@ -20,7 +20,8 @@
           <div class="x_content">
             <div class="divider-dashed"></div>
             <%= f.hidden_field :tipo, value: "representante" %>
-            <%= f.hidden_field :invited_by_id, value: current_usuario.id %>
+            <%= f.hidden_field :invited_by_id, value: current_usuario.industria.id %>
+            <%= f.hidden_field :invited_by_type, value: "Industria" %>
 
             <%= f.input :nome %>
             <%= f.input :email, required: true %>

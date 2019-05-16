@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Adicionar Membro
+          <small>...</small>
+        </h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <%= simple_form_for([@industria, @usuario], url: industria_equipe_create_path, html: {class: "form-horizontal form-label-left"}) do |f| %>
+        <div class="nav navbar-right">
+          <%= f.button :submit, "Adicionar Membro", class: "btn btn-success" %>
+        </div>
+        <div class="x_content">
+          <div class="divider-dashed"></div>
+          <%= f.hidden_field :tipo, value: "equipe_industria" %>
+          <%= f.hidden_field :invited_by_id, value: current_usuario.industria.id %>
+          <%= f.hidden_field :invited_by_type, value: "Industria" %>
+
+          <%= f.input :nome %>
+          <%= f.input :email, required: true %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+
+
+

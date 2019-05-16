@@ -45,7 +45,7 @@ FactoryBot.define do
       before(:create) do |usuario|
         #Vincular convite
         usuario.invited_by_id = Industria.all.sample.id
-        usuario.invited_by_type = :industria
+        usuario.invited_by_type = "Industria"
       end
     end
 

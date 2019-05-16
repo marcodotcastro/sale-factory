@@ -3,7 +3,7 @@
 #                                    Prefix Verb   URI Pattern                                                                                   Controller#Action
 #                       new_usuario_session GET    /usuarios/sign_in(.:format)                                                                   devise/sessions#new
 #                           usuario_session POST   /usuarios/sign_in(.:format)                                                                   devise/sessions#create
-#                   destroy_usuario_session DELETE /usuarios/sign_out(.:format)                                                                  devise/sessions#destroy
+#                   destroy_usuario_session GET    /usuarios/sign_out(.:format)                                                                  devise/sessions#destroy
 #                      new_usuario_password GET    /usuarios/password/new(.:format)                                                              devise/passwords#new
 #                     edit_usuario_password GET    /usuarios/password/edit(.:format)                                                             devise/passwords#edit
 #                          usuario_password PATCH  /usuarios/password(.:format)                                                                  devise/passwords#update
@@ -24,7 +24,7 @@
 #                                           POST   /usuarios/invitation(.:format)                                                                usuarios/invitations#create
 #                    new_admin_user_session GET    /admin/login(.:format)                                                                        active_admin/devise/sessions#new
 #                        admin_user_session POST   /admin/login(.:format)                                                                        active_admin/devise/sessions#create
-#                destroy_admin_user_session DELETE /admin/logout(.:format)                                                                       active_admin/devise/sessions#destroy
+#                destroy_admin_user_session GET    /admin/logout(.:format)                                                                       active_admin/devise/sessions#destroy
 #                   new_admin_user_password GET    /admin/password/new(.:format)                                                                 active_admin/devise/passwords#new
 #                  edit_admin_user_password GET    /admin/password/edit(.:format)                                                                active_admin/devise/passwords#edit
 #                       admin_user_password PATCH  /admin/password(.:format)                                                                     active_admin/devise/passwords#update
@@ -61,6 +61,15 @@
 #                                           PUT    /admin/setores/:id(.:format)                                                                  admin/setores#update
 #                                           DELETE /admin/setores/:id(.:format)                                                                  admin/setores#destroy
 #                           admin_dashboard GET    /admin/dashboard(.:format)                                                                    admin/dashboard#index
+#                 batch_action_admin_planos POST   /admin/planos/batch_action(.:format)                                                          admin/planos#batch_action
+#                              admin_planos GET    /admin/planos(.:format)                                                                       admin/planos#index
+#                                           POST   /admin/planos(.:format)                                                                       admin/planos#create
+#                           new_admin_plano GET    /admin/planos/new(.:format)                                                                   admin/planos#new
+#                          edit_admin_plano GET    /admin/planos/:id/edit(.:format)                                                              admin/planos#edit
+#                               admin_plano GET    /admin/planos/:id(.:format)                                                                   admin/planos#show
+#                                           PATCH  /admin/planos/:id(.:format)                                                                   admin/planos#update
+#                                           PUT    /admin/planos/:id(.:format)                                                                   admin/planos#update
+#                                           DELETE /admin/planos/:id(.:format)                                                                   admin/planos#destroy
 #                            admin_comments GET    /admin/comments(.:format)                                                                     admin/comments#index
 #                                           POST   /admin/comments(.:format)                                                                     admin/comments#create
 #                             admin_comment GET    /admin/comments/:id(.:format)                                                                 admin/comments#show
@@ -115,6 +124,9 @@
 #                                           PATCH  /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#update
 #                                           PUT    /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#update
 #                                           DELETE /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#destroy
+#                    industria_equipe_index GET    /industrias/:industria_id/equipe/index(.:format)                                              industrias/equipe#index
+#                      industria_equipe_new GET    /industrias/:industria_id/equipe/new(.:format)                                                industrias/equipe#new
+#                   industria_equipe_create POST   /industrias/:industria_id/equipe/create(.:format)                                             industrias/equipe#create
 #                                industrias GET    /industrias(.:format)                                                                         industrias#index
 #                                           POST   /industrias(.:format)                                                                         industrias#create
 #                             new_industria GET    /industrias/new(.:format)                                                                     industrias#new
@@ -225,6 +237,10 @@ Rails.application.routes.draw do
         post "status", to: "status"
         resources :comentarios
       end
+      get 'equipe/index'
+      get 'equipe/new'
+      post 'equipe/create'
+
     end
   end
 

@@ -1,0 +1,39 @@
+<div class="col-md-12 col-sm-12 col-lg-12">
+  <div class="text-center">
+    <%= paginate @equipe, param_name: "page_membro" %>
+    <%= page_entries_info @equipe %>
+  </div>
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Equipe
+        <small>...</small>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <% @equipe.each do |membro| %>
+        <div class="col-sm-4 col-md-4 col-lg-3 profile_details">
+          <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <h4 class="brief">
+                <i><span title="<%= membro.nome %>"><%= truncate membro.nome, length: 40 %></span></i>
+              </h4>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="left col-sm-12 col-md-12 col-lg-12 text-center">
+                <%= image_tag foto_avatar_url(membro), class: "img-profile" %>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <h5><%= membro.email %></h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

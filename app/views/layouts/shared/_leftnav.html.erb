@@ -8,6 +8,8 @@
           <%= image_tag foto_logo_url(current_usuario.representante), class: "img-rectangle img-fluid", size: "80x80" %>
         <% elsif current_usuario.industria? %>
           <%= image_tag foto_logo_url(current_usuario.industria), class: "img-rectangle img-fluid", size: "80x80" %>
+        <% elsif current_usuario.equipe_industria? %>
+          <%= image_tag foto_logo_url(current_usuario.invited_by), class: "img-rectangle img-fluid", size: "80x80" %>
         <% end %>
       </div>
     </div>
@@ -132,6 +134,11 @@
                     <i class="fa fa-building"></i> Lojistas
                   <% end %>
                 </li>
+                <li>
+                  <%= link_to industria_equipe_index_path(current_usuario.industria) do %>
+                    <i class="fa fa-users"></i> Equipe
+                  <% end %>
+                </li>
               </ul>
             </li>
             <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
@@ -144,6 +151,11 @@
                 <li>
                   <%= link_to new_usuario_invitation_path do %>
                     <i class="fa fa-envelope-open"></i> Representante
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_equipe_new_path(current_usuario.industria) do %>
+                    <i class="fa fa-users"></i> Equipe
                   <% end %>
                 </li>
               </ul>
