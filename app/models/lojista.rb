@@ -33,16 +33,25 @@ class Lojista < ApplicationRecord
 
   has_and_belongs_to_many :representantes, -> {distinct}
   has_and_belongs_to_many :industrias, -> {distinct}
-  has_and_belongs_to_many :lojistas, -> {distinct}
   has_many :solicitacoes
   belongs_to :cidade
 
   enum tamanho: [:micro, :pequeno, :medio, :grande, :gigante]
 
-  validates_presence_of :cidade_id
+  validates_presence_of :cidade_id, :descricao, :cnpj, :tamanho
 
   has_one_attached :logo
 
   friendly_id :descricao, use: :slugged
+
+  #TODO: Refactoring código duplicado
+  def solicitacao_em_aberto
+    self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
+  end
+
+  #TODO: Refactoring código duplicado
+  def solicitado?
+    self.solicitacoes.any?
+  end
 
 end

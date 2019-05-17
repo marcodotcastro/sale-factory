@@ -14,8 +14,10 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
-          <%= link_to 'Editar Lojista', edit_representante_lojista_path(@representante, @lojista), class: "btn btn-primary" %>
-          <%= link_to 'Excluir Lojista', representante_lojista_path(@representante, @lojista), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+          <% unless @lojista.solicitado? %>
+            <%= link_to 'Editar Lojista', edit_representante_lojista_path(@representante, @lojista), class: "btn btn-primary" %>
+            <%= link_to 'Excluir Lojista', representante_lojista_path(@representante, @lojista), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+          <% end %>
         <% end %>
       </div>
       <div class="x_content">
@@ -69,7 +71,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Situação </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tamanho </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @lojista.tamanho.capitalize %>">
               </div>

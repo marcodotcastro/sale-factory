@@ -49,10 +49,15 @@ class Representante < ApplicationRecord
 
   validates :descricao, :cidade_id, presence: true
 
+  #TODO: Refactoring código duplicado
   def solicitacao_em_aberto
     self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
   end
 
+  #TODO: Refactoring código duplicado
+  def solicitado?
+    self.solicitacoes.any?
+  end
 
   def total_de_vendas(industria = nil)
     if industria

@@ -74,9 +74,24 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def destroy
-    @lojista.destroy
     respond_to do |format|
-      format.html {redirect_to representante_lojistas_path(@representante), flash: {success: 'Lojista foi excluido com sucesso.'}}
+      unless @lojista.solicitado?
+        if @lojista.really_destroy!
+          format.html {redirect_to representante_lojistas_path(@representante), flash: {success: 'Produto foi excluido com sucesso.'}}
+        else
+          format.html {redirect_to representante_lojistas_path(@representante), flash: {erro: 'Produto não foi excluido com sucesso.'}}
+        end
+      else
+        unless @lojista.solicitacao_em_aberto
+          if @lojista.destroy
+            format.html {redirect_to representante_lojistas_path(@representante), flash: {success: 'Produto foi excluido com sucesso.'}}
+          else
+            format.html {redirect_to representante_lojistas_path(@representante), flash: {erro: 'Produto não foi excluido com sucesso.'}}
+          end
+        else
+          format.html {redirect_to representante_lojista_path(@representante, @lojista), flash: {error: 'Produto não foi excluido, pois tem solicitações aberta.'}}
+        end
+      end
     end
   end
 
@@ -103,7 +118,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:logo, :descricao, :cnpj, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, industria_ids: [])
+    params.require(:lojista).permit(:logo, :descricao, :cnpj, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :tamanho, :latitude, :longitude, :representante_id, :cidade_id, industria_ids: [])
   end
 
   def get_cidades
