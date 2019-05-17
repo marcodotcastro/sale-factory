@@ -19,17 +19,24 @@
         <div class="col-sm-4 col-md-4 col-lg-3 profile_details">
           <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
             <div class="col-sm-12 col-md-12 col-lg-12">
-              <h4 class="brief">
-                <i><span title="<%= membro.nome %>"><%= truncate membro.nome, length: 40 %></span></i>
-              </h4>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-12">
               <div class="left col-sm-12 col-md-12 col-lg-12 text-center">
                 <%= image_tag foto_avatar_url(membro), class: "img-profile" %>
               </div>
             </div>
-            <div class="col-sm-12">
-              <h5><%= membro.email %></h5>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <h5><%= membro.nome %></h5>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="left col-xs-12">
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-user"></i> <strong>CPF: </strong>
+                    <span><%= membro.cpf %></span>
+                  </li>
+                  <li><i class="fa fa-envelope"></i> <strong>Email: </strong>
+                    <span><%= membro.email %></span></li>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

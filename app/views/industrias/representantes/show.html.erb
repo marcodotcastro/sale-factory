@@ -13,7 +13,7 @@
       </div>
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
-        <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
+        <% if current_usuario.industria? %>
           <%= link_to "Desvincular Representante", industria_representante_desvincular_path(@industria, @representante), method: :post, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
