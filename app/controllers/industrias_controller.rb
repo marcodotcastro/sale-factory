@@ -80,6 +80,6 @@ class IndustriasController < ApplicationController
   end
 
   def industria_params
-    params.require(:industria).permit(:descricao, :contato, :endereco, :cep, :telefone, :setor_id, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id, :logo)
+    params.require(:industria).permit(:logo, :descricao, :cnpj, :contato, :endereco, :cep, :telefone, :setor_id, :telefone_whatsapp, :email, :latitude, :longitude, :cidade_id, :usuario_id, :logo)
   end
 end

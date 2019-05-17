@@ -14,7 +14,7 @@
     <% if @solicitacao.pendente? or @solicitacao.resolvido? or @solicitacao.recusado? or @solicitacao.cancelado? %>
       <% if current_usuario.representante? %>
         <%= link_to "Adicionar Comentário", new_representante_solicitacao_comentario_path(@representante, @solicitacao), class: "btn btn-primary" %>
-      <% elsif current_usuario.industria? %>
+      <% elsif (current_usuario.industria? or current_usuario.equipe_industria?) %>
         <%= link_to "Adicionar Comentário", new_industria_solicitacao_comentario_path(@industria, @solicitacao), class: "btn btn-primary" %>
       <% end %>
     <% end %>

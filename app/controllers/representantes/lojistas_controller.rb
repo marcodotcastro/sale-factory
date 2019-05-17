@@ -103,7 +103,7 @@ class Representantes::LojistasController < ApplicationController
   end
 
   def lojista_params
-    params.require(:lojista).permit(:logo, :descricao, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, industria_ids: [])
+    params.require(:lojista).permit(:logo, :descricao, :cnpj, :endereco, :contato, :telefone, :telefone_whatsapp, :email, :cep, :latitude, :longitude, :representante_id, :cidade_id, industria_ids: [])
   end
 
   def get_cidades
