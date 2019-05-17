@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  deleted_at   :datetime
 #  descricao    :string
 #  preco        :float
 #  created_at   :datetime         not null
@@ -11,6 +12,7 @@
 #
 # Indexes
 #
+#  index_produtos_on_deleted_at    (deleted_at)
 #  index_produtos_on_industria_id  (industria_id)
 #
 # Foreign Keys

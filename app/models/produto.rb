@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  deleted_at   :datetime
 #  descricao    :string
 #  preco        :float
 #  created_at   :datetime         not null
@@ -11,6 +12,7 @@
 #
 # Indexes
 #
+#  index_produtos_on_deleted_at    (deleted_at)
 #  index_produtos_on_industria_id  (industria_id)
 #
 # Foreign Keys
@@ -19,10 +21,19 @@
 #
 
 class Produto < ApplicationRecord
-  belongs_to :industria
+  acts_as_paranoid
+  belongs_to :industria, optional: true
   has_many :pedidos
   has_many :solicitacoes, through: :pedidos
 
   has_one_attached :foto
+
+  def solicitacao_em_aberto
+    self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
+  end
+
+  def solicitado?
+    self.solicitacoes.any?
+  end
 
 end

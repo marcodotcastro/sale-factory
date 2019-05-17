@@ -42,9 +42,24 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def destroy
-    @produto.destroy
     respond_to do |format|
-      format.html {redirect_to industria_produtos_path(@industria), flash: {success: 'Produto foi excluido com sucesso.'}}
+      unless @produto.solicitado?
+        if @produto.really_destroy!
+          format.html {redirect_to industria_produtos_path(@industria), flash: {success: 'Produto foi excluido com sucesso.'}}
+        else
+          format.html {redirect_to industria_produtos_path(@industria), flash: {erro: 'Produto não foi excluido com sucesso.'}}
+        end
+      else
+        unless @produto.solicitacao_em_aberto
+          if @produto.destroy
+            format.html {redirect_to industria_produtos_path(@industria), flash: {success: 'Produto foi excluido com sucesso.'}}
+          else
+            format.html {redirect_to industria_produtos_path(@industria), flash: {erro: 'Produto não foi excluido com sucesso.'}}
+          end
+        else
+          format.html {redirect_to industria_produto_path(@industria, @produto), flash: {error: 'Produto não foi excluido, pois tem solicitações aberta.'}}
+        end
+      end
     end
   end
 
@@ -59,7 +74,7 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def set_produto
-    @produto = Produto.find(params[:id])
+    @produto = Produto.with_deleted.find(params[:id])
   end
 
   def set_industria
@@ -69,4 +84,5 @@ class Industrias::ProdutosController < ApplicationController
   def produto_params
     params.require(:produto).permit(:foto, :descricao, :preco)
   end
+
 end
