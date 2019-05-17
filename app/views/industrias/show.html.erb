@@ -15,7 +15,6 @@
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.industria? %>
           <%= link_to 'Editar Perfil', edit_industria_path(@industria), class: "btn btn-primary" %>
-          <%= link_to 'Excluir Perfil', @industria, method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
       <div class="x_content">

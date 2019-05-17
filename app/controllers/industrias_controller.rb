@@ -66,13 +66,6 @@ class IndustriasController < ApplicationController
     end
   end
 
-  def destroy
-    @industria.destroy
-    respond_to do |format|
-      format.html {redirect_to root_path, flash: {success: 'Industria foi excluido com sucesso.'}}
-    end
-  end
-
   private
 
   def set_industria
