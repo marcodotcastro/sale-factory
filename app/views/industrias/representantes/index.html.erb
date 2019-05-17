@@ -46,7 +46,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
               <div class="left col-sm-12 col-md-12 col-lg-12 text-center">
                 <%= image_tag foto_avatar_url(representante.usuario), class: "img-profile" %>
-                <i class="text-danger" a><%= membro.invitation_accepted_at.nil? ? " (Convite ainda não aceito)" : "" %></i>
+                <i class="text-danger" a><%= representante.usuario.invitation_accepted_at.nil? ? " (Convite ainda não aceito)" : "" %></i>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">

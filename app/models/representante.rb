@@ -49,6 +49,10 @@ class Representante < ApplicationRecord
 
   validates :descricao, :cidade_id, presence: true
 
+  def solicitacao_em_aberto
+    self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
+  end
+
 
   def total_de_vendas(industria = nil)
     if industria

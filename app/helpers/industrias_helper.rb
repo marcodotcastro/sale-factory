@@ -49,4 +49,20 @@ module IndustriasHelper
     return "Sem Representante"
   end
 
+  def representante(industria, representante)
+    #TODO: Como refatorar isso?
+    if industria
+      industria = representante.industrias.select(:id, :descricao).distinct.find_by(id: industria.id)
+      if industria
+        return industria.descricao
+      end
+    else
+      @representante.industrias.each do |industria|
+        industria = representante.industrias.select(:id, :descricao).distinct.find_by(id: industria.id)
+        return industria.descricao if industria
+      end
+    end
+    return "Sem Representante"
+  end
+
 end

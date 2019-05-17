@@ -61,11 +61,11 @@
             <th scope="row"><%= solicitacao.id.to_s %></th>
             <%#TODO: Mover para o helpers %>
             <% if current_usuario.representante? %>
-              <td><%= link_to solicitacao.industria.descricao, representante_industrias_path(solicitacao.industria) %></td>
-              <td><%= link_to solicitacao.lojista.descricao, representante_lojistas_path(solicitacao.lojista) %></td>
+              <td><%= link_to solicitacao.industria.descricao, representante_industria_path(@representante, solicitacao.industria) %></td>
+              <td><%= link_to solicitacao.lojista.descricao, representante_lojista_path(@representante, solicitacao.lojista) %></td>
             <% elsif (current_usuario.industria? or current_usuario.equipe_industria?) %>
-              <td><%= link_to solicitacao.representante.descricao, industria_representantes_path(solicitacao.representante) %></td>
-              <td><%= link_to solicitacao.lojista.descricao, industria_lojistas_path(solicitacao.lojista) %></td>
+              <td><%= link_to solicitacao.representante.descricao, industria_representante_path(@industria, solicitacao.representante) %></td>
+              <td><%= link_to solicitacao.lojista.descricao, industria_lojista_path(@industria, solicitacao.lojista) %></td>
             <% end %>
             <td><%= solicitacao.pedidos.sum(:quantidade) %> itens</td>
             <td><%= number_to_currency solicitacao.valor_total_dos_produtos %></td>

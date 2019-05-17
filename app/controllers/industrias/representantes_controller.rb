@@ -47,10 +47,14 @@ class Industrias::RepresentantesController < ApplicationController
     representante = current_usuario.industria.representantes.friendly.find(params[:representante_id])
 
     respond_to do |format|
-      if current_usuario.industria.representantes.delete(representante)
-        format.html {redirect_to industria_representantes_path(@industria), flash: {success: 'Representante foi desvinculado com sucesso.'}}
+      unless representante.solicitacao_em_aberto
+        if current_usuario.industria.representantes.delete(representante)
+          format.html {redirect_to industria_representantes_path(@industria), flash: {success: 'Representante foi desvinculado com sucesso.'}}
+        else
+          format.html {redirect_to industria_representantes_path(@industria), flash: {error: 'Representante não foi desvinculado.'}}
+        end
       else
-        format.html {redirect_to industria_representantes_path(@industria), flash: {error: 'Representante não foi desvinculado.'}}
+        format.html {redirect_to industria_representante_path(@industria, representante), flash: {error: 'Representante não foi desvinculado, pois tem solicitações aberta.'}}
       end
     end
   end
@@ -70,7 +74,7 @@ class Industrias::RepresentantesController < ApplicationController
   end
 
   def set_representante
-    @representante = current_usuario.industria.representantes.friendly.find(params[:id])
+    @representante = Representante.friendly.find(params[:id])
   end
 
   def representante_params
