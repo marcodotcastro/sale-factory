@@ -27,7 +27,9 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th width="25%">Usuário</th>
+        <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
+          <th width="25%">Usuário</th>
+        <% end %>
         <th width="35%">Empresa</th>
         <th width="40%">Comentário</th>
       </tr>
@@ -35,7 +37,9 @@
       <tbody>
       <% @comentarios.each do |comentario| %>
         <tr>
-          <td><%= comentario.usuario.nome %></td>
+          <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
+            <td><%= comentario.usuario.nome %></td>
+          <% end %>
           <td><%= comentario.usuario.representante? ? comentario.usuario.representante.descricao : comentario.usuario.industria.descricao %></td>
           <td><%= comentario.descricao %></td>
         </tr>

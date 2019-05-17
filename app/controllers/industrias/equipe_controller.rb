@@ -32,7 +32,7 @@ class Industrias::EquipeController < ApplicationController
 
   def desvincular
     respond_to do |format|
-      if Usuario.find(params[:id]).update(invited_by_id: nil)
+      if Usuario.find(params[:id]).update(password: Digest::SHA1.hexdigest('zero a senha'))
         format.html {redirect_to industria_equipe_membros_path(@industria), flash: {success: 'Membro foi desvinculado com sucesso.'}}
       else
         format.html {redirect_to industria_equipe_membros_path(@industria), flash: {error: 'Membro não foi desvinculado.'}}
@@ -53,7 +53,7 @@ class Industrias::EquipeController < ApplicationController
   def revincular
     usuario = Usuario.find_by(email: usuario_params[:email])
     if usuario
-      usuario.update(invited_by_id: current_usuario.id)
+      usuario.send_reset_password_instructions
       return true
     else
       return false
