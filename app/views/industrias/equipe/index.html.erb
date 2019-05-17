@@ -21,6 +21,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
               <div class="left col-sm-12 col-md-12 col-lg-12 text-center">
                 <%= image_tag foto_avatar_url(membro), class: "img-profile" %>
+                <i class="text-danger" a><%= membro.invitation_accepted_at.nil? ? " (Convite ainda não aceito)" : "" %></i>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -37,6 +38,13 @@
                   </li>
                 </ul>
               </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 bottom text-center">
+              <%= link_to industria_equipe_membro_path(@industria, membro) do %>
+                <button type="button" class="btn btn-primary btn-xs">
+                  <i class="fa fa-eye"> </i> Detalhes
+                </button>
+              <% end %>
             </div>
           </div>
         </div>

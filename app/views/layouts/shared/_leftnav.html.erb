@@ -99,7 +99,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to industria_equipe_index_path(current_usuario.industria) do %>
+                  <%= link_to industria_equipe_membros_path(current_usuario.industria) do %>
                     <i class="fa fa-users"></i> Equipe
                   <% end %>
                 </li>
@@ -118,7 +118,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to industria_equipe_new_path(current_usuario.industria) do %>
+                  <%= link_to industria_equipe_membros_new_path(current_usuario.industria) do %>
                     <i class="fa fa-users"></i> Equipe
                   <% end %>
                 </li>
@@ -126,6 +126,7 @@
             </li>
           <% end %>
         <% elsif current_usuario.equipe_industria? %>
+          <% if current_usuario.industria %>
             <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu">
                 <li>
@@ -159,6 +160,7 @@
                 </li>
               </ul>
             </li>
+          <% end %>
         <% elsif current_usuario.representante? %>
           <% if current_usuario.representante %>
             <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>

@@ -1,4 +1,5 @@
 class Industrias::EquipeController < ApplicationController
+  before_action :set_industria, only: [:index, :create, :show, :desvincular]
 
   def index
     @equipe = Usuario.where(tipo: :equipe_industria).where(invited_by_id: current_usuario.id).page(params[:page_membro])
@@ -8,19 +9,33 @@ class Industrias::EquipeController < ApplicationController
     @usuario = Usuario.new
   end
 
+  def show
+    @membro = Usuario.find(params[:id])
+  end
+
   def create
     respond_to do |format|
       if usuario_params[:email].present?
         if revincular
-          format.html {redirect_to industria_equipe_index_path(current_usuario.industria), flash: {success: 'Convite enviado com sucesso.'}}
+          format.html {redirect_to industria_equipe_membros_path(@industria), flash: {success: 'Convite enviado com sucesso.'}}
         elsif usuario = Usuario.invite!(usuario_params)
           usuario.update(invited_by_id: usuario_params[:invited_by_id], invited_by_type: usuario_params[:invited_by_type])
-          format.html {redirect_to industria_equipe_index_path(current_usuario.industria), flash: {success: 'Convite enviado com sucesso.'}}
+          format.html {redirect_to industria_equipe_membros_path(@industria), flash: {success: 'Convite enviado com sucesso.'}}
         else
-          format.html {redirect_to industria_equipe_new_path(current_usuario.industria), flash: {error: "Convite não enviado."}}
+          format.html {redirect_to industria_equipe_membros_new_path(@industria), flash: {error: "Convite não enviado."}}
         end
       else
-        format.html {redirect_to industria_equipe_new_path(current_usuario.industria), flash: {error: "Email não informado."}}
+        format.html {redirect_to industria_equipe_membros_new_path(@industria), flash: {error: "Email não informado."}}
+      end
+    end
+  end
+
+  def desvincular
+    respond_to do |format|
+      if Usuario.find(params[:id]).update(invited_by_id: nil)
+        format.html {redirect_to industria_equipe_membros_path(@industria), flash: {success: 'Membro foi desvinculado com sucesso.'}}
+      else
+        format.html {redirect_to industria_equipe_membros_path(@industria), flash: {error: 'Membro não foi desvinculado.'}}
       end
     end
   end
@@ -29,6 +44,10 @@ class Industrias::EquipeController < ApplicationController
 
   def usuario_params
     params.require(:usuario).permit(:nome, :email, :tipo, :invited_by_id, :invited_by_type)
+  end
+
+  def set_industria
+    @industria = Industria.friendly.find(params[:industria_id])
   end
 
   def revincular
