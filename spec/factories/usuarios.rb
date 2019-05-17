@@ -46,6 +46,7 @@ FactoryBot.define do
         #Vincular convite
         usuario.invited_by_id = Industria.all.sample.id
         usuario.invited_by_type = "Industria"
+        usuario.invitation_accepted_at = Time.now
       end
     end
 

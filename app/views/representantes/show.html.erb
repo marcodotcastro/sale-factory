@@ -15,7 +15,6 @@
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
           <%= link_to 'Editar Perfil', edit_representante_path(@representante), class: "btn btn-primary" %>
-          <%= link_to 'Excluir Perfil', @representante, method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
         <% end %>
       </div>
       <%= render 'representante' %>
