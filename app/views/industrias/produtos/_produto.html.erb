@@ -14,10 +14,8 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
-          <% unless @produto.solicitado? %>
-            <%= link_to 'Editar Produto', edit_industria_produto_path(@industria, @produto), class: "btn btn-primary" %>
-            <%= link_to 'Excluir Produto', industria_produto_path(@industria, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
-          <% end %>
+          <%= link_to 'Editar Produto', edit_industria_produto_path(@industria, @produto), class: "btn btn-primary", title: ("Pedido com o produto solicitado" if @produto.solicitado?), disabled: @produto.solicitado? %>
+          <%= link_to 'Excluir Produto', industria_produto_path(@industria, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'}, title: ("Pedido com o produto solicitado" if @produto.solicitado?), disabled: @produto.solicitado? %>
         <% end %>
       </div>
       <div class="x_content">
