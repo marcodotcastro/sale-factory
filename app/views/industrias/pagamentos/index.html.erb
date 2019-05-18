@@ -1,0 +1,44 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="text-center">
+    <%= paginate @pagamentos, param_name: "page_pagamento" %>
+    <%= page_entries_info @pagamentos %>
+  </div>
+  <div class="x_panel">
+    <div class="x_title">
+      <h2>Pagamentos
+        <small>...</small>
+      </h2>
+      <ul class="nav navbar-right panel_toolbox">
+        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th><%= sort_link @q, :id, "#" %></th>
+          <th>Valor</th>
+          <th>Plano</th>
+          <th>Período</th>
+          <th>Validade</th>
+          <th>Ativo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @pagamentos.each do |pagamento| %>
+          <tr>
+            <th scope="row"><%= pagamento.id.to_s %></th>
+            <td><%= number_to_currency pagamento.valor %></td>
+            <td><%= pagamento.plano.descricao %></td>
+            <td><%= pagamento.periodo.try(:capitalize) %></td>
+            <td><%= l_if_nil(pagamento.validade) %></td>
+            <td><%= pagamento.ativo ? "<button type='button' class='btn btn-round btn-success'>Sim</button>".html_safe : "<button type='button' class='btn btn-round btn-danger'>Não</button>".html_safe %> </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

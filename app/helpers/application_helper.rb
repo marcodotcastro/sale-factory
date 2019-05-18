@@ -19,5 +19,8 @@ module ApplicationHelper
     end
   end
 
+  def l_if_nil(data)
+    data ? l(data, format: :long) : t("Sem Prazo")
+  end
 
 end

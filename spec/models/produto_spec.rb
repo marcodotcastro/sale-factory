@@ -15,10 +15,6 @@
 #  index_produtos_on_deleted_at    (deleted_at)
 #  index_produtos_on_industria_id  (industria_id)
 #
-# Foreign Keys
-#
-#  fk_rails_...  (industria_id => industrias.id)
-#
 
 require 'rails_helper'
 

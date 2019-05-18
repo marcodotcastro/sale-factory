@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_17_183319) do
+ActiveRecord::Schema.define(version: 2019_05_18_125124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,22 +91,6 @@ ActiveRecord::Schema.define(version: 2019_05_17_183319) do
     t.datetime "updated_at", null: false
     t.index ["solicitacao_id"], name: "index_comentarios_on_solicitacao_id"
     t.index ["usuario_id"], name: "index_comentarios_on_usuario_id"
-  end
-
-  create_table "equipe_industria_usuarios", force: :cascade do |t|
-    t.bigint "usuario_id"
-    t.bigint "equipe_industria_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["equipe_industria_id"], name: "index_equipe_industria_usuarios_on_equipe_industria_id"
-    t.index ["usuario_id"], name: "index_equipe_industria_usuarios_on_usuario_id"
-  end
-
-  create_table "equipe_industrias", force: :cascade do |t|
-    t.bigint "industria_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["industria_id"], name: "index_equipe_industrias_on_industria_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -223,6 +207,19 @@ ActiveRecord::Schema.define(version: 2019_05_17_183319) do
     t.index ["sash_id"], name: "index_merit_scores_on_sash_id"
   end
 
+  create_table "pagamentos", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.bigint "plano_id"
+    t.integer "periodo"
+    t.date "validade"
+    t.boolean "ativo"
+    t.float "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plano_id"], name: "index_pagamentos_on_plano_id"
+    t.index ["usuario_id"], name: "index_pagamentos_on_usuario_id"
+  end
+
   create_table "pedidos", force: :cascade do |t|
     t.bigint "produto_id"
     t.bigint "solicitacao_id"
@@ -326,7 +323,8 @@ ActiveRecord::Schema.define(version: 2019_05_17_183319) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "produtos", "industrias"
+  add_foreign_key "pagamentos", "planos"
+  add_foreign_key "pagamentos", "usuarios"
   add_foreign_key "representantes", "cidades"
   add_foreign_key "solicitacoes", "industrias"
   add_foreign_key "solicitacoes", "lojistas"

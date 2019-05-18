@@ -11,4 +11,5 @@
 #
 
 class Plano < ApplicationRecord
+  has_many :pagamentos
 end

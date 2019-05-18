@@ -42,6 +42,11 @@
                     <i class="fa fa-user"></i> Perfil
                   <% end %>
                 </li>
+                <li>
+                  <%= link_to industria_pagamentos_path(current_usuario.industria) do %>
+                    <i class="fa fa-shopping-cart"></i> Pagamento
+                  <% end %>
+                </li>
               <% else %>
                 <li>
                   <%= link_to new_industria_path do %>

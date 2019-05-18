@@ -12,8 +12,8 @@
 
 FactoryBot.define do
   factory :plano do
-    descricao { "MyString" }
-    numero_convites { 1 }
-    preco { 1.5 }
+    descricao {"10 Convites"}
+    numero_convites {10}
+    preco {300}
   end
 end

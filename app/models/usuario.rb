@@ -42,13 +42,22 @@ class Usuario < ApplicationRecord
   has_one :industria
   has_one :representante
   has_many :comentarios
+  has_many :pagamentos
 
   has_one_attached :avatar
 
   enum tipo: [:industria, :representante, :equipe_industria]
 
+  after_create :conta_gratis
+
   def industria
     self.industria? ? super : self.invited_by
+  end
+
+  private
+
+  def conta_gratis
+    self.pagamentos << Pagamento.create(plano: Plano.first, periodo: "ilimitado")
   end
 
 end
