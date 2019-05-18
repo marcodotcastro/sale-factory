@@ -47,18 +47,21 @@ class Representante < ApplicationRecord
 
   has_one_attached :logo
 
-  validates :descricao, :cidade_id, presence: true
+  validates_presence_of :descricao, :cnpj, :cidade_id
 
   #TODO: Refactoring código duplicado
-  def solicitacao_em_aberto
+  #TODO: Mover para model concerns
+  def solicitacao_em_aberto?
     self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
   end
 
   #TODO: Refactoring código duplicado
+  #TODO: Mover para model concerns
   def solicitado?
     self.solicitacoes.any?
   end
 
+  #TODO: Mover para model concerns
   def total_de_vendas(industria = nil)
     if industria
       self.solicitacoes.where(status: :aceito, industria_id: industria.id).count
@@ -67,6 +70,7 @@ class Representante < ApplicationRecord
     end
   end
 
+  #TODO: Mover para model concerns
   def total_de_receitas(industria = nil)
     if industria
       self.solicitacoes.joins(:produtos).where("solicitacoes.status = 'aceito' and solicitacoes.industria_id = #{industria.id}").group("pedidos.id").sum("produtos.preco * pedidos.quantidade").values.sum
@@ -75,6 +79,7 @@ class Representante < ApplicationRecord
     end
   end
 
+  #TODO: Mover para model concerns
   def total_de_lojistas(industria = nil)
     if industria
       Lojista.joins([:industrias, :representantes]).where("industrias_lojistas.industria_id = #{industria.id} and lojistas_representantes.representante_id = #{self.id}").distinct.count
@@ -83,6 +88,7 @@ class Representante < ApplicationRecord
     end
   end
 
+  #TODO: Mover para model concerns
   def total_de_cidades(industria = nil)
     if industria
       Cidade.joins(lojistas: [:industrias, :representantes]).where("industrias_lojistas.industria_id = #{industria.id} and representantes.id = #{self.id}").distinct.count

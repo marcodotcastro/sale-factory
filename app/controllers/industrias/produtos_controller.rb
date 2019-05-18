@@ -50,14 +50,10 @@ class Industrias::ProdutosController < ApplicationController
           format.html {redirect_to industria_produtos_path(@industria), flash: {erro: 'Produto não foi excluido com sucesso.'}}
         end
       else
-        unless @produto.solicitacao_em_aberto
-          if @produto.destroy
-            format.html {redirect_to industria_produtos_path(@industria), flash: {success: 'Produto foi excluido com sucesso.'}}
-          else
-            format.html {redirect_to industria_produtos_path(@industria), flash: {erro: 'Produto não foi excluido com sucesso.'}}
-          end
+        if @produto.destroy
+          format.html {redirect_to industria_produtos_path(@industria), flash: {success: 'Produto foi excluido com sucesso.'}}
         else
-          format.html {redirect_to industria_produto_path(@industria, @produto), flash: {error: 'Produto não foi excluido, pois tem solicitações aberta.'}}
+          format.html {redirect_to industria_produtos_path(@industria), flash: {erro: 'Produto não foi excluido com sucesso.'}}
         end
       end
     end

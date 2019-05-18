@@ -14,7 +14,7 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
-          <%= link_to 'Editar Perfil', edit_representante_path(@representante), class: "btn btn-primary" %>
+          <%= link_to 'Editar Perfil', edit_representante_path(@representante), class: "btn btn-primary", title: ("Pedidos em aberto" if @representante.solicitacao_em_aberto?), disabled: @representante.solicitacao_em_aberto? %>
         <% end %>
       </div>
       <%= render 'representante' %>

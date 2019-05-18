@@ -48,22 +48,27 @@ class Industria < ApplicationRecord
 
   validates :descricao, :setor_id, :cidade_id, presence: true
 
+  #TODO: Mover para model concerns
   def total_de_representantes
     self.representantes.count
   end
 
+  #TODO: Mover para model concerns
   def total_de_vendas
     self.solicitacoes.where(status: :aceito).count
   end
 
+  #TODO: Mover para model concerns
   def total_de_receitas
     self.solicitacoes.joins(:produtos).where("solicitacoes.status = 'aceito'").group("pedidos.id").sum("produtos.preco * pedidos.quantidade").values.sum
   end
 
+  #TODO: Mover para model concerns
   def total_de_lojistas
     self.lojistas.count
   end
 
+  #TODO: Mover para model concerns
   def total_de_cidades
     Cidade.joins(lojistas: :industrias).where("industrias_lojistas.industria_id = #{self.id}").distinct.count
   end

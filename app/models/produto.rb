@@ -29,11 +29,7 @@ class Produto < ApplicationRecord
   has_one_attached :foto
 
   #TODO: Refactoring código duplicado
-  def solicitacao_em_aberto
-    self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
-  end
-
-  #TODO: Refactoring código duplicado
+  #TODO: Mover para model concerns
   def solicitado?
     self.solicitacoes.any?
   end

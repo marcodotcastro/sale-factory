@@ -47,7 +47,7 @@ class Industrias::RepresentantesController < ApplicationController
     representante = current_usuario.industria.representantes.friendly.find(params[:representante_id])
 
     respond_to do |format|
-      unless representante.solicitacao_em_aberto
+      unless representante.solicitacao_em_aberto?
         if current_usuario.industria.representantes.delete(representante)
           format.html {redirect_to industria_representantes_path(@industria), flash: {success: 'Representante foi desvinculado com sucesso.'}}
         else

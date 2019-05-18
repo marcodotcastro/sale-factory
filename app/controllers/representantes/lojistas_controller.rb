@@ -82,14 +82,10 @@ class Representantes::LojistasController < ApplicationController
           format.html {redirect_to representante_lojistas_path(@representante), flash: {erro: 'Produto não foi excluido com sucesso.'}}
         end
       else
-        unless @lojista.solicitacao_em_aberto
-          if @lojista.destroy
-            format.html {redirect_to representante_lojistas_path(@representante), flash: {success: 'Produto foi excluido com sucesso.'}}
-          else
-            format.html {redirect_to representante_lojistas_path(@representante), flash: {erro: 'Produto não foi excluido com sucesso.'}}
-          end
+        if @lojista.destroy
+          format.html {redirect_to representante_lojistas_path(@representante), flash: {success: 'Produto foi excluido com sucesso.'}}
         else
-          format.html {redirect_to representante_lojista_path(@representante, @lojista), flash: {error: 'Produto não foi excluido, pois tem solicitações aberta.'}}
+          format.html {redirect_to representante_lojistas_path(@representante), flash: {erro: 'Produto não foi excluido com sucesso.'}}
         end
       end
     end
