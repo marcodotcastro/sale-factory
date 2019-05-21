@@ -22,11 +22,6 @@
 //= require cable
 
 
-function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-}
-
-
 $(document).ready(function () {
     $('#pedidos')
         .on('cocoon:before-insert', function (e, pedido_to_be_added) {
@@ -42,3 +37,7 @@ $(document).ready(function () {
             pedido.fadeOut('slow');
         });
 });
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}

@@ -48,6 +48,8 @@
   </div>
 </div>
 
+<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
 <% if action_name.include? "mapa" %>
   <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
   </script>
@@ -55,8 +57,6 @@
           src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials.google_maps_api_key %>&callback=initMap" data-turbolinks-eval="true">
   </script>
 <% end %>
-
-<%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 
 <% unless flash.empty? %>
   <script type="text/javascript">
