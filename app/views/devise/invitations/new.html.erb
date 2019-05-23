@@ -12,10 +12,11 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-
+        <p>Número de Convites: <b><%= current_usuario.convites_disponiveis %> Convites</b></p>
+        <p>Convites Usados: <b><%= current_usuario.convites_usados %> Convites</b></p>
         <%= simple_form_for @usuario ? @usuario : resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
           <div class="nav navbar-right">
-            <%= f.button :submit, "Enviar Convite", class: "btn btn-success" %>
+            <%= f.button :submit, "Enviar Convite", class: "btn btn-success", title: ("Nenhum Convite Disponível" if current_usuario.convite_disponivel?), disabled: current_usuario.convite_disponivel? %>
           </div>
           <div class="x_content">
             <div class="divider-dashed"></div>

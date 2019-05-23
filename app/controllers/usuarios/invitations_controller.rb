@@ -5,7 +5,8 @@ class Usuarios::InvitationsController < Devise::InvitationsController
       if usuario_params[:email].present?
         if revincular
           format.html {redirect_to root_path, flash: {success: 'Convite enviado com sucesso.'}}
-        elsif Usuario.invite!(usuario_params)
+        elsif usuario = Usuario.invite!(usuario_params)
+          usuario.update(invited_by_id: usuario_params[:invited_by_id], invited_by_type: usuario_params[:invited_by_type])
           format.html {redirect_to root_path, flash: {success: 'Convite enviado com sucesso.'}}
         else
           format.html {redirect_to new_usuario_invitation_path, flash: {error: "Convite não enviado."}}

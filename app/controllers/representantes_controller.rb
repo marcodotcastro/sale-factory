@@ -48,6 +48,7 @@ class RepresentantesController < ApplicationController
 
   def create
     @representante = Representante.new(representante_params)
+    @representante.industrias << current_usuario.invited_by
 
     respond_to do |format|
       if @representante.save!

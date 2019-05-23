@@ -54,10 +54,24 @@ class Usuario < ApplicationRecord
     self.industria? ? super : self.invited_by
   end
 
+  def convites_disponiveis
+    self.pagamentos.where(ativo: true).take.plano.numero_convites
+  end
+
+  def convites_usados
+    self.industria.representantes.count
+  end
+
+  def convite_disponivel?
+    (self.convites_disponiveis - self.convites_usados) < 0
+  end
+
   private
 
   def conta_gratis
-    self.pagamentos << Pagamento.create(plano: Plano.first, periodo: "ilimitado")
+    if self.industria?
+      self.pagamentos << Pagamento.create(plano: Plano.first)
+    end
   end
 
 end

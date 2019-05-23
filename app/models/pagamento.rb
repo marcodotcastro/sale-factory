@@ -27,19 +27,18 @@ class Pagamento < ApplicationRecord
   belongs_to :usuario
   belongs_to :plano
 
-  enum periodo: [:ilimitado, :mensal, :trimestral, :semestral, :anual]
+  enum periodo: [:mensal, :trimestral, :semestral, :anual]
 
   before_create :calcular
   before_create :inativa_pagamento_anterior
   before_create :ativar
 
+  validates_presence_of :plano_id, :periodo
+
   private
 
   def calcular
     case
-    when self.ilimitado?
-      self.validade = nil
-      self.valor = 0
     when self.mensal?
       self.validade = Date.today + 1.months
       self.valor = self.plano.preco * 1
@@ -52,6 +51,9 @@ class Pagamento < ApplicationRecord
     when self.anual?
       self.validade = Date.today + 12.months
       self.valor = self.plano.preco * 12
+    else
+      self.validade = nil
+      self.valor = 0
     end
   end
 

@@ -4,6 +4,12 @@
     <%= page_entries_info @pagamentos %>
   </div>
   <div class="x_panel">
+    <div class="nav navbar-right">
+      <%#TODO: Mover para o helpers %>
+      <% if current_usuario.industria? %>
+        <%= link_to 'Realizar Pagamento', new_industria_pagamento_path(@industria), class: "btn btn-success" %>
+      <% end %>
+    </div>
     <div class="x_title">
       <h2>Pagamentos
         <small>...</small>
@@ -18,7 +24,6 @@
       <table class="table table-striped">
         <thead>
         <tr>
-          <th><%= sort_link @q, :id, "#" %></th>
           <th>Valor</th>
           <th>Plano</th>
           <th>Período</th>
@@ -29,7 +34,6 @@
         <tbody>
         <% @pagamentos.each do |pagamento| %>
           <tr>
-            <th scope="row"><%= pagamento.id.to_s %></th>
             <td><%= number_to_currency pagamento.valor %></td>
             <td><%= pagamento.plano.descricao %></td>
             <td><%= pagamento.periodo.try(:capitalize) %></td>
