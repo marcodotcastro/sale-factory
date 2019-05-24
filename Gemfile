@@ -31,6 +31,9 @@ gem 'ransack'
 gem 'kaminari'
 gem 'activeadmin'
 
+group :production do
+  gem 'aws-sdk-s3', require: false
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
