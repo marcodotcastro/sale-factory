@@ -34,6 +34,7 @@ PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed
 - [Amazon IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users)
 - [Image Server (Amazon S3)](https://s3.console.aws.amazon.com/s3/buckets/active-storage-portal-agro/?region=us-east-2&tab=overview)
 - [Email Server (Sendgrind)](https://app.sendgrid.com/guide/integrate/langs/smtp)
+- [Maps Server (Google Maps)](https://console.cloud.google.com/google/maps-apis/overview?project=sale-factory-1534627059098)
 
 #Variaveis de Ambiente
 
