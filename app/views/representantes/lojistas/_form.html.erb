@@ -10,7 +10,7 @@
 <%= f.input :cidade_id, as: :select, collection: Cidade.all.map {|c| [c.descricao, c.id]}, class: "form-control" %>
 <%= f.input :endereco %>
 <%= f.input :cep %>
-<%= f.input :tamanho, :as => :select, :collection => Lojista.tamanhos.keys.to_a %>
+<%= f.input :tamanho, :as => :select, collection: Lojista.tamanhos.map {|k, v| [k.capitalize, k]} %>
 
 <div class="divider-dashed"></div>
 

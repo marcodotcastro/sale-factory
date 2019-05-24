@@ -14,8 +14,13 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.representante? %>
-          <%= link_to 'Editar Lojista', edit_representante_lojista_path(@representante, @lojista), class: "btn btn-primary", title: ("Pedido com o lojista solicitado" if @lojista.solicitado?), disabled: @lojista.solicitado? %>
-          <%= link_to 'Excluir Lojista', representante_lojista_path(@representante, @lojista), method: :delete, class: "btn btn-danger", data: {confirm: "Você tem certeza?"}, title: ("Pedido com o lojista solicitado" if @lojista.solicitado?), disabled: @lojista.solicitado? %>
+          <% unless @lojista.solicitado? %>
+            <%= link_to 'Editar Lojista', edit_representante_lojista_path(@representante, @lojista), class: "btn btn-primary" %>
+            <%= link_to 'Excluir Lojista', representante_lojista_path(@representante, @lojista), method: :delete, class: "btn btn-danger", data: {confirm: "Você tem certeza?"} %>
+          <% else %>
+            <p class="btn btn-primary" title="Lojista com o pedido solicitado" disabled="true">Editar Lojista</p>
+            <p class="btn btn-danger" title="Lojista com o pedido solicitado" disabled="true">Excluir Lojista</p>
+          <% end %>
         <% end %>
       </div>
       <div class="x_content">
