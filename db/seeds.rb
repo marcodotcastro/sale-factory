@@ -1,6 +1,6 @@
 require 'csv'
 
-AdminUser.create!(email: 'admin@elevatesales.me', password: '12345678', password_confirmation: '12345678')
+AdminUser.create!(email: 'admin@elevatesales.com.br', password: '12345678', password_confirmation: '12345678')
 
 puts "#Estados"
 # Importa Cidades com a geolocation para consumir app google
