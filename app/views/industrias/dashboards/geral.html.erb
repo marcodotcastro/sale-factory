@@ -4,19 +4,19 @@
     <h1>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span><i class="fa fa-user-circle"></i> TOTAL DE REPRESENTANTES</span>
-        <div><%= @total_representantes %></div>
+        <div><%= link_to @total_representantes, industria_representantes_path(current_usuario.industria) %></div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div><%= @total_de_vendas %></div>
+        <div><%= link_to @total_de_vendas, industria_solicitacoes_path(current_usuario.industria, q: {status_eq: "aceito"}) %></div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-        <div><%= @total_lojistas %></div>
+        <div><%= link_to @total_lojistas, industria_lojistas_path(current_usuario.industria) %></div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
         <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-        <div><%= @total_cidades %></div>
+        <div><%= link_to @total_cidades, industria_dashboards_mapa_lojistas_path(current_usuario.industria) %></div>
       </div>
     </h1>
   </div>
@@ -37,7 +37,7 @@
       <div class="row x_title">
         <div class="col-md-6">
           <h3>Receitas
-            <small>nos últimos 6 meses</small>
+            <small>no ano</small>
           </h3>
         </div>
       </div>
@@ -56,9 +56,13 @@
     function grafico_6_meses() {
 
         var receitas = [];
-
-        <% @vendas_6_meses.each do |solicitacoes| %>
+        <% @dias = 0 %>
+        <% @vendas_no_ano.each do |solicitacoes| %>
+        <% if @dias == 0 %>
+        receitas.push([gd(<%= Date.today.year %>, "01", "01"), 0])
+        <% end %>
         receitas.push([gd(<%= solicitacoes.mes.year %>, <%= solicitacoes.mes.month %>, <%= solicitacoes.mes.day %>), <%= solicitacoes.vendas %>])
+        <% @dias = @dias +1 %>
         <% end %>
 
         var grafico_6_meses_settings = {
@@ -71,7 +75,7 @@
                     radius: 0,
                     show: true
                 },
-                shadowSize: 2
+                shadowSize: 1
             },
             grid: {
                 verticalLines: true,

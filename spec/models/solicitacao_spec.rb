@@ -37,7 +37,7 @@ RSpec.describe Solicitacao, type: :model do
     lojista = create(:lojista, descricao: "Lojista 1", representantes: [representante])
     create(:produto, descricao: "Produto 1", industria: industria)
 
-    create(:solicitacao, :com_pedido, industria: industria, representante: representante, lojista: lojista)
+    create(:solicitacao, :com_pedido, industria: industria, representante: representante, lojista: lojista, status: "criado")
   end
 
   it "solicitacao" do
@@ -51,4 +51,15 @@ RSpec.describe Solicitacao, type: :model do
     expect(solicitacao.produtos.first.descricao).to eq("Produto 1")
   end
 
+
+  it "solicitacao aceita" do
+    #QUANDO
+    solicitacao = Solicitacao.last
+    solicitacao.solicitar!
+    solicitacao.aceitar!
+
+    #ENTÃO
+    expect(solicitacao.status).to eq("aceito")
+    expect(solicitacao.venda_data).to eq(Date.today)
+  end
 end

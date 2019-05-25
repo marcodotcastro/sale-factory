@@ -4,15 +4,17 @@
     <h1>
       <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
         <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div class="count"><%= @total_de_vendas %></div>
+        <div><%= link_to @total_de_vendas, representante_solicitacoes_path(current_usuario.representante, q: {status_eq: "aceito"}) %></div>
+
       </div>
       <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
         <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-        <div class="count"><%= @total_lojistas %></div>
+        <div><%= link_to @total_lojistas, representante_lojistas_path(current_usuario.representante) %></div>
+
       </div>
       <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
         <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-        <div class="count"><%= @total_cidades %></div>
+        <div><%= link_to @total_cidades, representante_dashboards_mapa_lojistas_path(current_usuario.representante) %></div>
       </div>
     </h1>
   </div>
@@ -33,7 +35,7 @@
       <div class="row x_title">
         <div class="col-md-6">
           <h3>Receitas
-            <small>nos últimos 6 meses</small>
+            <small>no ano</small>
           </h3>
         </div>
       </div>
@@ -52,9 +54,13 @@
     function grafico_6_meses() {
 
         var receitas = [];
-
-        <% @vendas_6_meses.each do |solicitacoes| %>
+        <% @dias = 0 %>
+        <% @vendas_no_ano.each do |solicitacoes| %>
+        <% if @dias == 0 %>
+        receitas.push([gd(<%= Date.today.year %>, "01", "01"), 0])
+        <% end %>
         receitas.push([gd(<%= solicitacoes.mes.year %>, <%= solicitacoes.mes.month %>, <%= solicitacoes.mes.day %>), <%= solicitacoes.vendas %>])
+        <% @dias = @dias +1 %>
         <% end %>
 
         var grafico_6_meses_settings = {

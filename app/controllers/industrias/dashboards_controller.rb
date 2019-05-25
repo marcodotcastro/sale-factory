@@ -24,7 +24,7 @@ class Industrias::DashboardsController < ApplicationController
     @total_cidades = industria.total_de_cidades
 
     @total_de_receitas = industria.total_de_receitas
-    @vendas_6_meses = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
+    @vendas_no_ano = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id).where(venda_data: Date.today.beginning_of_year..Date.today).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
   end
 
   def representante
@@ -35,7 +35,7 @@ class Industrias::DashboardsController < ApplicationController
     @total_lojistas = @representante.total_de_lojistas(industria)
     @total_cidades = @representante.total_de_cidades(industria)
 
-    @vendas_6_meses = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id, representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
+    @vendas_no_ano = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id, representante_id: @representante.id).where(venda_data: Date.today.beginning_of_year..Date.today).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
     @total_de_receitas = @representante.total_de_receitas(industria)
   end
 

@@ -11,7 +11,7 @@ class Representantes::DashboardsController < ApplicationController
     @total_cidades = @representante.total_de_cidades
 
     @total_de_receitas = @representante.total_de_receitas
-    @vendas_6_meses = Solicitacao.where(status: "aceito", representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
+    @vendas_no_ano = Solicitacao.where(status: "aceito", representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
   end
 
   def mapa_lojistas
