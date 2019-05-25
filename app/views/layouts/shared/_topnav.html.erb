@@ -5,7 +5,7 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <%#TODO: Mover código para o helpers %>
-      <% if current_usuario.industria? %>
+      <% if current_usuario.industria? or current_usuario.equipe_industria? %>
         <% if current_usuario.industria %>
           <div class="navbar-text">
             <h2><%= current_usuario.industria.descricao.upcase %></h2>
