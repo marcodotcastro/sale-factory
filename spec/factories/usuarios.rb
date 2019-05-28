@@ -49,6 +49,7 @@ FactoryBot.define do
     sequence(:nome) {|n| "Ana Paula #{n}"}
     sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
     cpf {Faker::CPF.numeric}
+    confirmed_at {DateTime.now}
 
     password {12345678}
     tipo {[:industria, :representante].sample}
