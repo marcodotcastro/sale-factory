@@ -73,7 +73,7 @@ class Usuario < ApplicationRecord
   end
 
   def convite_disponivel?
-    (self.convites_disponiveis - self.convites_usados) < 0
+    (self.convites_disponiveis - self.convites_usados) <= 0
   end
 
 
