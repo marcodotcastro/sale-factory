@@ -243,6 +243,7 @@ ActiveRecord::Schema.define(version: 2019_05_18_125124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.text "detalhe"
     t.index ["deleted_at"], name: "index_produtos_on_deleted_at"
     t.index ["industria_id"], name: "index_produtos_on_industria_id"
   end
