@@ -1,11 +1,9 @@
-<p><%= t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<p>Olá <%= @resource.nome %>,</p>
 
-<p><%= t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<p>A <b><%= "#{@resource.industria.descricao} (CNPJ #{@resource.industria.cnpj})" %></b> convidou você para acessar nossa plataforma.</p>
+<p>Para aceitar o convite basta clicar no link abaixo.</p>
 
-<p><%= link_to t("devise.mailer.invitation_instructions.accept"), accept_invitation_url(@resource, :invitation_token => @token) %></p>
+<p><%= link_to "Aceitar Convite", accept_invitation_url(@resource, :invitation_token => @token) %></p>
 
-<% if @resource.invitation_due_at %>
-  <p><%= t("devise.mailer.invitation_instructions.accept_until", due_date: l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format')) %></p>
-<% end %>
-
-<p><%= t("devise.mailer.invitation_instructions.ignore") %></p>
+<p>Se você não quer aceitar esse convite, por favor ignore esse e-mail.</p>
+<p>Sua conta não será criada até você acessar o link acima e escolher sua senha.</p>

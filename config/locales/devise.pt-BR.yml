@@ -18,18 +18,19 @@ pt-BR:
       unconfirmed: "Antes de continuar, confirme a sua conta."
       invited: 'Você tem um convite pendente, aceite para finalizar sua conta.'
     mailer:
+      email_changed:
+        subject: "[ElevateSales] Notificação de Troca de Email"
+      password_change:
+        subject: "[ElevateSales] Notificação de Troca de Senha"
       confirmation_instructions:
-        subject: "Instruções de confirmação"
+        subject: "[ElevateSales] Instruções de Confirmação"
       reset_password_instructions:
-        subject: "Instruções de troca de senha"
+        subject: "[ElevateSales] Instruções de Troca de Senha"
       unlock_instructions:
-        subject: "Instruções de desbloqueio"
+        subject: "[ElevateSales] Instruções de Desbloqueio"
       invitation_instructions:
-        subject: 'Instruções do convite'
-        hello: 'Olá %{email}'
-        someone_invited_you: 'Alguém convidou você para acessar %{url}, você pode aceitar o convite através do link abaixo.'
-        accept: 'Aceitar convite'
-        ignore: "Se você não quer aceitar esse convite, por favor ignore esse e-mail.<br />Sua conta não será criada até você acessar o link abaixo e escolher sua senha."
+        subject: '[ElevateSales] Instruções do Convite'
+
     omniauth_callbacks:
       failure: "Não foi possível autenticá-lo como %{kind} porque %{reason}."
       success: "Autenticado com sucesso com uma conta de %{kind}."
