@@ -2,7 +2,7 @@ class Industrias::EquipeController < ApplicationController
   before_action :set_industria, only: [:index, :create, :show, :desvincular]
 
   def index
-    @equipe = Usuario.where(tipo: :equipe_industria).where(invited_by_id: current_usuario.id).page(params[:page_membro])
+    @equipe = Usuario.where(tipo: :equipe_industria).where(invited_by_id: current_usuario.industria.id).page(params[:page_membro])
   end
 
   def new
