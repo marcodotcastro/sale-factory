@@ -23,6 +23,7 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.quiet = true
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
   config.action_mailer.default_url_options = {:host => "localhost:3000"}
   config.action_mailer.delivery_method = :letter_opener_web
 

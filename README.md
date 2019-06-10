@@ -15,6 +15,10 @@ shell> rspec spec
 
 Acesse: http://localhost:63342/sale-factory/coverage/index.html
 
+# TESTE
+## Email Preview
+http://localhost:3000/rails/mailers/usuario_mailer
+
 # INFORMAÇÕES
 
 ## Deploy
