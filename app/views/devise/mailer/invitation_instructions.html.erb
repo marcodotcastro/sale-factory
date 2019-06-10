@@ -1,6 +1,6 @@
 <p>Olá <%= @resource.nome %>,</p>
 
-<p>A <b><%= "#{@resource.industria.descricao} (CNPJ #{@resource.industria.cnpj})" %></b> convidou você para acessar nossa plataforma.</p>
+<p>Uma indústria lhe convidou você para acessar nossa plataforma.</p>
 <p>Para aceitar o convite basta clicar no link abaixo.</p>
 
 <p><%= link_to "Aceitar Convite", accept_invitation_url(@resource, :invitation_token => @token) %></p>
