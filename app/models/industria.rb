@@ -48,6 +48,8 @@ class Industria < ApplicationRecord
 
   validates :descricao, :setor_id, :cidade_id, :cnpj, presence: true
 
+  after_create :adicionar_plano_inicial
+
   #TODO: Mover para model concerns
   def total_de_representantes
     self.representantes.count
@@ -73,4 +75,11 @@ class Industria < ApplicationRecord
     Cidade.joins(lojistas: :industrias).where("industrias_lojistas.industria_id = #{self.id}").distinct.count
   end
 
+  private
+
+  def adicionar_plano_inicial
+    if self.usuario.industria?
+      Pagamento.create(plano: Plano.first, usuario: self.usuario, periodo: :anual) unless self.usuario.pagamentos.find_by(plano_id: 1)
+    end
+  end
 end

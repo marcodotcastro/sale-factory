@@ -49,7 +49,7 @@ class Usuario < ApplicationRecord
 
   acts_as_paranoid
   devise :invitable, :database_authenticatable, :registerable, :confirmable, :trackable,
-  :recoverable, :rememberable, :validatable, :lockable
+         :recoverable, :rememberable, :validatable, :lockable
 
   has_one :industria
   has_one :representante
@@ -59,8 +59,6 @@ class Usuario < ApplicationRecord
   has_one_attached :avatar
 
   enum tipo: [:industria, :representante, :equipe_industria]
-
-  after_create :conta_gratis
 
   def industria
     self.industria? ? super : self.invited_by
@@ -78,12 +76,5 @@ class Usuario < ApplicationRecord
     (self.convites_disponiveis - self.convites_usados) < 0
   end
 
-  private
-
-  def conta_gratis
-    if self.industria?
-      self.pagamentos << Pagamento.create(plano: Plano.first)
-    end
-  end
 
 end
