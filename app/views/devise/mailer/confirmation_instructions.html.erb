@@ -1,5 +1,5 @@
-<p>Oi <%= @email %>!</p>
+<p>Oi <%= @resource.nome %>,</p>
 
-<p>Pode confirmar o email da sua conta através do link abaixo:</p>
+<p>Para confirmar seu cadastro basta clicar no link abaixo.</p>
 
-<p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Confirmar Minha Conta', confirmation_url(@resource, confirmation_token: @token) %></p>
