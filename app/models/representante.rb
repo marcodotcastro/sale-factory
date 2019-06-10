@@ -51,8 +51,12 @@ class Representante < ApplicationRecord
 
   #TODO: Refactoring código duplicado
   #TODO: Mover para model concerns
-  def solicitacao_em_aberto?(industria)
-    self.solicitacoes.where(status: [:solicitado, :analisando, :pendente], industria_id: industria.id).any?
+  def solicitacao_em_aberto?(industria = nil)
+    if industria
+      self.solicitacoes.where(status: [:solicitado, :analisando, :pendente], industria_id: industria.id).any?
+    else
+      self.solicitacoes.where(status: [:solicitado, :analisando, :pendente]).any?
+    end
   end
 
   #TODO: Refactoring código duplicado
