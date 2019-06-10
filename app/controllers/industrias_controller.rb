@@ -49,7 +49,7 @@ class IndustriasController < ApplicationController
 
     respond_to do |format|
       if @industria.save
-        format.html {redirect_to @industria, flash: {success: 'Industria foi criado com sucesso.'}}
+        format.html {redirect_to @industria, flash: {success: 'Industria foi criada com sucesso.'}}
       else
         format.html {render :new}
       end
@@ -59,7 +59,7 @@ class IndustriasController < ApplicationController
   def update
     respond_to do |format|
       if @industria.update(industria_params)
-        format.html {redirect_to @industria, flash: {success: 'Industria foi alterado com sucesso.'}}
+        format.html {redirect_to @industria, flash: {success: 'Industria foi alterada com sucesso.'}}
       else
         format.html {render :edit}
       end

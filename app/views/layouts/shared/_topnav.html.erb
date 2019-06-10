@@ -39,7 +39,7 @@
               <% if current_usuario.industria %>
                 <li>
                   <%= link_to industria_path(current_usuario.industria) do %>
-                    <i class="fa fa-user"></i> Perfil
+                    <i class="fa fa-industry"></i> Dados
                   <% end %>
                 </li>
                 <li>
@@ -50,7 +50,7 @@
               <% else %>
                 <li>
                   <%= link_to new_industria_path do %>
-                    <i class="fa fa-user"></i> Perfil
+                    <i class="fa fa-industry"></i> Dados
                   <% end %>
                 </li>
               <% end %>
@@ -58,13 +58,13 @@
               <% if current_usuario.representante %>
                 <li>
                   <%= link_to representante_path(current_usuario.representante) do %>
-                    <i class="fa fa-user"></i> Perfil
+                    <i class="fa fa-map-marker"></i> Dados
                   <% end %>
                 </li>
               <% else %>
                 <li>
                   <%= link_to new_representante_path do %>
-                    <i class="fa fa-user"></i> Perfil
+                    <i class="fa fa-map-marker"></i> Dados
                   <% end %>
                 </li>
               <% end %>
@@ -73,7 +73,7 @@
           <% if usuario_signed_in? %>
             <li>
               <%= link_to edit_usuario_registration_path do %>
-                <i class="fa fa-cogs"></i> Conta
+                <i class="fa fa-user"></i> Perfil
               <% end %>
             </li>
           <% end %>

@@ -19,69 +19,75 @@
       </div>
       <div class="x_content">
         <div class="divider-dashed"></div>
-        <form data-parsley-validate class="form-horizontal form-label-left">
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.descricao %>">
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <form data-parsley-validate class="form-horizontal form-label-left">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.descricao %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">CNPJ </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.cnpj %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">CNPJ </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.cnpj %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Cidade </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.cidade.descricao %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Setor </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.setor.descricao %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Endereço </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.endereco %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Cidade </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.cidade.descricao %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.cep %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Endereço </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.endereco %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Setor </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.setor.descricao %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CEP </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.cep %>">
+              </div>
             </div>
-          </div>
-          <div class="divider-dashed"></div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.contato %>">
+
+            <div class="divider-dashed"></div>
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contato </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @industria.contato %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Telefone </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.telefone %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Telefone </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.telefone %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Whatsapp </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.telefone_whatsapp %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Whatsapp </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" id="last-name" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.telefone_whatsapp %>">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email </label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.email %>">
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Email </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" , value="<%= @industria.email %>">
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <%= image_tag foto_logo_url(@industria), class: "img-profile" %>
+        </div>
       </div>
     </div>
   </div>

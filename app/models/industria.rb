@@ -46,7 +46,7 @@ class Industria < ApplicationRecord
 
   has_one_attached :logo
 
-  validates :descricao, :setor_id, :cidade_id, presence: true
+  validates :descricao, :setor_id, :cidade_id, :cnpj, presence: true
 
   #TODO: Mover para model concerns
   def total_de_representantes
