@@ -34,18 +34,18 @@ Plano.create(descricao: "50 Convites", numero_convites: 50, preco: 1500, gateway
 if Rails.env.development?
 
   puts "#Indústrias"
-  FactoryBot.create_list(:industria, 5)
+  FactoryBot.create_list(:industria, 2)
 
   puts "#Produtos"
-  FactoryBot.create_list(:produto, 25)
+  FactoryBot.create_list(:produto, 10)
 
   puts "#Representantes"
-  FactoryBot.create_list(:representante, 50)
+  FactoryBot.create_list(:representante, 10)
 
   puts "#Lojistas"
-  FactoryBot.create_list(:lojista, 250)
+  FactoryBot.create_list(:lojista, 200)
 
   puts "#Solicitações e Pedidos"
-  FactoryBot.create_list(:solicitacao, 500, :com_pedido)
+  FactoryBot.create_list(:solicitacao, 2000, :com_pedido)
 
 end
