@@ -2,20 +2,33 @@
 <div class="row tile_count">
   <div class="text-center">
     <h1>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
-        <div><%= link_to @total_de_vendas, representante_solicitacoes_path(current_usuario.representante, q: {status_eq: "aceito"}) %></div>
-
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
-        <div><%= link_to @total_lojistas, representante_lojistas_path(current_usuario.representante) %></div>
-
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
-        <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
-        <div><%= link_to @total_cidades, representante_dashboards_mapa_lojistas_path(current_usuario.representante) %></div>
-      </div>
+      <% if current_usuario.industria? %>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
+          <div><%= @total_de_vendas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
+          <div><%= @total_lojistas %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
+          <div><%= @total_cidades %></div>
+        </div>
+      <% elsif current_usuario.representante? %>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-money"></i> TOTAL DE VENDAS</span>
+          <div><%= link_to @total_de_vendas, representante_solicitacoes_path(current_usuario.representante, q: {status_eq: "aceito"}) %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-building"></i> TOTAL DE LOJISTAS</span>
+          <div><%= link_to @total_lojistas, representante_lojistas_path(current_usuario.representante) %></div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-home"></i> TOTAL DE CIDADES</span>
+          <div><%= link_to @total_cidades, representante_dashboards_mapa_lojistas_path(current_usuario.representante) %></div>
+        </div>
+      <% end %>
     </h1>
   </div>
   <div class="text-center">

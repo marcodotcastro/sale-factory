@@ -15,7 +15,7 @@
 
 FactoryBot.define do
   factory :pedido do
-    quantidade {Faker::Number.number(2)}
+    quantidade {Faker::Number.number(1)}
 
     before(:create) do |pedido|
       #Vincular produto
