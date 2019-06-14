@@ -62,7 +62,12 @@
                 </li>
                 <li>
                   <%= link_to industria_dashboards_mapa_lojistas_path(current_usuario.industria) do %>
-                    <i class="fa fa-map-marker"></i> Lojistas
+                    <i class="fa fa-map-o"></i> Lojistas
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_dashboards_mapa_solicitacoes_path(current_usuario.industria) do %>
+                    <i class="fa fa-map"></i> Solicitações
                   <% end %>
                 </li>
               </ul>
@@ -172,7 +177,12 @@
                 </li>
                 <li>
                   <%= link_to representante_dashboards_mapa_lojistas_path(current_usuario.representante) do %>
-                    <i class="fa fa-map-marker"></i> Lojistas
+                    <i class="fa fa-map-o"></i> Lojistas
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to representante_dashboards_mapa_solicitacoes_path(current_usuario.representante) do %>
+                    <i class="fa fa-map"></i> Solicitações
                   <% end %>
                 </li>
               </ul>

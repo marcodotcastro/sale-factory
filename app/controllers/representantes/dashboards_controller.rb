@@ -18,6 +18,10 @@ class Representantes::DashboardsController < ApplicationController
     @select_lojistas = current_usuario.representante.lojistas.order(descricao: :asc)
   end
 
+  def mapa_solicitacoes
+    @solicitacoes = current_usuario.representante.solicitacoes.where(status: "aceito")
+  end
+
   private
 
   def set_representante

@@ -237,6 +237,7 @@ Rails.application.routes.draw do
 
       get "dashboards/mapa/representantes", to: "dashboards#mapa_representantes"
       get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
+      get "dashboards/mapa/solicitacoes", to: "dashboards#mapa_solicitacoes"
       get "dashboards/geral", to: "dashboards#geral"
       get "dashboards/ranking", to: "dashboards#ranking"
       get "dashboards/representante/:id", to: "dashboards#representante", as: "dashboards_representante"
@@ -271,6 +272,7 @@ Rails.application.routes.draw do
     scope module: 'representantes' do
       ##DASHBOARDS
       get "dashboards/mapa/lojistas", to: "dashboards#mapa_lojistas"
+      get "dashboards/mapa/solicitacoes", to: "dashboards#mapa_solicitacoes"
       get "dashboards/geral", to: "dashboards#geral"
 
       ##RECURSOS

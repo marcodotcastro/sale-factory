@@ -47,6 +47,10 @@ class Industrias::DashboardsController < ApplicationController
     @select_representantes = current_usuario.industria.representantes.order(descricao: :asc)
   end
 
+  def mapa_solicitacoes
+    @solicitacoes = current_usuario.industria.solicitacoes.where(status: "aceito")
+  end
+
   private
 
   def consultar_lojistas
