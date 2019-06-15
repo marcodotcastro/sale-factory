@@ -61,7 +61,7 @@
         <%#TODO: Adicionar estado, sua capital e o centro do mapa com a capital  %>
         var map = new google.maps.Map(document.getElementById('representante-map'), {
             zoom: 7,
-            center: {lat: -16.6954997, lng: -49.4446992},
+            center: {lat: <%= current_usuario.industria.cidade.latitude %>, lng: <%= current_usuario.industria.cidade.longitude %>},
             mapTypeId: 'terrain'
         });
 
