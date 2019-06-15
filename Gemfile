@@ -30,6 +30,7 @@ gem 'merit', '~> 3.0.2'
 gem 'ransack'
 gem 'kaminari'
 gem 'activeadmin'
+gem 'pagarme'
 
 group :production do
   gem 'aws-sdk-s3', require: false
