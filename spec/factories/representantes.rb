@@ -40,8 +40,8 @@ FactoryBot.define do
     endereco {"R Primeiro de Maio, 77 - Stª Cecilia - Cravinhos, SP"}
     cep {"14140-000"}
     sequence(:contato) {|n| "Ronaldo Henrique Olivo #{n}"}
-    telefone {"(16) 99254-5151 / 3637-4299"}
-    telefone_whatsapp {"(16) 99254-5151"}
+    telefone {"16992545151"}
+    telefone_whatsapp {"16992545151"}
     sequence(:email) {|n| "ronaldo.henrique#{n}@gmail.com"}
     latitude {-21.348714}
     longitude {-47.7651449}

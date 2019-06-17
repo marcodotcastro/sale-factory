@@ -38,8 +38,8 @@ FactoryBot.define do
     cep {"75132-055"}
     sequence(:contato) {|n| "Sra Ana Paula #{n}"}
     sequence(:email) {|n| "ana.paula#{n}@gmail.com"}
-    telefone {"(62) 3902-3200"}
-    telefone_whatsapp {"(62) 99902-3200"}
+    telefone {"6239023200"}
+    telefone_whatsapp {"62999023200"}
     latitude {-16.4064447}
     longitude {-48.9497198}
 

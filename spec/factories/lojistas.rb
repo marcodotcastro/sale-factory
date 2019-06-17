@@ -35,8 +35,8 @@ FactoryBot.define do
     sequence(:email) {|n| "marcelos#{n}@gmail.com"}
     endereco {"R. Barão do Rio Branco, 535 - Centro, Birigui - SP"}
     cep {"16200-001"}
-    telefone {"(21) 99254-4332"}
-    telefone_whatsapp {"(21) 99254-4332"}
+    telefone {"21992544332"}
+    telefone_whatsapp {"21992544332"}
     latitude {-22.6195575}
     longitude {-49.3215312}
     tamanho {[:micro, :pequeno, :medio, :grande, :gigante].sample}
