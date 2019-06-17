@@ -60,6 +60,8 @@ class Usuario < ApplicationRecord
 
   enum tipo: [:industria, :representante, :equipe_industria]
 
+  validates_presence_of :nome, :cpf
+
   def industria
     self.industria? ? super : self.invited_by
   end
