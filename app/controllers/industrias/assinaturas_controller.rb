@@ -1,43 +1,33 @@
 class Industrias::AssinaturasController < ApplicationController
-  before_action :set_industria, only: [:index, :new, :create]
-  before_action :set_assinatura, only: [:show]
-
-  def index
-    @assinaturas = get_assinaturas.result(distinct: true).page(params[:page_assinatura])
-  end
+  before_action :set_industria, only: [:show, :edit, :update]
+  before_action :set_assinatura, only: [:show, :edit, :update]
 
   def show
 
   end
 
-  def new
-    @assinatura = Assinatura.new
+  def edit
+
   end
 
-  def create
-    @assinatura = Assinatura.new(assinatura_params)
-
+  def update
     respond_to do |format|
-      if @assinatura.save
-        format.html {redirect_to industria_assinaturas_path(@industria), flash: {success: 'Produto foi criado com sucesso.'}}
+      if @assinatura.update(assinatura_params)
+        format.html {redirect_to industria_assinatura_path(@industria), flash: {success: 'Representante foi alterado com sucesso.'}}
       else
-        format.html {render :new}
+        format.html {render :edit}
       end
     end
   end
 
   private
 
-  def set_assinatura
-    @assinatura = Assinatura.find(params[:id])
-  end
-
   def set_industria
     @industria = Industria.friendly.find(params[:industria_id])
   end
 
-  def get_assinaturas
-    @q = current_usuario.assinaturas.order(id: :desc).ransack(params[:q])
+  def set_assinatura
+    @assinatura = current_usuario.assinatura
   end
 
   def assinatura_params

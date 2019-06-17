@@ -16,6 +16,12 @@
 #                                           PUT        /usuarios(.:format)                                                                           usuarios/registrations#update
 #                                           DELETE     /usuarios(.:format)                                                                           usuarios/registrations#destroy
 #                                           POST       /usuarios(.:format)                                                                           usuarios/registrations#create
+#                  new_usuario_confirmation GET        /usuarios/confirmation/new(.:format)                                                          usuarios/confirmations#new
+#                      usuario_confirmation GET        /usuarios/confirmation(.:format)                                                              usuarios/confirmations#show
+#                                           POST       /usuarios/confirmation(.:format)                                                              usuarios/confirmations#create
+#                        new_usuario_unlock GET        /usuarios/unlock/new(.:format)                                                                devise/unlocks#new
+#                            usuario_unlock GET        /usuarios/unlock(.:format)                                                                    devise/unlocks#show
+#                                           POST       /usuarios/unlock(.:format)                                                                    devise/unlocks#create
 #                 accept_usuario_invitation GET        /usuarios/invitation/accept(.:format)                                                         usuarios/invitations#edit
 #                 remove_usuario_invitation GET        /usuarios/invitation/remove(.:format)                                                         usuarios/invitations#destroy
 #                    new_usuario_invitation GET        /usuarios/invitation/new(.:format)                                                            usuarios/invitations#new
@@ -124,6 +130,13 @@
 #                                           PATCH      /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#update
 #                                           PUT        /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#update
 #                                           DELETE     /industrias/:industria_id/solicitacoes/:id(.:format)                                          industrias/solicitacoes#destroy
+#                  new_industria_assinatura GET        /industrias/:industria_id/assinatura/new(.:format)                                            industrias/assinaturas#new
+#                 edit_industria_assinatura GET        /industrias/:industria_id/assinatura/edit(.:format)                                           industrias/assinaturas#edit
+#                      industria_assinatura GET        /industrias/:industria_id/assinatura(.:format)                                                industrias/assinaturas#show
+#                                           PATCH      /industrias/:industria_id/assinatura(.:format)                                                industrias/assinaturas#update
+#                                           PUT        /industrias/:industria_id/assinatura(.:format)                                                industrias/assinaturas#update
+#                                           DELETE     /industrias/:industria_id/assinatura(.:format)                                                industrias/assinaturas#destroy
+#                                           POST       /industrias/:industria_id/assinatura(.:format)                                                industrias/assinaturas#create
 #                  industria_equipe_membros GET        /equipe/industrias/:industria_id/equipe/membros(.:format)                                     industrias/equipe#index
 #                                           POST       /equipe/industrias/:industria_id/equipe/membros(.:format)                                     industrias/equipe#create
 #              industria_equipe_membros_new GET        /equipe/industrias/:industria_id/equipe/membros/new(.:format)                                 industrias/equipe#new
@@ -240,7 +253,7 @@ Rails.application.routes.draw do
         resources :comentarios
       end
 
-      resources :assinaturas
+      resource :assinatura
 
       scope 'equipe' do
         get 'equipe/membros', to: "equipe#index"

@@ -54,7 +54,7 @@ class Usuario < ApplicationRecord
   has_one :industria
   has_one :representante
   has_many :comentarios
-  has_many :assinaturas
+  has_one :assinatura
 
   has_one_attached :avatar
 

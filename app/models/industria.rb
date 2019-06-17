@@ -79,7 +79,7 @@ class Industria < ApplicationRecord
 
   def adicionar_plano_inicial
     if self.usuario.industria?
-      Assinatura.create(plano: Plano.first, usuario: self.usuario, periodo: :anual) unless self.usuario.assinaturas.find_by(plano_id: 1)
+      Assinatura.create(plano: Plano.first, usuario: self.usuario, periodo: :anual) unless self.usuario.assinatura
     end
   end
 end
