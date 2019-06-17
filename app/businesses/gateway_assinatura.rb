@@ -1,11 +1,11 @@
-class GatewayPagamento
+class GatewayAssinatura
 
-  def initialize(pagamento)
-    @pagamento = pagamento
+  def initialize(assinatura)
+    @assinatura = assinatura
   end
 
   def criar_assinatura
-    industria = @pagamento.usuario.industria
+    industria = @assinatura.usuario.industria
 
     #TODO: Adicionar id_gateway
     plan = PagarMe::Plan.find_by_id("427562")

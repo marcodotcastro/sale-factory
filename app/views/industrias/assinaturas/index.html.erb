@@ -1,17 +1,17 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="text-center">
-    <%= paginate @pagamentos, param_name: "page_pagamento" %>
-    <%= page_entries_info @pagamentos %>
+    <%= paginate @assinaturas, param_name: "page_assinatura" %>
+    <%= page_entries_info @assinaturas %>
   </div>
   <div class="x_panel">
     <div class="nav navbar-right">
       <%#TODO: Mover para o helpers %>
       <% if current_usuario.industria? %>
-        <%= link_to 'Realizar Pagamento', new_industria_pagamento_path(@industria), class: "btn btn-success" %>
+        <%= link_to 'Realizar Assinatura', new_industria_assinatura_path(@industria), class: "btn btn-success" %>
       <% end %>
     </div>
     <div class="x_title">
-      <h2>Pagamentos
+      <h2>Assinaturas
         <small>...</small>
       </h2>
       <ul class="nav navbar-right panel_toolbox">
@@ -24,21 +24,17 @@
       <table class="table table-striped">
         <thead>
         <tr>
-          <th>Valor</th>
           <th>Plano</th>
-          <th>Período</th>
-          <th>Validade</th>
+          <th>Valor</th>
           <th>Ativo</th>
         </tr>
         </thead>
         <tbody>
-        <% @pagamentos.each do |pagamento| %>
+        <% @assinaturas.each do |assinatura| %>
           <tr>
-            <td><%= number_to_currency pagamento.valor %></td>
-            <td><%= pagamento.plano.descricao %></td>
-            <td><%= pagamento.periodo.try(:capitalize) %></td>
-            <td><%= l_if_nil(pagamento.validade) %></td>
-            <td><%= pagamento.ativo ? "<button type='button' class='btn btn-round btn-success'>Sim</button>".html_safe : "<button type='button' class='btn btn-round btn-danger'>Não</button>".html_safe %> </td>
+            <td><%= assinatura.plano.descricao %></td>
+            <td><%= number_to_currency assinatura.plano.preco %></td>
+            <td><%= assinatura.ativo ? "<button type='button' class='btn btn-round btn-success'>Sim</button>".html_safe : "<button type='button' class='btn btn-round btn-danger'>Não</button>".html_safe %> </td>
           </tr>
         <% end %>
         </tbody>

@@ -240,7 +240,7 @@ Rails.application.routes.draw do
         resources :comentarios
       end
 
-      resources :pagamentos
+      resources :assinaturas
 
       scope 'equipe' do
         get 'equipe/membros', to: "equipe#index"

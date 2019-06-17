@@ -3,7 +3,6 @@
 <%= f.input_field :usuario_id, as: :hidden, value: current_usuario.id %>
 
 <%= f.input :plano_id, as: :select, collection: Plano.where.not(id: 1).map {|c| [c.descricao, c.id]}, class: "form-control" %>
-<%= f.input :periodo, as: :select, collection: Pagamento.periodos.map {|k, v| [k.capitalize, k]}, class: "form-control" %>
 
 <div class="ln_solid"></div>
 

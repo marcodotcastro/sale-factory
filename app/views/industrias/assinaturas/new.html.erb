@@ -2,7 +2,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Realizar Pagamento
+        <h2>Realizar Assinatura
           <small>...</small>
         </h2>
         <ul class="nav navbar-right panel_toolbox">
@@ -11,9 +11,9 @@
         </ul>
         <div class="clearfix"></div>
       </div>
-      <%= simple_form_for([@industria, @pagamento], html: {class: "form-horizontal form-label-left"}) do |f| %>
+      <%= simple_form_for([@industria, @assinatura], html: {class: "form-horizontal form-label-left"}) do |f| %>
         <div class="nav navbar-right">
-          <%= f.button :submit, "Realizar Pagamento", class: "btn btn-success" %>
+          <%= f.button :submit, "Realizar Assinatura", class: "btn btn-success" %>
         </div>
         <div class="x_content">
           <div class="divider-dashed"></div>

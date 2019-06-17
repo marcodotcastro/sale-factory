@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: pagamentos
+# Table name: assinaturas
 #
 #  id         :bigint(8)        not null, primary key
 #  ativo      :boolean
@@ -14,8 +14,8 @@
 #
 # Indexes
 #
-#  index_pagamentos_on_plano_id    (plano_id)
-#  index_pagamentos_on_usuario_id  (usuario_id)
+#  index_assinaturas_on_plano_id    (plano_id)
+#  index_assinaturas_on_usuario_id  (usuario_id)
 #
 # Foreign Keys
 #
@@ -24,7 +24,7 @@
 #
 
 FactoryBot.define do
-  factory :pagamento do
+  factory :assinatura do
     periodo {[:mensal, :trimestral, :semestral, :anual].sample}
     plano {Plano.all.sample}
   end

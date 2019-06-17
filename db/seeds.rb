@@ -28,19 +28,12 @@ end
 
 Plano.create(descricao: "2 Convites", numero_convites: 2, preco: 0)
 Plano.create(descricao: "10 Convites", numero_convites: 10, preco: 300)
-Plano.create(descricao: "20 Convites", numero_convites: 20, preco: 600)
-Plano.create(descricao: "30 Convites", numero_convites: 30, preco: 900)
-Plano.create(descricao: "40 Convites", numero_convites: 40, preco: 1200)
+Plano.create(descricao: "25 Convites", numero_convites: 25, preco: 750)
 Plano.create(descricao: "50 Convites", numero_convites: 50, preco: 1500)
-Plano.create(descricao: "60 Convites", numero_convites: 60, preco: 1800)
-Plano.create(descricao: "70 Convites", numero_convites: 70, preco: 2100)
-Plano.create(descricao: "80 Convites", numero_convites: 80, preco: 2400)
-Plano.create(descricao: "90 Convites", numero_convites: 90, preco: 2700)
-Plano.create(descricao: "100 Convites", numero_convites: 100, preco: 3000)
 
 if Rails.env.development?
 
-  puts "#Industrias"
+  puts "#Indústrias"
   FactoryBot.create_list(:industria, 5)
 
   puts "#Produtos"

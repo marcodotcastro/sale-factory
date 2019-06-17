@@ -54,7 +54,7 @@ class Usuario < ApplicationRecord
   has_one :industria
   has_one :representante
   has_many :comentarios
-  has_many :pagamentos
+  has_many :assinaturas
 
   has_one_attached :avatar
 
@@ -67,7 +67,7 @@ class Usuario < ApplicationRecord
   end
 
   def convites_disponiveis
-    self.pagamentos.where(ativo: true).take.plano.numero_convites
+    self.assinaturas.where(ativo: true).take.plano.numero_convites
   end
 
   def convites_usados

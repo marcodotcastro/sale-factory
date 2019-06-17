@@ -62,6 +62,19 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "assinaturas", force: :cascade do |t|
+    t.bigint "usuario_id"
+    t.bigint "plano_id"
+    t.integer "periodo"
+    t.date "validade"
+    t.boolean "ativo"
+    t.float "valor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plano_id"], name: "index_assinaturas_on_plano_id"
+    t.index ["usuario_id"], name: "index_assinaturas_on_usuario_id"
+  end
+
   create_table "badges_sashes", force: :cascade do |t|
     t.integer "badge_id"
     t.integer "sash_id"
@@ -207,19 +220,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
     t.index ["sash_id"], name: "index_merit_scores_on_sash_id"
   end
 
-  create_table "pagamentos", force: :cascade do |t|
-    t.bigint "usuario_id"
-    t.bigint "plano_id"
-    t.integer "periodo"
-    t.date "validade"
-    t.boolean "ativo"
-    t.float "valor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["plano_id"], name: "index_pagamentos_on_plano_id"
-    t.index ["usuario_id"], name: "index_pagamentos_on_usuario_id"
-  end
-
   create_table "pedidos", force: :cascade do |t|
     t.bigint "produto_id"
     t.bigint "solicitacao_id"
@@ -336,8 +336,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "pagamentos", "planos"
-  add_foreign_key "pagamentos", "usuarios"
+  add_foreign_key "assinaturas", "planos"
+  add_foreign_key "assinaturas", "usuarios"
   add_foreign_key "representantes", "cidades"
   add_foreign_key "solicitacoes", "industrias"
   add_foreign_key "solicitacoes", "lojistas"
