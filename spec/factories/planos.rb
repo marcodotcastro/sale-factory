@@ -8,6 +8,7 @@
 #  preco           :float
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  gateway_id      :string
 #
 
 FactoryBot.define do
@@ -15,5 +16,6 @@ FactoryBot.define do
     descricao {"10 Convites"}
     numero_convites {10}
     preco {300}
+    gateway_id {["427635", "427675", "427676"].sample}
   end
 end

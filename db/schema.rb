@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_172015) do
+ActiveRecord::Schema.define(version: 2019_06_18_143030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
     t.float "valor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gateway_id"
     t.index ["plano_id"], name: "index_assinaturas_on_plano_id"
     t.index ["usuario_id"], name: "index_assinaturas_on_usuario_id"
   end
@@ -83,6 +84,17 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
     t.index ["badge_id", "sash_id"], name: "index_badges_sashes_on_badge_id_and_sash_id"
     t.index ["badge_id"], name: "index_badges_sashes_on_badge_id"
     t.index ["sash_id"], name: "index_badges_sashes_on_sash_id"
+  end
+
+  create_table "cartoes", force: :cascade do |t|
+    t.string "numero"
+    t.string "ano"
+    t.string "mes"
+    t.string "cvv"
+    t.bigint "assinatura_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assinatura_id"], name: "index_cartoes_on_assinatura_id"
   end
 
   create_table "cidades", force: :cascade do |t|
@@ -234,6 +246,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
     t.float "preco"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gateway_id"
   end
 
   create_table "produtos", force: :cascade do |t|
@@ -338,6 +351,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_172015) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assinaturas", "planos"
   add_foreign_key "assinaturas", "usuarios"
+  add_foreign_key "cartoes", "assinaturas"
   add_foreign_key "representantes", "cidades"
   add_foreign_key "solicitacoes", "industrias"
   add_foreign_key "solicitacoes", "lojistas"

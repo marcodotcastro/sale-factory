@@ -7,7 +7,7 @@ class Industrias::AssinaturasController < ApplicationController
   end
 
   def edit
-
+    @assinatura.build_cartao unless @assinatura.cartao
   end
 
   def update
@@ -41,7 +41,7 @@ class Industrias::AssinaturasController < ApplicationController
   end
 
   def assinatura_params
-    params.require(:assinatura).permit(:usuario_id, :plano_id, :ativo)
+    params.require(:assinatura).permit(:usuario_id, :plano_id, :ativo, cartao_attributes: [:numero, :mes, :ano, :cvv])
   end
 
 end

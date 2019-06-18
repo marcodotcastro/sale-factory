@@ -9,6 +9,7 @@
 #  valor      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  gateway_id :string
 #  plano_id   :bigint(8)
 #  usuario_id :bigint(8)
 #

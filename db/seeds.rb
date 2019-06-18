@@ -27,9 +27,9 @@ ActiveRecord::Base.connection.execute(IO.read("db/sqls/cidades.sql"))
 end
 
 Plano.create(descricao: "2 Convites", numero_convites: 2, preco: 0)
-Plano.create(descricao: "10 Convites", numero_convites: 10, preco: 300)
-Plano.create(descricao: "25 Convites", numero_convites: 25, preco: 750)
-Plano.create(descricao: "50 Convites", numero_convites: 50, preco: 1500)
+Plano.create(descricao: "10 Convites", numero_convites: 10, preco: 300, gateway_id: "427635")
+Plano.create(descricao: "25 Convites", numero_convites: 25, preco: 750, gateway_id: "427675")
+Plano.create(descricao: "50 Convites", numero_convites: 50, preco: 1500, gateway_id: "427676")
 
 if Rails.env.development?
 

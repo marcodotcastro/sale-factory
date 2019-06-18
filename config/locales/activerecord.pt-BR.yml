@@ -40,6 +40,9 @@ pt-BR:
       usuario:
         one: "Usuário"
         other: "Usuários"
+      assinatura:
+        one: "Assinatura"
+        other: "Assinaturas"
     attributes:
       comentario:
         descricao: "Descrição"
@@ -93,6 +96,11 @@ pt-BR:
         preco: "Preço"
         created_at: "Criado em"
         updated_at: "Atualizado em"
+      cartao:
+        numero: "Número"
+        mes: "Mês"
+        ano: "Ano"
+        cvv: "CVV"
       admin_user:
         email: "Email"
         password: "Senha"

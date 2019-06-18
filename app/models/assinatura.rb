@@ -27,8 +27,11 @@
 class Assinatura < ApplicationRecord
   belongs_to :usuario
   belongs_to :plano
+  has_one :cartao
+  accepts_nested_attributes_for :cartao
 
   before_create :ativar
+  before_update :gateway
 
   validates_presence_of :plano_id
 
@@ -47,5 +50,25 @@ class Assinatura < ApplicationRecord
     self.ativo = true
   end
 
+  def gateway
+    unless self.gateway_id.nil?
+      unless self.ativo?
+        GatewayAssinatura.new(self).cancelar_assinatura
+        self.gateway_id = nil
+        self.cartao = nil
+        return
+      end
+      GatewayAssinatura.new(self).atualizar_assinatura
+      self.cartao = nil
+      return
+    else
+      assinatura = GatewayAssinatura.new(self).criar_assinatura
+      if assinatura.status.eql? "paid"
+        self.gateway_id = assinatura.id
+        self.cartao = nil
+      end
+      return
+    end
+  end
 
 end

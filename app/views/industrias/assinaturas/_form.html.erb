@@ -3,7 +3,16 @@
 <%= f.input_field :usuario_id, as: :hidden, value: current_usuario.id %>
 <%= f.input_field :ativo, as: :hidden, value: true %>
 
-<%= f.input :plano_id, as: :select, collection: Plano.where.not(id: 1).map {|c| [c.descricao, c.id]}, include_blank: false, class: "form-control" %>
+<%= f.input :plano_id, as: :select, collection: Plano.pagos.where.not(id: @assinatura.plano.id).map {|c| [c.descricao, c.id]}, include_blank: false, class: "form-control" %>
+
+<div class="divider-dashed"></div>
+<h2>Cartão</h2>
+<%= f.simple_fields_for :cartao do |ff| %>
+  <%= ff.input :numero, class: "form-control"  %>
+  <%= ff.input :mes %>
+  <%= ff.input :ano %>
+  <%= ff.input :cvv %>
+<% end %>
 
 <div class="ln_solid"></div>
 

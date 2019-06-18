@@ -49,7 +49,8 @@ FactoryBot.define do
       #Criar usuário
       usuario = create(:usuario, tipo: "industria", nome: industria.contato, email: industria.email, industria: industria)
       #Criar assinatura
-      create(:assinatura, usuario_id: usuario.id)
+      assinatura = create(:assinatura, usuario_id: usuario.id)
+      create(:cartao, assinatura: assinatura)
       #Criar equipe com membro
       create(:usuario, tipo: "equipe_industria", nome: Faker::Name.name, email: Faker::Internet.email, invited_by_id: usuario.id, invited_by_type: "Industria", invitation_accepted_at: Time.now)
       #Vincular cidade
