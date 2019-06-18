@@ -31,6 +31,26 @@ Plano.create(descricao: "10 Convites", numero_convites: 10, preco: 300, gateway_
 Plano.create(descricao: "25 Convites", numero_convites: 25, preco: 750, gateway_id: "427675")
 Plano.create(descricao: "50 Convites", numero_convites: 50, preco: 1500, gateway_id: "427676")
 
+
+if Rails.env.production?
+
+  puts "#Indústrias"
+  FactoryBot.create_list(:industria, 1)
+
+  puts "#Produtos"
+  FactoryBot.create_list(:produto, 2)
+
+  puts "#Representantes"
+  FactoryBot.create_list(:representante, 2)
+
+  puts "#Lojistas"
+  FactoryBot.create_list(:lojista, 10)
+
+  puts "#Solicitações e Pedidos"
+  FactoryBot.create_list(:solicitacao, 200, :com_pedido)
+
+end
+
 if Rails.env.development?
 
   puts "#Indústrias"
