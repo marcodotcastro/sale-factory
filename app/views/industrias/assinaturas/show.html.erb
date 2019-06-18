@@ -15,6 +15,9 @@
         <%#TODO: Mover para o helpers %>
         <% if current_usuario.industria? %>
           <%= link_to 'Atualizar Assinatura', edit_industria_assinatura_path(@industria), class: "btn btn-primary" %>
+          <% if current_usuario.assinatura.ativo? %>
+            <%= link_to 'Cancelar Assinatura', industria_assinatura_path(@industria), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
+          <% end %>
         <% end %>
       </div>
       <div class="x_content">
@@ -36,7 +39,7 @@
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Ativo </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-               <%= @assinatura.ativo ? "<button type='button' class='btn btn-round btn-success'>Sim</button>".html_safe : "<button type='button' class='btn btn-round btn-danger'>Não</button>".html_safe %>
+                <%= @assinatura.ativo ? "<button type='button' class='btn btn-round btn-success'>Sim</button>".html_safe : "<button type='button' class='btn btn-round btn-danger'>Não</button>".html_safe %>
               </div>
             </div>
 

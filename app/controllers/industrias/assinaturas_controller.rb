@@ -1,6 +1,6 @@
 class Industrias::AssinaturasController < ApplicationController
-  before_action :set_industria, only: [:show, :edit, :update]
-  before_action :set_assinatura, only: [:show, :edit, :update]
+  before_action :set_industria, only: [:show, :edit, :update, :destroy]
+  before_action :set_assinatura, only: [:show, :edit, :update, :destroy]
 
   def show
 
@@ -20,6 +20,16 @@ class Industrias::AssinaturasController < ApplicationController
     end
   end
 
+  def destroy
+    respond_to do |format|
+      if @assinatura.update(ativo: false)
+        format.html {redirect_to industria_assinatura_path(@industria), flash: {success: 'Representante foi alterado com sucesso.'}}
+      else
+        format.html {render :edit}
+      end
+    end
+  end
+
   private
 
   def set_industria
@@ -31,7 +41,7 @@ class Industrias::AssinaturasController < ApplicationController
   end
 
   def assinatura_params
-    params.require(:assinatura).permit(:usuario_id, :plano_id)
+    params.require(:assinatura).permit(:usuario_id, :plano_id, :ativo)
   end
 
 end
