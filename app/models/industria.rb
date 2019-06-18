@@ -46,7 +46,8 @@ class Industria < ApplicationRecord
 
   has_one_attached :logo
 
-  validates :descricao, :setor_id, :cidade_id, :cnpj, presence: true
+  validates :descricao, :setor_id, :cidade_id, :cnpj, :endereco, :cep, :contato, :telefone, :email, presence: true
+  validate :validar_cnpj
 
   after_create :adicionar_plano_inicial
 
@@ -82,4 +83,9 @@ class Industria < ApplicationRecord
       Assinatura.create(plano: Plano.first, usuario: self.usuario, periodo: :anual) unless self.usuario.assinatura
     end
   end
+
+  def validar_cnpj
+    errors.add(:cnpj, "não é valido") unless CNPJ.valid?(self.cnpj)
+  end
+
 end

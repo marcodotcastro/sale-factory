@@ -31,6 +31,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'activeadmin'
 gem 'pagarme'
+gem "cpf_cnpj"
 
 group :production do
   gem 'aws-sdk-s3', require: false

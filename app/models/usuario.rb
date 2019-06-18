@@ -60,7 +60,10 @@ class Usuario < ApplicationRecord
 
   enum tipo: [:industria, :representante, :equipe_industria]
 
+  after_create :conta_gratis
+
   validates_presence_of :nome, :cpf
+  validate :validar_cpf
 
   def industria
     self.industria? ? super : self.invited_by
@@ -78,5 +81,16 @@ class Usuario < ApplicationRecord
     (self.convites_disponiveis - self.convites_usados) <= 0
   end
 
+  private
+
+  def conta_gratis
+    if self.industria?
+      self.assinatura = Assinatura.create(plano: Plano.first)
+    end
+  end
+
+  def validar_cpf
+    errors.add(:cpf, "não é valido") unless CPF.valid?(self.cpf)
+  end
 
 end
