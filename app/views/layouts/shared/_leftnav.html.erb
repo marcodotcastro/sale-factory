@@ -40,185 +40,185 @@
   </div>
 
   <br/>
-  <% if current_usuario.assinatura.ativo? %>
+
   <%#TODO: Mover código para o helpers %>
-    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-      <div class="menu_section">
-        <h3>General</h3>
-        <ul class="nav side-menu">
-          <% if current_usuario.industria? %>
-            <% if current_usuario.industria %>
-              <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to industria_dashboards_geral_path(current_usuario.industria) do %>
-                      <i class="fa fa-pie-chart"></i> Dashboard
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_dashboards_mapa_representantes_path(current_usuario.industria) do %>
-                      <i class="fa fa-map-marker"></i> Representantes
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_dashboards_mapa_lojistas_path(current_usuario.industria) do %>
-                      <i class="fa fa-map-marker"></i> Lojistas
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to industria_dashboards_ranking_path(current_usuario.industria) do %>
-                      <i class="fa fa-sort-numeric-asc"></i> Ranking
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to industria_solicitacoes_path(current_usuario.industria) do %>
-                      <i class="fa fa-send"></i> Solicitações
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_produtos_path(current_usuario.industria) do %>
-                      <i class="fa fa-gift"></i> Produtos
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_representantes_path(current_usuario.industria) do %>
-                      <i class="fa fa-user-circle"></i> Representantes
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_lojistas_path(current_usuario.industria) do %>
-                      <i class="fa fa-building"></i> Lojistas
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_equipe_membros_path(current_usuario.industria) do %>
-                      <i class="fa fa-users"></i> Equipe
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to new_industria_produto_path(current_usuario.industria) do %>
-                      <i class="fa fa-gift"></i> Produto
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to new_usuario_invitation_path do %>
-                      <i class="fa fa-envelope-open"></i> Representante
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_equipe_membros_new_path(current_usuario.industria) do %>
-                      <i class="fa fa-users"></i> Equipe
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% end %>
-          <% elsif current_usuario.equipe_industria? %>
-            <% if current_usuario.industria %>
-              <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to industria_solicitacoes_path(current_usuario.industria) do %>
-                      <i class="fa fa-send"></i> Solicitações
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_produtos_path(current_usuario.industria) do %>
-                      <i class="fa fa-gift"></i> Produtos
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_representantes_path(current_usuario.industria) do %>
-                      <i class="fa fa-user-circle"></i> Representantes
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to industria_lojistas_path(current_usuario.industria) do %>
-                      <i class="fa fa-building"></i> Lojistas
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to new_industria_produto_path(current_usuario.industria) do %>
-                      <i class="fa fa-gift"></i> Produto
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% end %>
-          <% elsif current_usuario.representante? %>
-            <% if current_usuario.representante %>
-              <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to representante_dashboards_geral_path(current_usuario.representante) do %>
-                      <i class="fa fa-pie-chart"></i> Dashboard
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to representante_dashboards_mapa_lojistas_path(current_usuario.representante) do %>
-                      <i class="fa fa-map-marker"></i> Lojistas
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to representante_solicitacoes_path(current_usuario.representante) do %>
-                      <i class="fa fa-send"></i> Solicitações
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to representante_produtos_path(current_usuario.representante) do %>
-                      <i class="fa fa-gift"></i> Produtos
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to representante_lojistas_path(current_usuario.representante) do %>
-                      <i class="fa fa-building"></i> Lojistas
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to representante_industrias_path(current_usuario.representante) do %>
-                      <i class="fa fa-industry"></i> Indústrias
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-              <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                  <li>
-                    <%= link_to new_representante_solicitacao_path(current_usuario.representante) do %>
-                      <i class="fa fa-send"></i> Solicitação
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to new_representante_lojista_path(current_usuario.representante) do %>
-                      <i class="fa fa-building"></i> Lojista
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% end %>
+  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+    <div class="menu_section">
+      <h3>General</h3>
+      <ul class="nav side-menu">
+        <% if current_usuario.industria? %>
+          <% if current_usuario.industria %>
+            <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to industria_dashboards_geral_path(current_usuario.industria) do %>
+                    <i class="fa fa-pie-chart"></i> Dashboard
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_dashboards_mapa_representantes_path(current_usuario.industria) do %>
+                    <i class="fa fa-map-marker"></i> Representantes
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_dashboards_mapa_lojistas_path(current_usuario.industria) do %>
+                    <i class="fa fa-map-marker"></i> Lojistas
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-percent"></i> Performance <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to industria_dashboards_ranking_path(current_usuario.industria) do %>
+                    <i class="fa fa-sort-numeric-asc"></i> Ranking
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to industria_solicitacoes_path(current_usuario.industria) do %>
+                    <i class="fa fa-send"></i> Solicitações
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_produtos_path(current_usuario.industria) do %>
+                    <i class="fa fa-gift"></i> Produtos
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_representantes_path(current_usuario.industria) do %>
+                    <i class="fa fa-user-circle"></i> Representantes
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_lojistas_path(current_usuario.industria) do %>
+                    <i class="fa fa-building"></i> Lojistas
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_equipe_membros_path(current_usuario.industria) do %>
+                    <i class="fa fa-users"></i> Equipe
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to new_industria_produto_path(current_usuario.industria) do %>
+                    <i class="fa fa-gift"></i> Produto
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_usuario_invitation_path do %>
+                    <i class="fa fa-envelope-open"></i> Representante
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_equipe_membros_new_path(current_usuario.industria) do %>
+                    <i class="fa fa-users"></i> Equipe
+                  <% end %>
+                </li>
+              </ul>
+            </li>
           <% end %>
-        </ul>
-      </div>
+        <% elsif current_usuario.equipe_industria? %>
+          <% if current_usuario.industria %>
+            <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to industria_solicitacoes_path(current_usuario.industria) do %>
+                    <i class="fa fa-send"></i> Solicitações
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_produtos_path(current_usuario.industria) do %>
+                    <i class="fa fa-gift"></i> Produtos
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_representantes_path(current_usuario.industria) do %>
+                    <i class="fa fa-user-circle"></i> Representantes
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to industria_lojistas_path(current_usuario.industria) do %>
+                    <i class="fa fa-building"></i> Lojistas
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to new_industria_produto_path(current_usuario.industria) do %>
+                    <i class="fa fa-gift"></i> Produto
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+        <% elsif current_usuario.representante? %>
+          <% if current_usuario.representante %>
+            <li><a><i class="fa fa-home"></i> Principal <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to representante_dashboards_geral_path(current_usuario.representante) do %>
+                    <i class="fa fa-pie-chart"></i> Dashboard
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to representante_dashboards_mapa_lojistas_path(current_usuario.representante) do %>
+                    <i class="fa fa-map-marker"></i> Lojistas
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-list"></i> Gerenciamento <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to representante_solicitacoes_path(current_usuario.representante) do %>
+                    <i class="fa fa-send"></i> Solicitações
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to representante_produtos_path(current_usuario.representante) do %>
+                    <i class="fa fa-gift"></i> Produtos
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to representante_lojistas_path(current_usuario.representante) do %>
+                    <i class="fa fa-building"></i> Lojistas
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to representante_industrias_path(current_usuario.representante) do %>
+                    <i class="fa fa-industry"></i> Indústrias
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li><a><i class="fa fa-plus"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <%= link_to new_representante_solicitacao_path(current_usuario.representante) do %>
+                    <i class="fa fa-send"></i> Solicitação
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_representante_lojista_path(current_usuario.representante) do %>
+                    <i class="fa fa-building"></i> Lojista
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
-  <% end %>
+  </div>
+
 <% end %>

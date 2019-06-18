@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_usuario!
+  before_action :redicionar_para_assinatura
 
   layout :layout_by_resource
 
@@ -15,4 +16,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redicionar_para_assinatura
+    if current_usuario
+      if current_usuario.industria?
+        unless ["assinaturas"].include? "#{controller_name}"
+          unless current_usuario.assinatura.ativo?
+            respond_to do |format|
+              format.html {redirect_to industria_assinatura_path(current_usuario.industria), flash: {error: "Sua assinatura está cancelada, favor atualizar."}}
+            end
+          end
+        end
+      end
+    end
+  end
 end

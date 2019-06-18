@@ -9,6 +9,7 @@
 #  valor      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  gateway_id :string
 #  plano_id   :bigint(8)
 #  usuario_id :bigint(8)
 #
@@ -30,6 +31,14 @@ class Assinatura < ApplicationRecord
   before_create :ativar
 
   validates_presence_of :plano_id
+
+  validate :validar_atualizacao, on: :update
+
+  def validar_atualizacao
+    unless self.plano.numero_convites > self.usuario.industria.representantes.count
+      errors.add(:plano_id, "não atualizado. Número de convites (#{self.plano.numero_convites}) menor que o número de representantes (#{self.usuario.industria.representantes.count})")
+    end
+  end
 
   private
 
