@@ -14,6 +14,16 @@ class Representantes::DashboardsController < ApplicationController
     @vendas_no_ano = Solicitacao.where(status: "aceito", representante_id: @representante.id).where(venda_data: 6.months.ago..Time.now).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
   end
 
+  def performance_lojista
+    @lojistas_mais_compras = Lojista.joins(solicitacoes: [:pedidos], representantes: [:industrias]).where("solicitacoes.status = 'aceito' and representantes.id = #{current_usuario.representante.id}").select("lojistas.*", "count(solicitacoes.id) as solicitacoes_por_lojista").order(solicitacoes_por_lojista: :desc).group(:id).limit(10)
+    @lojistas_mais_pedidos = Lojista.joins(solicitacoes: [:pedidos], representantes: [:industrias]).where("solicitacoes.status = 'aceito' and representantes.id = #{current_usuario.representante.id}").select("lojistas.*", "sum(pedidos.quantidade) as pedidos_por_produto").order(pedidos_por_produto: :desc).group(:id).limit(10)
+  end
+
+  def performance_produto
+    @produtos_mais_compras = Produto.joins(pedidos: [:solicitacao]).where("solicitacoes.status = 'aceito' and solicitacoes.representante_id = #{current_usuario.representante.id}").select("produtos.*", "count(solicitacoes.id) as solicitacoes_por_produto").order(solicitacoes_por_produto: :desc).group(:id).limit(10)
+    @produtos_mais_pedidos = Produto.joins(pedidos: [:solicitacao]).where("solicitacoes.status = 'aceito' and solicitacoes.representante_id = #{current_usuario.representante.id}").select("produtos.*", "sum(pedidos.quantidade) as pedidos_por_produto").order(pedidos_por_produto: :desc).group(:id).limit(10)
+  end
+
   def mapa_lojistas
     @select_lojistas = current_usuario.representante.lojistas.order(descricao: :asc)
   end

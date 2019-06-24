@@ -70,7 +70,7 @@ class Usuario < ApplicationRecord
   end
 
   def convites_disponiveis
-    self.assinaturas.where(ativo: true).take.plano.numero_convites
+    self.assinatura.plano.numero_convites
   end
 
   def convites_usados
