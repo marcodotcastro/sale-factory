@@ -1,6 +1,6 @@
 <div class="row">
   <div class="text-center">
-    <h1>LOJISTAS</h1>
+    <h1>PRODUTOS</h1>
   </div>
   <div class="col-md-6 col-sm-6 col-lg-6">
     <div class="x_panel tile fixed_height_100_pc">
@@ -13,14 +13,14 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <% @lojistas_mais_compras.each do |lojista| %>
+        <% @produtos_mais_compras.each do |produto| %>
           <div class="widget_summary">
             <div class="w_left w_20">
-              <span><%= lojista.solicitacoes_por_lojista %></span>
+              <span><%= produto.solicitacoes_por_produto %></span>
             </div>
             <div class="w_right w_70">
-              <%= link_to industria_lojista_path(current_usuario.industria, lojista) do %>
-                <span title="<%= lojista.descricao %>"><%= lojista.descricao %></span>
+              <%= link_to industria_produto_path(current_usuario.industria, produto) do %>
+                <span title="<%= produto.descricao %>"><%= produto.descricao %></span>
               <% end %>
             </div>
             <div class="clearfix"></div>
@@ -40,14 +40,14 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <% @lojistas_mais_pedidos.each do |lojista| %>
+        <% @produtos_mais_pedidos.each do |produto| %>
           <div class="widget_summary">
             <div class="w_left w_20">
-              <span><%= lojista.pedidos_por_produto %></span>
+              <span><%= produto.pedidos_por_produto %></span>
             </div>
             <div class="w_right w_70">
-              <%= link_to industria_lojista_path(current_usuario.industria, lojista) do %>
-                <span title="<%= lojista.descricao %>"><%= lojista.descricao %></span>
+              <%= link_to industria_produto_path(current_usuario.industria, produto) do %>
+                <span title="<%= produto.descricao %>"><%= produto.descricao %></span>
               <% end %>
             </div>
             <div class="clearfix"></div>

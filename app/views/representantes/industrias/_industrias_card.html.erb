@@ -20,7 +20,7 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @industrias, param_name: "page_industria"  %>
+    <%= paginate @industrias, param_name: "page_industria" %>
     <%= page_entries_info @industrias %>
   </div>
   <div class="x_panel">
@@ -67,6 +67,12 @@
             </div>
             <div class="col-xs-12 bottom text-center">
               <% if current_usuario.representante? %>
+                <%= link_to industria_dashboards_performance_produto_path(industria) do %>
+                  <%#TODO: Criar um dashboard sobre a indústria  %>
+                  <button type="button" class="btn btn-success btn-xs">
+                    <i class="fa fa-eye"> </i> Dashboard
+                  </button>
+                <% end %>
                 <%= link_to representante_industria_path(@representante, industria) do %>
                   <button type="button" class="btn btn-primary btn-xs">
                     <i class="fa fa-eye"> </i> Detalhes

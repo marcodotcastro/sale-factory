@@ -2,10 +2,37 @@
   <div class="text-center">
     <h1>REPRESENTANTES</h1>
   </div>
+  <div class="col-md-12 col-sm-12 col-lg-12">
+    <div class="x_panel tile fixed_height_100_pc">
+      <div class="x_title">
+        <h2><i class="fa fa-sort-numeric-asc"></i> TOP 10 MAIS RECEITAS</h2>
+        <ul class="nav navbar-right panel_toolbox">
+          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <% @representantes_mais_receitas.each do |representante| %>
+          <div class="widget_summary">
+            <div class="w_left w_30">
+              <span><%= number_to_currency representante.receitas_por_representante %></span>
+            </div>
+            <div class="w_right w_70">
+              <%= link_to industria_representante_path(current_usuario.industria, representante) do %>
+                <span title="<%= representante.descricao %>"><%= representante.descricao %></span>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="col-md-6 col-sm-6 col-lg-6">
     <div class="x_panel tile fixed_height_100_pc">
       <div class="x_title">
-        <h2><i class="fa fa-sort-numeric-asc"></i> TOP 10 MAIS VENDAS</h2>
+        <h2><i class="fa fa-sort-numeric-asc"></i> TOP 10 MAIS SOLICITAÇÕES</h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -32,7 +59,7 @@
   <div class="col-md-6 col-sm-6 col-lg-6">
     <div class="x_panel tile fixed_height_100_pc">
       <div class="x_title">
-        <h2><i class="fa fa-sort-numeric-asc"></i> TOP 10 MAIS RECEITAS</h2>
+        <h2><i class="fa fa-sort-numeric-asc"></i> TOP 10 MAIS PEDIDOS</h2>
         <ul class="nav navbar-right panel_toolbox">
           <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
           </li>
@@ -40,10 +67,10 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <% @representantes_mais_receitas.each do |representante| %>
+        <% @representantes_mais_pedidos.each do |representante| %>
           <div class="widget_summary">
-            <div class="w_left w_30">
-              <span><%= number_to_currency representante.receitas_por_representante %></span>
+            <div class="w_left w_20">
+              <span><%= representante.pedidos_por_produto %></span>
             </div>
             <div class="w_right w_70">
               <%= link_to industria_representante_path(current_usuario.industria, representante) do %>
