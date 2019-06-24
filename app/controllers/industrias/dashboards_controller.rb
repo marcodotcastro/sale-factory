@@ -6,13 +6,20 @@ class Industrias::DashboardsController < ApplicationController
   before_action :get_cidades, only: [:mapa_representantes, :mapa_lojistas]
   before_action :get_estados, only: [:mapa_representantes, :mapa_lojistas]
 
-  def ranking
+  def performance_representante
     @representantes_mais_vendas = Representante.joins(:solicitacoes, :industrias).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").select("representantes.*", "count(solicitacoes.id) as vendas_por_representante").order(vendas_por_representante: :desc).group(:id).limit(10)
     @representantes_mais_receitas = Representante.joins(:industrias, solicitacoes: [:produtos]).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").select("representantes.*", "sum(produtos.preco * pedidos.quantidade) as receitas_por_representante").order(receitas_por_representante: :desc).group(:id).limit(10)
-    @lojistas_mais_compras = Lojista.joins(:solicitacoes, representantes: [:industrias]).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").select("lojistas.*", "count(solicitacoes.id) as solicitacoes_por_lojista").order(solicitacoes_por_lojista: :desc).group(:id).limit(10)
 
     @representantes_mais_lojistas = Representante.joins(:lojistas, :industrias, :solicitacoes).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").distinct.select("representantes.*", "count( DISTINCT lojistas.id) as lojistas_por_representante").order(lojistas_por_representante: :desc).group(:id).limit(10)
     @representantes_mais_cidades = Representante.joins(:industrias, :solicitacoes, lojistas: [:cidade]).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").distinct.select("representantes.*", "count( DISTINCT cidades.id) as cidades_por_representantes").order(cidades_por_representantes: :desc).group(:id).limit(10)
+  end
+
+  def performance_lojista
+    @lojistas_mais_compras = Lojista.joins(:solicitacoes, representantes: [:industrias]).where("solicitacoes.status = 'aceito' and industrias.id = #{current_usuario.industria.id}").select("lojistas.*", "count(solicitacoes.id) as solicitacoes_por_lojista").order(solicitacoes_por_lojista: :desc).group(:id).limit(10)
+  end
+
+  def performance_produto
+
   end
 
   def geral
