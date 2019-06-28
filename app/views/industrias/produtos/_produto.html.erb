@@ -42,6 +42,12 @@
               </div>
             <% end %>
             <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Código </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.codigo %>">
+              </div>
+            </div>
+            <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.descricao %>">
@@ -54,11 +60,27 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Detalhe </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Detalhes </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <textarea type="text" readonly="readonly" rows="10" cols="50" class="form-control col-md-7 col-xs-12"><%= @produto.detalhe %></textarea>
               </div>
             </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Arquivos </label>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <ul>
+                  <% @produto.arquivos.each do |arquivo| %>
+                    <li>
+                      <%= link_to arquivo.filename, url_for(arquivo), target: "_blank" %>
+                      <%= link_to 'X', arquivo_industria_produto_url(current_usuario.industria, @produto, arquivo), data: {confirm: 'Você tem certeza?'} %>
+
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+
           </form>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">

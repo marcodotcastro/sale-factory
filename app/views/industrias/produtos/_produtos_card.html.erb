@@ -1,17 +1,20 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="row">
     <%= search_form_for @q, url: (current_usuario.industria? or current_usuario.equipe_industria?) ? industria_produtos_path(current_usuario.industria) : representante_produtos_path(current_usuario.representante) do |f| %>
-
-      <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.search_field :descricao_cont, {placeholder: "Descrição do Produto", class: "form-control"} %>
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <%= f.search_field :codigo_cont, {placeholder: "Código", class: "form-control"} %>
       </div>
 
       <div class="col-md-3 col-sm-3 col-xs-3">
-        <%= f.search_field :preco_gteq, {placeholder: "Preço do Produto", class: "form-control"} %>
+        <%= f.search_field :descricao_cont, {placeholder: "Descrição", class: "form-control"} %>
+      </div>
+
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <%= f.search_field :preco_gteq, {placeholder: "Preço", class: "form-control"} %>
       </div>
 
       <% if current_usuario.representante? %>
-        <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="col-md-2 col-sm-2 col-xs-2">
           <%= f.collection_select :industria_id_eq, @industrias, "id", "descricao", {include_blank: 'Todos Indústrias'}, {class: "form-control"} %>
         </div>
       <% end %>
@@ -22,7 +25,7 @@
     <% end %>
   </div>
   <div class="text-center">
-    <%= paginate @produtos, param_name: "page_produto"  %>
+    <%= paginate @produtos, param_name: "page_produto" %>
     <%= page_entries_info @produtos %>
   </div>
   <div class="x_panel">
@@ -42,14 +45,17 @@
           <div class="col-sm-12 col-md-12 col-lg-12 well profile_view">
             <div class="col-sm-12 col-md-12 col-lg-12">
               <h4 class="brief">
-                <i><span title="<%= produto.descricao %>"><%= truncate produto.descricao, length: 40 %></span></i>
+                <i></i><%= produto.codigo %>
               </h4>
             </div>
             <div class="left col-sm-12 col-md-12 col-lg-12">
-              <h2><%= number_to_currency produto.preco %></h2>
+              <h5><span title="<%= produto.descricao %>"><%= truncate produto.descricao, length: 40 %></span></h5>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12">
               <%= image_tag foto_url(produto), class: "img-profile" %>
+            </div>
+            <div class="left col-sm-12 col-md-12 col-lg-12">
+              <h2><%= number_to_currency produto.preco %></h2>
             </div>
             <% if current_usuario.representante? %>
               <div class="col-sm-12 col-md-12 col-lg-12">

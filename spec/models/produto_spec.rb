@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  codigo       :string
 #  deleted_at   :datetime
 #  descricao    :string
 #  detalhe      :text

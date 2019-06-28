@@ -256,7 +256,11 @@ Rails.application.routes.draw do
       resources :representantes do
         post "desvincular", to: "representantes#desvincular"
       end
-      resources :produtos
+      resources :produtos do
+        member do
+          get "/arquivo", to: "produtos#delete_arquivo", as: :arquivo
+        end
+      end
       resources :solicitacoes do
         post "status", to: "status"
         resources :comentarios

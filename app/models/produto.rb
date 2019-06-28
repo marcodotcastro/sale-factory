@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  codigo       :string
 #  deleted_at   :datetime
 #  descricao    :string
 #  detalhe      :text
@@ -24,6 +25,7 @@ class Produto < ApplicationRecord
   has_many :solicitacoes, through: :pedidos
 
   has_one_attached :foto
+  has_many_attached :arquivos
 
   #TODO: Refactoring código duplicado
   #TODO: Mover para model concerns

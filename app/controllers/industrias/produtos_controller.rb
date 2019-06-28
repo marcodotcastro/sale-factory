@@ -1,6 +1,6 @@
 class Industrias::ProdutosController < ApplicationController
-  before_action :set_produto, only: [:show, :edit, :update, :destroy]
-  before_action :set_industria, only: [:index, :show, :create, :new, :edit, :update, :destroy]
+  before_action :set_produto, only: [:show, :edit, :update, :destroy, :delete_arquivo]
+  before_action :set_industria, only: [:index, :show, :create, :new, :edit, :update, :destroy, :delete_arquivo]
   before_action :set_produtos, only: [:new, :edit]
 
   def index
@@ -59,6 +59,13 @@ class Industrias::ProdutosController < ApplicationController
     end
   end
 
+  def delete_arquivo
+    #TODO: refactoring, usar params[:format] não está correto
+    @produto.arquivos.find(params[:format]).purge
+
+    redirect_to industria_produto_path(@industria, @produto)
+  end
+
   private
 
   def set_produtos
@@ -78,7 +85,7 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def produto_params
-    params.require(:produto).permit(:foto, :descricao, :preco, :detalhe)
+    params.require(:produto).permit(:foto, :codigo, :descricao, :preco, :detalhe, arquivos: [])
   end
 
 end
