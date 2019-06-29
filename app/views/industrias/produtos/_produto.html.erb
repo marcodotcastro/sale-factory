@@ -69,15 +69,14 @@
             <div class="form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Arquivos </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <ul>
+                <table class="table table-striped">
                   <% @produto.arquivos.each do |arquivo| %>
-                    <li>
-                      <%= link_to arquivo.filename, url_for(arquivo), target: "_blank" %>
-                      <%= link_to 'X', arquivo_industria_produto_url(current_usuario.industria, @produto, arquivo), data: {confirm: 'Você tem certeza?'} %>
-
-                    </li>
+                    <tr>
+                      <td> <%= link_to arquivo.filename, url_for(arquivo), target: "_blank" %></td>
+                      <td> <%= link_to 'remover', arquivo_industria_produto_url(current_usuario.industria, @produto, arquivo), data: {confirm: 'Você tem certeza?'} %></td>
+                    </tr>
                   <% end %>
-                </ul>
+                </table>
               </div>
             </div>
 

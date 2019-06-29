@@ -27,6 +27,10 @@ FactoryBot.define do
 
     after(:create) do |produto|
       produto.foto.attach(io: File.open(Rails.root.join("spec", "files", "logos", "produto-foto-#{rand(1..5)}.jpg")), filename: "produto-foto-#{rand(1..5)}.jpg", content_type: "image/jpeg")
+
+      rand(2..3).times do
+        produto.arquivos.attach(io: File.open(Rails.root.join("spec", "files", "folders", "folder-#{rand(1..3)}.pdf")), filename: "folder-#{rand(1..3)}.pdf", content_type: "application/pdf")
+      end
     end
 
     before(:create) do |produto|
