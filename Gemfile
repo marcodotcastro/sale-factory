@@ -32,6 +32,7 @@ gem 'kaminari'
 gem 'activeadmin'
 gem 'pagarme'
 gem "cpf_cnpj"
+gem 'airbrake', '~> 5.0'
 
 group :production do
   gem 'aws-sdk-s3', require: false
