@@ -1,67 +1,531 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    <title>The page you were looking for doesn't exist (404)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        @font-face {
+            font-family: "stranger";
+            src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/455279/stranger.ttf") format("truetype");
+        }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+        html {
+            background: linear-gradient(0deg, #050514, #30336b);
+            overflow: hidden;
+            height: 100%;
+        }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+        html body {
+            margin: 0;
+        }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+        .patch {
+            position: absolute;
+            bottom: 0;
+            height: 10vh;
+            width: 3vw;
+            background-color: black;
+            z-index: 2;
+        }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+        .patch:nth-child(odd) {
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 0;
+        }
+
+        .bottompatch {
+            position: absolute;
+            background-color: red;
+            bottom: 0;
+            left: 0;
+        }
+
+        .gravestones .cross {
+            position: absolute;
+            height: 28vh;
+            width: 1.8vh;
+            background-color: black;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .gravestones .cross:after {
+            content: "";
+            position: absolute;
+            background-color: inherit;
+            height: 1.8vh;
+            width: 10vh;
+            top: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .gravestones .cross:nth-child(1) {
+            left: 20%;
+        }
+
+        .gravestones .cross:nth-child(2) {
+            left: 70%;
+            bottom: -4vh;
+        }
+
+        .gravestones .cross:nth-child(3) {
+            left: 90%;
+        }
+
+        .msg {
+            display: none;
+            color: white;
+            font-size: 6.2vh;
+            font-family: "stranger", arial;
+            position: absolute;
+            bottom: 14vh;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .crypt {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 38vh;
+            height: 40vh;
+        }
+
+        .crypt .roof {
+            height: 10vh;
+            width: 100%;
+            background-color: black;
+            -webkit-clip-path: polygon(21% 0%, 79% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(21% 0%, 79% 14%, 100% 100%, 0% 100%);
+        }
+
+        .crypt .body {
+            width: 86%;
+            height: 100%;
+            background-color: black;
+            margin: -1vh auto 0 auto;
+        }
+
+        .crypt .body .door {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotateZ(-3deg);
+            width: 20%;
+            height: 45%;
+            border-top-right-radius: 100%;
+            border-top-left-radius: 100%;
+            background-color: black;
+        }
+
+        .ghost {
+            width: 5vh;
+            height: 20vh;
+            border-top-right-radius: 100%;
+            border-top-left-radius: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            filter: blur(30px);
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+            animation-name: fog;
+            animation-iteration-count: infinite;
+            animation-duration: 80s;
+        }
+
+        .moon {
+            position: absolute;
+            top: 8vh;
+            right: 18vh;
+            height: 20vh;
+            width: 20vh;
+            border-radius: 20vh;
+            box-shadow: inset -2vh 0 0 #dfe6e9;
+            transform: rotateZ(32deg);
+        }
+
+        .title {
+            height: 65vh;
+            margin: 0;
+            position: absolute;
+            left: 49%;
+            bottom: -90vh;
+            opacity: 0.1;
+            transition: filter 3s;
+            transform: translate(-50%, -50%) rotateZ(-4deg);
+            font-family: "stranger", arial;
+            font-size: 60vh;
+            color: #dfe6e9;
+            z-index: 1;
+        }
+
+        .life {
+            opacity: 1;
+            transition: opacity 4s;
+            animation-name: float;
+            animation-iteration-count: infinite;
+            animation-duration: 5s;
+        }
+
+        .star {
+            height: 1px;
+            width: 1px;
+            background-color: white;
+            position: absolute;
+            z-index: 0;
+        }
+
+        @keyframes fog {
+            0% {
+                left: -9vw;
+                transform: rotateZ(19deg);
+            }
+            50% {
+                left: 109vw;
+            }
+            100% {
+                left: 9vw;
+                transform: rotateZ(-19deg);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                top: 45%;
+            }
+            50% {
+                top: 46%;
+            }
+            100% {
+                top: 45%;
+            }
+        }
+
+    </style>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='star'></div>
+<div class='title'>404</div>
+<div class='gravestones'>
+    <div class='cross'></div>
+    <div class='cross'></div>
+    <div class='cross'></div>
+</div>
+<div class='bottompatch'>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+    <div class='patch'></div>
+</div>
+<div class='msg'>
+    Está página não existe.
+</div>
+<div class='crypt'>
+    <div class='roof'></div>
+    <div class='body'>
+        <div class='door'></div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+</div>
+<div class='ghost'></div>
+<div class='moon'></div>
+
+<script>
+    $(".patch").each((i) => {
+        let b = i + 1
+        let rX = Math.floor(Math.random() * 50)
+        let rY = Math.floor(Math.random() * 100)
+        let rH = Math.floor(Math.random() * 10) + 15
+        $(".patch:nth-child(" + b + ")").css({
+            left: i - 1 + "vw",
+            height: rH + "vh",
+            "-webkit-clip-path": "polygon(" + rX + "% " + rX + "%, 0% 100%, 100% 100%)",
+            "clip-path": "polygon(" + rX + "% " + rX + "%, 0% 100%, 100% 100%)"
+        })
+    })
+
+    $(".cross").each((i) => {
+        let b = i + 1
+        let rR = Math.floor(Math.random() * 15) * Math.cos(Math.PI * Math.round(Math.random()))
+        $(".cross:nth-child(" + b + ")").css({
+            "transform": "rotateZ(" + rR + "deg)"
+        })
+    })
+
+    $(".star").each((i) => {
+        $(".star:nth-child(" + i + ")").css({
+            top: Math.random() * $(document).height() - $(document).height() / 4,
+            left: Math.random() * $(document).width()
+        })
+    })
+
+    init = () => {
+        $(".crypt").css({
+            "transform": "translateX(-50%) rotateZ(" + Math.floor(Math.random() * 5) * Math.cos(Math.PI * Math.round(Math.random())) + "deg)"
+        })
+        $(".title").animate({
+            top: "45%"
+        }, 5000, () => {
+            $(".title").addClass("life")
+            $(".msg").fadeIn(1000)
+        })
+    }
+    init()
+
+</script>
+
 </body>
 </html>

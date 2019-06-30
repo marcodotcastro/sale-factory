@@ -58,6 +58,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    airbrake (5.8.1)
+      airbrake-ruby (~> 1.8)
+    airbrake-ruby (1.8.0)
     ambry (1.0.0)
     annotate (2.7.4)
       activerecord (>= 3.2, < 6.0)
@@ -494,6 +497,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activeadmin
+  airbrake (~> 5.0)
   annotate
   aws-sdk-s3
   better_errors
