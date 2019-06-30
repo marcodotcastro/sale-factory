@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  ativo        :boolean
 #  codigo       :string
 #  deleted_at   :datetime
 #  descricao    :string
@@ -26,6 +27,8 @@ class Produto < ApplicationRecord
 
   has_one_attached :foto
   has_many_attached :arquivos
+
+  scope :ativos, -> {where(ativo: true)}
 
   #TODO: Refactoring código duplicado
   #TODO: Mover para model concerns

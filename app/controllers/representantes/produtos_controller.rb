@@ -13,7 +13,7 @@ class Representantes::ProdutosController < ApplicationController
   private
 
   def set_produtos_dos_industrias_do_representante
-    @q = Produto.joins(industria: [:representantes]).where("representantes.id = #{@representante.id}").ransack(params[:q])
+    @q = Produto.ativos.joins(industria: [:representantes]).where("representantes.id = #{@representante.id}").ransack(params[:q])
   end
 
   def set_produto

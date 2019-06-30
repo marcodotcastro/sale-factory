@@ -31,7 +31,7 @@
           <form data-parsley-validate class="form-horizontal form-label-left">
             <% if current_usuario.representante? %>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" >
                   <%= link_to representante_industria_path(@representante, @produto.industria) do %>
                     Indústria <i class="fa fa-eye"> </i>
                   <% end %>
@@ -42,13 +42,21 @@
               </div>
             <% end %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Código </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" >Código </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.codigo %>">
               </div>
             </div>
+            <% unless current_usuario.representante? %>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" title="Oi" >Ativo </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="checkbox" disabled="disabled" <%= @produto.ativo? ? "checked" : "" %>/><br>
+                </div>
+              </div>
+            <% end %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Descrição </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" >Descrição </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.descricao %>">
               </div>
@@ -90,3 +98,8 @@
   </div>
 </div>
 
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

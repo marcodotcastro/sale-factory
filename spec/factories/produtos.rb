@@ -3,6 +3,7 @@
 # Table name: produtos
 #
 #  id           :bigint(8)        not null, primary key
+#  ativo        :boolean
 #  codigo       :string
 #  deleted_at   :datetime
 #  descricao    :string
@@ -31,6 +32,8 @@ FactoryBot.define do
       rand(2..3).times do
         produto.arquivos.attach(io: File.open(Rails.root.join("spec", "files", "folders", "folder-#{rand(1..3)}.pdf")), filename: "folder-#{rand(1..3)}.pdf", content_type: "application/pdf")
       end
+
+      produto.update(ativo: [true, false].sample)
     end
 
     before(:create) do |produto|

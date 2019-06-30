@@ -1,6 +1,6 @@
 <tr class="nested-fields">
   <th scope="row"><%= f.object.id.to_s if f.object.id  %></th>
   <td><%= f.input :quantidade, label: false %></td>
-  <td><%= f.input :produto_id, as: :select, collection: @produtos.all.map {|c| [c.descricao, c.id]}, class: "form-control", label: false %></td>
+  <td><%= f.input :produto_id, as: :select, collection: @produtos.ativos.map {|c| [c.descricao, c.id]}, class: "form-control", label: false %></td>
   <td><%= link_to_remove_association "Remover Produto", f, class: "btn btn-danger" %></td>
 </tr>

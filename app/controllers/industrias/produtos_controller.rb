@@ -85,7 +85,7 @@ class Industrias::ProdutosController < ApplicationController
   end
 
   def produto_params
-    params.require(:produto).permit(:foto, :codigo, :descricao, :preco, :detalhe, arquivos: [])
+    params.require(:produto).permit(:foto, :codigo, :ativo, :descricao, :preco, :detalhe, arquivos: [])
   end
 
 end
