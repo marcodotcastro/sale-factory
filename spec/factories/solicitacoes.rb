@@ -46,7 +46,7 @@ FactoryBot.define do
     end
 
     after(:create) do |solicitacao|
-      solicitacao.update(venda_data: rand(6.months.ago..Time.now)) if solicitacao.aceito?
+      solicitacao.update(venda_data: rand(Date.today.beginning_of_year..Date.today)) if solicitacao.aceito?
     end
 
   end

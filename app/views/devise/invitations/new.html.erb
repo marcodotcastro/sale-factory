@@ -12,7 +12,7 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <p>Número de Convites: <b><%= current_usuario.convites_disponiveis %> Convites</b></p>
+        <p>Plano: <b><%= current_usuario.assinatura.plano.descricao %></b></p>
         <p>Convites Usados: <b><%= current_usuario.convites_usados %> Convites</b></p>
         <%= simple_form_for @usuario ? @usuario : resource, as: resource_name, url: invitation_path(resource_name), html: {class: "form-horizontal form-label-left", method: :post} do |f| %>
           <div class="nav navbar-right">

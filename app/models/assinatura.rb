@@ -3,10 +3,7 @@
 # Table name: assinaturas
 #
 #  id         :bigint(8)        not null, primary key
-#  ativo      :boolean
-#  periodo    :integer
-#  validade   :date
-#  valor      :float
+#  situacao   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  gateway_id :string
@@ -30,6 +27,8 @@ class Assinatura < ApplicationRecord
   has_one :cartao
   accepts_nested_attributes_for :cartao
 
+  enum situacao: [:ativo, :inativo]
+
   before_create :ativar
   before_update :gateway
 
@@ -47,10 +46,11 @@ class Assinatura < ApplicationRecord
 
   def ativar
     #TODO: Consultar Assinatura no Gateway
-    self.ativo = true
+    self.situacao = :ativo
   end
 
   def gateway
+    #TODO: Refactoring
     unless self.gateway_id.nil?
       unless self.ativo?
         GatewayAssinatura.new(self).cancelar_assinatura

@@ -3,10 +3,7 @@
 # Table name: assinaturas
 #
 #  id         :bigint(8)        not null, primary key
-#  ativo      :boolean
-#  periodo    :integer
-#  validade   :date
-#  valor      :float
+#  situacao   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  gateway_id :string

@@ -65,10 +65,7 @@ ActiveRecord::Schema.define(version: 2019_06_30_170954) do
   create_table "assinaturas", force: :cascade do |t|
     t.bigint "usuario_id"
     t.bigint "plano_id"
-    t.integer "periodo"
-    t.date "validade"
-    t.boolean "ativo"
-    t.float "valor"
+    t.integer "situacao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "gateway_id"
