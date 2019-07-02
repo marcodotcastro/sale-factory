@@ -20,6 +20,8 @@
 //= require cocoon
 //= require dashboards/index
 //= require cable
+//= require Chart.bundle
+//= require chartkick
 
 
 $(document).ready(function () {

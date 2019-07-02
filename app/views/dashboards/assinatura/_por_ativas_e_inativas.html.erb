@@ -1,0 +1,5 @@
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= javascript_include_tag "chartkick" %>
+
+<%= pie_chart Assinatura.group(:situacao).count %>
+

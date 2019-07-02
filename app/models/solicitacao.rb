@@ -93,7 +93,7 @@ class Solicitacao < ApplicationRecord
   end
 
   def adicionar_data_da_venda
-    self.update_column(:venda_data, Date.today) if self.aceito?
+    self.update_column(:venda_data, Date.today) if self.aceito? and !self.venda_data?
   end
 
 end

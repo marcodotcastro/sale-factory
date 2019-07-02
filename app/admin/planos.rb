@@ -1,5 +1,5 @@
 ActiveAdmin.register Plano do
-  menu priority: 2
+  menu priority: 4
   breadcrumb do
     ['admin', 'planos']
   end

@@ -1,5 +1,5 @@
 ActiveAdmin.register Solicitacao do
-  menu priority: 1
+  menu priority: 3
   breadcrumb do
     ['admin', 'solicitações']
   end

@@ -124,6 +124,7 @@ GEM
       xpath (~> 3.2)
     chart-js-rails (0.1.6)
       railties (> 3.1)
+    chartkick (2.2.5)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     choice (0.2.0)
@@ -218,6 +219,8 @@ GEM
     geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (4.1.2)
+      activesupport (>= 4.2)
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
@@ -504,6 +507,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.1.0)
   capybara (>= 2.15, < 4.0)
+  chartkick (~> 2.2.0)
   chromedriver-helper
   cocoon
   coffee-rails (~> 4.2)
@@ -517,6 +521,7 @@ DEPENDENCIES
   friendly_id (~> 5.2.4)
   gentelella-rails
   geocoder
+  groupdate
   httparty
   jbuilder (~> 2.5)
   jquery-rails
