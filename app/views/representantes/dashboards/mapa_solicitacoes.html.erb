@@ -33,15 +33,9 @@
 
         <% @solicitacoes.each do |solicitacao| %>
         <% unless solicitacao.lojista.cidade.longitude.nil? and solicitacao.lojista.cidade.latitude.nil? %>
-        console.log("<%= solicitacao.lojista.cidade.latitude  %>");
-        console.log("<%= solicitacao.lojista.cidade.longitude  %>");
-
-        console.log(new google.maps.LatLng(<%= solicitacao.lojista.cidade.latitude %>, <%= solicitacao.lojista.cidade.longitude %>))
         solicitacoes.push(new google.maps.LatLng(<%= solicitacao.lojista.cidade.latitude %>, <%= solicitacao.lojista.cidade.longitude %>));
         <% end %>
         <% end %>
-
-        console.log(solicitacoes);
 
         return solicitacoes;
     }

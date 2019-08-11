@@ -129,7 +129,7 @@
                 </li>
                 <li>
                   <%= link_to new_usuario_invitation_path do %>
-                    <i class="fa fa-envelope-open"></i> Representante
+                    <i class="fa fa-user-circle"></i> Representante
                   <% end %>
                 </li>
                 <li>
@@ -260,6 +260,66 @@
             </li>
           <% end %>
         <% end %>
+        <li><a><i class="fa fa-cogs"></i> Configuração <span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu">
+            <% if usuario_signed_in? %>
+              <%#TODO: Mover código para o helpers %>
+              <% if usuario_signed_in? %>
+                <li>
+                  <%= link_to edit_usuario_registration_path do %>
+                    <i class="fa fa-user"></i> Perfil
+                  <% end %>
+                </li>
+              <% end %>
+              <% if current_usuario.industria? %>
+                <% if current_usuario.industria %>
+                  <li>
+                    <%= link_to industria_path(current_usuario.industria) do %>
+                      <i class="fa fa-industry"></i> Indústria
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to industria_assinatura_path(current_usuario.industria) do %>
+                      <i class="fa fa-shopping-cart"></i> Assinatura
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to new_industria_path do %>
+                      <i class="fa fa-industry"></i> Indústria
+                    <% end %>
+                  </li>
+                <% end %>
+              <% elsif current_usuario.representante? %>
+                <% if current_usuario.representante %>
+                  <li>
+                    <%= link_to representante_path(current_usuario.representante) do %>
+                      <i class="fa fa-map-marker"></i> Representação
+                    <% end %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to new_representante_path do %>
+                      <i class="fa fa-map-marker"></i> Representação
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+            <% end %>
+
+            <li>
+              <% if usuario_signed_in? %>
+                <%= link_to destroy_usuario_session_path, :method => :delete do %>
+                  <i class="fa fa-sign-out"></i> Sair
+                <% end %>
+              <% else %>
+                <%= link_to new_usuario_session_path do %>
+                  <i class="fa fa-sign-in"></i> Entrar
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
