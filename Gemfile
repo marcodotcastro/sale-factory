@@ -23,7 +23,6 @@ gem 'kaminari'
 gem 'devise_invitable', '~> 1.7.5'
 gem 'paranoia', '~> 2.2'
 gem 'friendly_id', '~> 5.2.4'
-gem 'factory_bot_rails'
 gem 'cocoon'
 gem 'aasm'
 gem 'merit', '~> 3.0.2'
@@ -40,12 +39,13 @@ group :production do
   gem 'aws-sdk-s3', require: false
 end
 
-group :development, :test do
+group :development, :test, :production do
   gem 'rspec-rails', '~> 3.8'
   gem 'database_cleaner'
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'pry-byebug'
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'faker'
   gem 'cpf_faker'
