@@ -39,6 +39,7 @@ class Lojista < ApplicationRecord
   enum tamanho: [:micro, :pequeno, :medio, :grande, :gigante]
 
   validates_presence_of :cidade_id, :descricao, :cnpj, :tamanho
+  validate :validar_cnpj
 
   has_one_attached :logo
 

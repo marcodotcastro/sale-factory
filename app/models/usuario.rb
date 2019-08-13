@@ -89,8 +89,4 @@ class Usuario < ApplicationRecord
     end
   end
 
-  def validar_cpf
-    errors.add(:cpf, "não é valido") unless CPF.valid?(self.cpf)
-  end
-
 end

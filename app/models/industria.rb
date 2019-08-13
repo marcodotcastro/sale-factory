@@ -84,8 +84,4 @@ class Industria < ApplicationRecord
     end
   end
 
-  def validar_cnpj
-    errors.add(:cnpj, "não é valido") unless CNPJ.valid?(self.cnpj)
-  end
-
 end
