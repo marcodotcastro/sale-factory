@@ -28,6 +28,8 @@ class Produto < ApplicationRecord
   has_one_attached :foto
   has_many_attached :arquivos
 
+  validates_presence_of :codigo, :descricao, :preco, :detalhe
+
   scope :ativos, -> {where(ativo: true)}
 
   #TODO: Refactoring código duplicado
