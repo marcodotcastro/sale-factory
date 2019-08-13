@@ -17,7 +17,7 @@ class Representantes::ComentariosController < ApplicationController
     @comentario.solicitacao = @solicitacao
 
     respond_to do |format|
-      if @comentario.save!
+      if @comentario.save
         format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Comentario foi criado com sucesso.'}}
       else
         format.html {render :new}

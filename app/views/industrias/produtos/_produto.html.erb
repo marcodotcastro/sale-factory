@@ -14,11 +14,14 @@
       <div class="nav navbar-right">
         <%#TODO: Mover para o helpers %>
         <% if (current_usuario.industria? or current_usuario.equipe_industria?) %>
-          <% unless @produto.solicitado? %>
+          <% unless @produto.solicitacao_em_andamento? %>
             <%= link_to 'Editar Produto', edit_industria_produto_path(@industria, @produto), class: "btn btn-primary" %>
+          <% else %>
+            <p class="btn btn-primary" title="Produto com solicitação em andamento" disabled="true">Editar Produto</p>
+          <% end %>
+          <% unless @produto.solicitado? %>
             <%= link_to 'Excluir Produto', industria_produto_path(@industria, @produto), method: :delete, class: "btn btn-danger", data: {confirm: 'Você tem certeza?'} %>
           <% else %>
-            <p class="btn btn-primary" title="Produto com o pedido solicitado" disabled="true">Editar Produto</p>
             <p class="btn btn-danger" title="Produto com o pedido solicitado" disabled="true">Excluir Produto</p>
           <% end %>
         <% end %>
@@ -31,7 +34,7 @@
           <form data-parsley-validate class="form-horizontal form-label-left">
             <% if current_usuario.representante? %>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" >
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">
                   <%= link_to representante_industria_path(@representante, @produto.industria) do %>
                     Indústria <i class="fa fa-eye"> </i>
                   <% end %>
@@ -42,21 +45,21 @@
               </div>
             <% end %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" >Código </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Código </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.codigo %>">
               </div>
             </div>
             <% unless current_usuario.representante? %>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" title="Oi" >Ativo </label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" title="Oi">Ativo </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="checkbox" disabled="disabled" <%= @produto.ativo? ? "checked" : "" %>/><br>
                 </div>
               </div>
             <% end %>
             <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" >Descrição </label>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <input type="text" readonly="readonly" class="form-control col-md-7 col-xs-12" value="<%= @produto.descricao %>">
               </div>
@@ -81,7 +84,9 @@
                   <% @produto.arquivos.each do |arquivo| %>
                     <tr>
                       <td> <%= link_to arquivo.filename, url_for(arquivo), target: "_blank" %></td>
-                      <td> <%= link_to 'remover', arquivo_industria_produto_url(current_usuario.industria, @produto, arquivo), data: {confirm: 'Você tem certeza?'} %></td>
+                      <% unless current_usuario.representante? %>
+                        <td> <%= link_to 'remover', arquivo_industria_produto_url(current_usuario.industria, @produto, arquivo), data: {confirm: 'Você tem certeza?'} %></td>
+                      <% end %>
                     </tr>
                   <% end %>
                 </table>
@@ -99,7 +104,7 @@
 </div>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>

@@ -28,12 +28,18 @@ class Produto < ApplicationRecord
   has_one_attached :foto
   has_many_attached :arquivos
 
+  validates_presence_of :codigo, :descricao, :preco, :detalhe
+
   scope :ativos, -> {where(ativo: true)}
 
   #TODO: Refactoring código duplicado
   #TODO: Mover para model concerns
   def solicitado?
     self.solicitacoes.any?
+  end
+
+  def solicitacao_em_andamento?
+    self.solicitacoes.where.not(status: [:criado, :aceito, :recusado]).any?
   end
 
 end

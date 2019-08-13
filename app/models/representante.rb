@@ -48,6 +48,7 @@ class Representante < ApplicationRecord
   has_one_attached :logo
 
   validates_presence_of :descricao, :cnpj, :cidade_id
+  validate :validar_cnpj
 
   #TODO: Refactoring código duplicado
   #TODO: Mover para model concerns

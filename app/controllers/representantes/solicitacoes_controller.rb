@@ -30,7 +30,7 @@ class Representantes::SolicitacoesController < ApplicationController
     @solicitacao.representante = current_usuario.representante
 
     respond_to do |format|
-      if @solicitacao.save!
+      if @solicitacao.save
         format.html {redirect_to representante_solicitacao_path(@representante, @solicitacao), flash: {success: 'Solicitação foi criada com sucesso.'}}
       else
         format.html {render :new}
