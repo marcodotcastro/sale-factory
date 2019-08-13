@@ -62,8 +62,8 @@ class Usuario < ApplicationRecord
 
   after_create :conta_gratis
 
-  validates_presence_of :nome, :cpf
-  validate :validar_cpf
+  validates_presence_of :nome, :cpf, on: :create
+  validate :validar_cpf, on: :create
 
   def industria
     self.industria? ? super : self.invited_by
