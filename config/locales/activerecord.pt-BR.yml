@@ -72,6 +72,7 @@ pt-BR:
         industria_ids: "Industrias"
         descricao: "Descrição"
         endereco: "Endereço"
+        contato: "Contrato"
         cnpj: "CNPJ"
         cep: "CEP"
         telefone_whatsapp: "Whatsapp"

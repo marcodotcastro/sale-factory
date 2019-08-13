@@ -31,14 +31,14 @@ class Lojista < ApplicationRecord
   acts_as_paranoid
   extend FriendlyId
 
-  has_and_belongs_to_many :representantes, -> {distinct}
-  has_and_belongs_to_many :industrias, -> {distinct}
+  has_and_belongs_to_many :representantes, -> { distinct }
+  has_and_belongs_to_many :industrias, -> { distinct }
   has_many :solicitacoes
   belongs_to :cidade
 
   enum tamanho: [:micro, :pequeno, :medio, :grande, :gigante]
 
-  validates_presence_of :cidade_id, :descricao, :cnpj, :tamanho
+  validates_presence_of :cidade_id, :descricao, :cnpj, :tamanho, :endereco, :cep, :contato, :telefone, :email
   validate :validar_cnpj
 
   has_one_attached :logo
@@ -49,6 +49,10 @@ class Lojista < ApplicationRecord
   #TODO: Mover para model concerns
   def solicitado?
     self.solicitacoes.any?
+  end
+
+  def solicitacao_em_andamento?
+    self.solicitacoes.where.not(status: [:criado, :aceito, :recusado]).any?
   end
 
 end

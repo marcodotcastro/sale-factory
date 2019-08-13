@@ -36,4 +36,8 @@ class Produto < ApplicationRecord
     self.solicitacoes.any?
   end
 
+  def solicitacao_em_andamento?
+    self.solicitacoes.where.not(status: [:criado, :aceito, :recusado]).any?
+  end
+
 end
