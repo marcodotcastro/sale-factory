@@ -19,8 +19,8 @@
           <% end %>
         </div>
         <div class="x_content">
-          <%= f.input :email, autofocus: true, placeholder: "Email", class: "form-control" %>
-          <%= f.input :password, placeholder: "Senha", class: "form-control" %>
+          <%= f.input :email, autofocus: true, placeholder: "seu email@dominio.com.br", class: "form-control" %>
+          <%= f.input :password, label: "Senha", placeholder: "sua senha", class: "form-control" %>
           <div class="text-center">
             <%= f.input :remember_me, label: "Lembrar-me", as: :boolean if devise_mapping.rememberable? %>
           </div>
