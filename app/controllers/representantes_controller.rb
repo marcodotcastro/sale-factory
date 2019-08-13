@@ -51,7 +51,7 @@ class RepresentantesController < ApplicationController
     @representante.industrias << current_usuario.invited_by
 
     respond_to do |format|
-      if @representante.save!
+      if @representante.save
         format.html {redirect_to representante_path(@representante), flash: {success: 'Representante foi criado com sucesso.'}}
       else
         format.html {render :new}

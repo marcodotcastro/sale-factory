@@ -17,7 +17,7 @@ class Industrias::ComentariosController < ApplicationController
     @comentario.solicitacao = @solicitacao
 
     respond_to do |format|
-      if @comentario.save!
+      if @comentario.save
         format.html {redirect_to industria_solicitacao_path(@industria, @solicitacao), flash: {success: 'Comentario foi criado com sucesso.'}}
       else
         format.html {render :new}
