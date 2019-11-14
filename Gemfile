@@ -32,7 +32,7 @@ gem 'activeadmin'
 gem 'pagarme'
 gem "cpf_cnpj"
 gem 'airbrake', '~> 5.0'
-gem "chartkick", '~> 2.2.0'
+gem "chartkick", '~> 3.2.0'
 gem 'groupdate'
 
 group :production do
