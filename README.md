@@ -1,4 +1,16 @@
-#Variaveis de Ambiente
+#Negocial
+- [Apresentação](https://prezi.com/p/vvozg6zg_enz/?present=1)
+
+##Principais Funcionalidades
+![Soliciação](public/images/1-solicitacao.png)
+
+![Mapa de Representante Comercial](public/images/2-mapa_de_representante_comercial.png)
+
+![Mapa de Representante Comercial](public/images/3-mapa_de_venda.png)
+
+![Prospecção](public/images/4-prospeccao.png)
+
+#Variáveis de Ambiente
 
 ## Google Maps
 -  ENV['GOOGLE_API_MAPS_JAVASCRIPT']
