@@ -360,7 +360,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (12.3.3)
     ransack (2.1.1)
       actionpack (>= 5.0)
       activerecord (>= 5.0)
@@ -538,7 +538,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-erd
   rails_layout
-  rake (< 11.0)
+  rake (< 13.0)
   ransack
   rspec-rails (~> 3.8)
   rubycritic
