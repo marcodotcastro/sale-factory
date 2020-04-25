@@ -1,4 +1,4 @@
-# Negocial
+# Informações Negociais
 - [Apresentação](https://prezi.com/p/vvozg6zg_enz/?present=1)
 
 ## Principais Funcionalidades
@@ -10,36 +10,36 @@
 
 ![Prospecção](public/images/4-prospeccao.png)
 
-# Variáveis de Ambiente
+# Informações Técnicas
 
-## PagarMe
+## Variáveis de Ambiente
+
+### PagarMe
 -  ENV['API_KEY']
 -  ENV['ENCRYPTION_KEY']
 
-## Google Maps
+### Google Maps
 -  ENV['GOOGLE_API_MAPS_JAVASCRIPT']
 
-## Email Server
+### Email Server
 - ENV["DOMAIN_NAME"]
 - ENV["SENDGRID_USERNAME"]
 - ENV["SENDGRID_PASSWORD"]
 
-## Image Server
+### Image Server
 - ENV['AWS_ACCESS_KEY_ID']
 - ENV['AWS_SECRET_ACCESS_KEY_ID']
 - ENV['AWS_REGION']
 - ENV['AWS_BUCKET']
 
-## Errbit Server
+### Errbit Server
 - ENV["ERRBIT_DOMAIN"]
 - ENV["ERRBIT_PROJECT_ID"]
 - ENV["ERRBIT_PROJECT_KEY"]
 
-# TESTE
+## Test
 ## Email Preview
 http://localhost:3000/rails/mailers/usuario_mailer
-
-# INFORMAÇÕES
 
 ## Deploy
 
@@ -54,25 +54,22 @@ Rails.application.load_seed
 PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed` não funciona
 
 ## Infraestrutura
-
 - [Errbit (Digital Ocean)](https://github.com/errbit/errbit)
 - [Email Server (Sendgrind)](https://app.sendgrid.com/guide/integrate/langs/smtp)
 - [Maps Server (Google Maps)](https://console.cloud.google.com/google/maps-apis/overview?project=sale-factory-1534627059098)
 - [Amazon IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users)
 - [Image Server (Amazon S3)](https://s3.console.aws.amazon.com/s3/buckets/active-storage-portal-agro/?region=us-east-2&tab=overview)
 
-#QUALIDADE
+##Quanlidade
 
-## Qualidade de Código
+### Qualidade de Código
 ```
 shell> rubycritic app
 ```
 Acesse: HOME_PROJECT/sale-factory/tmp/rubycritic/overview.html
 ![Soliciação](public/images/qualidade.png)
 
-
-
-## Cobertura de Código
+### Cobertura de Código
 
 ```
 shell> rspec spec
