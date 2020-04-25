@@ -12,6 +12,10 @@
 
 # Variáveis de Ambiente
 
+## PagarMe
+-  ENV['API_KEY']
+-  ENV['ENCRYPTION_KEY']
+
 ## Google Maps
 -  ENV['GOOGLE_API_MAPS_JAVASCRIPT']
 
@@ -63,7 +67,9 @@ PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed
 ```
 shell> rubycritic app
 ```
-Acesse: http://localhost:63342/sale-factory/tmp/rubycritic/overview.html
+Acesse: HOME_PROJECT/sale-factory/tmp/rubycritic/overview.html
+![Soliciação](public/images/qualidade.png)
+
 
 
 ## Cobertura de Código
@@ -72,4 +78,5 @@ Acesse: http://localhost:63342/sale-factory/tmp/rubycritic/overview.html
 shell> rspec spec
 ```
 
-Acesse: http://localhost:63342/sale-factory/coverage/index.html
+Acesse: HOME_PROJECT/sale-factory/coverage/index.html
+![Soliciação](public/images/cobertura.png)
