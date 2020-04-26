@@ -1,14 +1,16 @@
 # Informações Negociais
-- [Apresentação](https://prezi.com/p/vvozg6zg_enz/?present=1)
+
+Video de Apresentação do Negócio, clique na imagem
+
+[![Apresentação no Negócio](http://img.youtube.com/vi/qwTtnZBI7LM)/0.jpg)](http://www.youtube.com/watch?v=qwTtnZBI7LM)
+
+[Apresentação Completa no Prezi](https://prezi.com/p/vvozg6zg_enz/?present=1)
 
 ## Principais Funcionalidades
-![Soliciação](public/images/1-solicitacao.png)
 
-![Mapa de Representante Comercial](public/images/2-mapa_de_representante_comercial.png)
+Video de Apresentação das Funcionalidades, clique na imagem
 
-![Mapa de Representante Comercial](public/images/3-mapa_de_venda.png)
-
-![Prospecção](public/images/4-prospeccao.png)
+[![Apresentação das Funcionalidades](http://img.youtube.com/vi/QeYfnrnRKes/0.jpg)](http://www.youtube.com/watch?v=QeYfnrnRKes)
 
 # Informações Técnicas
 
@@ -41,24 +43,21 @@
 ## Email Preview
 http://localhost:3000/rails/mailers/usuario_mailer
 
-## Deploy
+## Running
 
-### Heroku
+> Clone o projeto
+
+> Instale o ruby 2.6.6
+
+> Agora execute
 
 ```
-heroku run bash
-rails db:migrate 
-rails c
-Rails.application.load_seed
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed 
+rails s
 ```
-PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed` não funciona
-
-## Infraestrutura
-- [Errbit (Digital Ocean)](https://github.com/errbit/errbit)
-- [Email Server (Sendgrind)](https://app.sendgrid.com/guide/integrate/langs/smtp)
-- [Maps Server (Google Maps)](https://console.cloud.google.com/google/maps-apis/overview?project=sale-factory-1534627059098)
-- [Amazon IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users)
-- [Image Server (Amazon S3)](https://s3.console.aws.amazon.com/s3/buckets/active-storage-portal-agro/?region=us-east-2&tab=overview)
 
 ## Quanlidade
 
@@ -66,7 +65,7 @@ PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed
 ```
 shell> rubycritic app
 ```
-Acesse: HOME_PROJECT/sale-factory/tmp/rubycritic/overview.html
+Acesse: HOME_PROJECT/tmp/rubycritic/overview.html
 ![Soliciação](public/images/qualidade.png)
 
 ### Cobertura de Código
@@ -75,5 +74,12 @@ Acesse: HOME_PROJECT/sale-factory/tmp/rubycritic/overview.html
 shell> rspec spec
 ```
 
-Acesse: HOME_PROJECT/sale-factory/coverage/index.html
+Acesse: HOME_PROJECT/coverage/index.html
 ![Soliciação](public/images/cobertura.png)
+
+## Infraestrutura
+- [Errbit (Digital Ocean)](https://github.com/errbit/errbit)
+- [Email Server (Sendgrind)](https://app.sendgrid.com/guide/integrate/langs/smtp)
+- [Maps Server (Google Maps)](https://console.cloud.google.com/google/maps-apis/overview?project=sale-factory-1534627059098)
+- [Amazon IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users)
+- [Image Server (Amazon S3)](https://s3.console.aws.amazon.com/s3/buckets/active-storage-portal-agro/?region=us-east-2&tab=overview)
