@@ -60,7 +60,7 @@ PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed
 - [Amazon IAM](https://console.aws.amazon.com/iam/home?region=us-east-2#/users)
 - [Image Server (Amazon S3)](https://s3.console.aws.amazon.com/s3/buckets/active-storage-portal-agro/?region=us-east-2&tab=overview)
 
-##Quanlidade
+## Quanlidade
 
 ### Qualidade de Código
 ```
