@@ -39,10 +39,6 @@ Video de Apresentação das Funcionalidades, clique na imagem
 - ENV["ERRBIT_PROJECT_ID"]
 - ENV["ERRBIT_PROJECT_KEY"]
 
-## Test
-## Email Preview
-http://localhost:3000/rails/mailers/usuario_mailer
-
 ## Running
 
 > Clone o projeto
