@@ -2,7 +2,7 @@
 
 Video de Apresentação do Negócio, clique na imagem
 
-[![Apresentação no Negócio](http://img.youtube.com/vi/qwTtnZBI7LM)/0.jpg)](http://www.youtube.com/watch?v=qwTtnZBI7LM)
+[![Apresentação no Negócio](http://img.youtube.com/vi/qwTtnZBI7LM/0.jpg)](http://www.youtube.com/watch?v=qwTtnZBI7LM)
 
 [Apresentação Completa no Prezi](https://prezi.com/p/vvozg6zg_enz/?present=1)
 
