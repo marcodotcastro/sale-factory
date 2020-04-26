@@ -34,7 +34,7 @@ class Industrias::DashboardsController < ApplicationController
     @total_cidades = industria.total_de_cidades
 
     @total_de_receitas = industria.total_de_receitas
-    @vendas_no_ano = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id).where(venda_data: Date.today.beginning_of_year..Date.today).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes")
+    @vendas_no_ano = Solicitacao.where(status: "aceito", industria_id: current_usuario.industria.id).where(venda_data: Date.today.beginning_of_year..Date.today).joins(pedidos: [:produto]).select("date_trunc('month', venda_data) as mes, SUM(produtos.preco * pedidos.quantidade) as vendas").group("mes").order(mes: :asc)
   end
 
   def representante
